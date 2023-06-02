@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+	
+	<link rel="stylesheet" href="../static/node_modules/bootstrap/dist/css/bootstrap.css" th:href="@{/node_modules/bootstrap/dist/css/bootstrap.css}"/>
+<!-- 	<link rel="stylesheet" href="../static/css/bootstrap-5.0.2/css/bootstrap.min.css" th:href="@{/css/bootstrap-5.0.2/css/bootstrap.min.css}"/> -->
+    <link rel="stylesheet" href="../static/node_modules/animate.css/animate.css" th:href="@{/node_modules/animate.css/animate.css}"/>
+    <link rel="stylesheet" href="../static/node_modules/node-waves/dist/waves.css" th:href="@{/node_modules/node-waves/dist/waves.css}"/>
+    <link rel="stylesheet" href="../static/node_modules/formvalidation/dist/css/formValidation.css" th:href="@{/node_modules/formvalidation/dist/css/formValidation.css}"/>
+    <link rel="stylesheet" href="../static/node_modules/material-design-iconic-font/dist/css/material-design-iconic-font.css" th:href="@{/node_modules/material-design-iconic-font/dist/css/material-design-iconic-font.css}"/>
+    <link rel="stylesheet" href="../static/node_modules/font-awesome/css/font-awesome.css" th:href="@{/node_modules/font-awesome/css/font-awesome.css}"/>
+    <link rel="stylesheet" href="../static/node_modules/datatables.net-bs/css/dataTables.bootstrap.css" th:href="@{/node_modules/datatables.net-bs/css/dataTables.bootstrap.css}"/>
+    <link rel="stylesheet" href="../static/node_modules/datatables.net-responsive-bs/css/responsive.bootstrap.css" th:href="@{/node_modules/datatables.net-responsive-bs/css/responsive.bootstrap.css}"/>
+    <link rel="stylesheet" href="../static/node_modules/chosen-js/chosen.min.css" th:href="@{/node_modules/chosen-js/chosen.min.css}"/>
+    <link rel="stylesheet" href="../static/node_modules/bootstrap4c-chosen/dist/css/component-chosen.css" th:href="@{/node_modules/bootstrap4c-chosen/dist/css/component-chosen.css}"/>
+    <link rel="stylesheet" href="../static/node_modules/bootstrap-select/dist/css/bootstrap-select.css" th:href="@{/node_modules/bootstrap-select/dist/css/bootstrap-select.css}"/>
+    <link rel="stylesheet" href="../static/node_modules/bootstrap-sweetalert/dist/sweetalert.css" th:href="@{/node_modules/bootstrap-sweetalert/dist/sweetalert.css}"/>
+<!--     <link rel="stylesheet" href="../static/node_modules/growl/stylesheets/jquery.growl.css" th:href="@{/node_modules/growl/stylesheets/jquery.growl.css}"/>	 -->
+    <link rel="stylesheet" href="../static/node_modules/bootstrap-fileinput/css/fileinput.css" th:href="@{/node_modules/bootstrap-fileinput/css/fileinput.css}"/>
+    <link rel="stylesheet" href="../static/node_modules/bootstrap-duallistbox/dist/bootstrap-duallistbox.css" th:href="@{/node_modules/bootstrap-duallistbox/dist/bootstrap-duallistbox.css}"/>
+
+	
+	<link rel="stylesheet" href="../static/css/iniciostyle1.css" th:href="@{/css/iniciostyle1.css}"></link>
+	
+	<link rel="stylesheet" href="../static/css/formulariostyle1.css" th:href="@{/css/formulariostyle1.css}"></link>
+	<link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}"/>
+<!-- 	<link rel="stylesheet" href="../static/css/tema/app.min.1.css" th:href="@{/css/tema/app.min.1.css}"/> -->
+<!--     <link rel="stylesheet" href="../static/css/tema/app.min.2.css" th:href="@{/css/tema/app.min.2.css}"/> -->
+<!--         <link rel="stylesheet" href="../static/css/pnotify.css" th:href="@{/css/pnotify.css}"/> -->
+        <link rel="stylesheet" href="../static/css/menu2/fonts.css" th:href="@{/css/menu2/fonts.css}"/>
+        <link rel="stylesheet" href="../static/css/menu2/menu2.css" th:href="@{/css/menu2/menu2.css}"/>
+<link rel="stylesheet" href="../static/css/styleconsverf/consverf_perm.css" th:href="@{/css/styleconsverf/consverf_perm.css}"></link>
+	
+	<style type="text/css">
+		body{
+			padding-right: 0 !important;
+		}
+		.demo-container {
+		  justify-content: center;
+   		  display: flex;
+   		  align-items: center;
+		}
+		
+		.progress-bar {
+		  border-radius:10px;
+		  background-color: rgb(255 255 255);
+		  width: 65%;
+		  overflow: hidden;
+		  
+		  height: 10px;
+   		  border: none;
+    		border-radius: 10
+		}
+		
+		.progress-bar-value {
+		  width: 100%;
+		  height: 100%;
+ 		  box-shadow: 2px 14px 15px -7px rgba(30, 166, 250, 0.36);
+		  background-color: #f7bf42fa;
+		  animation: indeterminateAnimation 1s infinite linear;
+		  transform-origin: 0% 50%;
+		}
+		
+		@keyframes indeterminateAnimation {
+		  0% {
+		    transform:  translateX(0) scaleX(0);
+		  }
+		  40% {
+		    transform:  translateX(0) scaleX(0.4);
+		  }
+		  100% {
+		    transform:  translateX(100%) scaleX(0.5);
+		  }
+		}
+	</style>
+	
+	<style type="text/css">
+	.progress {
+		  width: 50% !important;
+		   height: 70%; 
+		  display: flex;
+		  flex-flow: column nowrap;
+		  justify-content: center;
+		  padding: 20px;
+		  background: transparent;
+/* 		  background: #e6e9ff; */
+/* 		  border-radius: 5px; */
+/* 		  box-shadow: 0px 10px 50px #abb7e9; */
+		}
+	</style>
+	<style type="text/css">
+	.center {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  
+	}
+	.wave {
+	  width: 5px;
+	  height: 100px;
+/* 	  background: linear-gradient(45deg, cyan, #fff); */
+	  background: #1da1f2;
+	  margin: 10px;
+	  animation: wave 1s linear infinite;
+	  border-radius: 20px;
+	}
+	.wave:nth-child(2) {
+	  animation-delay: 0.1s;
+	}
+	.wave:nth-child(3) {
+	  animation-delay: 0.2s;
+	}
+	.wave:nth-child(4) {
+	  animation-delay: 0.3s;
+	}
+	.wave:nth-child(5) {
+	  animation-delay: 0.4s;
+	}
+	.wave:nth-child(6) {
+	  animation-delay: 0.5s;
+	}
+	.wave:nth-child(7) {
+	  animation-delay: 0.6s;
+	}
+	.wave:nth-child(8) {
+	  animation-delay: 0.7s;
+	}
+	.wave:nth-child(9) {
+	  animation-delay: 0.8s;
+	}
+	.wave:nth-child(10) {
+	  animation-delay: 0.9s;
+	}
+	
+	@keyframes wave {
+	  0% {
+	    transform: scale(0);
+	  }
+	  50% {
+	    transform: scale(1);
+	  }
+	  100% {
+	    transform: scale(0);
+	  }
+	}
+	</style>
+	<style type="text/css">
+	.texto_progress{
+		padding:30px 0;
+		font-family: cursive;
+		color: white;
+		font-size: 25px;
+		animation: mainFadeIn 2s forwards;
+		animation-delay: 1.6s;
+		display: flex;
+		align-items: baseline;
+		position: relative;
+	}
+	.sweet-alert{
+		border: 1px solid #00000073;
+	}
+	</style>
+
+</head>
+<body style="padding-right:0px !important;">
+	
+<!-- 	<a href="#" class="flecha_menu showMenu" id="showMenu"><i class="icono fa fa-bars"></i></a>
+	<div class="menu">
+		<div class="contenido_menu">
+			<ul class="lista-menu" id="side-menu">
+			</ul>	
+		</div>	
+	</div> -->
+	<form id="formularioPassword" action="RestUsuario/ChangePassword" method="post" 
+	    data-fv-excluded="disabled">
+	
+	    <div class="modal fade" id="modalPassword" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true" style="display: none;padding-left: 0">
+	       <div class="modal-dialog modal-md" role="document">
+	         <div class="modal-content">
+	            <div class="card">
+		            <div style="margin: 0 10px 0 10px">
+						<p>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</p>
+						<h4 style="margin-top: 0px;">
+							<b>USUARIO: </b><span id="js_usuario_per"></span></br>
+							<small>Cambiar la contraseña</small>
+						</h4>
+		
+					</div>
+	                </div>
+	                <div class="modal-body">
+	                <input type="hidden" name="idper">
+	                    <div class="row">
+	                        <div class="col-md-4">
+	                            <img src="" id="user-avatar" style="width: 100%;">
+	                        </div>
+	                        <div class="col-md-8">
+	                        
+	                      		<h5 style="margin-top: 0px;">
+									<b>Nombre Completo: </b> <span id="js_razonsocial_per"></span></br>
+									<b>Cédula de Identidad: </b><span id="js_cedula_per"></span></br>
+									
+								</h5>
+							
+								
+								<div class="form-group fg-float">
+									<span class="fg-label">Password</span>
+									<div class="fg-line">
+										<input  class="form-control fg-input" maxlength="12" name="password" type="password"
+											autocomplete="off">
+									</div>
+
+								</div>
+								<div class="form-group fg-float">
+									<span class="fg-label">Repetir Password</span>
+									<div class="fg-line">
+										<input   class="form-control fg-input" maxlength="12" name="repassword" type="password"
+											autocomplete="off">
+									</div>
+
+								</div>
+	                        </div>
+	                    </div>
+	 
+	                </div>
+	                <div class="modal-footer">
+	                    <button type="submit" id="btnAdicionarConfirmacion" class="btn btn-primary waves-effect"> Guardar</button>
+	                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal"> Cancelar</button>
+	                </div>
+	            </div>
+	          </div>
+	        </div>
+	 
+	</form> 
+	
+	
+	<div class="modal fade"  id="cargando" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false"  style=" text-align: center; z-index: 20001;background: rgb(1 3 24 / 95%)">
+			<div class="modal-dialog modal-lg progress" style="width: 100%; text-align: center;" id="ModalMensaje"  >
+				<div class="" id="mdMj" >
+					<div class="modal-header" style="border: none">
+					
+					</div>
+					<div class="modal-body">
+						<div class="row text-center">
+<!-- 							<div class="col md 12" id="ContLoading"> -->
+							
+<!-- 								<img src="../static/img/gif/fashon.gif" th:src="@{/img/gif/fashon.gif}"  id="loadding" style="border-radius: 50%;"> -->
+								<img src="../static/img/gif/eess1.png" th:src="@{/img/gif/eess1.png}"  id="loadding" style="width: 15rem;">
+<!-- 							</div> -->
+							
+
+<!-- 							<div class="center"> -->
+<!-- 							  <div class="wave"></div> -->
+<!-- 							  <div class="wave"></div> -->
+<!-- 							  <div class="wave"></div> -->
+<!-- 							  <div class="wave"></div> -->
+<!-- 							  <div class="wave"></div> -->
+<!-- 							  <div class="wave"></div> -->
+<!-- 							  <div class="wave"></div> -->
+<!-- 							  <div class="wave"></div> -->
+<!-- 							  <div class="wave"></div> -->
+<!-- 							  <div class="wave"></div> -->
+<!-- 							</div> -->
+
+							
+						</div>
+						
+						<div class="row" >
+							<div class="col-md-12">
+<!-- 								<img src="../static/img/gif/loading_gif_png1.gif" th:src="@{/img/gif/loading_gif_png1.gif}"   style=""> -->
+							
+<!-- 							    <div class="progress"> -->
+<!-- 						        <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%"></div> -->
+<!-- 						    </div> -->
+
+
+								<div class="texto_progress">NO CIERRE LA VENTANA, ESTAMOS CARGANDO INFORMACION.. </div>
+								<div class="demo-container">
+								  <img src="../static/img/gif/eess2_inv.png" th:src="@{/img/gif/eess2_inv.png}"  id="loadding" style="width: 10rem;">
+								
+								  <div class="progress-bar">
+								    <div class="progress-bar-value"></div>
+								  </div>
+								  <img src="../static/img/gif/eess2.png" th:src="@{/img/gif/eess2.png}"  id="loadding" style="width: 10rem;">
+								</div>
+								
+								
+<!-- 								<h3><b>No cierre la ventana porvor! </b> </h3> -->
+							</div>
+						</div>
+					</div>
+				</div>
+	
+			</div> 
+		</div>
+	
+	<div class="contenedor">
+		<header>
+			<div class="logo">
+				<img src="../static/img/gnv/logo-gnv-2022.png" th:src="@{/img/gnv/logo-gnv-2022.png}" width="150" style="cursor: pointer;" onclick="event.preventDefault();window.location.href=''" >
+				
+				<div class="gob">
+					<a href="#" style="" onclick="event.preventDefault();window.location.href=''" class="unidad">UNIDAD
+					
+					</a>
+					<br>
+					<span style="cursor: pointer;" onclick="event.preventDefault();window.location.href=''" class="compania">GOB. DPTAL DE TARIJA</span>
+					
+					
+				</div>
+			
+			</div>
+			<nav>
+				<ul class="menu_navegacion">
+					
+					<li>
+						<strong class="" style="color: white;">
+							<h5 style="color: white;" class="">GESTION</h5>
+						</strong>
+					</li>
+					<li style="width: 70px;">
+						<select class="tipe form-control" name="gestion" id="select-gestion" onchange="CambiarGestion(this)">
+<!-- 							<option>2009</option> -->
+						</select>
+					</li>
+					
+					<li>
+						<button style="background: transparent;border: none;">
+							<span class="fa fa-question-circle fa-2x" onclick="AYUDAWEB()"></span>
+						</button>
+					</li>
+					<li style="width: 250px;">
+						<select class="tipe form-control" name="roles" id="select-Roles" onchange="GetMenus(this)">	
+						</select>
+					</li>
+					<li style="width: 250px;">
+						<select class="tipe form-control" name="talleres_user" id="select-talleres" onchange="actualizarMenu()">	
+						</select>
+						<input  type="hidden" id="rol_taller" style="color: black;">
+					</li>
+					<li>
+					Conectado: <i class="fa fa-circle conectado" ></i>&nbsp; 
+						
+					</li>
+						<strong> <h5 class="conectado_user"></h5></strong>
+					<li>
+					</li>
+					<li>
+						<img class="avatar" id="avatar" src="../static/img/user.png" th:src="@{/img/user.png}" alt="logo">
+					</li>
+					<li>
+						<div class="dropdown">
+						  <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						    <!-- Dropdown -->
+						    <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="left: -120px !important">
+						    <li><a href="#" onclick="event.preventDefault();" id="btn-change-password">USUARIO
+						    		<i class="fa fa-user"></i>
+						    	</a>
+						    </li>
+						    <li>
+						    	<a href="#" class="salir text-center" id="btn-desc">DESCONECAR
+									<i class="fa fa-sign-out btn-logout" ></i>
+								</a>>
+							</li>
+						  </ul>
+						</div>
+					</li>
+				</ul>
+			</nav>
+
+		</header>
+		<div class="menu2">
+			<div class="menu_bar">
+				<a href="#" class="bt-menu" onclick="event.preventDefault();"><span class="icon-list"  ></span>MENU</a>
+			</div>
+	 
+			<nav>
+				<ul class="menu2-men"> 
+					<li><a href="#"><span class="icon-house"></span>Inicio</a></li>
+					<li><a href="#"><span class="icon-suitcase"></span>Trabajos</a></li>
+					<li class="submenu">
+						<a href="#"><span class="icon-rocket"></span>Proyectos<span class="careta icon-chevron-down"></span></a>
+						<ul class="children">
+							<li><a href="#">SubElemento #1 <span class="icon-dot-single"></span></a></li>
+							<li><a href="#">SubElemento #2 <span class="icon-dot-single"></span></a></li>
+							<li><a href="#">SubElemento #3 <span class="icon-dot-single"></span></a></li>
+						</ul>
+					</li>
+					<li><a href="#"><span class="icon-earth"></span>Servicios</a></li>
+					<li><a href="#"><span class="icon-mail"></span>Contacto</a></li>
+				</ul>
+			</nav>
+		</div>	
+<!-- 		<div class="header"></div> -->
+ 
+		<section class="main">	
+<!-- 			<div id="contenedor-gestion" style="height: 464px"> -->
+			<div id="contenedor-gestion" style="height: auto">
+				<h4>Te damos la bienvenida al Sistema del Programa GNV</h4>
+			</div>
+		</section>
+		<footer>
+			<div class="social">
+				<a href="#" onclick="event.preventDefault();window.location.href=''" ><i class="fa fa-facebook" ></i> Facebook</a>
+				<a href="#" onclick="event.preventDefault();window.location.href=''" ><i class="fa fa-twitter"></i> Twitter</a>
+			</div>
+		</footer>
+	</div>
+
+	<div id="cont-modales" class="cont-modales"></div>
+
+	<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="reportes" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" style="width: 90%">
+	    <div class="modal-content cont-reportes" >
+	      <iframe id="frameReportes" width="100%" height="900px"></iframe>
+	    </div>
+	  </div>
+	</div>
+
+	<script type="" src="../static/node_modules/jquery/dist/jquery.js" th:src="@{/node_modules/jquery/dist/jquery.js}"></script>
+    <script type="" src="../static/node_modules/bootstrap/dist/js/bootstrap.js" th:src="@{/node_modules/bootstrap/dist/js/bootstrap.js}"></script>
+<!--     <script type="" src="../static/js/bootstrap-5.0.2/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap-5.0.2/js/bootstrap.bundle.min.js}"></script> -->
+    <script type="" src="../static/node_modules/node-waves/dist/waves.js" th:src="@{/node_modules/node-waves/dist/waves.js}"></script>
+    <script type="" src="../static/node_modules/jquery-form/dist/jquery.form.min.js" th:src="@{/node_modules/jquery-form/dist/jquery.form.min.js}"></script>
+    <script type="" src="../static/node_modules/formvalidation/dist/js/formValidation.js" th:src="@{/node_modules/formvalidation/dist/js/formValidation.js}"></script>
+    <script type="" src="../static/node_modules/formvalidation/dist/js/framework/bootstrap.js" th:src="@{/node_modules/formvalidation/dist/js/framework/bootstrap.js}"></script>
+    <script type="" src="../static/node_modules/formvalidation/dist/js/language/es_ES.js" th:src="@{/node_modules/formvalidation/dist/js/language/es_ES.js}"></script>
+    <script type="" src="../static/node_modules/datatables.net/js/jquery.dataTables.js" th:src="@{/node_modules/datatables.net/js/jquery.dataTables.js}"></script>
+    <script type="" src="../static/node_modules/datatables.net-bs/js/dataTables.bootstrap.js" th:src="@{/node_modules/datatables.net-bs/js/dataTables.bootstrap.js}"></script>
+    <script type="" src="../static/node_modules/datatables.net-responsive/js/dataTables.responsive.js" th:src="@{/node_modules/datatables.net-responsive/js/dataTables.responsive.js}"></script>
+    <script type="" src="../static/node_modules/datatables.net-responsive-bs/js/responsive.bootstrap.js" th:src="@{/node_modules/datatables.net-responsive-bs/js/responsive.bootstrap.js}"></script>
+    <script type="" src="../static/node_modules/chosen-js/chosen.jquery.min.js" th:src="@{/node_modules/chosen-js/chosen.jquery.min.js}"></script>
+    <script type="" src="../static/node_modules/bootstrap-select/dist/js/bootstrap-select.js" th:src="@{/node_modules/bootstrap-select/dist/js/bootstrap-select.js}"></script>
+    <script type="" src="../static/node_modules/bootstrap-select/dist/js/i18n/defaults-es_ES.js" th:src="@{/node_modules/bootstrap-select/dist/js/i18n/defaults-es_ES.js}"></script>
+    <script type="" src="../static/node_modules/bootstrap-sweetalert/dist/sweetalert.js" th:src="@{/node_modules/bootstrap-sweetalert/dist/sweetalert.js}"></script>
+<!--     <script src="../static/node_modules/growl/javascripts/jquery.growl.js" th:src="@{/node_modules/growl/javascripts/jquery.growl.js}"></script> -->
+    <script src="../static/node_modules/bootstrap-growl-ifightcrime/jquery.bootstrap-growl.js" th:src="@{/node_modules/bootstrap-growl-ifightcrime/jquery.bootstrap-growl.js}"></script>
+    <script type="" src="../static/node_modules/jquery-load-json/dist/jquery.loadJSON.min.js" th:src="@{/node_modules/jquery-load-json/dist/jquery.loadJSON.min.js}"></script> 
+
+    <script type="" src="../static/node_modules/bootstrap-fileinput/js/fileinput.js" th:src="@{/node_modules/bootstrap-fileinput/js/fileinput.js}"></script> 
+	<script type="" src="../static/node_modules/bootstrap-fileinput/js/locales/es.js" th:src="@{/node_modules/bootstrap-fileinput/js/locales/es.js}"></script> 
+	<script type="" src="../static/node_modules/bootstrap-duallistbox/dist/jquery.bootstrap-duallistbox.js" th:src="@{/node_modules/bootstrap-duallistbox/dist/jquery.bootstrap-duallistbox.js}"></script> 
+	
+	<script type="" src="../static/node_modules/jquery.nicescroll/dist/jquery.nicescroll.js" th:src="@{/node_modules/jquery.nicescroll/dist/jquery.nicescroll.js}"></script>
+	
+	
+	<script type="" src="../static/js/tema/js/functions.js" th:src="@{/js/tema/js/functions.js}"></script>
+    <script type="" src="../static/js/ajax/GBeneficiarios.js" th:src="@{/js/ajax/GBeneficiarios.js}"></script>
+    <script src="../static/js/myscript.js" th:src="@{/js/myscript.js}"></script>
+    <script type="" src="../static/js/pnotify.js" th:src="@{/js/pnotify.js}"></script> 
+    <script type="" src="../static/js/menu2.js" th:src="@{/js/menu2.js}"></script> 
+    <script type="" src="../static/js/formularios.js" th:src="@{/js/formularios.js}"></script> 
+    
+    <script type="text/javascript">
+
+    	var GIDPER;
+    	var GGESTION=0;
+    	var urlServer='http://localhost:8080';
+		var GurlDataTable="js/dataTables/Spanish.lang"
+    	
+    	
+    	
+    	function AYUDAWEB(){
+    		window.open('../static/helpChm/AYUDA_SISTEMA-web/index.html')
+    	}
+    	function AYUDACHM(){
+    		window.open('../static/helpChm/AYUDA_SISTEMA.chm')
+
+    	}
+    	function mostrarMensaje(tipo,msg){
+    		var notificacion=new PNotify({
+    	        title: 'Sistema del Programa GNV',
+    	        text: msg,
+    	        type: tipo,
+    	        delay: 1000,
+    	        stack: {
+    	            "dir1": "down", 
+    	            "dir2": "left", 
+    	            "firstpos1": 530, 
+    	            "firstpos2": 15
+    	        }
+    	    });
+    		notificacion;
+    	}
+    	
+    	function CambiarGestion(anio) {
+    		var valor;
+			if(isNaN(anio)){
+				valor = $(anio).val();
+				
+			}else{
+				valor=anio;
+			}
+			var id=valor;
+			
+			id_select=valor;
+			$('#contenedor-gestion').html('');
+// 			location.reload();
+// 			alert('')
+			GGESTION=valor;
+		}
+    	
+    	getPrograma();
+// 		var idinst_init=1;
+    	function getPrograma() {
+			$('#select-gestion').empty();
+			$.ajax({
+				url:"RestProgramaGnv/obtenerInst",
+				dataType:"json",
+				data:{idinst:1},
+				cache: false,
+				success:function(resp){
+// 					console.log('DatosInt: ',resp)
+// 					idrol1=resp[0].idrol;
+// 					$('.unidad').html(resp.unidad.nombreInstitucion)
+					$('body').find('.unidad').html(resp.unidad.nombreinstitucion)
+					$('body').find('.compania').html(resp.unidad.nombrecompania)
+					var selecion='';
+// 					$('#select-gestion').append('<option value="-1" >año</option>')
+					$(resp.gestiones).each(function(index,array) {
+						if(array.actual==1){
+							seleccion='selected'
+						}else{
+							seleccion=''
+						}
+						$('#select-gestion').append(
+								'<option value="'+array.idgest+'" accesskey="'+array.idgest+'" '+seleccion+'>'+
+								'<a href="">'+array.gestion+'</a>'+
+								'</option>');
+						var selecion='';
+					})
+					$('#select-gestion').chosen({width:"100%" });
+// 					enviarIdrol(idrol1);	
+				},
+				error:function(err){
+					alert('Sin respuesta del servidor')
+				}
+				
+			})
+		}
+    	
+	// $(function () {
+	    Waves.attach('.btn',['waves-button']);
+	    Waves.init();
+		
+		$.post('RestUsuario/getUserSession', function(result){
+// 			console.log('result',result)
+			var USERSE=result.user;
+			GIDPER=USERSE.idper
+			if(USERSE.foto!=null || USERSE.foto!=""){
+				$('#avatar').removeAttr('src')
+				$('#avatar').attr('src','archivos/fotos/'+USERSE.foto+'')
+				$('#avatar').attr('th:src','archivos/fotos/'+USERSE.foto+'')
+				
+					
+			}
+			
+			$('#rol_taller').val(result.rol_taller)
+// 			console.log('rol_taller:',result.rol_taller)
+			$('.conectado_user').html(result.user.razonsocial)
+// 			console.log('ListTalleres',result.ListTalleres)
+			var TALLERES_USER=result.ListTalleres
+			
+			$('#select-talleres').empty();
+			var selecion='';
+			$('#select-talleres').append('<option value="-1" >SELECCIONE TALLER</option>')
+			var idtall1=0;
+// 			console.log('TALLERES_USER',TALLERES_USER)
+			
+			if(TALLERES_USER.length!=0)idtall1=TALLERES_USER[0].idtall;
+			if(TALLERES_USER.length!=0){
+				$(TALLERES_USER).each(function(index,array) {
+					if(idtall1==array.idtall){
+						seleccion='selected'
+					}else{
+						seleccion=''
+					}
+					$('#select-talleres').append(
+							'<option value="'+array.idtall+'" accesskey="'+array.idtall+'" '+seleccion+'>'+
+							'<a href="">'+array.nombretall+'</a>'+
+							'</option>');
+					var selecion='';
+				})	
+			}
+			
+	
+			$('#select-talleres').chosen();
+			
+		},'json');
+
+		ObtenerRoles();
+	   	var idrol_init=0;
+		function ObtenerRoles() {
+			var idrol1;
+			$('#select-Roles').empty();
+			$.ajax({
+				url:"RestUsuario/obtenerRoles",
+				dataType:"json",
+				cache: false,
+				success:function(resp){
+// 					console.log('Roles: ',resp)
+					idrol1=resp[0].idrol;
+					var selecion='';
+					$('#select-Roles').append('<option value="-1" >Selecione Rol</option>')
+					$(resp).each(function(index,array) {
+						if(idrol1==array.idrol){
+							seleccion='selected'
+						}else{
+							seleccion=''
+						}
+						$('#select-Roles').append(
+								'<option value="'+array.idrol+'" accesskey="'+array.idrol+'" '+seleccion+'>'+
+								'<a href="">'+array.nombre+'</a>'+
+								'</option>');
+						var selecion='';
+					})
+					$('#select-Roles').chosen();
+					enviarIdrol(idrol1);	
+				},
+				error:function(err){
+			
+				}
+				
+			})	
+		}
+		
+		function actualizarMenu() {
+			GetMenus($('body').find('#select-Roles option:selected').val())
+		}
+		
+		
+		var idrol_select;
+		function enviarIdrol(id_rol){
+			GetMenus(id_rol);
+			idrol_select=id_rol;
+		}
+		var ListaMenus;
+		function GetMenus(rol){
+			var valor;
+			if(isNaN(rol)){
+				valor = $(rol).val();
+				
+			}else{
+				valor=rol;
+			}
+			var idr=valor;
+			idrol_select=valor;
+			$.ajax({
+				url:'RestUsuario/MenuRol',
+				type:'post',
+				dataType:"json",
+				data:{
+					idrol:valor
+				},
+				success:function(resp){
+					$('#contenedor-gestion').html('');
+// 					console.log('respActual: ',resp);
+					var name="";
+					$('.lista-menu').empty();//remove igual borra todos los li dentro
+					$('.menu2-men').empty();//remove igual borra todos los li dentro
+					$(resp).each(function(index,item){
+						var proc=item;
+						$('.lista-menu').append(
+								`<li class="">
+									<a href="#" id="mod" data-id="${item.idmod}" class="title_menu" onclick="event.preventDefault();"><i class="${item.icono}" ></i>
+									<span>${item.nombre}</span>
+									<!--<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i>-->
+									</a>
+		                    	<ul class="lista-procesos list-procesos${(index+1)}" data-id="${item.idmod}" >
+		                		</ul>
+		                    	</li>`	
+		                );
+						$('.menu2-men').append(
+							`<li class="submenu">
+								<a href="#" id="mod" data-id="${item.idmod}" class="title_menu" onclick="event.preventDefault();"><i class="${item.icono}"></i>
+									<span>${item.nombre}</span>
+									<span class="careta icon-chevron-down">
+								</a>
+								<ul class="children lista-procesos list-procesos${(index+1)}" data-id="${item.idmod}">
+								</ul>
+							</li>`	
+		                );
+		  	          	$(resp[index].procesos).each(function (index1,item1){
+		            		var idlist='.list-procesos'+(index+1);
+		            		$(idlist).append('<li class="sub-proceso"><a href="#" data-href="'+item1.enlace+'" data-id="'+item1.idproc+'" accesskey="'+item.idmod+'" data-idrol="'+idr+'" class="enlace-proc enl-gestion" onclick="event.preventDefault();getGestion(this)">'+item1.nombre+'<span class="icon-dot-single"></span></a></li>')
+		            		$(item1.opciones).each(function(index2,item2) {
+							})
+		            	});
+					})
+					ObtenerMenus(resp);
+				}
+			})
+		} 
+		function ObtenerMenus(Menus){
+			ListaMenus=Menus;
+		}
+		function getGestion(link_gest){	
+// 			e.preventDefault();
+// 			console.log('link_gestion:',link_gest)
+			var idrol=$(link_gest).attr('data-idrol')
+			var idmod=$(link_gest).attr('accesskey')
+			var idproc=$(link_gest).data('id');
+			var enlace=$(link_gest).data('href');
+			$.post(enlace,function(resp){
+				$('#contenedor-gestion').html(resp);
+			})
+			$('#opcionesRol').html('');
+			var OpcionesSistema=new Object();
+			$(ListaMenus).each(function(index,menus){
+					if(menus.idmod==idmod){
+						$(ListaMenus[index].procesos).each(function(index1,procesos){
+							if(procesos.idproc==idproc){
+									OpcionesSistema.AccionesUser=new Array();	
+									$(procesos.opciones).each(function(index2,opciones){
+										$('#opcionesRol').append('<button class="btn btn-primary waves-effect" name="">'+opciones.nombre+'</button>')
+										OpcionesSistema.AccionesUser[index2]=opciones;
+									})
+								Get_Opciones(OpcionesSistema);	
+							}
+						})
+					}
+			})
+		}
+		var OpcionesSistema;
+		function Get_Opciones(opc){
+			var resp;
+			if(opc==null){		
+				resp=OpcionesSistema;
+			}else{
+				OpcionesSistema=opc;
+				resp=opc;
+			}
+			return resp;
+		}
+		$('#btn-desc').on('click',function(event){
+			event.preventDefault();
+			swal({   
+                title: "Esta seguro de salir del Sistema?",   
+                text: "Se desconectara del Sistema para redirigirse a la pantalla de login!",   
+                type: "warning",   
+                showCancelButton: true,   
+                confirmButtonColor: "#DD6B55",   
+                confirmButtonText: "Si, Salir!",
+                cancelButtonText: "No, Cancelar!",    
+                closeOnConfirm: false//q no se cierre al hacer click en aceptar, q haga otro evento 
+				// closeOnCancel: false 
+
+            }, function(isConfirm){  
+				if(isConfirm){
+             	   window.location.href="desconectar"
+				} 
+            });
+
+		})
+		
+
+    </script>
+	<script>
+		$(function() {
+			var meses = new Array("01", "02", "03","04", "05", "06", "07","08", "09", "10","11", "12");
+			var f = new Date();
+			var fecha= f.getFullYear()+ "-" + meses[f.getMonth()] + "-" +f.getDate();
+			$("#date").html(fecha);
+
+			
+
+	       	$('#btn-change-password').click(function(){
+	       		$('#formularioPassword').data('formValidation').resetForm();    
+	       		$('#formularioPassword')[0].reset();
+//	        		var idper=$(this).attr('accesskey');
+	       		var idper=GIDPER;
+	       		//me quede aqui
+	            $.post('RestUser/dataModify/'+idper,function(resp){
+	                    console.log('respuestaDatosModificarPost: ',resp)
+
+	                    
+	                    GImg=resp[0].foto;
+
+	                    $('#formularioPassword').find('.fg-line').addClass('fg-toggled'); 
+	                    $('#formularioPassword').loadJSON(resp[0])
+	                    if(resp[0].foto!=null){
+	                    	 $('#formularioPassword').find('#user-avatar').prop('src','archivos/fotos/'+resp[0].foto)
+	                    	 $('#formularioPassword').find('#user-avatar').prop('th:src','/archivos/fotos/'+resp[0].foto)
+	                    }else{
+	                    	 GImg='user.png' 
+	                    	 $('#formularioPassword').find('#user-avatar').prop('src','archivos/fotos/'+GImg)
+	                    	 $('#formularioPassword').find('#user-avatar').prop('th:src','/archivos/fotos/'+GImg)
+	                    }
+	                    
+	                   
+	                    $('#formularioPassword').find('#js_razonsocial_per').html(resp[0].razonsocial)
+	                    $('#formularioPassword').find('#js_cedula_per').html(resp[0].ci)
+	                    $('#formularioPassword').find('input[name="idper"]').val(resp[0].idper)
+	                    $('#formularioPassword').find('#js_usuario_per').html(resp[0].usuario.login)
+	                    // $('#formularioPassword').find('input[name="password"]').val(resp[0].usuario.password)
+	                    $('#ciCod').chosen()
+	                    $('#select-genero').chosen()
+	                    $('#modalPassword').modal('show')
+
+	           })
+	       		
+
+	       	})
+	       	
+	       	
+	        var form=$('#formularioPassword').formValidation({
+	           framework: 'bootstrap',
+	           fields: {
+	               password:{
+	                   validators:{
+	                       notEmpty:{
+	                           message:'Ingrese una contrasenia'
+	                       },
+	                       identical:{
+	                           field:'repassword',
+	                           message:'La contrasenia deve ser identica'
+	                       }
+	                   }
+	               },
+	               repassword:{
+	                   validators:{
+	                       notEmpty:{
+	                           message:'Repita la contrasenia para confirmar'
+	                       }
+	                       ,
+	                       identical:{
+	                           field:'xpassword',
+	                           message:'La contrasenia deve ser identica ,repita la anterior'
+	                       }
+	
+	                   }
+	               }
+	           }
+	       }).on('success.form.fv', function(e){
+	           e.preventDefault();
+	           swal({
+	               title: "Seguro de cambiar contrasenia?",   
+	               text: "Usted modificara los datos del Usuario",   
+	               type: "warning",   
+	               showCancelButton: true,   
+	               confirmButtonColor: "#DD6B55",   
+	               confirmButtonText: "Si, Continuar!",   
+	               cancelButtonText: "No, Cancelar!",   
+	               closeOnConfirm: false,   
+	               closeOnCancel: false 
+	               }, function(isConfirm){  
+	                   $('.doc-mod').removeAttr('disabled') 
+	                   if (isConfirm) {
+	                       $('#formularioPassword').ajaxSubmit({
+	                           // url:'/RestUsuario/validar',
+	                           dataType:"json",
+	                           // async:false,
+	                           success:function(respuesta){
+	                                   console.log(respuesta);
+	                                   // $('#mensaje').html(respuesta.msg);
+	                                   if(respuesta.status==true){
+	                                       swal({
+	                                           title:"Modificado",
+	                                           text:"Se ha modificado contrasenia de  Usuario exitosamente",
+	                                           type:"success",
+	                                           timer: 500,   
+	                                           showConfirmButton: false 
+	                                       });
+	                                   }else{
+	                                       $('#mensaje').html(respuesta.msg);
+	                                       
+	                                   }
+	                                   $('#modalPassword').modal('hide')
+	                                   window.location.href="desconectar"
+	
+	                           },
+	                           error:function(e){
+	                               alert('Sin respuesta del servidor server');
+	                           }
+	                       });
+	
+	
+	                   } else {     
+	                       swal({
+	                           title:"Cancelado",
+	                           text:"Se ha cancelado operacion",
+	                           type:"error",
+	                           timer:2000,
+	                           showCancelButton:false,
+	                           showConfirmButton:false
+	
+	                       })
+	                       $('#modal-mod').modal('hide')
+	                   } 
+	           });
+	       })
+			
+		})
+
+		function mueveReloj(){
+		    momentoActual = new Date()
+		    hora = momentoActual.getHours()
+		    minuto = momentoActual.getMinutes()
+		    segundo = momentoActual.getSeconds()
+
+		    horaImprimible = hora + ":" + minuto + ":" + segundo
+			$("#time").html(horaImprimible);
+		    setTimeout("mueveReloj()",1000)
+		} 
+	</script>	
+	<script>
+		$('.showMenu').on('click',function(e){
+			e.preventDefault();
+			if ($('.menu').hasClass('menu_mostrar')) {
+				$('.menu').removeClass('menu_mostrar')
+				$('.flecha_menu').removeAttr('style')
+			} else {
+				$('.menu').addClass('menu_mostrar')
+				$('.flecha_menu').css("background","blue")
+			}
+		})
+	
+	</script>
+</body>
+</html>
+
+<!-- 1MtuSdJ/7Fc= --> 

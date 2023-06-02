@@ -1,0 +1,602 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>consver</title>
+
+<meta charset="UTF-8">
+	<title>Document</title>
+	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+	
+	<link rel="stylesheet" href="../static/node_modules/bootstrap/dist/css/bootstrap.css" th:href="@{/node_modules/bootstrap/dist/css/bootstrap.css}"/>
+
+	<link rel="stylesheet" href="../static/css/styleconsverf/consverf.css" th:href="@{/css/styleconsverf/consverf.css}"></link>
+	<style type="text/css">
+	
+	
+	.verf_solt_class_inactive{
+		color: red;
+	}
+	.verf_solt_class_active{
+		color: #029d02;
+	}
+	.title_verf_solt{
+	    display: flex;
+	    flex-flow: row;
+	    align-items: center;
+	    justify-content: space-around;
+	    text-transform: uppercase;
+    }
+    .verf_solt_notifi_alert{
+    	border: 1px solid #fc6e22;
+    	color:#fc6e22;
+    }
+    .verf_solt_notifi_success{
+    	border: 1px solid #029d02;
+    	color:#029d02;
+    }
+    
+	</style>
+</head>
+
+<body>
+    <form name="formulario_consumo" role="form" id="formulario_consumo" method="post" action="RestMarcaReductor/guardar"
+        data-fv-excluded="disabled">
+
+        <div class="modal fade" id="modal_consumo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            data-backdrop="static" data-keyboard="false" aria-hidden="true">
+
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"><b>CONSUMO DE GAS NATURAL VEHICULAR (GNV)</b></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="ps">
+                            <div class="ps-header">
+                                <div class="ps-reminder">Ficha digital. No es necesario imprimir.</div>
+                                <div class="ps-info">
+                                    <div class="ps-brand">
+                                        <p><b>DATOS DEL SOLICITANTE:</b></p>
+<!--                                         <span><strong>Nombre Completo Solicitante:</strong> <span class="verf_solt_nombrecompleto"></span></span><br> -->
+<!--                                         <span><strong>Nro. de CI de Solicitante:</strong> <span class="verf_solt_ci"></span></span> -->
+                                
+                                    </div>
+                                    <img class="nxt" src="../static/img/escudo-tarija.png" th:src="@{img/escudo-tarija.png}">
+
+                                </div>
+                                <div class="ps-amount">
+                               		<h4 class="costo_conversion_total monto_text"><b>Costo Total de Conversión</b></h4>
+                                    <h2 ><span ><span class="monto_conversion_total_dolares">0,000.00</span><sup> $</sup></span> =
+                                    <span ><span class="monto_conversion_total_bolivianos">0,000.00</span ><sup> Bs</sup></span></h2>
+                                    
+                                	
+                                    <h3 class="monto_text">Saldo disponible</h3>
+                                    <h2><span class="monto_ffrr_sado_total_bs">0,000.00</span><sup> BS</sup></h2>
+                                    <p>El monto señalado es el saldo pendiente de conversion.</p>
+                                </div>
+                                <div class="ps-reference">
+                                    <h3 class="monto_text">Fondo Rotatorio de Consumo GNV expresado en Bs/m3</h3>
+                                    <h1 ><span class="monto_volumen_total_bs">0000000000000000000</span> <sup style="display: contents;"> Bs.</sup> = <span class="monto_volumen_total_m3">0000000000000000000</span> <sup style="display: contents;"> M3</sup></h1>
+                                </div>
+                            </div>
+	                        <div class="ps-instructions">
+	                            <div class="title_verf_solt"><span style="font-size: 15px"><b>DATOS TECNICOS DE LA UE.PRGNV</b></span> <span style="font-size: 40px"><b class="verf_solt_registro_placa"></b></span> </div>
+	                            <ol>
+	                                <li><span><b class="">¿Registro Encontrado? :</b></span> <span class="verf_solt_registro_tipo"></span> </li>
+	                                <li><span><b>Estado:</b> <b><span style="" class="verf_solt_class_estado verf_solt_class_inactive"></span></b> </span> <span class="verf_solt_registro_estado"></span> </li>
+	                                <li><span><b>Año de Conversión:</b></span> <span class="verf_solt_registro_anio"> </span> </li>
+	                                <!-- <li>Da de alta la CLABE en esta ficha. <strong>El banco deberá de ser STP</strong></li> -->
+	                                <li><span><b>Reposicion de kit:</b></span> <span  class="verf_solt_registro_reposicion"> </span> </li>
+	                                <li><span><b>Recalificación de Cilindro:</b></span> <span  class="verf_solt_registro_recalificacion"> </span> </li>
+	
+	                            </ol>
+	                            <div class="ps-footnote verf_solt_notifi_alert verf_solt_notifi_registro">
+	                            	<span class="verf_solt_notifi_registro_head"></span>
+	                                <br>
+	                                <strong class="verf_solt_notifi_registro_center"> </strong>
+	                                <br>
+	                                <span class="verf_solt_notifi_registro_footer"></span>
+	                            </div>
+	
+	                            <div class="ps-footnote" style="border: 1px solid #0437af;color:#0437af">
+	                                Para cualquer informacion, porfavor apersonarse en nuestras oficinas.<br>
+	                                <strong> Calle Sucre Nº 989 casi esquina Corrado / Tarija - Bolivia </strong> <br>
+	                            </div>
+	                        </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div ><button type="button" class="pure-material-button-contained " id=""  data-dismiss="modal" aria-label="Close">CERRAR</button></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <form name="formulario_verificacion" role="form" id="formulario_verificacion" method="post" action="RestMarcaReductor/guardar"
+    data-fv-excluded="disabled">
+
+    <div class="modal fade" id="modal_verificacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        data-backdrop="static" data-keyboard="false" aria-hidden="true">
+
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><b>VERIFICACION DE REGISTRO DE CONVERSION (GNV)</b></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="ps">
+                        <div class="ps-header">
+                            <div class="ps-reminder">Ficha digital. No es necesario imprimir.</div>
+                            <div class="ps-info">
+                                <div class="ps-brand">
+                                    <p><b>DATOS DEL SOLICITANTE:</b></p>
+                                    <!-- <span><strong>Solicitante:</strong></span><br> -->
+                                    <span><strong>Nro. de CI de Solicitante:</strong> <span class="verf_solt_ci"></span></span>
+                                </div>
+                                <img class="nxt" src="../static/img/escudo-tarija.png" th:src="@{img/escudo-tarija.png}" >
+
+                            </div>
+                            <!-- <div class="ps-amount">
+                                <h3 class="monto_text">Saldo disponible</h3>
+                                <h2>$ 0,000.00 <sup>BS</sup></h2>
+                                <p>El monto señalado es el saldo pendiente de conversion.</p>
+                            </div>
+                            <div class="ps-reference">
+                                <h3 class="monto_text">Fondo Rotatorio en m3</h3>
+                                <h1>0000000000000000000</h1>
+                            </div> -->
+                        </div>
+                        <div class="ps-instructions">
+                            <div class="title_verf_solt"><span style="font-size: 15px"><b>DATOS TECNICOS DE LA UE.PRGNV</b></span> <span style="font-size: 40px"><b class="verf_solt_registro_placa"></b></span> </div>
+                            <ol>
+                                <li><span><b class="">¿Registro Encontrado? :</b></span> <span class="verf_solt_registro_tipo"></span> </li>
+                                <li><span><b>Estado:</b> <b><span style="" class="verf_solt_class_estado verf_solt_class_inactive"></span></b> </span> <span class="verf_solt_registro_estado"></span> </li>
+                                <li><span><b>Año de Conversión:</b></span> <span class="verf_solt_registro_anio"> </span> </li>
+                                <!-- <li>Da de alta la CLABE en esta ficha. <strong>El banco deberá de ser STP</strong></li> -->
+                                <li><span><b>Reposicion de kit:</b></span> <span  class="verf_solt_registro_reposicion"> </span> </li>
+                                <li><span><b>Recalificación de Cilindro:</b></span> <span  class="verf_solt_registro_recalificacion"> </span> </li>
+
+                            </ol>
+                            <div class="ps-footnote verf_solt_notifi_alert verf_solt_notifi_registro">
+                            	<span class="verf_solt_notifi_registro_head"></span>
+                                <br>
+                                <strong class="verf_solt_notifi_registro_center"> </strong>
+                                <br>
+                                <span class="verf_solt_notifi_registro_footer"></span>
+                            </div>
+
+                            <div class="ps-footnote" style="border: 1px solid #0437af;color:#0437af">
+                                Para cualquer informacion, porfavor apersonarse en nuestras oficinas.<br>
+                                <strong> Calle Sucre Nº 989 casi esquina Corrado / Tarija - Bolivia </strong> <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div style=""><button type="button" class="pure-material-button-contained" id=""  data-dismiss="modal" aria-label="Close">CERRAR</button></div>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+    <img src="../static/img/gif/logognv.gif" th:src="@{/img/gif/logognv.gif}" alt="" style="" class="logo">
+    <div class="container">
+        <div class=""></div>
+        <div class="nav links">
+            <button class="pure-material-button-contained" id="btn_consumo">
+                <span class="" style="">CONSUMO GNV</span>
+            </button>&nbsp;
+            <button class="pure-material-button-contained" style="" id="btn_verf">
+                <span class="" style="">VERIFICACION PLACA</span>
+            </button>
+
+        </div>
+        <div class="frame mostrar_form" id="frame-consumo">
+
+            <form class="form-signin" id="" action="/RestConsumo/" method="post" name="form">
+                <div class="title_card">
+                    <b>Consumo de Gas Natural GNV</b>
+                </div>
+
+<!--                 <label for="username">Nro. carnet de indentidad del solicitante</label> -->
+<!--                 <input class="form-styling" type="number" name="ci" placeholder="INGRESE SU NUMERO DE CARNET" -->
+<!--                     autocomplete="off" required="required"/> -->
+<!--                 <label for="username">nombre completo del solicitante</label> -->
+<!--                 <input class="form-styling" type="text" name="nombrecompleto" placeholder="INGRESE SU NOMBRE COMPLETO" -->
+<!--                     autocomplete="off" required="required"/> -->
+                <label for="username">nro. de placa</label>
+                <input class="form-styling" type="text" name="placa" placeholder="INGRESE SU NUMERO DE PLACA"
+                    autocomplete="off" required="required" />
+
+
+                <button style="width: 100%" type="submit" class="btn-process" id="btn_process_consumo">
+                    <span class="btn-process-text" style="color:#fff;">SOLICITAR</span>
+                    <span class="btn-ring"></span>
+                </button>
+
+            </form>
+        </div>
+        <div class="frame ocultar_form" id="frame-verificacion">
+            <form class="form-signup" action="#" method="post" name="form">
+                <div class="title_card">
+                    <b>Verificacion vehicular, si se realizo conversion en el Programa GNV</b>
+                </div>
+<!--                 <label for="username">nro. carnet de indentidad del solicitante</label> -->
+<!--                 <input class="form-styling" type="number" name="ci" placeholder="INGRESE SU NUMERO DE CARNET" -->
+<!--                     autocomplete="off" required="required" /> -->
+                <!-- <label for="username">nombre completo del solicitante</label>
+                <input class="form-styling" type="number" name="ci" placeholder="INGRESE SU NOMBRE COMPLETO"
+                        autocomplete="off" required="required"/> -->
+                <label for="username">nro. de placa</label>
+                <input class="form-styling" type="text" name="placa" placeholder="INGRESE SU NUMERO DE PLACA"
+                    autocomplete="off" required="required"/>
+
+
+                <button style="width: 100%"  type="submit" class="btn-process" id="btn_process_verificacion">
+                    <span class="btn-process-text" style="color:#fff;">SOLICITAR</span>
+                    <span class="btn-ring"></span>
+                </button>
+            </form>
+
+
+        </div>
+    </div>
+ 
+
+
+	
+	<script type="" src="../static/node_modules/jquery/dist/jquery.js" th:src="@{/node_modules/jquery/dist/jquery.js}"></script>
+    <script type="" src="../static/node_modules/bootstrap/dist/js/bootstrap.js" th:src="@{/node_modules/bootstrap/dist/js/bootstrap.js}"></script>
+	
+	
+	
+	<script type="text/javascript">
+        $(function () {
+            $(".btn").click(function () {
+                $(".signin-active").toggleClass("signin-inactive");
+                $(".signup-inactive").toggleClass("signup-active");
+
+                $(this).removeClass("idle").addClass("active");
+            });
+        });
+
+        $(function () {
+            $("#btn_consumo").click(function () {
+                $('input').attr('required', true); 
+                $('#frame-verificacion').addClass('ocultar_form')
+                $('#frame-verificacion').removeClass('mostrar_form')
+                $('#frame-consumo').addClass('mostrar_form')
+                $('#frame-consumo').removeClass('ocultar_form')
+            });
+            $("#btn_verf").click(function () {
+                // $(".ocultar_form").toggleClass("mostrar_form");
+                // $(".mostrar_form").toggleClass("ocultar_form");
+                $('#frame-consumo').addClass('ocultar_form')
+                $('#frame-consumo').removeClass('mostrar_form')
+                $('#frame-verificacion').addClass('mostrar_form')
+                $('#frame-verificacion').removeClass('ocultar_form')
+
+            });
+        });
+
+        $(function () {
+//             $("#btn_process_consumo").click(function () {
+//                 // e.preventDefault()
+//                 $("#form").submit();
+//                 $(".btn-process-text").html('SOLICITANDO..')
+//                 $(".btn-ring").show();
+//                 $(".btn-process").prop('disabled', true);
+//                 $(".btn-process").val('disabled');
+
+               
+//                 setTimeout(function () {
+//                     $('#modal_consumo').modal('show')
+//                     $(".btn-process-text").html('SOLICITAR')
+//                     $(".btn-ring").hide();
+//                     $(".btn-process").prop('disabled', false);
+//                 }, 1500);
+//             });
+
+//             $("#btn_process_verificacion").click(function () {
+//                 // e.preventDefault()
+//                 $(".btn-process-text").html('SOLICITANDO..')
+//                 $(".btn-ring").show();
+//                 $(".btn-process").prop('disabled', true);
+//                 $(".btn-process").val('disabled');
+
+//                 setTimeout(function () {
+//                     $('#modal_verificacion').modal('show')
+//                     $(".btn-process-text").html('SOLICITAR')
+//                     $(".btn-ring").hide();
+//                     $(".btn-process").prop('disabled', false);
+//                 }, 1500);
+//             });
+            
+            
+            
+            $('#frame-verificacion').on('submit', function(event) {
+            	event.preventDefault();
+//                 if ($(this).find('input[name="ci"]').val() == '') {
+// //                     alert('El nombre es obligatorio.');
+//                     return false;
+//                 }
+                if ($(this).find('input[name="placa"]').val() == '') {
+                 return false;
+             	}
+	           	$(".btn-process-text").html('SOLICITANDO..')
+	           	//cargar datos
+// 	           	$('.verf_solt_ci').html($(this).find('input[name="ci"]').val());
+	           	var placa_p=$(this).find('input[name="placa"]').val();
+// 	           	console.log('placa-verf:',placa_p)
+	           	$.ajax({
+	           		url:"RestConsVerf/get_anio_by_placa",
+	           		type:"post",
+// 	           		dataType:'json',
+// 	           		contentType: "application/json",
+	           		data:{placa:placa_p},
+	           		success: function(response) {
+// 	           			console.log(response)
+	           			if(response!=null){
+	           				$('.verf_solt_registro_placa').html(placa_p)
+	           				
+	           				if(response.anio!=null){
+// 	           					$('.verf_solt_registro').html('Registro Encontrado')
+	           					$('.verf_solt_registro_tipo').html('SI')
+	           					$('.verf_solt_class_estado').html('REGISTRADO')
+	           					$('.verf_solt_registro_estado').html('(conversion registrada en la UE.PRGNV del Gobierno Autonómo Departamental de Tarija)')
+	           					$('.verf_solt_registro_anio').html(response.anio)
+	           					$('.verf_solt_registro_reposicion').html('SIN ESPECIFICAR')
+	           					$('.verf_solt_registro_recalificacion').html('SIN ESPECIFICAR')
+	           					
+	           					$('.verf_solt_class_estado').addClass('verf_solt_class_active')
+	           					$('.verf_solt_class_estado').removeClass('verf_solt_class_inactive')
+	           					
+	           					$('.verf_solt_notifi_registro').addClass('verf_solt_notifi_success');
+	           					$('.verf_solt_notifi_registro').removeClass('verf_solt_notifi_alert');
+	           					
+	           					
+	           					$('.verf_solt_notifi_registro_head').html('Estimado solicitante su movilidad está habilitado para realizar la');
+                                $('.verf_solt_notifi_registro_center').html('REPOSICION DE EQUIPO O RECALIFICACION DE CILINDRO');
+                                $('.verf_solt_notifi_registro_footer').html('del kit instalado de su movilidad.');
+	           					
+	           				}else{
+// 	           					$('.verf_solt_registro').html('Registro No Encontrado')
+	           					$('.verf_solt_registro_tipo').html('NO')
+	           					$('.verf_solt_class_estado').html('SIN REGISTRO')
+	           					$('.verf_solt_registro_estado').html('(No se encontró registro de conversión en la UE.PRGNV del Gobierno Autonómo Departamental de Tarija)')
+	           					$('.verf_solt_registro_anio').html('NINGUNO')
+	           					$('.verf_solt_registro_reposicion').html('NINGUNO')
+	           					$('.verf_solt_registro_recalificacion').html('NINGUNO')
+	           					
+	           					$('.verf_solt_class_estado').addClass('verf_solt_class_inactive')
+	           					$('.verf_solt_class_estado').removeClass('verf_solt_class_active')
+	           					
+	           					
+	           					$('.verf_solt_notifi_registro').addClass('verf_solt_notifi_alert');
+	           					$('.verf_solt_notifi_registro').removeClass('verf_solt_notifi_success');
+	           					
+	           					$('.verf_solt_notifi_registro_head').html('Estimado solicitante informarle que no encontramos');
+                                $('.verf_solt_notifi_registro_center').html('REGISTRO DE CONVERSION');
+                                $('.verf_solt_notifi_registro_footer').html('de su movilidad, usted puede apersonarse a nuestras oficinas para realizar el tramite correspondiente de conversion nueva a Gas Natural Vehicular.');
+	           					
+	           				}
+	           			}
+	                    
+	                },
+	                error: function(xhr, status, error) {
+	                     // Manejamos los errores de la solicitud aquí
+	                     alert('Hubo un error: ' + error);
+	                }
+	           		
+	           	})
+	           	
+	             $(".btn-ring").show();
+	             $(".btn-process").prop('disabled', true);
+	             $(".btn-process").val('disabled');
+	
+	             setTimeout(function () {
+	                 $('#modal_verificacion').modal('show')
+	                 $(".btn-process-text").html('SOLICITAR')
+	                 $(".btn-ring").hide();
+	                 $(".btn-process").prop('disabled', false);
+	             }, 500);
+            });
+            
+            
+            
+            $('#frame-consumo').on('submit', function(event) {
+            	event.preventDefault();
+//                 if ($(this).find('input[name="ci"]').val() == '') {
+//                     return false;
+//                 }
+//                 if ($(this).find('input[name="nombrecompleto"]').val() == '') {
+// 	                 return false;
+// 	             }
+                
+                if ($(this).find('input[name="placa"]').val() == '') {
+                 return false;
+             	}
+                $('#formulario_consumo').find(".btn-process-text").html('SOLICITANDO..')
+	           	//cargar datos
+// 	           	$('#formulario_consumo').find('.verf_solt_ci').html($(this).find('input[name="ci"]').val());
+// 	           	$('#formulario_consumo').find('.verf_solt_nombrecompleto').html($(this).find('input[name="nombrecompleto"]').val());
+	           	var placa_p=$(this).find('input[name="placa"]').val();
+// 	           	console.log('placa-verf:',placa_p)
+	           	$.ajax({
+	           		url:"RestConsVerf/get_data_consumo_anio_by_placa",
+	           		type:"post",
+// 	           		dataType:'json',
+// 	           		contentType: "application/json",
+	           		data:{placa:placa_p},
+	           		success: function(response) {
+	           			console.log('reponse_consumo',response)
+	           			if(response!=null){
+							console.log('entro calculo consumo')
+	           				if(response.vehiculo.anio!=null){
+	           					console.log('entro calculo consumo 2')
+		           				$('.verf_solt_registro_placa').html(placa_p)
+
+								const opciones1 = {
+								  style: "decimal",
+								  useGrouping: true,
+								  minimumFractionDigits: 2, 
+								  maximumFractionDigits: 2,
+								  decimalSeparator: ".",
+								};
+								
+		           				const monto_total_dolares=response.vehiculo.costo;
+// 		           				console.log('monto_total_dolares:',monto_total_dolares)
+								const monto_conversion_total_dolares_format = monto_total_dolares.toLocaleString(undefined, opciones1);
+		           				
+// 								console.log('monto_conversion_total_dolares_format:',monto_conversion_total_dolares_format)
+								
+								const numeroDolares = monto_total_dolares
+								const tasaCambio = 6.96;
+								
+								const numeroBolivianos = numeroDolares * tasaCambio;
+// 								console.log(numeroBolivianos)
+								const opciones2 = {
+								  style: "decimal",
+								  useGrouping: true,
+								  minimumFractionDigits: 2,
+								  maximumFractionDigits: 2,
+								};
+
+								const monto_conversion_total_dolares__boliviano_format = numeroBolivianos.toLocaleString("es-BO", opciones2);
+// 								console.log('numeroBolivianos:',numeroBolivianos)
+// 								console.log(monto_conversion_total_dolares__boliviano_format);
+								
+		           				$('.monto_conversion_total_dolares').html(monto_conversion_total_dolares_format)
+		           				$('.monto_conversion_total_bolivianos').html(monto_conversion_total_dolares__boliviano_format)
+	           					
+		           				if(response.vehiculo_consumo[0]!=null){
+// 			           				if(response.vehiculo_consumo[0][0]!=null){
+					           				//*****CARGANDO DATOS DE FFRR
+					           				var vehiculo_consumo=response.vehiculo_consumo[0];
+					           				console.log('vehiculo_consumo:',vehiculo_consumo);
+					           				//*************************************************
+					           				
+			          						
+					           				var ffrr_cons=vehiculo_consumo.fondorotatorio;
+			// 		           				console.log('saldo_ffrr_pagable:',ffrr_cons)
+					           				
+					           				const opciones3_1 = {
+					           					  minimumFractionDigits: 2,
+					           					  maximumFractionDigits: 2,
+					           					};
+					           				
+					           				const volumen_ffrr_formato =  ffrr_cons.toLocaleString(undefined,opciones3_1);
+					           				$('#formulario_consumo').find('.monto_volumen_total_bs').html(volumen_ffrr_formato)
+					           				
+					           				//*************************************************
+					           				var volumen_cons=vehiculo_consumo.volumen;
+			// 		           				var ffrr_cons=vehiculo_consumo.fondorotatorio;
+			// 		           				console.log('volumen_cons:',ffrr_cons)
+					           				
+					           				const opciones3 = {
+					           					  minimumFractionDigits: 2,
+					           					  maximumFractionDigits: 2,
+					           					};
+					           				
+					           				const volumen_cons_formato =  volumen_cons.toLocaleString(undefined, opciones3);
+					           				console.log('volumen_cons_formato:',volumen_cons_formato)
+					           				$('#formulario_consumo').find('.monto_volumen_total_m3').html(volumen_cons_formato)
+					           				//**************************************************
+			// 		           				console.log('total_bs_saldo:',monto_conversion_total_dolares__boliviano_format)
+					           				var saldo_ffrr=numeroBolivianos-ffrr_cons;
+					           				
+			// 	           					console.log('saldo:',saldo_ffrr)
+				           					
+			 
+					           				const opciones4 = {
+													  style: "decimal",
+													  useGrouping: true,
+													  minimumFractionDigits: 2,
+													  maximumFractionDigits: 2,
+											};
+			
+											const saldo_ffrr_formato = saldo_ffrr.toLocaleString("es-BO", opciones4);
+													
+					           				
+					           				$('#formulario_consumo').find('.monto_ffrr_sado_total_bs').html(saldo_ffrr_formato)
+// 			        				}
+		           				}
+// 	           					$('.verf_solt_registro').html('Registro Encontrado')
+	           					$('#formulario_consumo').find('.verf_solt_registro_tipo').html('SI')
+	           					$('#formulario_consumo').find('.verf_solt_class_estado').html('REGISTRADO')
+	           					$('#formulario_consumo').find('.verf_solt_registro_estado').html('(conversion registrada en la UE.PRGNV del Gobierno Autonómo Departamental de Tarija)')
+	           					$('#formulario_consumo').find('.verf_solt_registro_anio').html(response.vehiculo.anio)
+	           					$('#formulario_consumo').find('.verf_solt_registro_reposicion').html('SIN ESPECIFICAR')
+	           					$('#formulario_consumo').find('.verf_solt_registro_recalificacion').html('SIN ESPECIFICAR')
+	           					
+	           					$('#formulario_consumo').find('.verf_solt_class_estado').addClass('verf_solt_class_active')
+	           					$('#formulario_consumo').find('.verf_solt_class_estado').removeClass('verf_solt_class_inactive')
+	           					
+	           					$('#formulario_consumo').find('.verf_solt_notifi_registro').addClass('verf_solt_notifi_success');
+	           					$('#formulario_consumo').find('.verf_solt_notifi_registro').removeClass('verf_solt_notifi_alert');
+	           					
+	           					
+	           					$('#formulario_consumo').find('.verf_solt_notifi_registro_head').html('Estimado solicitante su movilidad está habilitado para realizar la');
+	           					$('#formulario_consumo').find('.verf_solt_notifi_registro_center').html('REPOSICION DE EQUIPO O RECALIFICACION DE CILINDRO');
+	           					$('#formulario_consumo').find('.verf_solt_notifi_registro_footer').html('del kit instalado de su movilidad.');
+
+	           				}else{
+// 	           					$('.verf_solt_registro').html('Registro No Encontrado')
+	           					$('#formulario_consumo').find('.verf_solt_registro_tipo').html('NO')
+	           					$('#formulario_consumo').find('.verf_solt_class_estado').html('SIN REGISTRO')
+	           					$('#formulario_consumo').find('.verf_solt_registro_estado').html('(No se encontró registro de conversión en la UE.PRGNV del Gobierno Autonómo Departamental de Tarija)')
+	           					$('#formulario_consumo').find('.verf_solt_registro_anio').html('NINGUNO')
+	           					$('#formulario_consumo').find('.verf_solt_registro_reposicion').html('NINGUNO')
+	           					$('#formulario_consumo').find('.verf_solt_registro_recalificacion').html('NINGUNO')
+	           					
+	           					$('#formulario_consumo').find('.verf_solt_class_estado').addClass('verf_solt_class_inactive')
+	           					$('#formulario_consumo').find('.verf_solt_class_estado').removeClass('verf_solt_class_active')
+	           					
+	           					
+	           					$('#formulario_consumo').find('.verf_solt_notifi_registro').addClass('verf_solt_notifi_alert');
+	           					$('#formulario_consumo').find('.verf_solt_notifi_registro').removeClass('verf_solt_notifi_success');
+	           					
+	           					$('#formulario_consumo').find('.verf_solt_notifi_registro_head').html('Estimado solicitante informarle que no encontramos');
+	           					$('#formulario_consumo').find('.verf_solt_notifi_registro_center').html('REGISTRO DE CONVERSION');
+	           					$('#formulario_consumo').find('.verf_solt_notifi_registro_footer').html('de su movilidad, usted puede apersonarse a nuestras oficinas para realizar el tramite correspondiente de conversion nueva a Gas Natural Vehicular.');
+	           					
+	           				}
+	           			}
+	                    
+	                },
+	                error: function(xhr, status, error) {
+	                     // Manejamos los errores de la solicitud aquí
+	                     alert('Hubo un error: ' + error);
+	                }
+	           		
+	           	})
+	           	
+	             $('#formulario_consumo').find(".btn-ring").show();
+	           	$('#formulario_consumo').find(".btn-process").prop('disabled', true);
+	           	$('#formulario_consumo').find(".btn-process").val('disabled');
+	
+	             setTimeout(function () {
+	                 $('#modal_consumo').modal('show')
+	                 $('#formulario_consumo').find(".btn-process-text").html('SOLICITAR')
+	                 $('#formulario_consumo').find(".btn-ring").hide();
+	                 $('#formulario_consumo').find(".btn-process").prop('disabled', false);
+	             }, 500);
+            });
+            
+        });
+
+    </script>
+
+</body>
+
+</html>

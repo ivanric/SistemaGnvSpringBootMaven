@@ -1,0 +1,2182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+     <link rel="stylesheet" href="../static/css/buscador.css" th:href="@{/css/buscador.css}"/>
+    <style> 
+        .selected{
+            background-color: #B0BED9;
+        }
+    </style>
+</head>
+<body>
+
+
+<form name="formulario" role="form" id="formulario" method="post" action="RestOrdenRecalificacion/adicionarOSRecalificacion_d"
+		data-fv-excluded="disabled">  
+    <div class="modal fade" id="modalAdicionar" tabindex="-1" role="dialog"
+            data-backdrop="static" data-keyboard="false" aria-hidden="true"
+            style="display: none; padding-left: 0">
+       <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="card">
+                <div style="margin: 0 10px 0 10px">
+             	    <p>
+              	   <button  type="button" class="close" data-dismiss="modal"
+                      aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  	</button>
+              		</p>
+             	    <h4 style="margin-top: 0px;"><b>Nueva Orden de Servicio de Recalificacion de Cilindro y/o Reposicion de Kit</b></br><small>Complete el formulario por
+                             favor</small></h4>
+                
+                  <div class="row">
+                      <div class="col-md-12">
+<!--                           <b>Nro. DE ORDEN DE SERVICIO: </b><span id="js-numOrdServ"></span>  -->
+                          <b style="margin-left: 10em;">FECHA DE REGISTRO: </b><span id="js-fecha"></span>
+                          <b style="margin-left: 5em;">GESTION: </b><span id="ord_gestion"></span>
+                          
+                      </div>
+                  </div>
+
+              </div>
+                <div class="modal-body">
+                    <!-- .row>.col-md-6*2>.form-group>(label.col-md-6.control-label.espacio-form>b{campo})+.col-md-6>.fg-line>select.form-control>option{opcion $}*2 -->
+                     <input  id="numOrdsHidden" name="numords" type="hidden"  value="" >
+                     <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <div class="fg-line div_busca" id="" style="text-align: center !important;">
+                                <b>Buscar por: NRO. de Solicitud / Cedula</b><br>
+                                <input type="text" style="width: 100%;margin: auto;" name="numSolicitud" id="js-busca" class="form-control_filtro unput-sm" placeholder="Ingrese numero de Solicitud o Cedula de Identidad" autocomplete="off">
+<!--                                 <input type="hidden" name="numOrdServ"> -->
+                                <input type="hidden" name="idrecal">
+<!--                                 <input type="hidden" name="idserv"> -->
+                                <div id="display"  class="lista_ben z-depth-3" style="width: 95%;border-radius: 2px;margin: auto;padding: 4px;border: 1px solid #d4d4d4;">
+                                   <table width="100%"  class="table table-hover" id="js_table_filtro">
+                                       <thead>
+                                           <tr>
+                                               <th width="">Num.Solt</th>
+                                               <th width="">Placa</th>
+<!--                                                <th width="">Fecha</th> -->
+                                               <th>Beneficiario</th>
+                                               <th>Cedula</th>
+                                           </tr>
+                                       </thead>
+                                       <tbody>
+                                            
+                                       </tbody>
+                                   </table>
+                                </div>  
+                            </div> 
+                        </div>
+                        <div class="col-md-2"></div>
+                     </div>  
+
+                    <fieldset >
+                       <legend style="margin-bottom: 0px !important"><b>DATOS BASICOS</b></legend>
+                     
+                        <div class="row" id="js_DatosBasicos">
+                            <div class="col-md-6">
+                        		<div class="form-group fg-float">
+	                            	<span class="fg-label">Nro. Solicitud</span>
+	                                <div class="fg-line">
+	                                    <input placeholder="Num. Solicitud" class="form-control fg-input data-per" disabled="disabled" name="numsoltrec" type="text" >
+	                                </div>
+	                                
+	                            </div>
+                                
+                            </div>
+                            <div class="col-md-6">
+                            
+                                <div class="form-group fg-float">
+	                            	<span class="fg-label">Fecha Solicictud</span>
+	                                <div class="fg-line">
+	                                    <input placeholder="Fecha Solicitud" class="form-control fg-input data-per" disabled="disabled" name="fechacreacion" type="text" >
+	                                </div>           
+	                            </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group fg-float">
+	                            	<span class="fg-label">Beneficiario</span>
+	                                <div class="fg-line">
+	                                    <input placeholder="beneficiario.." class="form-control fg-input data-per" disabled="disabled" name="beneficiario" type="text" >
+	                                </div>           
+	                            </div>
+                            </div>
+                            <div class="col-md-6">
+								<div class="form-group fg-float">
+	                            	<span class="fg-label">Cedula</span>
+	                                <div class="fg-line">
+	                                    <input placeholder="cedula" class="form-control fg-input data-per" disabled="disabled" name="ci" type="text" >
+	                                </div>           
+	                            </div>
+                            </div>
+
+                        </div>
+                    </fieldset>
+
+                    <fieldset >
+                        <legend style="margin-bottom: 0px !important"><b>VEHICULO</b></legend>
+                        <div class="row" id="js_Vehiculo">
+                            <div class="col-md-6">
+								<div class="form-group fg-float">
+	                            	<span class="fg-label">Placa</span>
+	                                <div class="fg-line">
+	                                    <input placeholder="placa." class="form-control fg-input data-per" disabled="disabled" name="placa" type="text" >
+	                                </div>           
+	                            </div>
+                            </div>
+                            <div class="col-md-6">
+                                
+                                <div class="form-group fg-float">
+	                            	<span class="fg-label">Color</span>
+	                                <div class="fg-line">
+	                                    <input placeholder="color.." class="form-control fg-input data-per" disabled="disabled" name="color" type="text" >
+	                                </div>           
+	                            </div>
+                            </div>
+                            <div class="col-md-6">
+		                        <div class="form-group fg-float">
+	                            	<span class="fg-label">Marca</span>
+	                                <div class="fg-line">
+	                                    <input placeholder="marca.." class="form-control fg-input data-per" disabled="disabled" name="marca" type="text" >
+	                                </div>           
+	                            </div>
+                            </div>
+                            <div class="col-md-6">
+                           		<div class="form-group fg-float">
+	                            	<span class="fg-label">Modelo</span>
+	                                <div class="fg-line">
+	                                    <input placeholder="modelo.." class="form-control fg-input data-per" disabled="disabled" name="modelo" type="text" >
+	                                </div>           
+	                            </div>
+                            </div>
+                            <div class="col-md-6">
+				         		<div class="form-group fg-float">
+	                            	<span class="fg-label">Tipo Vehiculo</span>
+	                                <div class="fg-line">
+	                                    <input placeholder="tipo vehiculo.." class="form-control fg-input data-per" disabled="disabled" name="tipoVeh" type="text" >
+	                                </div>           
+	                            </div>
+                            </div>
+                            <div class="col-md-6">
+				         		<div class="form-group fg-float">
+	                            	<span class="fg-label">Tipo Servicio</span>
+	                                <div class="fg-line">
+	                                    <input placeholder="tipo servicio.." class="form-control fg-input data-per" disabled="disabled" name="tipServ" type="text" >
+	                                </div>           
+	                            </div>
+                            </div>
+                            <div class="col-md-6">
+				         		<div class="form-group fg-float">
+	                            	<span class="fg-label">Sistema Motor</span>
+	                                <div class="fg-line">
+	                                    <input placeholder="sistema motor.." class="form-control fg-input data-per" disabled="disabled" name="SistemaMotor" type="text" >
+	                                </div>           
+	                            </div>
+                            </div>
+
+                            <div class="col-md-6">
+				         		<div class="form-group fg-float">
+	                            	<span class="fg-label">Nro. Motor</span>
+	                                <div class="fg-line">
+	                                    <input placeholder="num. motor.." class="form-control fg-input data-per" disabled="disabled" name="num_motor" type="text" >
+	                                </div>           
+	                            </div>
+                            </div>
+                            <div class="col-md-6">
+				         		<div class="form-group fg-float">
+	                            	<span class="fg-label">Nro. Chasis</span>
+	                                <div class="fg-line">
+	                                    <input placeholder="num. chasis.." class="form-control fg-input data-per" disabled="disabled" name="num_chasis" type="text" >
+	                                </div>           
+	                            </div>
+                            </div>
+                            <div class="col-md-6">
+				         		<div class="form-group fg-float">
+	                            	<span class="fg-label">Targta. Prioridad</span>
+	                                <div class="fg-line">
+	                                    <input placeholder="targeta de propiedad.." class="form-control fg-input data-per" disabled="disabled" name="tjeta_prioridad" type="text" >
+	                                </div>           
+	                            </div>
+                            </div>
+                            
+							<div class="col-md-6">
+				         		<div class="form-group fg-float">
+	                            	<span class="fg-label">Cilindrada</span>
+	                                <div class="fg-line">
+	                                    <input placeholder="cilindrada.." class="form-control fg-input data-per" disabled="disabled" name="cilindrada" type="text" >
+	                                </div>           
+	                            </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="" class="col-md-4 control-label"><b>Combustible:</b></label>
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div id="js-comb"> 
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>              
+                    </fieldset>
+                    
+					<fieldset >
+						<legend style="margin-bottom: 0px !important;text-align: center;"><b>TALLER</b></legend>
+						
+                        <div class="row" style="text-align: center !important;">
+                        	<div class="col-md-3 col-xs-12" style="text-align: center;"></div>
+                        	
+                             <div class="col-md-6 col-xs-12" style="text-align: center;">
+                                <div class="form-group">
+                                    <span class="fg-label">Seleccione taller de conversion</span>
+
+                                     <select name="idtall" id="js-SeltTaller" data-placeholder="n" class="form-control fg-input sel-opcv" data-fv-notempty='true' data-fv-message="Seleccione Taller por favor">
+                                         <option value="" selected="selected" disabled="disabled">Seleccione Taller</option>
+                                     </select>
+
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-xs-12" style="text-align: center;"></div>
+                        </div>
+                    </fieldset>
+                    <br/>
+                    <fieldset>
+                             <legend style="margin-bottom: 0px !important"><b>RECALIFICACION DE CILINDRO</b></legend>
+                             <div class="row">
+                              <div class="col-md-3" id="">
+                              	   <b>Cilindro</b> 
+                              </div>
+                               <div class="col-md-3 form-group" id="">
+                               	<div class="" style="display: inline;">
+                                	
+                                	<label class="radio radio-inline m-r-20"> <input
+				                        type="radio" name="recal_cil" id="recal_cil" value="1" class="recal_cil" data-fv-notempty="true" data-fv-message="Seleccione opcion"> <i
+				                        class="input-helper"></i>SI 
+				                    </label> 
+				                    <label class="radio radio-inline m-r-20"> <input
+				                        type="radio" name="recal_cil" id="recal_cil" value="0" class="recal_cil" data-fv-notempty="true" data-fv-message="Seleccione opcion"> <i
+				                        class="input-helper"></i>NO
+                                	</label> 
+				                      
+                               	</div>
+
+                                </div>
+<!--                               <div class="col-md-3" id=""> -->
+<!--                                	<b> Reponer cilindro</b> -->
+<!--                               </div> -->
+<!--                               <div class="col-md-3 form-group" id=""> -->
+<!--                    	           <div class="checkbox" style="display:inline-block; margin-right: 30px; margin-bottom: 0px !important"> -->
+<!--                                       <label> -->
+<!--                                           <input value="1" type="checkbox" id=reponer_cil" class="reponer_cil" name="reponer_cil" > -->
+<!--                                           <i class="input-helper"></i>Reponer -->
+<!--                                       </label> -->
+<!--                                   </div> -->
+<!--                               </div> -->
+							
+                             </div>
+
+						</fieldset>
+						 <fieldset>
+                             <legend style="margin-bottom: 0px !important"><b>REPOSICION DE KIT</b></legend>
+                             <div class="row">
+                              <div class="col-md-3" id="">
+                              	   <b>kit</b> 
+                              </div>
+                               <div class="col-md-9 form-group" id="">
+                               	<div class="" style="display: inline;">
+                                	
+                                	<label class="radio radio-inline m-r-20"> <input
+				                        type="radio" name="reposicion_kit" id="reposicion_kit" value="1" class="reposicion_kit" data-fv-notempty="true" data-fv-message="Seleccione opcion"> <i
+				                        class="input-helper"></i>Reposicion Completa
+				                    </label> 
+				                    <label class="radio radio-inline m-r-20"> <input
+				                        type="radio" name="reposicion_kit" id="reposicion_kit" value="2" class="reposicion_kit" data-fv-notempty="true" data-fv-message="Seleccione opcion"> <i
+				                        class="input-helper"></i>Reposicion por Partes
+                                	</label> 
+				                      
+                               	</div>
+
+                                </div>
+							
+                             </div>
+
+						</fieldset>
+                    
+<!--                     <fieldset> -->
+<!--                         <legend style="margin-bottom: 0px !important"><b>SERVICIO (Seleccione el Servicio de la tabla)</b></legend> -->
+<!--                         <table width="100%"  class="table table-vmiddle  nowrap display table-hover" id="js_table"> -->
+<!--                             <thead> -->
+<!--                                 <tr> -->
+<!--                                     <th>IDSERV</th> -->
+<!--                                     <th>VEHICULO</th> -->
+<!--                                     <th>TIPO DE<BR>TECNOLOGIA</th> -->
+<!--                                     <th>CAPACIDAD<BR>(M3).</th> -->
+<!--                                     <th>SISTEMA<BR>MOTOR</th> -->
+<!--                                     <th>NRO.<BR>PISTONES</th> -->
+<!--                                     <th>PRECIO<BR>$us.</th> -->
+<!--                                     <th>PRECIO<BR>Bs.</th> -->
+<!--                                     <th>FACTOR<BR>COBRO</th> -->
+<!--                                 </tr> -->
+<!--                             </thead> -->
+<!--                             <tbody> -->
+                              
+<!--                             </tbody> -->
+<!--                         </table> -->
+<!--                         <div class="row"> -->
+<!--                             <div class="col-md-6"> -->
+<!--                                 <div class="form-group fg-float"> -->
+<!-- 	                            	<span class="fg-label">Tipo de Tecnologia</span> -->
+<!-- 	                                <div class="fg-line"> -->
+<!-- 	                                    <input placeholder="Tipo de Tecnologia.." class="form-control fg-input data-per" disabled="disabled"  name="TipoTecnologia" id="js-tp_tecnologia" data-fv-notempty='true' data-fv-message="Requerido"  type="text" > -->
+<!-- 	                                </div>            -->
+<!-- 	                            </div> -->
+<!--                             </div> -->
+<!--                             <div class="col-md-6"> -->
+<!--                                 <div class="form-group fg-float"> -->
+<!--                                    <span class="fg-label">Sistema Motor</span> -->
+<!--                                    <div class="fg-line"> -->
+<!--                                      <input placeholder="Sistema Motor.."  type="text" class="form-control fg-input data-per" name="SistMotor" disabled="disabled" id="js-sist-motor" data-fv-notempty='true' data-fv-message="Requerido"> -->
+<!--                                    </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                             <div class="col-md-6"> -->
+<!--                                 <div class="form-group fg-float"> -->
+<!--                                     <span class="fg-label">Nro. Pistones</span> -->
+<!--                                     <div class="fg-line"> -->
+<!--                                         <input  placeholder="nro. pistones.." type="text" class="form-control fg-input data-per" name="NumPistones" disabled="disabled" id="js-numPistones" data-fv-notempty='true' data-fv-message="Requerido"> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                             <div class="col-md-6"> -->
+<!--                                 <div class="form-group fg-float"> -->
+<!-- 									<span class="fg-label">Capacidad (M3)</span> -->
+          
+<!--                                     <div class="fg-line"> -->
+<!--                                     	<input placeholder="capacidad.." type="text" class="form-control fg-input data-per" name="Capacidad" disabled="disabled" id="js-capacidad" data-fv-notempty='true' data-fv-message="Requerido"> -->
+<!--                                     </div> -->
+
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                             <div class="col-md-6"> -->
+<!--                                 <div class="form-group fg-float"> -->
+                                    
+<!--                                     <span class="fg-label">Factor Cobro</span> -->
+<!--                                     <div class="fg-line"> -->
+<!--                                     	<input placeholder="factor cobro.." type="text" class="form-control fg-input data-per" name="FactorCobro" disabled="disabled" id="js-factorCobro" data-fv-notempty='true' data-fv-message="Requerido"> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                            <div class="col-md-6"> -->
+<!--                                 <div class="form-group"> -->
+<!--                                     <span class="fg-label">Costo Total KIT</span> -->
+<!--                                     <div class="fg-line"> -->
+<!--                                     	<input type="text" placeholder="costo total.." class="form-control fg-input data-per" name="CostoTot" disabled="disabled" id="js-costoTotal" data-fv-notempty='true' data-fv-message="Requerido"> -->
+<!--                                    	</div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                     </fieldset> -->
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btn-guardar-aprob"
+                        class="btn btn-primary waves-effect">Guardar</button>
+                    <button type="button" class="btn btn-danger waves-effect"
+                        data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</form>
+
+<form id="formularioVer" action="#"
+		method="post" data-fv-excluded="disabled"
+		>
+		<div class="modal fade" id="modal-ver" tabindex="-1" role="dialog"
+			data-backdrop="static" data-keyboard="false" 
+			style=" padding-left: 0;display: none;">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="card">
+
+						
+						<div class="modal-header">
+                        	<p>
+                        	   <button  type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            	</button>
+                        	</p>
+							
+							<div class="row">
+								 <div class="col-md-12">
+                                    <h4 style="margin-top: 0px;"><b>Orden de Servicio</b></br><small>Datos de Orden de Servicio</small></h4>
+                                </div>
+                                <div class="col-md-12">
+		                            <b>NUMERO DE ORDEN DE SERVICIO: </b><span id="numOrdServ"></span> 
+		                            <b style="margin-left: 5em;">FECHA DE CREACION: </b><span id="fechaCreacion"></span> 
+<!--                                     <b style="margin-left: 2em;">GESTION: </b><span id="od_gestion_ver"></span> -->
+                                    
+                                </div>
+							</div>
+						</div>
+						<div class="modal-body">
+							<fieldset>
+								 <legend style="margin-bottom: 0px !important"><b>TALLER</b></legend>
+								<div class="taller-data">
+									<!-- .col-md-6*2>.form-group>(label.col-md-4.control-label>b{campo})+.col-md-6>.fg-line>input[type=text].form-control.mcss_input -->
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Nombre Taller</span>
+										
+											<div class="fg-line">
+												<input type="text" class="form-control mcss_input" disabled="disabled" name="nombreTall" id="nombreTall">
+											</div>
+											
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Telefono/Celular</span>
+											<div class="fg-line"><input type="text" id="telefonoTaller" class="form-control mcss_input" disabled="disabled"></div>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<span class="fg-label">Direccion</span>
+											<div class="fg-line"><input type="text" name="direccionTaller" id="direccionTaller" class="form-control mcss_input" disabled="disabled"></div>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								 <legend style="margin-bottom: 0px !important"><b>SOLICITUD</b></legend>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="fg-label">Nro. Solicitud</span>
+										<div class="fg-line"><input type="text" name="numsoltrec" class="form-control mcss_input" disabled="disabled"></div>
+										
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="fg-label">Fecha Solicitud</span>
+										<div class="fg-line"><input type="text" name="fechaSolt" class="form-control mcss_input" disabled="disabled"></div>
+										
+									</div>
+								</div>
+
+							</fieldset>
+							<fieldset>
+								 <legend style="margin-bottom: 0px !important"><b>BENEFICIARIO</b></legend>
+								<div class="beneficiario-data">
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Nombre Completo</span>
+											
+											<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="nombreCompleto" id="nombreCompleto"></div>
+											
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Cedula</span>
+											
+											<div class="fg-line"><input type="text" class="form-control mcss_input" disabled="disabled" name="ci"></div>
+											
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Direccion</span>
+											
+											<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="direccion"></div>
+											
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Institucion</span>
+											<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="institucion" id="institucion"></div>
+											
+										</div>
+									</div>
+									
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Telefono/Celular</span>
+
+											<div class="fg-line"><input  type="text" id="telefonoBeneficiario" name="telefonoBeneficiario" class="form-control mcss_input" disabled="disabled"></div>
+
+										</div>
+									</div>
+									
+								</div>
+							</fieldset>							
+							<fieldset>
+								 <legend style="margin-bottom: 0px !important"><b>VEHICULO</b></legend>
+							  	<div class="vehiculo-data">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Placa</span>
+												<div class="fg-line"><input type="text" class="form-control mcss_input" disabled="disabled" name="placa"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Marca</span>
+												
+												<div class="fg-line"><input type="text" class="form-control mcss_input" disabled="disabled" name="marcaVeh" id="marcaVeh"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Modelo</span>
+												
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="modeloVeh" id="modeloVeh"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Tipo Vehículo</span>
+												
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="tipoVeh" id="tipoVeh"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Tipo Servicio</span>
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="tipoServ" id="tipoServ"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Sistema Motor</span>
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="sistemaMotor" id="sistemaMotor"></div>
+											
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Nro. Motor</span>
+												
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="numeroMotor" id="numeroMotor"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Nro. Chasis</span>
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="numeroChasis" id="numeroChasis"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Targeta Prioridad<</span>
+												
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="tjeta_prioridad" id="tjeta_prioridad"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Cilindrada<</span>
+											
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="cilindrada" id="cilindrada"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Color<</span>
+												
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="color" id="color"></div>
+												
+											</div>
+										</div>
+									</div>
+								 	<div class="row">
+								 		<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Combustible</span>
+												<div class="col-md-12">
+			                                        <div class="row">
+			                                            <div id="js-comb"> 
+			                                               
+			                                            </div>
+			                                        </div>
+			                                    </div>
+											</div>
+										</div>
+	
+
+								 	</div>
+								 	<div class="row">
+								 		<div class="col-md-6">
+											<div class="form-group">
+												<div class="col-md-12">
+													
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6"></div>
+								 	</div>
+
+
+							 	</div>
+							</fieldset>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" id="btnAdicionarConfirmacion"
+								class="btn btn-primary waves-effect">Imprimir</button>
+							<button type="button" class="btn btn-danger waves-effect"
+								data-dismiss="modal">Cancelar</button>
+						</div>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+	</form>
+
+
+<form name="formularioOrdenRecalificacionCilindro" role="form" id="formularioOrdenRecalificacionCilindro" method="post" action="RestOrdenRecalificacion/adicionarOSRecalificacion_Cilindro_d"
+		data-fv-excluded="disabled">  
+    <div class="modal fade" id="modal-orden-recalificacion-cilindro" tabindex="-1" role="dialog"
+            data-backdrop="static" data-keyboard="false" aria-hidden="true"
+            style="display: none; padding-left: 0">
+
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="card">
+
+						
+						<div class="modal-header">
+                        	<p>
+                        	   <button  type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            	</button>
+                        	</p>
+							
+							<div class="row">
+								 <div class="col-md-12">
+                                    <h4 style="margin-top: 0px;"><b>ORDEN DE RECALIFICACION DE CILINDRO</b></br><small>Datos de Orden de Recalificacion de Cilindro</small></h4>
+                                </div>
+                                <div class="col-md-12">
+		                            <b>NUMERO DE ORDEN DE SERVICIO: </b><span id="numOrdServ"></span> 
+		                            <b style="margin-left: 5em;">FECHA DE CREACION: </b><span id="fechaCreacion"></span> 
+<!--                                     <b style="margin-left: 2em;">GESTION: </b><span id="od_gestion_ver"></span> -->
+                                    
+                                </div>
+							</div>
+						</div>
+						<div class="modal-body">
+							<input type="hidden" name="idordservrecal">
+							<fieldset>
+                              <legend style="margin-bottom: 0px !important"><b>RECALIFICACION DE CILINDRO</b></legend>
+
+                              <div class="row">
+				                   <div class="col-md-3" id="">
+	                                	<b>Cilindro</b>
+	                               </div>
+	                               <div class="col-md-3 form-group" id="">
+	                    	           <div class="checkbox" style="display:inline-block; margin-right: 30px; margin-bottom: 0px !important">
+<!-- 	                                       <label> -->
+	                                           <input value="1" type="checkbox" id="recal_cil" class="recal_cil" name="recal_cil" data-fv-notempty='true' data-fv-message="Seleccione recalificacion de cilindro">
+	                                           <i class="input-helper"></i>Recalificacion
+<!-- 	                                       </label> -->
+	                                   </div>
+	                               </div>
+								   <div class="col-md-6 col-xs-12" style="text-align: center;">
+		                                <div class="form-group">
+		                                    <span class="fg-label">Seleccione Taller de recalificacion</span>
+		
+		                                     <select name="idtall" id="js-SeltTallerRecalificacion" data-placeholder="n" class="form-control fg-input sel-opcv" data-fv-notempty='true' data-fv-message="Seleccione Taller de Recalificacion por favor">
+		                                         <option value="" selected="selected" disabled="disabled">Seleccione Taller de Recalificacion</option>
+		                                     </select>
+		
+		                                </div>
+		                            </div>
+							 	</div>
+
+							</fieldset>
+
+							<fieldset>
+								 <legend style="margin-bottom: 0px !important"><b>SOLICITUD</b></legend>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="fg-label">Nro. Solicitud</span>
+										<div class="fg-line"><input type="text" name="numsoltrec" class="form-control mcss_input" disabled="disabled"></div>
+										
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="fg-label">Fecha Solicitud</span>
+										<div class="fg-line"><input type="text" name="fechaSolt" class="form-control mcss_input" disabled="disabled"></div>
+										
+									</div>
+								</div>
+
+							</fieldset>
+							<fieldset>
+								 <legend style="margin-bottom: 0px !important"><b>TALLER DE CONVERSION</b></legend>
+								<div class="taller-data">
+									<!-- .col-md-6*2>.form-group>(label.col-md-4.control-label>b{campo})+.col-md-6>.fg-line>input[type=text].form-control.mcss_input -->
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Nombre Taller</span>
+										
+											<div class="fg-line">
+												<input type="text" class="form-control mcss_input" disabled="disabled" name="nombreTall" id="nombreTall">
+											</div>
+											
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Telefono/Celular</span>
+											<div class="fg-line"><input type="text" id="telefonoTaller" class="form-control mcss_input" disabled="disabled"></div>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<span class="fg-label">Direccion</span>
+											<div class="fg-line"><input type="text" name="direccionTaller" id="direccionTaller" class="form-control mcss_input" disabled="disabled"></div>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								 <legend style="margin-bottom: 0px !important"><b>BENEFICIARIO</b></legend>
+								<div class="beneficiario-data">
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Nombre Completo</span>
+											
+											<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="nombreCompleto" id="nombreCompleto"></div>
+											
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Cedula</span>
+											
+											<div class="fg-line"><input type="text" class="form-control mcss_input" disabled="disabled" name="ci"></div>
+											
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Direccion</span>
+											
+											<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="direccion"></div>
+											
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Institucion</span>
+											<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="institucion" id="institucion"></div>
+											
+										</div>
+									</div>
+									
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Telefono/Celular</span>
+
+											<div class="fg-line"><input  type="text" id="telefonoBeneficiario" name="telefonoBeneficiario" class="form-control mcss_input" disabled="disabled"></div>
+
+										</div>
+									</div>
+									
+								</div>
+							</fieldset>							
+							<fieldset>
+								 <legend style="margin-bottom: 0px !important"><b>VEHICULO</b></legend>
+							  	<div class="vehiculo-data">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Placa</span>
+												<div class="fg-line"><input type="text" class="form-control mcss_input" disabled="disabled" name="placa"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Marca</span>
+												
+												<div class="fg-line"><input type="text" class="form-control mcss_input" disabled="disabled" name="marcaVeh" id="marcaVeh"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Modelo</span>
+												
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="modeloVeh" id="modeloVeh"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Tipo Vehículo</span>
+												
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="tipoVeh" id="tipoVeh"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Tipo Servicio</span>
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="tipoServ" id="tipoServ"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Sistema Motor</span>
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="sistemaMotor" id="sistemaMotor"></div>
+											
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Nro. Motor</span>
+												
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="numeroMotor" id="numeroMotor"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Nro. Chasis</span>
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="numeroChasis" id="numeroChasis"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Targeta Prioridad</span>
+												
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="tjeta_prioridad" id="tjeta_prioridad"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Cilindrada</span>
+											
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="cilindrada" id="cilindrada"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Color</span>
+												
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="color" id="color"></div>
+												
+											</div>
+										</div>
+									</div>
+
+		
+
+
+							 	</div>
+							</fieldset>
+							
+							
+
+						</div>
+						<div class="modal-footer">
+							<button type="submit" id="btnAdicionarConfirmacion"
+								class="btn btn-primary waves-effect">Imprimir</button>
+							<button type="button" class="btn btn-danger waves-effect"
+								data-dismiss="modal">Cancelar</button>
+						</div>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+	</form>
+	
+	
+	<form name="formularioOrdenReposicionCilindro" role="form" id="formularioOrdenReposicionCilindro" method="post" action="RestOrdenRecalificacion/adicionarOSReposicion_Cilindro_d"
+		data-fv-excluded="disabled">  
+    <div class="modal fade" id="modal-orden-reposicion-cilindro" tabindex="-1" role="dialog"
+            data-backdrop="static" data-keyboard="false" aria-hidden="true"
+            style="display: none; padding-left: 0">
+
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="card">
+
+						
+						<div class="modal-header">
+                        	<p>
+                        	   <button  type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            	</button>
+                        	</p>
+							
+							<div class="row">
+								 <div class="col-md-12">
+                                    <h4 style="margin-top: 0px;"><b>ORDEN DE REPOSICION DE CILINDRO</b></br><small>Datos de Orden de Reposicion de Cilindro</small></h4>
+                                </div>
+                                <div class="col-md-12">
+		                            <b>NUMERO DE ORDEN DE SERVICIO: </b><span id="numOrdServ"></span> 
+		                            <b style="margin-left: 5em;">FECHA DE CREACION: </b><span id="fechaCreacion"></span> 
+<!--                                     <b style="margin-left: 2em;">GESTION: </b><span id="od_gestion_ver"></span> -->
+                                    
+                                </div>
+							</div>
+						</div>
+						<div class="modal-body">
+							<input type="hidden" name="idordservrecal">
+<!-- 							<fieldset> -->
+<!--                               <legend style="margin-bottom: 0px !important"><b>RECALIFICACION DE CILINDRO</b></legend> -->
+
+<!--                               <div class="row"> -->
+<!-- 									<div class="col-md-6"> -->
+<!-- 										<div class="form-group"> -->
+<!-- 											<span class="fg-label">Taller de Recalificaion</span> -->
+										
+<!-- 											<div class="fg-line"> -->
+<!-- 												<input type="text" class="form-control mcss_input" disabled="disabled" name="nombreTallRecal" id="nombreTallRecal"> -->
+<!-- 											</div> -->
+											
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="col-md-6"> -->
+<!-- 										<div class="form-group"> -->
+<!-- 											<span class="fg-label">Recalificacion</span> -->
+										
+<!-- 											<div class="fg-line"> -->
+<!-- 												<input type="text" class="form-control mcss_input" disabled="disabled" name="recal_cil" id="recal_cil"> -->
+<!-- 											</div> -->
+											
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 							 	</div> -->
+<!-- 							</fieldset> -->
+							<fieldset>
+                              <legend style="margin-bottom: 0px !important"><b>REPOSICION DE CILINDRO</b></legend>
+
+                              <div class="row">
+				                   <div class="col-md-3" id="">
+	                                	<b>Cilindro</b>
+	                               </div>
+	                               <div class="col-md-3 form-group" id="">
+	                    	           <div class="checkbox" style="display:inline-block; margin-right: 30px; margin-bottom: 0px !important">
+	                                       <label>
+	                                           <input value="1" type="checkbox" id="reponer_cil" class="reponer_cil" name="reponer_cil" data-fv-notempty='true' data-fv-message="Seleccione reposicion de cilindro" >
+	                                           <i class="input-helper"></i>Reponer Cilindro
+	                                       </label>
+	                                   </div>
+	                               </div>
+							 	</div>
+
+							</fieldset>
+							<fieldset>
+								 <legend style="margin-bottom: 0px !important"><b>SOLICITUD</b></legend>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="fg-label">Nro. Solicitud</span>
+										<div class="fg-line"><input type="text" name="numsoltrec" class="form-control mcss_input" disabled="disabled"></div>
+										
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="fg-label">Fecha Solicitud</span>
+										<div class="fg-line"><input type="text" name="fechaSolt" class="form-control mcss_input" disabled="disabled"></div>
+										
+									</div>
+								</div>
+
+							</fieldset>
+							<fieldset>
+								 <legend style="margin-bottom: 0px !important"><b>TALLER DE CONVERSION</b></legend>
+								<div class="taller-data">
+									<!-- .col-md-6*2>.form-group>(label.col-md-4.control-label>b{campo})+.col-md-6>.fg-line>input[type=text].form-control.mcss_input -->
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Nombre Taller</span>
+										
+											<div class="fg-line">
+												<input type="text" class="form-control mcss_input" disabled="disabled" name="nombreTall" id="nombreTall">
+											</div>
+											
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Telefono/Celular</span>
+											<div class="fg-line"><input type="text" id="telefonoTaller" class="form-control mcss_input" disabled="disabled"></div>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<span class="fg-label">Direccion</span>
+											<div class="fg-line"><input type="text" name="direccionTaller" id="direccionTaller" class="form-control mcss_input" disabled="disabled"></div>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								 <legend style="margin-bottom: 0px !important"><b>BENEFICIARIO</b></legend>
+								<div class="beneficiario-data">
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Nombre Completo</span>
+											
+											<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="nombreCompleto" id="nombreCompleto"></div>
+											
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Cedula</span>
+											
+											<div class="fg-line"><input type="text" class="form-control mcss_input" disabled="disabled" name="ci"></div>
+											
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Direccion</span>
+											
+											<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="direccion"></div>
+											
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Institucion</span>
+											<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="institucion" id="institucion"></div>
+											
+										</div>
+									</div>
+									
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label">Telefono/Celular</span>
+
+											<div class="fg-line"><input  type="text" id="telefonoBeneficiario" name="telefonoBeneficiario" class="form-control mcss_input" disabled="disabled"></div>
+
+										</div>
+									</div>
+									
+								</div>
+							</fieldset>							
+							<fieldset>
+								 <legend style="margin-bottom: 0px !important"><b>VEHICULO</b></legend>
+							  	<div class="vehiculo-data">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Placa</span>
+												<div class="fg-line"><input type="text" class="form-control mcss_input" disabled="disabled" name="placa"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Marca</span>
+												
+												<div class="fg-line"><input type="text" class="form-control mcss_input" disabled="disabled" name="marcaVeh" id="marcaVeh"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Modelo</span>
+												
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="modeloVeh" id="modeloVeh"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Tipo Vehículo</span>
+												
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="tipoVeh" id="tipoVeh"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Tipo Servicio</span>
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="tipoServ" id="tipoServ"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Sistema Motor</span>
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="sistemaMotor" id="sistemaMotor"></div>
+											
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Nro. Motor</span>
+												
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="numeroMotor" id="numeroMotor"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Nro. Chasis</span>
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="numeroChasis" id="numeroChasis"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Targeta Prioridad</span>
+												
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="tjeta_prioridad" id="tjeta_prioridad"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Cilindrada</span>
+											
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="cilindrada" id="cilindrada"></div>
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="fg-label">Color</span>
+												
+												<div class="fg-line"><input  type="text" class="form-control mcss_input" disabled="disabled" name="color" id="color"></div>
+												
+											</div>
+										</div>
+									</div>
+
+		
+
+
+							 	</div>
+							</fieldset>
+							
+							
+
+						</div>
+						<div class="modal-footer">
+							<button type="submit" id="btnAdicionarConfirmacion"
+								class="btn btn-primary waves-effect">Imprimir</button>
+							<button type="button" class="btn btn-danger waves-effect"
+								data-dismiss="modal">Cancelar</button>
+						</div>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+	</form>
+
+
+	<!-- <h2 style="text-align: center;">GESTION BENEFICIARIOS</h2> -->
+	<div class="contenido_gestion">
+
+	    <div class="" style="padding: 0 15px;">
+	    	<div class="row">
+	    		<div class="col-md-8">
+			    	<h2 class="panel-title">
+			            <b>GESTION ORDENES DE RECALIFICACION DE CILINDROS Y REPOSICION DE KIT</b>
+			        </h2>
+			        <h5>
+			       Administre Ordenes de Servicios
+					registrados en el Sistema
+			        </h5>
+	    		</div>
+	    		<div class="col-md-4">
+	    			<h1 class="panel-title"><b>GESTION: <label class="cs_gestion"></label></b></h1>
+	    		</div>
+	    	</div>
+	        
+	    </div>
+		<div class="panel-body" style="margin-top: -30px"> 
+			<div class="row">
+				<div class="col-md-12" style="text-align: right;margin-bottom: 15px">			
+                    <!-- <button id="btn-ver" class="btn btn-danger waves-effect" accesskey="1" onclick="ver(this)">VER</button> -->
+                    <button id="btnAdicionar" class="btn btn-succ  btn-xs btn-sm waves-effect" disabled="disabled">NUEVA ORD. SERV.</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-4 col-xs-12" style="margin-bottom: 10px;">
+							<input type="text" id="filt-ben" name=""
+								class="form-control_filtro unput-sm"
+								placeholder=" Buscar por placa | cedula de beneficiario..">
+						</div>
+						
+						<div class="col-md-2 col-xs-12" style="margin-bottom: 10px;">
+							<input type="number" id="" name="inumord"
+								class="form-control_filtro unput-sm"
+								placeholder="Nro. de Orden..">
+						</div>
+				
+						<div class="col-md-2 col-xs-12" style="margin-bottom: 10px;">
+							<input type="number" id="" name="inumsolt"
+								class="form-control_filtro unput-sm"
+								placeholder="Nro. de Solcitud..">
+						</div>
+						
+						<div class="col-md-4 col-xs-12 navbar-right" style="text-align: right; margin-top: 10px">
+							<label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="activos" value="1"> <i
+								class="input-helper"></i>bajas
+							</label> <label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="bajas" value="0"> <i
+								class="input-helper"></i>activos
+							</label> <label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="todos" value="-1"
+								checked="checked"><i class="input-helper"></i>todos
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 table-responsive">
+<!-- 					<table id="table-data" class="table table-vmiddle nowrap table-vmiddle" width="100%"> -->
+					<table id="example" class="table tabla_gestion" style="width: 100%">
+						<thead>
+							<tr>
+								<th class="text-center" width="15px">Num. de Ord</th>
+								<th class="text-center" width="15px">Num. de solt</th>
+								<th class="text-center" width="200px">Taller Conversion</th>
+								<th class="text-center">Taller Recalificacion</th>
+                                <th class="text-center">Beneficiario</th>
+								<th class="text-center">Placa</th>
+								<th class="text-center">Gestion</th>
+								<th class="text-center">Orden Recalificacion y Reposicion</th>
+								<th class="text-center">Orden Recalificacion de Cilindro</th>
+								<th class="text-center">Orden de Reposicion de Cilindro</th>
+								
+
+							</tr>
+						</thead>
+						<tbody> 
+						</tbody>
+					</table>
+				</div>   
+			</div>  
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+	    var isGestion=$('body').find('#select-gestion option:selected').text();
+	    console.log('gestion',isGestion)
+	    $('.cs_gestion').html(isGestion);
+	    
+        $('body').find('#ord_gestion').html(isGestion);
+        $('body').find('#ord_gestion_ver').html(isGestion);
+	
+	
+        var result=Get_Opciones(null);
+        // console.log('GESTION_LIST: ',result)
+        // console.log('tam: ',result.AccionesUser.length)
+        if(ExisteOpcion('adicionar')){
+//             $('#btnAdicionar').attr({
+//                 onclick:"(Gestionar.add())",
+//                 // accesskey:""
+//                 })
+            $('#btnAdicionar').removeAttr("disabled ").focus().val("Ahora si lo puedes utilizar")
+        }
+
+        function ExisteOpcion(opc){
+            // alert('entro comparar')
+            var resultado=false;
+            for (var i = 0; i < result.AccionesUser.length; i++) {
+//                 console.log('for_: ',result.AccionesUser[i]);
+                if(result.AccionesUser[i].codigo==opc){
+                    resultado=true;         
+                }
+            }
+            // console.log('result_dentro:',resultado)              
+            return resultado;
+        }
+
+        var DTtable=''
+        var btnGroup='';
+        
+        var estado='';
+        estado=$('input[name="iestado"]:checked').val();
+        
+        var inumsolt=$('input[name="inumsolt"]').val();
+        var inumord=$('input[name="inumord"]').val();
+        
+        $('input[name="iestado"]').on('change',function(){
+            estado=$('input[name="iestado"]:checked').val();
+           $('#example').dataTable().fnDraw('page');
+
+       })
+        
+        $('input[name="inumsolt"]').on('keyup',function(){
+        	inumsolt=$(this).val();
+            $('#example').dataTable().fnDraw('page');
+        })
+        
+        $('input[name="inumord"]').on('keyup',function(){
+        	inumord=$(this).val();
+            $('#example').dataTable().fnDraw('page');
+        })
+        
+        
+        
+        DTtable=$('#example').DataTable({
+    		"oLanguage": {
+                "sUrl": GurlDataTable
+            },
+//             "dom":'rt<button>ip',
+            "dom":'rt<button>',
+            "pageLength":10,
+//              responsive:true,
+            "processing": true,
+            "serverSide": true,
+  		    "ajax": {
+  		    	"type": "POST",
+  	            url:'RestOrdenRecalificacion/listar_ordenes_servicio_recalificacion_d',
+  	        	"data": function ( d ) {
+  	                d.estado = estado;
+  	                d.numsolt = inumsolt;
+  	                d.numord = inumord;
+  	                d.gestion=$('body').find('#select-gestion option:selected').text();
+  	            }
+          	},
+  		    "columns": [
+                        { "data": "idordservrecal" },
+                        { "data": "idordservrecal" },
+                        { "data": "idordservrecal" },
+                        { "data": "idordservrecal" },
+                        { "data": "idordservrecal" },
+  		                { "data": "idordservrecal" },
+  		            	{ "data": "idordservrecal" },
+  		            	{ "data": "idordservrecal" },
+  		            	{ "data": "idordservrecal" },
+  		            	{ "data": "idordservrecal" }
+  		    ],
+  		    "createdRow": function ( row, data, index ){
+            	console.log('row',data)
+                $('td',row).eq(0).html(data.numords).addClass('text-center');
+                $('td',row).eq(1).html(data.solicitudreposicionrecalificacion.numsoltrec).addClass('text-center');
+                $('td',row).eq(2).html(data.tallerconversion.nombretall)
+                if(data.tallerrecalificacion!=null){
+                	$('td',row).eq(3).html(data.tallerrecalificacion.nombretall).addClass('text-center')
+                    	
+                }else{
+                	$('td',row).eq(3).html('No Pertenece').addClass('text-center')   
+                }
+                
+                $('td',row).eq(4).html(data.solicitudreposicionrecalificacion.persona.razonsocial).addClass('text-center');
+                $('td',row).eq(5).html(data.solicitudreposicionrecalificacion.vehiculo.placa).addClass('text-center')
+            	
+                $('td',row).eq(6).html(data.anio).addClass('text-center');
+                
+
+            	
+                
+             	if(ExisteOpcion('recalificacion_reposicion')  ){
+                     
+                    $('td',row).eq(7).html('<button id="btn-ver" class="btn btn-xs btn-warning  bgm-cyan waves-effect btn-sm btn-espacio btn-sm btn-xs" accesskey="'+data.idordservrecal+'" data-href="'+data.idordservrecal+'" onclick="ImprimirOrdenRecalificacionCilindroReposicionKit(this) "><span class="zmdi zmdi-print"> </span> Imprimir Orden</button>').addClass('text-center') ;
+                }else{
+                    $('td',row).eq(7).html('<button id="btn-ver" class="btn btn-xs btn-warning bgm-cyan waves-effect btn-sm  btn-espacio btn-sm btn-xs" disabled="disabled"><span class="zmdi zmdi-print"> </span>Imprimir Orden</button>').addClass('text-center') ;  
+                }
+                
+            	
+                if(data.tallerrecalificacion!=null){
+                	console.log('con taller de recalificacion')
+                	if(ExisteOpcion('recalificacion_cilindro')  ){
+
+                        $('td',row).eq(8).html('<button id="btn-ver" class="btn btn-xs btn-warning  bgm-cyan waves-effect btn-sm btn-espacio btn-sm btn-xs" accesskey="'+data.idordservrecal+'" data-href="'+data.idordservrecal+'" onclick="ImprimirOrdenRecalificacionClindro(this) "><span class="zmdi zmdi-print"> </span> Imprimir Orden</button>').addClass('text-center') ;
+                    }else{
+                        $('td',row).eq(8).html('<button id="btn-ver" class="btn btn-xs btn-warning bgm-cyan waves-effect btn-sm  btn-espacio btn-sm btn-xs" disabled="disabled"><span class="zmdi zmdi-print"> </span>Imprimir Orden</button>').addClass('text-center') ;  
+                    }
+                }else{
+                	if(ExisteOpcion('crar_recalificacion_cilindro')  ){
+                		 $('td',row).eq(8).html('<button id="btn-ver" class="btn btn-xs btn-success  bgm-cyan waves-effect btn-sm btn-espacio btn-sm btn-xs" accesskey="'+data.idordservrecal+'" data-href="'+data.idordservrecal+'" onclick="CrearOrdenRecalificacion(this) "><span class="zmdi zmdi-print"> </span> Crear Orden</button>').addClass('text-center') ;
+                    }else{
+                		$('td',row).eq(8).html('<button id="btn-ver" class="btn btn-xs btn-success bgm-cyan waves-effect btn-sm  btn-espacio btn-sm btn-xs" disabled="disabled"><span class="zmdi zmdi-print"> </span>Crear Orden</button>').addClass('text-center') ;   
+                	}
+
+                	
+                }
+                
+                if(data.reponer_cil==1){
+                 	if(ExisteOpcion('reposicion_cilindro')  ){
+                        // if()
+                        $('td',row).eq(9).html('<button id="btn-ver" class="btn btn-xs btn-warning  bgm-cyan waves-effect btn-sm btn-espacio btn-sm btn-xs" accesskey="'+data.idordservrecal+'" data-href="'+data.idordservrecal+'" onclick="ImprimirOrdenReposicionClindro(this) "><span class="zmdi zmdi-print"> </span> Imprimir Orden</button>').addClass('text-center') ;
+                    }else{
+                        $('td',row).eq(9).html('<button id="btn-ver" class="btn btn-xs btn-warning bgm-cyan waves-effect btn-sm  btn-espacio btn-sm btn-xs" disabled="disabled"><span class="zmdi zmdi-print"> </span>Imprimir Orden</button>').addClass('text-center') ;  
+                    }
+                }else{
+                 	if(ExisteOpcion('crea_reposicion_cilindro')  ){
+                 	 	$('td',row).eq(9).html('<button id="btn-ver" class="btn btn-xs btn-success  bgm-cyan waves-effect btn-sm btn-espacio btn-sm btn-xs" accesskey="'+data.idordservrecal+'" data-href="'+data.idordservrecal+'" onclick="CrearOrdenReposicionCilindro(this) "><span class="zmdi zmdi-print"> </span> Crear Orden</button>').addClass('text-center') ;
+                    }else{
+                    	$('td',row).eq(9).html('<button id="btn-ver" class="btn btn-xs btn-success bgm-cyan waves-effect btn-sm  btn-espacio btn-sm btn-xs" disabled="disabled"><span class="zmdi zmdi-print"> </span>Crear Orden</button>').addClass('text-center') ;   
+                    }
+                }
+				
+       
+         
+                
+
+  	        },
+  	        "drawCallback": function( settings ) {
+//   	        	$('#tableTitle').html('<h6><b>Gestion Solicitudes de Items</b></h6>');
+//   	        	$('#tableHeader').html('<button class="btn btn-xs btn-primary" id="btnAdicionar"><i class="fa fa-plus-circle"></i> | adicionar</button>');
+
+  	        	$('#btnAdicionar').click(function(){
+	  	            
+  	        		$('body').find('#js_table_filtro tbody').html('')
+  	        		var listaComb;
+	  	            var gestion=$('body').find('#select-gestion option:selected').text();
+	//  	             alert(gestion)
+	 				$('#js-SeltTaller').val('').trigger('chosen:updated');
+	  	            $.getJSON('RestOrdenRecalificacion/datosOrdenServicioRecalificacion?gestion='+gestion,function(datos){
+// 	  	                console.log('DatosServicios: ',datos)
+	  	                listaComb=datos[3]
+	//   	                $('#js-numOrdServ').html(datos[0][0].numOrdServ);
+// 	  	                $('input[name="numOrdServ"]').val(datos[0][0].numOrdServ);
+	  	                $('#js-fecha').html(datos[0][0].fecha);
+	  	                $(datos[1]).each(function(index,item){
+	  	                    // console.log('tip: ',item)
+	  	                    $('#js-SeltTaller').append('<option value="'+item.idtall+'">'+item.nombretall+'</option>')
+	  	                })
+	  	                $('#js-SeltTaller').chosen()
+	
+// 	  	                var table =$('#js_table').DataTable({
+// 	  	                    "oLanguage": {
+// 	  	                        "sUrl": "../resources/js/dataTables/Spanish.lang"
+// 	  	                    },
+// 	  	                    responsive:true,
+// 	  	                    "dom":'rt<button>',
+// 	  	                    // "dom":'rt<button>ip',
+// 	  	                    // "ordering":false,
+// 	  	                    "pageLength":5,
+// 	  	                    "scrollCollapse":true,
+// 	  	                    responsive:true,
+// 	  	                    "paging":false,
+// 	  	                 	 stateSave: true,
+// 	  	                	"bDestroy": true,
+// 	  	                    data:datos[2],
+// 	  	                    columns:[
+// 	  	                         {data:'idserv'},
+// 	  	                         {data:'combustible.nombre'},
+// 	  	                         {data:'reductor.tipoTecnologia'},
+// 	  	                         {data:'cilindro.capacidad'},
+// 	  	                         {data:'tipoMotorVehiculo.nombre'},
+// 	  	                         {data:'numPistones'},
+// 	  	                         {data:'precioDolares'},
+// 	  	                         {data:'precioBolivianos'},
+// 	  	                         {data:'factorCobro'},
+// 	  	                    ]
+// 	  	                     ,
+// 	  	                    "createdRow":function(row,data,index){
+// 	  	                        $('td',row).eq(1).html(data.combustible.nombre);
+// 	  	                        $('td',row).eq(2).html(data.reductor.tipoTecnologia);
+// 	  	                        $('td',row).eq(3).html(data.cilindro.capacidad);
+// 	  	                        $('td',row).eq(4).html(data.tipoMotorVehiculo.nombre)
+// 	  	                        $('td',row).eq(5).html(data.numPistones)
+// 	  	                        $('td',row).eq(6).html(data.precioDolares)
+// 	  	                        $('td',row).eq(7).html(data.precioBolivianos)
+// 	  	                        $('td',row).eq(8).html(data.factorCobro)
+// 	  	                    }
+// 	  	                })
+	  	                var dato="";
+// 	  	                var objetoServicio;
+// 	  	                $('#js_table tbody').on( 'click', 'tr', function () {
+// 	 	                    //RESETEANDO LOS CAMPOS
+// 	 	                    $('#formulario').formValidation('resetField', 'TipoTecnologia');
+// 	 	                    $('input[name="TipoTecnologia"]').val('')
+// 	 	                    $('#formulario').formValidation('resetField', 'SistMotor');
+// 	 	                    $('input[name="SistMotor"]').val('')
+// 	 	                    $('#formulario').formValidation('resetField', 'NumPistones');
+// 	 	                    $('input[name="NumPistones"]').val('')
+// 	 	                    $('#formulario').formValidation('resetField', 'Capacidad');
+// 	 	                    $('input[name="Capacidad"]').val('')
+// 	 	                    $('#formulario').formValidation('resetField', 'FactorCobro');
+// 	 	                    $('input[name="FactorCobro"]').val('')
+// 	 	                    $('#formulario').formValidation('resetField', 'CostoTot');
+// 	 	                    $('input[name="CostoTot"]').val('')
+	
+	
+// 	 	                    if ( $(this).hasClass('selected') ) {
+// 	 	                        $(this).removeClass('selected');
+// 	 	                    }
+// 	 	                    else {
+// 	 	                        table.$('tr.selected').removeClass('selected');
+// 	 	                        $(this).addClass('selected');
+// 	 	                    }
+// 	 	                        dato=$(this).find("td:eq(0)").text();
+// 	 	                        console.log(dato);
+// 	 	                    $(datos[2]).each(function(i,t){
+// 	 	                        if(t.idserv==dato){
+// 	 	                            objetoServicio=t;
+// 	 	                        }    
+// 	 	                    })
+// 	 	                    console.log('objetoServicio: ',objetoServicio)
+	
+// 	 	                    $('input[name="idserv"]').val(objetoServicio.idserv);
+	
+// 	 	                    $('#js-tp_tecnologia').val(objetoServicio.reductor.tipoTecnologia);
+// 	 	                    $('#js-sist-motor').val(objetoServicio.tipoMotorVehiculo.nombre);
+// 	 	                    $('#js-numPistones').val(objetoServicio.numPistones);
+// 	 	                    $('#js-capacidad').val(objetoServicio.cilindro.capacidad)
+// 	 	                    $('#js-factorCobro').val(objetoServicio.factorCobro);
+// 	 	                    $('#js-costoTotal').val((parseFloat(objetoServicio.precioBolivianos)+parseFloat(objetoServicio.factorCobro)).toFixed(2));
+// 	 	                });
+		 	        });
+	 	            
+					$('#modalAdicionar').on('click keyup', function(e){
+					  console.log('sin id?? ', (e.target.id) == '');
+					  var id_busca = $('#busca').attr('id');
+					  // var id_l_ben = $('.l_ben').attr('id');
+					 
+					  var id_click = e.target.id;
+					  if(id_click !== ''){
+					      // if (id_click !== id_busca && id_click !== id_l_ben) {
+					      if (id_click == id_busca){
+					          var visible = $('#display').is(":visible");
+					          if (visible) {
+					              console.log('hide1')
+		  	                        $('#display').hide()
+		  	                    } else {
+		  	                        console.log('entro, pero no esta visible')
+		  	                    }
+		  	                }else {
+		  	                    console.log('sigue mostrando')
+		  	                }
+		  	            }else{
+		  	                var visible = $('#display').is(":visible");
+		  	                if (visible) {
+		  	                    console.log('hide2')
+		  	                    $('#display').hide()
+		  	                } else {
+		  	                    console.log('no esta visible')
+		  	                }
+		  	            }
+		
+		  	        })
+                    
+  	                $('#display').hide()
+			        $('#js-busca').on('click keyup',function(e){
+			        	$('body').find('#js_table_filtro tbody').html('')
+			            // alert('ok')
+			            var texto = $(this).val();
+			            console.log('tex: ',texto)
+			    
+			            var DTable='';
+			            var gestion=$('body').find('#select-gestion option:selected').text();
+			            $.getJSON('RestOrdenRecalificacion/FiltroSolicitudOSRecalificacion',{texto:texto,gestion:gestion},function(resp){
+			                var objetoFiltro;
+			                console.log('ListaFiltro:',resp)
+			                console.log('TAM_FILTRO: ',resp.length)
+			                if(resp.length==0){
+			                    $('#js_table_filtro tbody').html(`
+			                        <tr>
+			                         <td colspan="5"><h3><b>No hay solicitudes registradas</b></h3></td>
+			                        </tr> 
+			                        `)
+			                }else{
+			                	$('body').find('#js_table_filtro tbody').html('')
+			                	$(resp).each(function(i,data){
+// 			                    	$('#js_table_filtro tbody').html('')
+			                    	$('#js_table_filtro tbody').append(`
+			                            <tr>
+			                                <td style="display:none">${data.idrecal}</td>
+			                                <td>${data.numsoltrec}</td>
+			                                <td>${data.vehiculo.placa}</td>
+			                                <td>${data.persona.razonsocial}</td>
+			                                <td>${data.persona.ci}</td>
+			                            </tr>          
+			                        `) 
+			                    })
+			                }
+			                $('#js_table_filtro tbody').on( 'click', 'tr', function () {
+			                    $('#js-comb').html('')
+			                    if ( $(this).hasClass('selected') ) {
+			                        $(this).removeClass('selected');
+			                    }
+			                    else {
+			                        $('#js_table_filtro tr.selected').removeClass('selected');
+			                        $(this).addClass('selected');
+			                    }
+			                    dato=$(this).find("td:eq(0)").text();
+			                        console.log(dato);
+			//                         alert(dato);
+			                    $(resp).each(function(i,t){
+			                        if(t.idrecal==dato){
+			                            objetoFiltro=t;
+			                        }
+			                    })
+			                    var objetoDatosBasicos;
+			                    console.log('objetoFiltroClickOS: ',objetoFiltro)
+			                    if(objetoFiltro!=undefined){
+			                        $('input[name="idrecal"]').val(objetoFiltro.idrecal)
+			                        $('#js_DatosBasicos').loadJSON(objetoFiltro)
+			                        $('input[name="beneficiario"]').val(objetoFiltro.persona.razonsocial)
+			                        $('input[name="ci"]').val(objetoFiltro.persona.ci)
+			
+			                        //VEHICULO
+			                        $('#js_Vehiculo').loadJSON(objetoFiltro.vehiculo)
+			                        $('input[name="marca"]').val(objetoFiltro.vehiculo.marcaVehiculo.nombre)
+			                        $('input[name="modelo"]').val(objetoFiltro.vehiculo.modeloVehiculo.nombre)
+			                        $('input[name="tipoVeh"]').val(objetoFiltro.vehiculo.tipoVehiculo.nombre)
+			                        $('input[name="tipServ"]').val(objetoFiltro.vehiculo.tipoServicio.nombre)
+			                        $('input[name="SistemaMotor"]').val(objetoFiltro.vehiculo.tipoMotor.nombre)
+			
+			                        $(listaComb).each(function(i,tg){
+			                            var checked1="",checked2="";
+			                            $(objetoFiltro.vehiculo.combustibleVehiculo).each(function(j,item){
+			                                if (tg.idcomb==item.idcomb) {
+			                                    checked1="checked";
+			                                }
+			                            })
+			                            if(checked1==""){
+			                                checked2="checked"
+			                            }
+			                            $('#js-comb').append(`
+			                                <div class="col-md-6" style="">
+			                                    <div class="fg-line">${tg.nombre}</div>
+			                                </div>
+			                                <div class="col-md-6">
+			                                    <span style="">SI</span> 
+			                                    <input type="checkbox" disabled="disabled" class="" ${checked1}>
+			                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			                                    <span style="">NO</span> 
+			                                    <input type="checkbox" disabled="disabled" class="" ${checked2}>
+			                                </div>
+			                            `)
+			                        })
+			                        
+			                    }
+			                });
+			            })
+			            $('#display').show()
+			        }) 
+		  	        
+			        
+	              	$('#formulario').data('formValidation').resetForm();
+                    $('#formulario')[0].reset();
+            		$('#modalAdicionar').modal('show');
+              	});
+  	        	
+  	        	
+          		$('.modificar').click(function(){
+          			$('#formularioModificar').data('formValidation').resetForm();
+            		$('#formularioModificar')[0].reset();
+              		$.post('../servicios_csk/obtener?idrecal='+$(this).data('id'), function(result) {
+  		            	if(result.status){
+  			    	        $('#modalModificar').modal('show');
+  							$('#formularioModificar').loadJSON(result.data);
+  		            	}else{
+  		            		mostrarMensaje('error','No se realizo con exito la Transaccion');
+  		            	}
+  			        }, 'json');
+          		});
+          		$('.eliminar').click(function(){ 
+          			$('#formularioEliminar').data('formValidation').resetForm();
+            		$('#formularioEliminar')[0].reset();
+              		$.post('../servicios_csk/obtener?idrecal='+$(this).data('id'), function(result) {
+  		            	if(result.status){
+  			    	        $('#modalEliminar').modal('show');
+  							$('#formularioEliminar').loadJSON(result.data);
+  							$('#rolLabel').html(result.data.nombre);
+  		            	}else{
+  		            		mostrarMensaje('error','No se realizo con exito la Transaccion');
+  		            	}
+  			        }, 'json');
+          		});
+          		
+          		$('button[data-toggle="tooltip"]').tooltip({animated: 'fade',placement: 'bottom',});
+
+  		        $('#filt-ben').on( 'keyup', function () {
+                    DTtable.search(this.value ).draw();
+                }) 
+  	        }
+        });
+        
+        
+        
+        $('#formulario').formValidation({
+        })
+        .on('success.form.fv', function(e){
+            e.preventDefault();
+            var $form = $(e.target);
+           
+           swal({   
+               title: "Seguro de registrar Orden de Servicio de Recalificacion de Cilindros y Reposicion de Kit?",   
+               text: "Usted registrara nueva Orden de Servicio",   
+               type: "warning",   
+               showCancelButton: true,   
+               confirmButtonColor: "#DD6B55",   
+               confirmButtonText: "Si, Continuar!",   
+               cancelButtonText: "No, Cancelar!",   
+               closeOnConfirm: false,   
+               closeOnCancel: false 
+               }, function(isConfirm){   
+                   if (isConfirm) {     
+                       $('#formulario').ajaxSubmit({
+                    	   data:{gestion:$('body').find('#select-gestion option:selected').text()},
+                           success:function(res){
+                               console.log('registrado',res)
+                               if(res.estado){
+                            	   $form.data('formValidation').resetForm();
+                                   $('#formulario')[0].reset();
+                                   $('#example').dataTable().fnDraw('page');
+                                   $('.modal').modal('hide')
+                                   
+                                   swal({
+                                       title:"Registrado",
+                                       text:"Se ha registrado orden de servicio exitosamente",
+                                       type:"success",
+                                       timer:500,   
+                                       showConfirmButton: false 
+                                   });
+                                   var idordservrecal=res.ordServ;
+                                   $("#frameReportes").attr("src",'RestOrdenRecalificacion/ImprimirOSRecalificacionReposicion?idordservrecal='+idordservrecal);
+                                   $("#reportes").modal('show'); 
+                               }
+                           }
+                       })
+
+                   } else {     
+                       // swal("Cancelled", "Your imaginary file is safe :)", "error");   
+                       swal({
+                           title:"Cancelado",
+                           text:"Se ha cancelado operacion",
+                           type:"error",
+                           timer:500,
+                           showCancelButton:false,
+                           showConfirmButton:false
+
+                       })
+                       $('#modalAdicionar').modal('hide');
+                   } 
+               });
+           
+        })
+
+        
+        
+        $('#formularioOrdenRecalificacionCilindro').formValidation({
+        }).on('success.form.fv', function(e){
+           e.preventDefault();
+           var $form = $(e.target);
+           swal({   
+               title: "Seguro de registrar Orden de Recalificacion de Cilindro?",   
+               text: "Usted registrara nueva Orden de recalificacion",   
+               type: "warning",   
+               showCancelButton: true,   
+               confirmButtonColor: "#DD6B55",   
+               confirmButtonText: "Si, Continuar!",   
+               cancelButtonText: "No, Cancelar!",   
+               closeOnConfirm: false,   
+               closeOnCancel: false 
+               }, function(isConfirm){   
+                   if (isConfirm) {     
+                       $('#formularioOrdenRecalificacionCilindro').ajaxSubmit({
+                    	   data:{gestion:$('body').find('#select-gestion option:selected').text()},
+                           success:function(res){
+                               console.log('registrado',res)
+                               if(res.estado){
+                            	   $('#formularioOrdenRecalificacionCilindro').data('formValidation').resetForm();
+//                             	   $form.data('formularioOrdenRecalificacionCilindro').resetForm();
+                                   $('#formularioOrdenRecalificacionCilindro')[0].reset();
+                                   $('#example').dataTable().fnDraw('page');
+                                   $('.modal').modal('hide')
+                                   
+                                   swal({
+                                       title:"Registrado",
+                                       text:"Se ha registrado orden de recalificacion de cilindro exitosamente",
+                                       type:"success",
+                                       timer:500,   
+                                       showConfirmButton: false 
+                                   });
+                                   var idordservrecal=$('#formularioOrdenRecalificacionCilindro').find('input[name="idordservrecal"]').val()
+                                   $("#frameReportes").attr("src",'RestOrdenRecalificacion/ImprimirOSRecalificacionCilindro?idordservrecal='+idordservrecal);
+                                   $("#reportes").modal('show'); 
+                               }
+                           }
+                       })
+
+                   } else {     
+                       // swal("Cancelled", "Your imaginary file is safe :)", "error");   
+                       swal({
+                           title:"Cancelado",
+                           text:"Se ha cancelado operacion",
+                           type:"error",
+                           timer:300,
+                           showCancelButton:false,
+                           showConfirmButton:false
+
+                       })
+                       $('#modalAdicionar').modal('hide');
+                   } 
+               });
+
+           
+
+        })
+        
+        
+        $('#formularioOrdenReposicionCilindro').formValidation({
+        }).on('success.form.fv', function(e){
+           e.preventDefault();
+           var $form = $(e.target);
+           swal({   
+               title: "Seguro de registrar Orden de Reposicion de Cilindro?",   
+               text: "Usted registrara nueva Orden de reposicion",   
+               type: "warning",   
+               showCancelButton: true,   
+               confirmButtonColor: "#DD6B55",   
+               confirmButtonText: "Si, Continuar!",   
+               cancelButtonText: "No, Cancelar!",   
+               closeOnConfirm: false,   
+               closeOnCancel: false 
+               }, function(isConfirm){   
+                   if (isConfirm) {     
+                       $('#formularioOrdenReposicionCilindro').ajaxSubmit({
+                    	   data:{gestion:$('body').find('#select-gestion option:selected').text()},
+                           success:function(res){
+                               console.log('registrado',res)
+                               if(res.estado){
+                            	   $('#formularioOrdenReposicionCilindro').data('formValidation').resetForm();
+//                             	   $form.data('formularioOrdenRecalificacionCilindro').resetForm();
+                                   $('#formularioOrdenReposicionCilindro')[0].reset();
+                                   $('#example').dataTable().fnDraw('page');
+                                   $('.modal').modal('hide')
+                                   
+                                   swal({
+                                       title:"Registrado",
+                                       text:"Se ha registrado orden de reposicion de cilindro exitosamente",
+                                       type:"success",
+                                       timer:500,   
+                                       showConfirmButton: false 
+                                   });
+                                   var idordservrecal=$('#formularioOrdenReposicionCilindro').find('input[name="idordservrecal"]').val()
+                                   $("#frameReportes").attr("src",'RestOrdenRecalificacion/ImprimirOSReposicionCilindro?idordservrecal='+idordservrecal);
+                                   $("#reportes").modal('show'); 
+                               }
+                           }
+                       })
+
+                   } else {     
+                       // swal("Cancelled", "Your imaginary file is safe :)", "error");   
+                       swal({
+                           title:"Cancelado",
+                           text:"Se ha cancelado operacion",
+                           type:"error",
+                           timer:300,
+                           showCancelButton:false,
+                           showConfirmButton:false
+
+                       })
+                       $('#modalAdicionar').modal('hide');
+                   } 
+               });
+
+           
+
+        })
+
+        
+
+		var idordservrecal;
+        function verOrdenServicio(a){
+        	idordservrecal=$(a).attr('accesskey');
+        	console.log('idordservrecal: ',idordservrecal)
+			
+        	var listaComb;
+			$.getJSON('RestServicios/VerOS',{idordservrecal:idordservrecal},function(datos){
+				console.log('data:',datos)
+			 	listaComb=datos[2]
+				$('#formularioVer').find('#numOrdServ').html(datos[0].numords)
+				$('#formularioVer').find('#fechaCreacion').html(datos[0].fechaords)
+				$('#formularioVer').find('#nombreTall').val(datos[0].taller.nombretall)
+				$('#formularioVer').find('#telefonoTaller').val(datos[1].listaTelefonosTaller)
+				$('#formularioVer').find('#direccionTaller').val(datos[0].taller.direccion)
+				$('#formularioVer').find('input[name="numsoltrec"]').val(datos[0].solicitud.numsoltrec)
+				$('#formularioVer').find('input[name="fechaSolt"]').val(datos[0].solicitud.fecha)
+				$('#formularioVer').find('#nombreCompleto').val(datos[0].solicitud.persona.razonsocial)
+				$('#formularioVer').find('.beneficiario-data').loadJSON(datos[0].solicitud.persona)
+				$('#formularioVer').find('#institucion').val(datos[0].solicitud.persona.beneficiario.institucion)
+				$('#formularioVer').find('#telefonoBeneficiario').val(datos[1].listaTelefonosBeneficiario)
+				
+	
+				$('#formularioVer').find('.vehiculo-data').loadJSON(datos[0].solicitud.vehiculo)
+				$('#formularioVer').find('#modeloVeh').val(datos[0].solicitud.vehiculo.modeloVehiculo.nombre)
+				$('#formularioVer').find('#marcaVeh').val(datos[0].solicitud.vehiculo.marcaVehiculo.nombre)
+				$('#formularioVer').find('#tipoVeh').val(datos[0].solicitud.vehiculo.tipoVehiculo.nombre)
+				$('#formularioVer').find('#tipoServ').val(datos[0].solicitud.vehiculo.tipoServicio.nombre)
+				$('#formularioVer').find('#sistemaMotor').val(datos[0].solicitud.vehiculo.tipoMotor.nombre)
+				$('#formularioVer').find('#numeroMotor').val(datos[0].solicitud.vehiculo.num_motor)
+				$('#formularioVer').find('#numeroChasis').val(datos[0].solicitud.vehiculo.num_chasis)
+	            
+	            $(listaComb).each(function(i,tg){
+	                var checked1="",checked2="";
+	                $(datos[0].solicitud.vehiculo.combustibleVehiculo).each(function(j,item){
+	                    if (tg.idcomb==item.idcomb) {
+	                        checked1="checked";
+	                    }
+	                })
+	                if(checked1==""){
+						checked2="checked"
+					}
+	                $('#formularioVer').find('#js-comb').append(`
+	                    <div class="col-md-6" style="">
+	                        <div class="fg-line">${tg.nombre}</div>
+	                    </div>
+	                    <div class="col-md-6">
+	                        <span style="">SI</span> 
+	                        <input type="checkbox" disabled="disabled" class="" ${checked1}>
+	                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                        <span style="">NO</span> 
+	                        <input type="checkbox" disabled="disabled" class="" ${checked2}>
+	                    </div>
+	                `)
+	            })
+			})
+			
+			
+			$('#modal-ver').modal('show');
+            $('#formularioVer').formValidation({
+            }).on('success.form.fv', function(e){
+               e.preventDefault();
+               imprimir();
+            })
+            function imprimir(){
+                $("#frameReportes").attr("src",'RestServicios/ImprimirOS?idordservrecal='+idordservrecal);
+                $("#reportes").modal('show'); 
+            }
+        	
+        }
+
+        
+        function ImprimirOrdenRecalificacionCilindroReposicionKit(a){
+        	idordservrecal=$(a).attr('accesskey');
+        	console.log('idordservrecal: ',idordservrecal) 
+            $("#frameReportes").attr("src",'RestOrdenRecalificacion/ImprimirOSRecalificacionReposicion?idordservrecal='+idordservrecal);
+            $("#reportes").modal('show'); 
+            
+        	
+        }
+        function ImprimirOrdenRecalificacionClindro(a){
+        	idordservrecal=$(a).attr('accesskey');
+        	console.log('idordservrecal: ',idordservrecal) 
+            $("#frameReportes").attr("src",'RestOrdenRecalificacion/ImprimirOSRecalificacionCilindro?idordservrecal='+idordservrecal);
+            $("#reportes").modal('show'); 
+            
+        	
+        }
+        
+        function ImprimirOrdenReposicionClindro(a){
+        	idordservrecal=$(a).attr('accesskey');
+        	console.log('idordservrecal: ',idordservrecal) 
+            $("#frameReportes").attr("src",'RestOrdenRecalificacion/ImprimirOSReposicionCilindro?idordservrecal='+idordservrecal);
+            $("#reportes").modal('show'); 
+        	
+        }
+        
+        
+        
+        
+        function CrearOrdenRecalificacion(a){
+        	idordservrecal=$(a).attr('accesskey');
+       	
+          	$('#formularioOrdenRecalificacionCilindro').data('formValidation').resetForm();
+            $('#formularioOrdenRecalificacionCilindro')[0].reset();
+        	
+	       var gestion=$('body').find('#select-gestion option:selected').text();
+	       $('#js-SeltTallerRecalificacion').val('').trigger('chosen:updated');
+            $.getJSON('RestOrdenRecalificacion/datosOrdenServicioRecalificacionCilindro?gestion='+gestion,function(datos){
+  	            console.log('datosOrdenServicioRecalificacion: ',datos)
+ 	                listaComb=datos[3]
+				//$('#js-numOrdServ').html(datos[0][0].numOrdServ);
+				//$('input[name="numOrdServ"]').val(datos[0][0].numOrdServ);
+ 	                $('#js-fecha').html(datos[0][0].fecha);
+ 	                $(datos[1]).each(function(index,item){
+ 	                    // console.log('tip: ',item)
+ 	                    $('#js-SeltTallerRecalificacion').append('<option value="'+item.idtall+'">'+item.nombretall+'</option>')
+ 	                })
+ 	                $('#js-SeltTallerRecalificacion').chosen()
+ 	        });
+        	
+        	
+          	var listaComb;
+			$.getJSON('RestOrdenRecalificacion/VerOSRecalificacionCilindro',{idordservrecal:idordservrecal},function(datos){
+				console.log('data:',datos)
+			 	listaComb=datos[2]
+				$('#formularioOrdenRecalificacionCilindro').find('input[name="idordservrecal"]').val(datos[0].idordservrecal);
+				$('#formularioOrdenRecalificacionCilindro').find('#numOrdServ').html(datos[0].numords)
+				$('#formularioOrdenRecalificacionCilindro').find('#fechaCreacion').html(datos[0].fechaords)
+				$('#formularioOrdenRecalificacionCilindro').find('#nombreTall').val(datos[0].tallerconversion.nombretall)
+				$('#formularioOrdenRecalificacionCilindro').find('#telefonoTaller').val(datos[1].listaTelefonosTallerConversion)
+				$('#formularioOrdenRecalificacionCilindro').find('#direccionTaller').val(datos[0].tallerconversion.direccion)
+				$('#formularioOrdenRecalificacionCilindro').find('input[name="numsoltrec"]').val(datos[0].solicitudreposicionrecalificacion.numsoltrec)
+				$('#formularioOrdenRecalificacionCilindro').find('input[name="fechaSolt"]').val(datos[0].solicitudreposicionrecalificacion.fechacreacion)
+				$('#formularioOrdenRecalificacionCilindro').find('#nombreCompleto').val(datos[0].solicitudreposicionrecalificacion.persona.razonsocial)
+				$('#formularioOrdenRecalificacionCilindro').find('.beneficiario-data').loadJSON(datos[0].solicitudreposicionrecalificacion.persona)
+				$('#formularioOrdenRecalificacionCilindro').find('#institucion').val(datos[0].solicitudreposicionrecalificacion.persona.beneficiario.institucion)
+				$('#formularioOrdenRecalificacionCilindro').find('#telefonoBeneficiario').val(datos[1].listaTelefonosBeneficiario)
+				
+	
+				$('#formularioOrdenRecalificacionCilindro').find('.vehiculo-data').loadJSON(datos[0].solicitudreposicionrecalificacion.vehiculo)
+				$('#formularioOrdenRecalificacionCilindro').find('#modeloVeh').val(datos[0].solicitudreposicionrecalificacion.vehiculo.modeloVehiculo.nombre)
+				$('#formularioOrdenRecalificacionCilindro').find('#marcaVeh').val(datos[0].solicitudreposicionrecalificacion.vehiculo.marcaVehiculo.nombre)
+				$('#formularioOrdenRecalificacionCilindro').find('#tipoVeh').val(datos[0].solicitudreposicionrecalificacion.vehiculo.tipoVehiculo.nombre)
+				$('#formularioOrdenRecalificacionCilindro').find('#tipoServ').val(datos[0].solicitudreposicionrecalificacion.vehiculo.tipoServicio.nombre)
+				$('#formularioOrdenRecalificacionCilindro').find('#sistemaMotor').val(datos[0].solicitudreposicionrecalificacion.vehiculo.tipoMotor.nombre)
+				$('#formularioOrdenRecalificacionCilindro').find('#numeroMotor').val(datos[0].solicitudreposicionrecalificacion.vehiculo.num_motor)
+				$('#formularioOrdenRecalificacionCilindro').find('#numeroChasis').val(datos[0].solicitudreposicionrecalificacion.vehiculo.num_chasis)
+	            
+	            $(listaComb).each(function(i,tg){
+	                var checked1="",checked2="";
+	                $(datos[0].solicitud.vehiculo.combustibleVehiculo).each(function(j,item){
+	                    if (tg.idcomb==item.idcomb) {
+	                        checked1="checked";
+	                    }
+	                })
+	                if(checked1==""){
+						checked2="checked"
+					}
+	                $('#formularioOrdenRecalificacionCilindro').find('#js-comb').append(`
+	                    <div class="col-md-6" style="">
+	                        <div class="fg-line">${tg.nombre}</div>
+	                    </div>
+	                    <div class="col-md-6">
+	                        <span style="">SI</span> 
+	                        <input type="checkbox" disabled="disabled" class="" ${checked1}>
+	                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                        <span style="">NO</span> 
+	                        <input type="checkbox" disabled="disabled" class="" ${checked2}>
+	                    </div>
+	                `)
+	            })
+			})
+			
+			
+			$('#modal-orden-recalificacion-cilindro').modal('show');
+
+        	
+        }
+        
+        
+        function CrearOrdenReposicionCilindro(a){
+        	idordservrecal=$(a).attr('accesskey');
+       	
+          	$('#formularioOrdenReposicionCilindro').data('formValidation').resetForm();
+            $('#formularioOrdenReposicionCilindro')[0].reset();
+        	
+	       var gestion=$('body').find('#select-gestion option:selected').text();
+
+	       
+        	
+//           	var listaComb;
+			$.getJSON('RestOrdenRecalificacion/VerOSReposicionCilindro',{idordservrecal:idordservrecal},function(datos){
+				console.log('dataReposicion:',datos)
+			 	listaComb=datos[2]
+				$('#formularioOrdenReposicionCilindro').find('input[name="idordservrecal"]').val(datos[0].idordservrecal);
+				$('#formularioOrdenReposicionCilindro').find('#numOrdServ').html(datos[0].numords)
+				$('#formularioOrdenReposicionCilindro').find('#fechaCreacion').html(datos[0].fechaords)
+				$('#formularioOrdenReposicionCilindro').find('#nombreTall').val(datos[0].tallerconversion.nombretall)
+				$('#formularioOrdenReposicionCilindro').find('#telefonoTaller').val(datos[1].listaTelefonosTallerConversion)
+				$('#formularioOrdenReposicionCilindro').find('#direccionTaller').val(datos[0].tallerconversion.direccion)
+				$('#formularioOrdenReposicionCilindro').find('input[name="numsoltrec"]').val(datos[0].solicitudreposicionrecalificacion.numsoltrec)
+				$('#formularioOrdenReposicionCilindro').find('input[name="fechaSolt"]').val(datos[0].solicitudreposicionrecalificacion.fechacreacion)
+				$('#formularioOrdenReposicionCilindro').find('#nombreCompleto').val(datos[0].solicitudreposicionrecalificacion.persona.razonsocial)
+				$('#formularioOrdenReposicionCilindro').find('.beneficiario-data').loadJSON(datos[0].solicitudreposicionrecalificacion.persona)
+				$('#formularioOrdenReposicionCilindro').find('#institucion').val(datos[0].solicitudreposicionrecalificacion.persona.beneficiario.institucion)
+				$('#formularioOrdenReposicionCilindro').find('#telefonoBeneficiario').val(datos[1].listaTelefonosBeneficiario)
+				
+	
+				$('#formularioOrdenReposicionCilindro').find('.vehiculo-data').loadJSON(datos[0].solicitudreposicionrecalificacion.vehiculo)
+				$('#formularioOrdenReposicionCilindro').find('#modeloVeh').val(datos[0].solicitudreposicionrecalificacion.vehiculo.modeloVehiculo.nombre)
+				$('#formularioOrdenReposicionCilindro').find('#marcaVeh').val(datos[0].solicitudreposicionrecalificacion.vehiculo.marcaVehiculo.nombre)
+				$('#formularioOrdenReposicionCilindro').find('#tipoVeh').val(datos[0].solicitudreposicionrecalificacion.vehiculo.tipoVehiculo.nombre)
+				$('#formularioOrdenReposicionCilindro').find('#tipoServ').val(datos[0].solicitudreposicionrecalificacion.vehiculo.tipoServicio.nombre)
+				$('#formularioOrdenReposicionCilindro').find('#sistemaMotor').val(datos[0].solicitudreposicionrecalificacion.vehiculo.tipoMotor.nombre)
+				$('#formularioOrdenReposicionCilindro').find('#numeroMotor').val(datos[0].solicitudreposicionrecalificacion.vehiculo.num_motor)
+				$('#formularioOrdenReposicionCilindro').find('#numeroChasis').val(datos[0].solicitudreposicionrecalificacion.vehiculo.num_chasis)
+	            
+				
+				
+// 				$.getJSON('RestOrdenRecalificacion/getTallerRecalificacion',{idtallrecal:datos[0].idtallrecal},function(datos){
+//                       console.log('respuestaTAllrecal: ',datos)
+//                       if(datos.tallerrecalificacion!=null){
+//                     	  $('#formularioOrdenReposicionCilindro').find('#nombreTallRecal').val(datos.tallerrecalificacion.nombretall)
+//                     	  $('#formularioOrdenReposicionCilindro').find('input[name="reponer_cil"]').removeAttr('disabled');
+//                       }else{
+//                     	  $('#formularioOrdenReposicionCilindro').find('#nombreTallRecal').val('Ninguno')
+//                     	  $('#formularioOrdenReposicionCilindro').find('input[name="reponer_cil"]').prop('disabled','disabled');
+//                       }
+                     
+//                   })
+				
+
+
+				
+				
+				if(datos[0].recal_cil==1){
+					$('#formularioOrdenReposicionCilindro').find('#recal_cil').val('Recalificado')
+				}else{
+					$('#formularioOrdenReposicionCilindro').find('#recal_cil').val('Sin Recalificacion')
+				}
+				
+				
+				
+				
+				
+			})
+			
+			
+			$('#modal-orden-reposicion-cilindro').modal('show');
+
+        	
+        }
+        
+
+        
+            // $(function () {
+
+        
+    // })
+        
+    </script>
+</body>
+</html>	

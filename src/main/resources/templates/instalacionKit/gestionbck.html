@@ -1,0 +1,3373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="ISO-8859-1">
+<title>Document</title>
+<link rel="stylesheet" href="../resources/css/buscador.css">
+<style>
+</style>
+</head>
+<body>
+
+
+	<form id="formulario" action="RestInstalacionKit/adicionar"
+		method="post" data-fv-excluded="disabled">
+		<div class="modal fade modal-extra" id="modalAdicionar" tabindex="-1"
+			role="dialog" data-backdrop="static" data-keyboard="false"
+			aria-hidden="true" style="display: none; padding-left: 0 !important;">
+			<div class="modal-dialog modal-lg" role="document" style="width: 95%">
+				<div class="modal-content">
+					<div class="card">
+						<div style="margin: 0 10px 0 10px">
+							<p>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</p>
+							<h4 style="margin-top: 0px;">
+								Nueva Ficha de Conversion</br> <small>Complete el formulario
+									por favor</small>
+							</h4>
+
+							<div class="row">
+								<div class="col-md-12">
+									<b style="">FECHA DE REGISTRO: </b><span id="js-fecha"></span>
+									<b style="margin-left: 15em;">GESTION: </b><span id="f_gestion"></span>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="row">
+										<div class="col-md-2"></div>
+										<div class="col-md-8">
+											<div class="fg-line div_busca" id=""
+												style="text-align: center !important;">
+												<b>Buscar por: Nro. de Orden Servicio / Solicitud /
+													Cédula </b><br>
+												<div class="form-group fg-float"
+													style="margin-bottom: 0 !important">
+													<input type="text" style="width: 100%; margin: auto;"
+														name="buscar_datos" id="js-busca"
+														class="form-control_filtro unput-sm"
+														placeholder="Buscar por Nro. Orden de Servicio | Nro. Solicitud | Cedula"
+														autocomplete="off" data-fv-notempty="true"
+														data-fv-message="Seleccionar porfavor">
+												</div>
+												<input type="hidden" name="numRecep"> <input
+													type="hidden" name="idordserv">
+												<div id="display" class="lista_ben z-depth-3"
+													style="width: 95%; border-radius: 2px; margin: auto; padding: 4px; border: 1px solid rgb(212, 212, 212); display: block;">
+													<table width="100%"
+														class="table table-hover table-vmiddle  table-striped nowrap"
+														id="js_table_filtro">
+														<thead>
+															<tr>
+																<th width=""># OrdServ</th>
+																<th width=""># Solt</th>
+																<th width="">Placa</th>
+																<th>Beneficiario</th>
+																<th>Cedula</th>
+																<th>Taller</th>
+															</tr>
+														</thead>
+														<tbody>
+
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-2"></div>
+									</div>
+
+
+									<fieldset>
+										<legend style="margin-bottom: 0px !important">
+											<b>DATOS GENERALES</b>
+										</legend>
+
+										<div class="row" id="js_DatosBasicos">
+											<div class="col-md-6">
+												<div class="form-group fg-float">
+													<span class="fg-label">Nro. Orden Servicio</span>
+													<div class="fg-line">
+														<input placeholder="Nro de Orden Servicio" type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="numOrdServ">
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group fg-float">
+													<span class="fg-label">Nro. Solicitud</span>
+													<div class="fg-line">
+														<input placeholder="Nro de Solicitud.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="numSolt">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Beneficiario</span>
+													<div class="fg-line">
+														<input placeholder="Beneficiario.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="beneficiario">
+													</div>
+
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Cedula</span>
+													<div class="fg-line">
+														<input placeholder="Cedula de identidad.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="ci">
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</fieldset>
+									<fieldset>
+										<legend style="margin-bottom: 0px !important">
+											<b>VEHICULO</b>
+										</legend>
+										<div class="row" id="js_Vehiculo">
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Placa</span>
+													<div class="fg-line">
+														<input placeholder="Placa.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="placa">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Clase</span>
+													<div class="fg-line">
+														<input placeholder="clase Vehiculo.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="tipoVeh">
+													</div>
+												</div>
+											</div>
+											
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Marca</span>
+													<div class="fg-line">
+														<input placeholder="Marca.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="marca">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Tipo</span>
+													<div class="fg-line">
+														<input placeholder="Tipo.." type="text" value=""
+															class="form-control mcss_input" disabled="disabled"
+															name="tipoveh">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Modelo</span>
+													<div class="fg-line">
+														<input placeholder="Modelo.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="modelo">
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Tipo Servicio</span>
+													<div class="fg-line">
+														<input placeholder="Tipo Servicio.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="tipServ">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Sistema Motor</span>
+													<div class="fg-line">
+														<input placeholder="Sistema Motor.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="SistemaMotor">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Nro. Motor</span>
+													<div class="fg-line">
+														<input placeholder="Nro. Motor.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="num_motor">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Nro. Chasis</span>
+													<div class="fg-line">
+														<input placeholder="Nro. Chasis.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="num_chasis">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Tgta. Prioridad</span>
+													<div class="fg-line">
+														<input placeholder="Tgta. Prioridad.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="tjeta_prioridad">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Cilindrada</span>
+													<div class="fg-line">
+														<input placeholder="Cilindrada.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="cilindrada">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Nro. Pistones</span>
+													<div class="fg-line">
+														<input placeholder="Nro. Pistones.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="numPistones">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group fg-float">
+													<span class="fg-label">Serie Motor</span>
+													<div class="fg-line">
+														<input placeholder="Serie Motor.." type="text"
+															class="form-control mcss_input" name="serieMotor"
+															maxlength='15'
+															data-fv-stringlength-message='Maximo 15 caracteres'
+															onkeyup="MayusSerie(this);">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Desintalacion KIT GLP</span>
+													<div class="radio-gruop">
+														<label class="radio-inline"> <input type="radio"
+															style="margin-top: 1px;" id="inlineRadio1" value="1"
+															name="desintalacionKitGlp" maxlength='2'
+															data-fv-stringlength-message='' data-fv-notempty="true"
+															data-fv-message="Seleccione Kit"> SI
+														</label> <label class="radio-inline"> <input type="radio"
+															style="margin-top: 1px;" id="inlineRadio2" value="0"
+															name="desintalacionKitGlp" maxlength='2'
+															data-fv-stringlength-message='' data-fv-notempty="true"
+															data-fv-message="Seleccione Kit"> NO
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</fieldset>
+
+
+									<fieldset>
+										<legend style="margin-bottom: 0px !important">
+											<b>DATOS DE INSTALACION</b>
+										</legend>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label"><b>Fecha Conversión (ANH)</b></span>
+													<div class="fg-line">
+														<input style="height: 25px;" type="date"
+															class="form-control" name="fechaConversion"
+															data-fv-notempty="true"
+															data-fv-message="Requiere Fecha Conversion">
+													</div>
+
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label"><b>Código BSISA</b></span>
+													<div class="form-group">
+														<div class="input-group">
+															<input name="codigoBSISA" type="text"
+																class="form-control mcss_input" placeholder="Sucursal"
+																data-fv-notempty="true"
+																data-fv-message="Requiere Codigo BSISA" maxlength="11"
+																data-fv-integer-message="maximo 13 caracteres"
+																autocomplete="off"> <span
+																class="input-group-addon">-</span> <input name=""
+																id="Bsisa_Num" type="text"
+																class="form-control mcss_input" placeholder="Numero"
+																maxlength='1' minlength="0"
+																data-fv-stringlength-message='Requiere solo un caracter'
+																autocomplete="off" onkeyup="MayusSerie(this);">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<h4 style="text-align: center; padding-top: 0px !important;">
+											<b><ins>REDUCTOR</ins></b>
+										</h4>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label"><b>Marca Kit</b></span>
+													<div class="form-group">
+														<div class="fg-line">
+															<select style="height: 25px; font-size: 10px !important"
+																name="idmarcred" id="js-SelReduc" class="form-control"
+																data-fv-notempty="true"
+																data-fv-message="Requiere Marca Kit">
+																<option value="">Seleccione Marca Kit</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label"><b>Serie Kit</b></span>
+													<div class="fg-line">
+														<input type="text" class="form-control mcss_input"
+															name="serieRegulador" data-fv-notempty="true"
+															data-fv-message="Requiere Serie Kit" maxlength="100"
+															data-fv-integer-message="maximo 100 caracteres"
+															autocomplete="off" onkeyup="MayusSerie(this);"
+															placeholder="Ingrese Serie Regulador">
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<div class="row">
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label"><b>Fecha Certificado</b></span>
+													<div class="fg-line">
+														<input style="height: 25px;" type="date"
+															class="form-control" name="fechaCertificado"
+															data-fv-notempty="true"
+															data-fv-message="Requiere Fecha Certificado">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label"><b>Código Certificado
+															(Nro. Ibmetro)</b></span>
+													<div class="fg-line">
+														<input type="text" class="form-control mcss_input"
+															name="certificadoKit" data-fv-notempty="true"
+															data-fv-message="Requiere Codigo Certificado"
+															maxlength="100"
+															data-fv-integer-message="maximo 100 caracteres"
+															autocomplete="off"
+															placeholder="Ingrese Certificado Regulador"
+															onkeyup="MayusSerie(this);">
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<h4 style="text-align: center;">
+											<b>------------------ CILINDROS ------------------</b>
+										</h4>
+										<div class="row">
+											<div class="col-md-6">
+
+												<div class="form-group">
+													<label for="marcaCilindro">Marca Cilindro</label> <select
+														data-placeholder="n" name=""
+														class="form-control fg-input sel-opcv dt-veh SelCil"
+														id="js-SelCil">
+														<option value="" selected="selected">Seleccione
+															Marca Cilindro</option>
+													</select>
+												</div>
+
+
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label for="Serie">Serie Cilindro</label> <input
+														id="js_serie_cil" type="text" class="form-control" name=""
+														placeholder="Serie" maxlength="100"
+														onkeyup="MayusSerie(this);">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label for="marcaCilindro">Capacidad Cilindro</label> <select
+														data-placeholder="n" name=""
+														class="form-control fg-input sel-opcv dt-veh capCil"
+														id="js-capCil">
+														<option value="" selected="selected">Seleccione
+															Capacidad Cilindro</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label for="Fecha">Fecha Fabricación </label> <input
+														id="js_fecha_cil" style="height: 25px;" type="date"
+														class="form-control" name=""
+														placeholder="fecha de Fabricación">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label"><b>Nro. Ibmetro Cilindro</b></span>
+													<input id="js_nroinmetro_cil" type="text"
+														class="form-control" name="" placeholder="nro inmetro"
+														maxlength="100" onkeyup="MayusSerie(this);">
+
+												</div>
+											</div>
+											<div class="col-md-6">
+
+
+												<div class="form-group">
+													<label for="marcaCilindro">Marca de Valvula de
+														Cilindro</label> <select data-placeholder="n" name=""
+														class="form-control fg-input sel-opcv dt-veh valCil"
+														id="js_marcavalvula_cil">
+														<option value="" selected="selected">Seleccione
+															válvula Cilindro</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label"><b>Nro. Serie de Valvula
+															de Cilindro</b></span> <input id="js_serievalvula_cil" type="text"
+														class="form-control" name=""
+														placeholder="nro serie de valvula" maxlength="100"
+														onkeyup="MayusSerie(this);">
+
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+
+													<button type="button" class="btn btn-success btn-sm"
+														id="btn_agregar_cil">
+														<i class="fa fa-plus"></i> Agregar
+													</button>
+												</div>
+											</div>
+
+
+										</div>
+										<div class="row">
+											<div class="col-md-12" id="table-cilindros">
+												<h4 style="text-align: center; padding-top: 0px !important;">
+													<b><ins>LISTA CILINDROS INSTALADOS</ins></b>
+												</h4>
+												<table class="table table-striped" id="lista_cilindros">
+													<tr>
+														<th>Marca</th>
+														<th>Nro. Serie</th>
+														<th>Capacidad</th>
+														<th>Fecha</th>
+														<th>Nro. Ibmetro</th>
+														<th>Marca Válvula</th>
+														<th>Nro. Serie Válvula</th>
+														<th>Acciones</th>
+													</tr>
+												</table>
+											</div>
+										</div>
+									</fieldset>
+								</div>
+								<div class="col-md-6">
+									<h4 style="text-align: center; padding-top: 0px !important;">
+										<b><ins>IMPLEMENTOS KIT</ins></b>
+									</h4>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Cuna Cilindro</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<div class="radio-gruop">
+															<label class="radio-inline"> <input type="radio"
+																style="margin-top: 1px;" id="inlineRadio1" value="1"
+																name="cunacilindro" maxlength='2'
+																data-fv-stringlength-message='' data-fv-notempty="true"
+																data-fv-message="Seleccione cunacilindro"> SI
+															</label> <label class="radio-inline"> <input type="radio"
+																style="margin-top: 1px;" id="inlineRadio2" value="0"
+																name="cunacilindro" maxlength='2'
+																data-fv-stringlength-message='' data-fv-notempty="true"
+																data-fv-message="Seleccione cunacilindro"> NO
+															</label>
+														</div>
+													</div>
+												</div>
+
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Cañería de Alta
+															Presión</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarccanieria" id="js-idmarccanieria"
+																	class="form-control css-idmarccanieria css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Electroválvula de
+															Gasolína</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcelecgaso" id="js-idmarcelecgaso"
+																	class="form-control css-idmarcelecgaso css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Electroválvula de Gas</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcelecgas" id="js-idmarcelecgas"
+																	class="form-control css-idmarcelecgas css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Dosificador/Mezclador</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<div class="radio-gruop">
+															<label class="radio-inline"> <input type="radio"
+																style="margin-top: 1px;" id="inlineRadio1" value="1"
+																name="dosificadorsino" maxlength='2'
+																data-fv-stringlength-message='' data-fv-notempty="true"
+																data-fv-message="Seleccione cunacilindro"> SI
+															</label> <label class="radio-inline"> <input type="radio"
+																style="margin-top: 1px;" id="inlineRadio2" value="0"
+																name="dosificadorsino" maxlength='2'
+																data-fv-stringlength-message='' data-fv-notempty="true"
+																data-fv-message="Seleccione cunacilindro"> NO
+															</label>
+														</div>
+													</div>
+												</div>
+
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Conmutador</b></span>
+												</div>
+												<div class="panel-body">
+
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarconm" id="js-idmarconm"
+																	class="form-control css-idmarconm css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Sistema de Venteo</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+
+														<div class="radio-gruop">
+															<label class="radio-inline"> <input type="radio"
+																style="margin-top: 1px;" id="inlineRadio1" value="1"
+																name="sistventeosino" maxlength='2'
+																data-fv-stringlength-message='' data-fv-notempty="true"
+																data-fv-message="Seleccione cunacilindro"> SI
+															</label> <label class="radio-inline"> <input type="radio"
+																style="margin-top: 1px;" id="inlineRadio2" value="0"
+																name="sistventeosino" maxlength='2'
+																data-fv-stringlength-message='' data-fv-notempty="true"
+																data-fv-message="Seleccione cunacilindro"> NO
+															</label>
+														</div>
+
+
+													</div>
+												</div>
+
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Válvula de carga
+															interna</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcvalcargint" id="js-idmarcvalcargint"
+																	class="form-control css-idmarcvalcargint css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Válvula de carga
+															Externa</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcvalcargext" id="js-idmarcvalcargext"
+																	class="form-control css-idmarcvalcargext css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Manguera de Gas</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcmangueragas" id="js-idmarcmangueragas"
+																	class="form-control css-idmarcmangueragas css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Manguera de Agua</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcmangueraagua" id="js-idmarcmangueraagua"
+																	class="form-control css-idmarcmangueraagua css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Emulador</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcemu" id="js-idmarcemu"
+																	class="form-control css-idmarcemu css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Manómetro</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcmano" id="js-idmarcmano"
+																	class="form-control css-idmarcmano css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Memória</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcmem" id="js-idmarcmem"
+																	class="form-control css-idmarcmem css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<span class="fg-label"><b>Serie</b></span>
+														<div class="fg-line">
+															<input type="text" class="form-control mcss_input"
+																name="memoriaserie" data-fv-notempty="true"
+																data-fv-message="Complete el campo porfavor"
+																autocomplete="off" placeholder="Ingresar.."
+																onkeyup="MayusSerie(this);">
+														</div>
+
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Sensor Map</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcsensormap" id="js-idmarcsensormap"
+																	class="form-control css-idmarcsensormap css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<span class="fg-label"><b>Serie</b></span>
+														<div class="fg-line">
+															<input type="text" class="form-control mcss_input"
+																name="sensormapserie" data-fv-notempty="true"
+																data-fv-message="Complete el campo porfavor"
+																autocomplete="off" placeholder="Ingresar.."
+																onkeyup="MayusSerie(this);">
+														</div>
+
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Manguera de Vacio</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcmangueravacio" id="js-idmarcmangueravacio"
+																	class="form-control css-idmarcmangueravacio css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+													
+
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Filtro de Gas</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcfiltrogas" id="js-idmarcfiltrogas"
+																	class="form-control css-idmarcmano css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Rampla de Inyectores</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcrampla" id="js-idmarcrampla"
+																	class="form-control css-idmarcmano css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<span class="fg-label"><b>Nro. de Inyectores</b></span>
+														<div class="fg-line">
+															<input type="number" class="form-control mcss_input"
+																name="ramplainyectoresnro" data-fv-notempty="true"
+																data-fv-message="Complete el campo porfavor"
+																autocomplete="off" placeholder="Ingresar.."
+																onkeyup="MayusSerie(this);">
+														</div>
+
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="col-md-3">
+										<div class="form-group">
+											<span class="fg-label"><b>1ra Med. % CO/Vol.</b></span>
+											<div class="fg-line">
+												<input type="number" step=".1" class="form-control mcss_input"
+													name="primeramedicion" data-fv-notempty="true"
+													data-fv-message="Complete el campo porfavor"
+													autocomplete="off" placeholder="Ingresar..">
+											</div>
+
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<span class="fg-label"><b>2da Med. % CO/Vol.</b></span>
+											<div class="fg-line">
+												<input type="number"  step=".1" class="form-control mcss_input"
+													name="segundamedicion" data-fv-notempty="true"
+													data-fv-message="Complete el campo porfavor"
+													autocomplete="off" placeholder="Ingresar..">
+											</div>
+
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label"><b>Conforme a resultados
+													¿Cumple Estandar?</b></span>
+											<div class="radio-gruop">
+												<label class="radio-inline"> <input type="radio"
+													style="margin-top: 1px;" id="inlineRadio1" value="1"
+													name="conformeestandasino" maxlength='2'
+													data-fv-stringlength-message='' data-fv-notempty="true"
+													data-fv-message="Seleccione cunacilindro"> SI
+												</label> <label class="radio-inline"> <input type="radio"
+													style="margin-top: 1px;" id="inlineRadio2" value="0"
+													name="conformeestandasino" maxlength='2'
+													data-fv-stringlength-message='' data-fv-notempty="true"
+													data-fv-message="Seleccione cunacilindro"> NO
+												</label>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-12">
+										<div class="form-group">
+
+											<span class="fg-label"><b>Observaciones</b></span>
+											<textarea class="form-control fg-input" id="text-desc"
+												name="observacioneskit">                                    
+		                                   </textarea>
+
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="submit" id="btn_guardar_nuevo"
+							class="btn btn-primary waves-effect">Guardar</button>
+						<button type="button" class="btn btn-danger waves-effect"
+							data-dismiss="modal">Cancelar</button>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+
+
+	</form>
+
+	<form id="formularioModificar" action="RestInstalacionKit/modificar"
+		method="post" data-fv-excluded="disabled">
+		<div class="modal fade modal-extra" id="modalModificar" tabindex="-1"
+			role="dialog" data-backdrop="static" data-keyboard="false"
+			aria-hidden="true" style="display: none; padding-left: 0 !important;">
+			<div class="modal-dialog modal-lg" role="document" style="width: 95%">
+				<div class="modal-content">
+					<div class="card">
+						<div style="margin: 0 10px 0 10px">
+							<p>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</p>
+							<h4 style="margin-top: 0px;">
+								Modificar datos de Conversion</br> <small>Complete el
+									formulario por favor</small>
+							</h4>
+
+							<div class="row">
+								<div class="col-md-12">
+									<b style="">FECHA DE REGISTRO: </b><span id="js-fecha"></span>
+									<b style="margin-left: 15em;">GESTION: </b><span
+										id="f_gestion_mod"></span>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="modal-body">
+							<input type="hidden" name="idregistroKit" id="idregistroKit" />
+							<input type="hidden" name="idordserv" id="idordserv" />
+							<div class="row">
+								<div class="col-md-6">
+									<fieldset>
+										<legend style="margin-bottom: 0px !important">
+											<b>DATOS GENERALES</b>
+										</legend>
+
+										<div class="row" id="js_DatosBasicos">
+											<div class="col-md-6">
+												<div class="form-group fg-float">
+													<span class="fg-label">Nro. Orden Servicio</span>
+													<div class="fg-line">
+														<input placeholder="Nro de Orden Servicio" type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="numOrdServ">
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group fg-float">
+													<span class="fg-label">Nro. Solicitud</span>
+													<div class="fg-line">
+														<input placeholder="Nro de Solicitud.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="numSolt">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Beneficiario</span>
+													<div class="fg-line">
+														<input placeholder="Beneficiario.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="beneficiario">
+													</div>
+
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Cedula</span>
+													<div class="fg-line">
+														<input placeholder="Cedula de identidad.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="ci">
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</fieldset>
+									<fieldset>
+										<legend style="margin-bottom: 0px !important">
+											<b>VEHICULO</b>
+										</legend>
+										<div class="row" id="js_Vehiculo">
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Placa</span>
+													<div class="fg-line">
+														<input placeholder="Placa.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="placa">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Clase</span>
+													<div class="fg-line">
+														<input placeholder="clase Vehiculo.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="tipoVeh">
+													</div>
+												</div>
+											</div>
+											
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Marca</span>
+													<div class="fg-line">
+														<input placeholder="Marca.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="marca">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Tipo</span>
+													<div class="fg-line">
+														<input placeholder="Tipo.." type="text" value=""
+															class="form-control mcss_input" disabled="disabled"
+															name="tipoveh">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Modelo</span>
+													<div class="fg-line">
+														<input placeholder="Modelo.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="modelo">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Tipo Servicio</span>
+													<div class="fg-line">
+														<input placeholder="Tipo Servicio.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="tipServ">
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Sistema Motor</span>
+													<div class="fg-line">
+														<input placeholder="Sistema Motor.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="SistemaMotor">
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Nro. Motor</span>
+													<div class="fg-line">
+														<input placeholder="Nro. Motor.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="num_motor">
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Nro. Chasis</span>
+													<div class="fg-line">
+														<input placeholder="Nro. Chasis.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="num_chasis">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Tgta. Prioridad</span>
+													<div class="fg-line">
+														<input placeholder="Tgta. Prioridad.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="tjeta_prioridad">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Cilindrada</span>
+													<div class="fg-line">
+														<input placeholder="Cilindrada.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="cilindrada">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label">Nro. Pistones</span>
+													<div class="fg-line">
+														<input placeholder="Nro. Pistones.." type="text"
+															class="form-control mcss_input" disabled="disabled"
+															name="numPistones">
+													</div>
+												</div>
+											</div>
+											<div class="datos-Instalacion1">
+												<div class="col-md-6">
+													<div class="form-group fg-float">
+														<span class="fg-label">Serie Motor</span>
+														<div class="fg-line">
+															<input placeholder="Serie Motor.." type="text"
+																class="form-control mcss_input" name="numseriemotor"
+																maxlength='15'
+																data-fv-stringlength-message='Maximo 15 caracteres'
+																onkeyup="MayusSerie(this);">
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<span class="fg-label">Desintalacion KIT GLP</span>
+														<div class="radio-gruop">
+															<label class="radio-inline"> <input type="radio"
+																style="margin-top: 1px;" id="inlineRadio1" value="1"
+																name="desinstaladokitglpsino" maxlength='2'
+																data-fv-stringlength-message='' data-fv-notempty="true"
+																data-fv-message="Seleccione Kit"> SI
+															</label> <label class="radio-inline"> <input type="radio"
+																style="margin-top: 1px;" id="inlineRadio2" value="0"
+																name="desinstaladokitglpsino" maxlength='2'
+																data-fv-stringlength-message='' data-fv-notempty="true"
+																data-fv-message="Seleccione Kit"> NO
+															</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</fieldset>
+									<fieldset>
+										<legend style="margin-bottom: 0px !important">
+											<b>DATOS DE INSTALACION</b>
+										</legend>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label"><b>Fecha Conversion (ANH)</b></span>
+													<div class="fg-line">
+														<input style="height: 25px;" type="date"
+															class="form-control" name="fechaconversion"
+															data-fv-notempty="true"
+															data-fv-message="Requiere Fecha Conversion">
+													</div>
+
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label"><b>Codigo BSISA</b></span>
+													<div class="form-group">
+														<div class="input-group">
+															<input name="codigobsisa"  type="text"
+																class="form-control mcss_input" placeholder="código"
+																data-fv-notempty="true"
+																data-fv-message="Requiere Codigo BSISA" maxlength="11"
+																data-fv-integer-message="maximo 13 caracteres"
+																autocomplete="off"> <span
+																class="input-group-addon">-</span> 
+																
+																<input name=""
+																id="Bsisa_Num" type="text"
+																class="form-control mcss_input" placeholder="dígito"
+																maxlength='1' minlength="0"
+																data-fv-stringlength-message='Requiere solo un caracter'
+																autocomplete="off" onkeyup="MayusSerie(this);">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<h4 style="text-align: center;">
+											<b><ins>KIT GNV</ins></b>
+										</h4>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label"><b>Marca Kit</b></span>
+													<div class="form-group">
+														<div class="fg-line">
+															<select style="height: 25px; font-size: 10px !important"
+																name="idmarcred" id="js-SelReduc" class="form-control"
+																data-fv-notempty="true"
+																data-fv-message="Requiere Marca Kit">
+																<option value="">Seleccione Marca Kit</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label"><b>Serie Kit</b></span>
+													<div class="fg-line">
+														<input type="text" class="form-control mcss_input"
+															name="numserieregulador" data-fv-notempty="true"
+															data-fv-message="Requiere Serie Kit" maxlength="100"
+															data-fv-integer-message="maximo 25 caracteres"
+															autocomplete="off" onkeyup="MayusSerie(this);"
+															placeholder="Ingrese Serie Regulador">
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<div class="row">
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label"><b>Fecha Certificado</b></span>
+													<div class="fg-line">
+														<input style="height: 25px;" type="date"
+															class="form-control" name="fechacertificado"
+															data-fv-notempty="true"
+															data-fv-message="Requiere Fecha Certificado">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label"><b>Codigo Certificado
+															(Nro. Ibmetro)</b></span>
+													<div class="fg-line">
+														<input type="text" class="form-control mcss_input"
+															name="certificadokit" data-fv-notempty="true"
+															data-fv-message="Requiere Codigo Certificado"
+															maxlength="40"
+															data-fv-integer-message="maximo 40 caracteres"
+															autocomplete="off"
+															placeholder="Ingrese Certificado Regulador"
+															onkeyup="MayusSerie(this);">
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<h5 style="text-align: center;">
+											<b>------------------ OPCIONES DE CILINDRO
+												------------------</b>
+										</h5>
+										<div class="row">
+											<div class="col-md-6">
+
+												<div class="form-group">
+													<label for="marcaCilindro">Marca Cilindro</label> <select
+														data-placeholder="n" name=""
+														class="form-control fg-input sel-opcv dt-veh SelCil"
+														id="js-SelCil">
+														<option value="" selected="selected">Seleccione
+															Marca Cilindro</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label for="Serie">Serie Cilindro</label> <input
+														id="js_serie_cil" type="text" class="form-control" name=""
+														placeholder="Serie" maxlength="8"
+														onkeyup="MayusSerie(this);">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label for="marcaCilindro">Capacidad Cilindro</label> <select
+														data-placeholder="n" name=""
+														class="form-control fg-input sel-opcv dt-veh capCil"
+														id="js-capCil">
+														<option value="" selected="selected">Seleccione
+															Capacidad Cilindro</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label for="Fecha">Fecha Cilindro</label> <input
+														id="js_fecha_cil" style="height: 25px;" type="date"
+														class="form-control" name=""
+														placeholder="fecha de Fabricación">
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label"><b>Nro. Ibmetro Cilindro</b></span>
+													<input id="js_nroinmetro_cil" type="text"
+														class="form-control" name="" placeholder="nro inmetro"
+														maxlength="100" onkeyup="MayusSerie(this);">
+
+												</div>
+											</div>
+											<div class="col-md-6">
+
+
+												<div class="form-group">
+													<label for="marcaCilindro">Marca de Valvula de
+														Cilindro</label> <select data-placeholder="n" name=""
+														class="form-control fg-input sel-opcv dt-veh valCil"
+														id="js_marcavalvula_cil">
+														<option value="" selected="selected">Seleccione
+															válvula Cilindro</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span class="fg-label"><b>Nro. Serie de Valvula
+															de Cilindro</b></span> <input id="js_serievalvula_cil" type="text"
+														class="form-control" name=""
+														placeholder="nro serie de valvula" maxlength="100"
+														onkeyup="MayusSerie(this);">
+
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+
+													<button type="button" class="btn btn-success btn-sm"
+														id="btn_agregar_cil">
+														<i class="fa fa-plus"></i> Agregar
+													</button>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-12" id="table-cilindros">
+											<h4 style="text-align: center;">
+												<b><ins>LISTA CILINDROS INSTALADOS</ins></b>
+											</h4>
+											<table class="table table-striped" id="lista_cilindros">
+												<tr>
+													<th>Marca</th>
+													<th>Nro. Serie</th>
+													<th>Capacidad</th>
+													<th>Fecha</th>
+													<th>Nro. Ibmetro</th>
+													<th>Marca Válvula</th>
+													<th>Nro. Serie Válvula</th>
+													<th>Acciones</th>
+												</tr>
+											</table>
+										</div>
+									</fieldset>
+
+								</div>
+								<div class="col-md-6" id="js-implementoskit">
+									<h4 style="text-align: center; padding-top: 0px !important;">
+										<b><ins>IMPLEMENTOS KIT</ins></b>
+									</h4>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Cuna Cilindro</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<div class="radio-gruop">
+															<label class="radio-inline"> <input type="radio"
+																style="margin-top: 1px;" id="inlineRadio1" value="1"
+																name="cunacilindro" maxlength='2'
+																data-fv-stringlength-message='' data-fv-notempty="true"
+																data-fv-message="Seleccione cunacilindro"> SI
+															</label> <label class="radio-inline"> <input type="radio"
+																style="margin-top: 1px;" id="inlineRadio2" value="0"
+																name="cunacilindro" maxlength='2'
+																data-fv-stringlength-message='' data-fv-notempty="true"
+																data-fv-message="Seleccione cunacilindro"> NO
+															</label>
+														</div>
+													</div>
+												</div>
+
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Cañería de Alta
+															Presión</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarccanieria" id="js-idmarccanieria"
+																	class="form-control css-idmarccanieria css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Electroválvula de
+															Gasolína</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcelecgaso" id="js-idmarcelecgaso"
+																	class="form-control css-idmarcelecgaso css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Electroválvula de Gas</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcelecgas" id="js-idmarcelecgas"
+																	class="form-control css-idmarcelecgas css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Dosificador/Mezclador</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<div class="radio-gruop">
+															<label class="radio-inline"> <input type="radio"
+																style="margin-top: 1px;" id="inlineRadio1" value="1"
+																name="dosificadorsino" maxlength='2'
+																data-fv-stringlength-message='' data-fv-notempty="true"
+																data-fv-message="Seleccione cunacilindro"> SI
+															</label> <label class="radio-inline"> <input type="radio"
+																style="margin-top: 1px;" id="inlineRadio2" value="0"
+																name="dosificadorsino" maxlength='2'
+																data-fv-stringlength-message='' data-fv-notempty="true"
+																data-fv-message="Seleccione cunacilindro"> NO
+															</label>
+														</div>
+													</div>
+												</div>
+
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Conmutador</b></span>
+												</div>
+												<div class="panel-body">
+
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarconm" id="js-idmarconm"
+																	class="form-control css-idmarconm css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Sistema de Venteo</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+
+														<div class="radio-gruop">
+															<label class="radio-inline"> <input type="radio"
+																style="margin-top: 1px;" id="inlineRadio1" value="1"
+																name="sistventeosino" maxlength='2'
+																data-fv-stringlength-message='' data-fv-notempty="true"
+																data-fv-message="Seleccione cunacilindro"> SI
+															</label> <label class="radio-inline"> <input type="radio"
+																style="margin-top: 1px;" id="inlineRadio2" value="0"
+																name="sistventeosino" maxlength='2'
+																data-fv-stringlength-message='' data-fv-notempty="true"
+																data-fv-message="Seleccione cunacilindro"> NO
+															</label>
+														</div>
+
+
+													</div>
+												</div>
+
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Válvula de carga
+															interna</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcvalcargint" id="js-idmarcvalcargint"
+																	class="form-control css-idmarcvalcargint css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Válvula de carga
+															Externa</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcvalcargext" id="js-idmarcvalcargext"
+																	class="form-control css-idmarcvalcargext css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Manguera de Gas</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcmangueragas" id="js-idmarcmangueragas"
+																	class="form-control css-idmarcmangueragas css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Manguera de Agua</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcmangueraagua" id="js-idmarcmangueraagua"
+																	class="form-control css-idmarcmangueraagua css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Emulador</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcemu" id="js-idmarcemu"
+																	class="form-control css-idmarcemu css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Manómetro</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcmano" id="js-idmarcmano"
+																	class="form-control css-idmarcmano css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Memória</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcmem" id="js-idmarcmem"
+																	class="form-control css-idmarcmem css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<span class="fg-label"><b>Serie</b></span>
+														<div class="fg-line">
+															<input type="text" class="form-control mcss_input"
+																name="memoriaserie" data-fv-notempty="true"
+																data-fv-message="Complete el campo porfavor"
+																autocomplete="off" placeholder="Ingresar.."
+																onkeyup="MayusSerie(this);">
+														</div>
+
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Sensor Map</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcsensormap" id="js-idmarcsensormap"
+																	class="form-control css-idmarcsensormap css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<span class="fg-label"><b>Serie</b></span>
+														<div class="fg-line">
+															<input type="text" class="form-control mcss_input"
+																name="sensormapserie" data-fv-notempty="true"
+																data-fv-message="Complete el campo porfavor"
+																autocomplete="off" placeholder="Ingresar.."
+																onkeyup="MayusSerie(this);">
+														</div>
+
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Manguera de Vacio</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcmangueravacio" id="js-idmarcmangueravacio"
+																	class="form-control css-idmarcmangueravacio css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+													
+
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Filtro de Gas</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcfiltrogas" id="js-idmarcfiltrogas"
+																	class="form-control css-idmarcmano css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<span class="fg-label"><b>Rampla de Inyectores</b></span>
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+														<span class="fg-label"><b>Marca</b></span>
+														<div class="form-group">
+															<div class="fg-line">
+																<select name="idmarcrampla" id="js-idmarcrampla"
+																	class="form-control css-idmarcmano css-idmarcred"
+																	data-fv-notempty="true"
+																	data-fv-message="Requiere Marca">
+																	<option value="">Seleccione Marca</option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<span class="fg-label"><b>Nro. de Inyectores</b></span>
+														<div class="fg-line">
+															<input type="number" class="form-control mcss_input"
+																name="ramplainyectoresnro" data-fv-notempty="true"
+																data-fv-message="Complete el campo porfavor"
+																autocomplete="off" placeholder="Ingresar.."
+																onkeyup="MayusSerie(this);">
+														</div>
+
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="col-md-3">
+										<div class="form-group">
+											<span class="fg-label"><b>1ra Med. % CO/Vol.</b></span>
+											<div class="fg-line">
+												<input type="number" step=".1" class="form-control mcss_input"
+													name="primeramedicion" data-fv-notempty="true"
+													data-fv-message="Complete el campo porfavor"
+													autocomplete="off" placeholder="Ingresar..">
+											</div>
+
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<span class="fg-label"><b>2da Med. % CO/Vol.</b></span>
+											<div class="fg-line">
+												<input type="number"  step=".1" class="form-control mcss_input"
+													name="segundamedicion" data-fv-notempty="true"
+													data-fv-message="Complete el campo porfavor"
+													autocomplete="off" placeholder="Ingresar..">
+											</div>
+
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<span class="fg-label"><b>Conforme a resultados
+													¿Cumple Estandar?</b></span>
+											<div class="radio-gruop">
+												<label class="radio-inline"> <input type="radio"
+													style="margin-top: 1px;" id="inlineRadio1" value="1"
+													name="conformeestandasino" maxlength='2'
+													data-fv-stringlength-message='' data-fv-notempty="true"
+													data-fv-message="Seleccione cunacilindro"> SI
+												</label> <label class="radio-inline"> <input type="radio"
+													style="margin-top: 1px;" id="inlineRadio2" value="0"
+													name="conformeestandasino" maxlength='2'
+													data-fv-stringlength-message='' data-fv-notempty="true"
+													data-fv-message="Seleccione cunacilindro"> NO
+												</label>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-12">
+										<div class="form-group">
+
+											<span class="fg-label"><b>Observaciones</b></span>
+											<textarea class="form-control fg-input" id="text-desc"
+												name="observacioneskit">                                    
+		                                   </textarea>
+
+
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="submit" id="btn_guardar_modificar"
+							class="btn btn-primary waves-effect">Guardar</button>
+						<button type="button" class="btn btn-danger waves-effect"
+							data-dismiss="modal">Cancelar</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</form>
+
+
+
+
+
+	<!-- <h2 style="text-align: center;">GESTION BENEFICIARIOS</h2> -->
+	<div class="contenido_gestion">
+
+		<div class="" style="padding: 0 15px;">
+			<div class="row">
+				<div class="col-md-4">
+					<h2 class="panel-title">
+						<b>GESTION CONVERSIONES GNV</b>
+					</h2>
+					<h5>Administrar conversiones gnv registradas en el Sistema</h5>
+				</div>
+				<div class="col-md-6">
+					<h1 class="panel-title">
+						<b>GESTION: <label class="cs_gestion"></label></b>
+					</h1>
+				</div>
+			</div>
+
+		</div>
+		<div class="panel-body" style="margin-top: -30px">
+			<div class="row">
+				<div class="col-md-12"
+					style="text-align: right; margin-bottom: 15px">
+					<!-- <button id="btn-ver" class="btn btn-danger waves-effect" accesskey="1" onclick="ver(this)">VER</button> -->
+					<button id="btnAdicionar"
+						class="btn btn-succ  btn-xs btn-sm waves-effect"
+						disabled="disabled">NUEVO</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-2 col-xs-12" style="margin-bottom: 10px;">
+							<input type="text" id="filt-ben" name=""
+								class="form-control_filtro unput-sm"
+								placeholder=" Buscar por placa..">
+						</div>
+						<div class="col-md-2 col-xs-12" style="margin-bottom: 10px;">
+							<input type="text" id="" name="inumci"
+								class="form-control_filtro unput-sm"
+								placeholder="Cedula de beneficiario..">
+						</div>
+						<div class="col-md-2 col-xs-12" style="margin-bottom: 10px;">
+							<input type="number" id="" name="inumord"
+								class="form-control_filtro unput-sm"
+								placeholder="Nro. de Orden..">
+						</div>
+
+
+
+						<div class="col-md-4 col-xs-12 navbar-right"
+							style="text-align: right; margin-top: 10px">
+							<label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="activos" value="1"> <i
+								class="input-helper"></i>instalados
+							</label> <label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="bajas" value="0"> <i
+								class="input-helper"></i>no instalados
+							</label> <label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="todos" value="-1"
+								checked="checked"><i class="input-helper"></i>todos
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 table-responsive">
+					<!-- 					<table id="table-data" class="table table-vmiddle nowrap table-vmiddle" width="100%"> -->
+					<table id="example" class="table tabla_gestion" style="width: 100%">
+						<thead>
+							<tr>
+								<th class="text-center" width="15px">Num. ord. Serv</th>
+								<th class="text-center" width="15px">Num. de solt</th>
+								<th class="text-center" width="200px">Taller</th>
+								<th class="text-center">Beneficiario</th>
+								<th class="text-center">Placa</th>
+								<th class="text-center">Fecha Conversion (ANH)</th>
+								<th class="text-center">Opciones</th>
+
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var id_rol_taller=$('body').find('#rol_taller').val()
+// 		alert('rol_taller:'+rol_taller)
+		
+		var idrol_global=$('body').find('#select-Roles option:selected').val()
+		var pos_m_global=0;
+		
+		if(id_rol_taller!=idrol_global){
+			alert('No tiene permisos para ingresar a este modulo,seleccione el rol "TALLER""')
+			window.location.href = 'inicio';
+		}
+	
+		var idtall_user=$('body').find('#select-talleres option:selected').val()
+// 		alert(idtall_user)
+			
+		if(idtall_user==-1){
+			alert('Seleccione el taller de conversion del menu')
+			window.location.href = 'inicio';
+		}
+		
+// 		$('#modal-taller').modal('show')
+	    var isGestion=$('body').find('#select-gestion option:selected').text();
+	    console.log('gestion',isGestion)
+	    $('.cs_gestion').html(isGestion);
+	    
+        $('body').find('#f_gestion').html(isGestion);
+        $('body').find('#f_gestion_mod').html(isGestion);
+        $('body').find('#f_gestion_ver').html(isGestion);
+	
+	
+        var result=Get_Opciones(null);
+        // console.log('GESTION_LIST: ',result)
+        // console.log('tam: ',result.AccionesUser.length)
+        if(ExisteOpcion('adicionar')){
+//             $('#btnAdicionar').attr({
+//                 onclick:"(Gestionar.add())",
+//                 // accesskey:""
+//                 })
+            $('#btnAdicionar').removeAttr("disabled ").focus().val("Ahora si lo puedes utilizar")
+        }
+
+        function ExisteOpcion(opc){
+            // alert('entro comparar')
+            var resultado=false;
+            for (var i = 0; i < result.AccionesUser.length; i++) {
+                console.log('for_: ',result.AccionesUser[i]);
+                if(result.AccionesUser[i].codigo==opc){
+                    resultado=true;         
+                }
+            }
+            // console.log('result_dentro:',resultado)              
+            return resultado;
+        }
+
+        var DTtable=''
+        var btnGroup='';
+        
+        var estado='';
+        estado=$('input[name="iestado"]:checked').val();
+        
+        var inumci=$('input[name="inumci"]').val();
+        var inumord=$('input[name="inumord"]').val();
+        
+        $('input[name="iestado"]').on('change',function(){
+            estado=$('input[name="iestado"]:checked').val();
+           $('#example').dataTable().fnDraw('page');
+
+       })
+        
+        $('input[name="inumci"]').on('keyup',function(){
+        	inumci=$(this).val();
+            $('#example').dataTable().fnDraw('page');
+        })
+        
+        $('input[name="inumord"]').on('keyup',function(){
+        	inumord=$(this).val();
+            $('#example').dataTable().fnDraw('page');
+        })
+        
+        var idOrdServ;
+        var MAX_CIL=3;
+        var cont=1;
+        var cilindroRef= {
+            row: '.cilindro_ref',   // The title is placed inside a <div class="col-xs-4"> element
+            validators: {
+                notEmpty: {
+                    message: 'Seleccione Marca Cilindro'
+                }
+            }
+        },
+        serieRef= {
+            row: '.serie_ref',
+            validators: {
+                notEmpty: {
+                    message: 'Serie Requerida'
+                }
+            }
+        },
+        fechaRef= {
+            row: '.fecha_ref',
+            validators: {
+                notEmpty: {
+                    message: 'Fecha fabricacion Requerida'
+                }
+            }
+        },
+        bookIndex = 0;
+        
+        
+        DTtable=$('#example').DataTable({
+    		"oLanguage": {
+                "sUrl": "../resources/js/dataTables/Spanish.lang"
+            },
+//             "dom":'rt<button>ip',
+            "dom":'rt<button>',
+            "pageLength":10,
+//              responsive:true,
+            "processing": true,
+            "serverSide": true,
+  		    "ajax": {
+  		    	"type": "POST",
+  	            url:'RestInstalacionKit/listar_d',
+  	        	"data": function ( d ) {
+  	                d.estado = estado;
+  	                d.numci = inumci;
+  	                d.numord = inumord;
+  	                d.gestion=$('body').find('#select-gestion option:selected').text();
+  	                d.idtall=$('body').find('#select-talleres option:selected').val();
+  	            }
+          	},
+  		    "columns": [
+                        { "data": "idregistroKit" },
+                        { "data": "idregistroKit" },
+                        { "data": "idregistroKit" },
+                        { "data": "idregistroKit" },
+                        { "data": "idregistroKit" },
+  		                { "data": "idregistroKit" },
+  		            	{ "data": "idregistroKit" }
+  		    ],
+  		    "createdRow": function ( row, data, index ){
+
+            	console.log('row',data)
+            	
+            	$('td',row).eq(0).html(data.ordenServicio.numords).addClass('text-center');
+                $('td',row).eq(1).html(data.ordenServicio.solicitud.numSolt).addClass('text-center');
+                $('td',row).eq(2).html(data.ordenServicio.taller.nombretall);
+                $('td',row).eq(3).html(data.ordenServicio.solicitud.persona.razonsocial);
+                $('td',row).eq(4).html(data.ordenServicio.solicitud.vehiculo.placa)
+                $('td',row).eq(5).html(data.fechaconversion)
+                if(ExisteOpcion('modificar')){
+                    $('td',row).eq(6).html('<button id="btnModificar" class="btn btn-xs btn-info waves-effect btn-espacio modificar" data-toggle="tooltip" data-placement="top" title="Modificar"  accesskey="'+data.idregistroKit+'" data-href="'+data.idregistroKit+'" data-id="'+data.idregistroKit+'"><span class="zmdi zmdi-edit"></span> Modificar</button>')
+                }else{
+                    $('td',row).eq(6).html('') 
+                }
+            	if(ExisteOpcion('ver')  ){
+                    // if()
+                    $('td',row).eq(6).append('<button id="btn-ver" class="btn btn-xs btn-info  bgm-cyan waves-effect btn-sm btn-espacio btn-sm btn-xs" accesskey="'+data.idregistroKit+'" data-href="'+data.idregistroKit+'" onclick="verInstalacionKit(this) "><span class="zmdi zmdi-print"></span> Ver</button>');
+                }else{
+                    $('td',row).eq(6).append('<button id="btn-ver" class="btn btn-xs btn-info bgm-cyan waves-effect btn-sm  btn-espacio btn-sm btn-xs" disabled="disabled"><span class="zmdi zmdi-print"></span>Ver</button>');  
+                }
+
+  	        },
+  	        "drawCallback": function( settings ) {
+//   	        	$('#tableTitle').html('<h6><b>Gestion Solicitudes de Items</b></h6>');
+//   	        	$('#tableHeader').html('<button class="btn btn-xs btn-primary" id="btnAdicionar"><i class="fa fa-plus-circle"></i> | adicionar</button>');
+
+  	        	$('#btnAdicionar').click(function(){
+	  	            
+  	        	    $('#display').hide()
+  	        	    var listaOrdenes='';
+  	        	    
+  	        	    
+  	        	     $('#modalAdicionar').on('click keyup', function(e){
+			            console.log('sin id?? ', (e.target.id) == '');
+			            var id_busca = $('#formulario').find('#busca').attr('id');
+			            // var id_l_ben = $('.l_ben').attr('id');
+			           
+			            var id_click = e.target.id;
+			            if(id_click !== ''){
+			                // if (id_click !== id_busca && id_click !== id_l_ben) {
+			                if (id_click == id_busca){
+			                    var visible = $('#formulario').find('#display').is(":visible");
+			                    if (visible) {
+			                        console.log('hide1')
+			                        $('#formulario').find('#display').hide()
+			                    } else {
+			                        console.log('entro, pero no esta visible')
+			                    }
+			                }else {
+			                    console.log('sigue mostrando')
+			                }
+			            }else{
+			                var visible = $('#formulario').find('#display').is(":visible");
+			                if (visible) {
+			                    console.log('hide2')
+			                    $('#display').hide()
+			                } else {
+			                    console.log('no esta visible')
+			                }
+			            }
+			
+			        })
+			        $('#display').hide()
+			        $('#formulario').find('#js-busca').on('click keyup',function(e){
+
+	                    
+			        	if(e.type == 'click'){
+			                $('#formulario').data('formValidation').resetField('buscar_datos',true);
+			                $('#formulario').find('input[type="text"]').val('')
+			                $('body').find('#formulario').data('formValidation').resetForm();
+	                    	$('body').find('#formulario')[0].reset();
+			            }
+	                    $('#formulario').find('#text-desc').val('');
+			        	//reseteando datos de cilindro
+			        	
+			 			$('#formulario').find('#js-SelCil').val('').trigger('chosen:updated');
+			            $('#formulario').find('#js-capCil').val('').trigger('chosen:updated');
+			            $('#formulario').find('#js-SelReduc').val('').trigger('chosen:updated');
+			            
+		
+			            
+			            
+			            //implementos select
+			              $('#formulario').find('.css-idmarcred').val('').trigger('chosen:updated');
+			            
+			            
+			            $('#formulario').find('#js_marcavalvula_cil').val('').trigger('chosen:updated');  
+            			$('#formulario').find('#js_serie_cil').val('');
+            			$('#formulario').find('#js_fecha_cil').val('');
+			        	$('#formulario').find('#lista_cilindros').find("tr:gt(0)").remove()
+			        	
+			        	
+			        	
+
+			            
+			            // alert('ok')
+			            var texto = $(this).val();
+			            console.log('tex: ',texto)
+			    
+			            var DTable='';
+			            
+			            $.getJSON('RestInstalacionKit/FiltroOrdenServicio',{texto:texto,gestion:$('body').find('#select-gestion option:selected').text(),idtall:$('body').find('#select-talleres option:selected').val()},function(resp){
+			                console.log('ListaFiltro:',resp)
+			                listaOrdenes=resp;
+			                $('#formulario').find('#js_table_filtro tbody').html('')
+			                $(listaOrdenes).each(function(i,data){
+			                    $('#formulario').find('#js_table_filtro tbody').append(`
+			                        <tr>
+			                    		<td style="display:none">${data.idordserv}</td>
+			                            <td>${data.numords}</td>
+			                            <td>${data.solicitud.numSolt}</td>
+			                            <td>${data.solicitud.vehiculo.placa}</td>
+			                            <td>${data.solicitud.persona.razonsocial}</td>
+			                            <td>${data.solicitud.persona.ci}</td>
+			                            <td>${data.taller.nombretall}</td>
+			                        </tr>          
+			                    `) 
+			                })
+			                
+
+			            })
+			            
+			            $('#formulario').find('#js_table_filtro tbody').on( 'click', 'tr', function (){
+			            	$('#formulario').data('formValidation').resetField('buscar_datos',true);
+		                    console.log('listaOrdenes_dentro:',listaOrdenes);
+		                    var objetoFiltro;
+		                    $('#js-comb').html('')
+		                    if ( $(this).hasClass('selected') ) {
+		                        $(this).removeClass('selected');
+		                    }
+		                    else {
+		                    	$('#formulario').find('#js_table_filtro tr.selected').removeClass('selected');
+		                        $(this).addClass('selected');
+		                    }
+		                    
+		                    var objetoDatosBasicos;
+		                    var dato=$(this).find("td:eq(0)").text();
+		                    console.log('dato_idordserv:',dato);
+		                    
+		            
+		                    
+		                    //callback
+	                        function foo(callback) {
+	                    	   console.log("inicio call")
+	                    	   console.log('listaOrdenes:',listaOrdenes);
+	                           $(listaOrdenes).each(function(i,t){
+	   	                        if(t.idordserv==dato){
+	   	                            objetoFiltro=t;
+	   	                        }    
+	   	                   	   })
+	                    	   callback();
+	                    	}
+		                    foo(function(){
+		                    	console.log("finished")
+			                    console.log('objetoFiltro: ',objetoFiltro)
+			                    var pegar='CI: '+objetoFiltro.solicitud.persona.ci+' Beneficiario: '+objetoFiltro.solicitud.persona.razonsocial;
+		                    	$('#formulario').find('input[name="buscar_datos"]').val(pegar)
+		                    	$('#formulario').find('input[name="buscar_datos"]').val(pegar)
+		                    });
+		                  //fin callback
+	                    
+		                    
+		                    
+		
+		                    //DATOS BASICOS
+		                    $('#formulario').find('input[name="idordserv"]').val(objetoFiltro.idordserv)
+		                    // $('input[name="chipRom"]').val(objetoFiltro.chipRom.nombreChip)
+		                    $('#formulario').find('input[name="numOrdServ"]').val(objetoFiltro.numords)
+		                    $('#formulario').find('input[name="numSolt"]').val(objetoFiltro.solicitud.numSolt)
+		                    $('#formulario').find('input[name="fecha"]').val(objetoFiltro.solicitud.fecha)
+		                    $('#formulario').find('input[name="beneficiario"]').val(objetoFiltro.solicitud.persona.razonsocial)
+		                    $('#formulario').find('input[name="ci"]').val(objetoFiltro.solicitud.persona.ci)
+		                    $('#formulario').find('#js_DatosBasicos').loadJSON(objetoFiltro)
+		
+		                    //VEHICULO
+		                    $('#formulario').find('#js_Vehiculo').loadJSON(objetoFiltro.solicitud.vehiculo)
+		                    $('#formulario').find('input[name="marca"]').val(objetoFiltro.solicitud.vehiculo.marcaVehiculo.nombre)
+		                    $('#formulario').find('input[name="modelo"]').val(objetoFiltro.solicitud.vehiculo.modeloVehiculo.nombre)
+		                    $('#formulario').find('input[name="tipoVeh"]').val(objetoFiltro.solicitud.vehiculo.tipoVehiculo.nombre)
+		                    $('#formulario').find('input[name="tipServ"]').val(objetoFiltro.solicitud.vehiculo.tipoServicio.nombre)
+		                    $('#formulario').find('input[name="SistemaMotor"]').val(objetoFiltro.solicitud.vehiculo.tipoMotor.nombre)
+		                    $('#formulario').find('input[name="numPistones"]').val(objetoFiltro.servicio.numPistones)
+		
+		                    //TALLER
+		                    $('#formulario').find('input[name="nombreTaller"]').val(objetoFiltro.taller.nombretall)
+		                    $('#formulario').find('input[name="propietarioTaller"]').val(objetoFiltro.taller.persona.nombres+' '+objetoFiltro.taller.persona.ap+' '+objetoFiltro.taller.persona.am)
+		
+		
+		                });
+			            
+			            $('#display').show()
+			        })  
+		  	        	   
+			        
+			        //datos modal
+  	        	    
+    	    	    $.getJSON('RestInstalacionKit/datosModal_d',function(datos){
+			            console.log('DatosServicios: ',datos)
+			            	//RESETEANDO
+			             $('#formulario').find('.SelCil').html('<option value="" selected="selected">Seleccione Marca Cilindro</option>')
+			             $('#formulario').find('.capCil').html('<option value="" selected="selected">Seleccione Capacidad Cilindro</option>')
+			             $('#formulario').find('.valCil').html('<option value="" selected="selected">Seleccione Válvula Cilindro</option>')
+			             
+
+			            //implementos select
+			            $('#formulario').find('.css-idmarcred').html('<option value="" selected="selected">Seleccione Marca</option>')
+			            
+			             $('#formulario').find('#js-SelReduc').html('<option value="">Seleccione Marca Kit</option>');
+			            // $('#js-numRecep').html(datos[0].numRecep);
+			            // $('input[name="numRecep"]').val(datos[0].numRecep);
+			            $('#formulario').find('#js-fecha').html(datos[0].fecha);
+			            
+			            $(datos[1]).each(function(index,item){
+			                // console.log('tip: ',item)
+			                // $('#js-SelReduc').append('<option value="'+item.idreduc+'">'+item.tipoTecnologia+'</option>')
+			                $('#formulario').find('#js-SelReduc').append(`<option value="${item.idmarcred}">${item.nombre}</option>`);
+			                $('#formulario').find('.css-idmarcred').append(`<option value="${item.idmarcred}">${item.nombre}</option>`);
+			            })
+			            $(datos[2]).each(function(index,item){
+			                // console.log('tip: ',item)
+			                // $('.SelCil').append('<option value="'+item.idcil+'">'+item.capacidad+'</option>')
+			                $('#formulario').find('.SelCil').append(`<option value="${item.idmarccil}">${item.nombre}</option>`)
+			
+			            })
+			            
+			            $(datos[3]).each(function(index,item){
+			                $('#formulario').find('.capCil').append(`<option value="${item.idcapcil}">${item.nombre}</option>`)
+			
+			            })
+     			        $(datos[4]).each(function(index,item){
+			                $('#formulario').find('.valCil').append(`<option value="${item.idmarcvalcil}">${item.nombre}</option>`)
+			
+			            })
+			            
+			           
+			            
+			            $('#formulario').find('#js-SelReduc').chosen()
+			            $('#formulario').find('#js-SelReduc').trigger('chosen:updated');  
+			            
+			            $('#formulario').find('#js-SelCil').chosen()
+			            $('#formulario').find('#js-capCil').chosen()
+			            $('#formulario').find('#js_marcavalvula_cil').chosen()
+			            
+			            //implementos select
+			            $('#formulario').find('.css-idmarcred').chosen()
+			            $('#formulario').find('.css_idmarcred').trigger('chosen:updated'); 
+			            
+			               
+			            
+			        });
+  	        	    
+  	        	    $('#formulario').find('#js-SelCil').val('').trigger('chosen:updated');  
+		            $('#formulario').find('#js-capCil').val('').trigger('chosen:updated');  
+		            $('#formulario').find('#js_marcavalvula_cil').val('').trigger('chosen:updated');  
+
+		            
+		            //implementos select 
+		            $('#formulario').find('.css-idmarcred').val('').trigger('chosen:updated');
+		            
+           			$('#formulario').find('#js_serie_cil').val('');
+           			$('#formulario').find('#js_fecha_cil').val('');
+		        	$('#formulario').find('#lista_cilindros').find("tr:gt(0)").remove()
+		        	
+  	        	    
+  	        	    
+  	        	    
+	              	$('body').find('#formulario').data('formValidation').resetForm();
+                    $('body').find('#formulario')[0].reset();
+                    $('#formulario').find('#text-desc').val('');
+            		$('body').find('#modalAdicionar').modal('show');
+              	});
+  	        	
+  	        	
+          		$('.modificar').click(function(){ 
+          			$('#formularioModificar').data('formValidation').resetForm();
+            		$('#formularioModificar')[0].reset();
+            		//reset
+            		$('#formularioModificar').find('#js-SelCil').val('').trigger('chosen:updated');  
+		            $('#formularioModificar').find('#js-capCil').val('').trigger('chosen:updated'); 
+		            $('#formularioModificar').find('#js_marcavalvula_cil').val('').trigger('chosen:updated'); 
+		            
+		            //implementos select 
+		            $('#formularioModificar').find('.css-idmarcred').val('').trigger('chosen:updated');
+
+        			$('#formularioModificar').find('#js_serie_cil').val('');
+        			$('#formularioModificar').find('#js_fecha_cil').val('');
+		        	$('#formularioModificar').find('#lista_cilindros').find("tr:gt(0)").remove()
+		        	
+            		
+            		$.post('RestInstalacionKit/obtener?idregistroKit='+$(this).data('id'), function(datos) {
+  		            	console.log('resultadoMod:',datos)
+           			    $('#formularioModificar').find('#js-fecha').html(datos[0].fecha);
+  		    	        
+  		            	$('#formularioModificar').find('#js-SelReduc').find("option:gt(0)").remove()
+  		            	$('#formularioModificar').find('#js-SelCil').find("option:gt(0)").remove()
+  		            	$('#formularioModificar').find('#js-capCil').find("option:gt(0)").remove()
+  		            	$('#formularioModificar').find('#js_marcavalvula_cil').find("option:gt(0)").remove()
+
+  		            	//implementos select 
+		           		$('#formularioModificar').find('.css-idmarcred').find("option:gt(0)").remove() 
+  		            	
+  		            	//agregando a la tabla
+  		            	
+  		            	
+// 	                    $('#formularioModificar').find('#js-SelReduc').val('').trigger('chosen:updated'); 
+// 	                    $('#formularioModificar').find('#js-SelCil').val('').trigger('chosen:updated'); 
+  		            	
+  		              	$(datos[2]).each(function(index,item){
+			                $('#formularioModificar').find('#js-SelReduc').append(`<option value="${item.idmarcred}">${item.nombre}</option>`);
+			              //implementos select 
+			           		$('#formularioModificar').find('.css-idmarcred').append(`<option value="${item.idmarcred}">${item.nombre}</option>`);
+			           		$('#formularioModificar').find('.css-idmarcred').prop('disabled', true).trigger("chosen:updated");
+			            })
+			            $(datos[3]).each(function(index,item){
+			                $('#formularioModificar').find('#js-SelCil').append(`<option value="${item.idmarccil}">${item.nombre}</option>`)
+			
+			            })
+			            $(datos[4]).each(function(index,item){
+			                $('#formularioModificar').find('#js-capCil').append(`<option value="${item.idcapcil}">${item.nombre}</option>`)
+			
+			            })
+	            		 $(datos[5]).each(function(index,item){
+			                $('#formularioModificar').find('#js_marcavalvula_cil').append(`<option value="${item.idmarcvalcil}">${item.nombre}</option>`)
+			
+			            })
+			            
+			            
+			            $('#formularioModificar').find('#js-SelReduc').chosen()
+			            $('#formularioModificar').find('#js-SelReduc').trigger('chosen:updated');  
+			            $('#formularioModificar').find('#js-SelCil').chosen()
+						$('#formularioModificar').find('#js-SelReduc').trigger('chosen:updated');  
+	                    $('#formularioModificar').find('#js-SelCil').val('').trigger('chosen:updated');
+	                    $('#formularioModificar').find('#js-capReduc').chosen()
+			            $('#formularioModificar').find('#js-capReduc').trigger('chosen:updated');  
+	                    $('#formularioModificar').find('#js-capCil').chosen()
+			            $('#formularioModificar').find('#js-capCil').trigger('chosen:updated');  
+	                    $('#formularioModificar').find('#js_marcavalvula_cil').chosen()
+			            $('#formularioModificar').find('#js_marcavalvula_cil').trigger('chosen:updated');  
+	                    
+	                    //implementos SELECT
+	                    $('#formularioModificar').find('.css-idmarcred').chosen()
+						$('#formularioModificar').find('.css-idmarcred').trigger('chosen:updated');
+
+	  		  			var objetoFiltro=datos[1];
+	
+	  					//DATOS BASICOS
+	  		            // $('input[name="idordserv"]').val(objetoFiltro.ordenServicio.idordserv)
+	  		            $('#formularioModificar').find('input[name="idordserv"]').val(objetoFiltro.ordenServicio.idordserv)
+	  		            $('#formularioModificar').find('input[name="numOrdServ"]').val(objetoFiltro.ordenServicio.numords)
+	  		            $('#formularioModificar').find('input[name="numseriemotor"]').val(objetoFiltro.numseriemotor)
+	  		            $('#formularioModificar').find('input[name="codigobsisa"]').val(objetoFiltro.codigobsisa)
+	  		            $('#formularioModificar').find('input[name="numSolt"]').val(objetoFiltro.ordenServicio.solicitud.numSolt)
+	  		            $('#formularioModificar').find('input[name="fechaSolicitud"]').val(objetoFiltro.ordenServicio.solicitud.fecha)
+	  		            $('#formularioModificar').find('input[name="beneficiario"]').val(objetoFiltro.ordenServicio.solicitud.persona.razonsocial)
+	  		            $('#formularioModificar').find('input[name="ci"]').val(objetoFiltro.ordenServicio.solicitud.persona.ci)
+		
+	  		            $('#formularioModificar').loadJSON(objetoFiltro);	
+	
+  		
+	                    //VEHICULO
+				        $('#formularioModificar').find('#js_Vehiculo').loadJSON(objetoFiltro.ordenServicio.solicitud.vehiculo)
+			            $('#formularioModificar').find('input[name="marca"]').val(objetoFiltro.ordenServicio.solicitud.vehiculo.marcaVehiculo.nombre)
+			            $('#formularioModificar').find('input[name="modelo"]').val(objetoFiltro.ordenServicio.solicitud.vehiculo.modeloVehiculo.nombre)
+			            $('#formularioModificar').find('input[name="tipoVeh"]').val(objetoFiltro.ordenServicio.solicitud.vehiculo.tipoVehiculo.nombre)
+			            $('#formularioModificar').find('input[name="tipServ"]').val(objetoFiltro.ordenServicio.solicitud.vehiculo.tipoServicio.nombre)
+			            $('#formularioModificar').find('input[name="SistemaMotor"]').val(objetoFiltro.ordenServicio.solicitud.vehiculo.tipoMotor.nombre)
+			            $('#formularioModificar').find('input[name="numPistones"]').val(objetoFiltro.ordenServicio.servicio.numPistones)
+				        $('#formularioModificar').find('.datos-Instalacion1').loadJSON(objetoFiltro)
+	                    
+				        $('#formularioModificar').find('input[name="fechaconversion"]').val(objetoFiltro.fechaconversion)
+			            
+				        var bsisa=objetoFiltro.codigobsisa;
+	                    var bsisa_ant=bsisa.substring(0,bsisa.length-2)
+	                    var bsisa_post=bsisa.substring(bsisa.length-1,bsisa.length)
+	                    $('#formularioModificar').find('input[name="codigobsisa"]').val(bsisa_ant)
+	                    $('#formularioModificar').find('#Bsisa_Num').val(bsisa_post)
+			            
+	                    //datos de kit
+	                    $('#formularioModificar').find('#js-SelReduc').val(objetoFiltro.idmarcred).trigger('chosen:updated'); 
+	                    
+	                    $('#formularioModificar').find('input[name="numserieregulador"]').val(objetoFiltro.numserieregulador)
+	                    $('#formularioModificar').find('input[name="fechacertificado"]').val(objetoFiltro.fechacertificado)
+	                    $('#formularioModificar').find('input[name="certificadokit"]').val(objetoFiltro.certificadokit)
+	                    
+	                     $('#formularioModificar').find('#js-implementoskit').loadJSON(objetoFiltro.implementokit)
+	                     if(objetoFiltro.implementokit.ramplainyectoresnro==0){
+	                    	 $('#formularioModificar').find('input[name="ramplainyectoresnro"]').val("")
+	                     }
+	                     //implementos SELECT
+	                     $('#formularioModificar').find('.css-idmarcred').val(objetoFiltro.idmarcred).trigger('chosen:updated'); 
+	
+	                    //datos de cilindros
+	                    pos_m_global=0;
+	                    $(objetoFiltro.cilindros).each(function(i,tg){
+	                    
+		                    var marcaCil=tg.marcaCilindro.nombre;
+		                    var valuemarcaCil=tg.marcaCilindro.idmarccil;
+		                    var serieCil=tg.serie;
+		                    var capacidadCil=tg.capacidadCilindro.nombre;
+		                    var valuecapacidadCil=tg.capacidadCilindro.idcapcil;
+		                    
+		                    var fechaCil=tg.fechaFab;
+		                    
+		                    var inmetroCil=tg.inmetro;
+		                    var marcavalvulaCil=tg.marcaValvulaCilindro.nombre;
+							var valuemarcaCilvalvulaCil=tg.marcaValvulaCilindro.idmarcvalcil;
+		                    var serievalvulaCil=tg.serievalvula;
+		                    
+		                    
+		                    var id_row='row'+pos_m_global; 
+		                    var fila=`<tr id="${id_row}">
+		                                <td>
+		                                	<input type="hidden" value="${valuemarcaCil}" name="cilindro[]">
+		                                    <input readonly="readonly"  type="text" value="${marcaCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere cilindro">
+		                                    
+		                                </td>
+		                                <td>
+		                                	<input readonly="readonly" name="serie[]" type="text" value="${serieCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere serie">
+		                                </td>
+		                                <td>
+		                                	<input type="hidden" value="${valuecapacidadCil}" name="capacidad[]">
+		                                	<input readonly="readonly" name="" type="text" value="${capacidadCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere capacidad">
+		                            	</td>
+		                                <td>
+		         							<input readonly="readonly" name="fechaFab[]" type="text" value="${fechaCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere fecha">
+		                                </td>
+		                                <td>
+			    	                    	<input readonly="readonly" name="nroinmetrocil[]" type="text" value="${inmetroCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere nro inmetro">
+			    	                    </td>
+			    	                    <td>
+			    	                   		<input type="hidden" value="${valuemarcaCilvalvulaCil}" name="marcavalvulacil[]">
+			    	                    	<input readonly="readonly" type="text" value="${marcavalvulaCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere marca de valvula">
+			    	                    </td>
+			    	                    <td>
+			    		                	<input readonly="readonly" name="nroserievalvula[]" type="text" value="${serievalvulaCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere nro de serie de valvula">
+			    		                </td>
+		                                <td style="padding-top: 7px;">
+		                                    <a  href="#" type="button" onclick="eliminarCilindro_mod(${pos_m_global});event.preventDefault();" class="" style="background: red; border-radius: 4px;
+		                                        color: white; display: block;padding: 4px 0px;text-align: center;"><i class="fa fa-minus"></i><b></b></a>    
+		                                </td>
+		                            </tr>`;
+	
+		                   			$('#formularioModificar').find('#lista_cilindros').append(fila)
+		                   	pos_m_global++;
+	                    })
+	                    
+	                    
+	                    
+  			        }, 'json');
+              		$('#formularioModificar')[0].reset();
+                    $('#modalModificar').modal('show');
+  					
+          		});
+          		$('.eliminar').click(function(){ 
+          			$('#formularioEliminar').data('formValidation').resetForm();
+            		$('#formularioEliminar')[0].reset();
+              		$.post('../servicios_csk/obtener?idsolt='+$(this).data('id'), function(result) {
+  		            	if(result.status){
+  			    	        $('#modalEliminar').modal('show');
+  							$('#formularioEliminar').loadJSON(result.data);
+  							$('#rolLabel').html(result.data.nombre);
+  		            	}else{
+  		            		mostrarMensaje('error','No se realizo con exito la Transaccion');
+  		            	}
+  			        }, 'json');
+          		});
+          		
+          		$('button[data-toggle="tooltip"]').tooltip({animated: 'fade',placement: 'bottom',});
+
+  		        $('#filt-ben').on( 'keyup', function () {
+                    DTtable.search(this.value ).draw();
+                }) 
+  	        }
+        });
+        
+        
+        
+        $('#formulario').formValidation({
+            fields: {
+                codigoBSISA:{
+                    validators:{
+                        callback:{
+                            message:"Call",
+                            callback:function(value,validators,$field){
+                                var Patron=/^[0-9\s]*$/;// (\s) agregue para espacio
+                                if (!value.search(Patron)) {
+                                    return true
+                                } else {
+                                    return {
+                                         valid:false,
+                                         message:'Este campo solo acepta números'
+                                     } 
+                                }
+                            }
+                        }
+                    }
+                }
+                ,
+                'cilindro[]': cilindroRef,
+                'serie[]': serieRef,
+                'fechaFab[]': fechaRef
+            }
+        })
+         .on('click', '.addButton', function() {
+             cont++;
+             // alert('cont: '+cont+' MAX_CIL: '+MAX_CIL)
+             if(cont==MAX_CIL){
+                 $('#formulario').find('.addButton').attr('disabled', 'disabled');
+             }
+             bookIndex++;
+             var $template = $('#bookTemplate'),
+                 $clone    = $template
+                                 .clone()
+                                 .removeClass('hide')
+                                 .removeAttr('id')
+                                 .attr('data-book-index', bookIndex)
+                                 .insertBefore($template);
+
+             // Update the name attributes
+             $clone
+                 .find('[name="cilindro"]').attr('name', 'cilindro[]').end()
+                 .find('[name="serie"]').attr('name', 'serie[]').end()
+                 .find('[name="fechaFab"]').attr('name', 'fechaFab[]').end();
+
+             // Add new fields
+             // Note that we also pass the validator rules for new field as the third parameter
+             $('#formulario')
+                 .formValidation('addField', 'cilindro[]', cilindroRef)
+                 .formValidation('addField', 'serie[]', serieRef)
+                 .formValidation('addField', 'fechaFab[]', fechaRef)
+
+         })
+
+         // Remove button click handler
+         .on('click', '.removeButton', function() {
+             cont--;
+             // alert(cont)
+             if(cont<MAX_CIL){
+                 $('#formulario').find('.addButton').removeAttr('disabled');
+             }
+             var $row  = $(this).parents('.form-group'),
+                 index = $row.attr('data-book-index');
+
+             // Remove fields
+             $('#formulario')
+                 .formValidation('removeField', $row.find('[name="cilindro[]"]'))
+                 .formValidation('removeField', $row.find('[name="serie[]"]'))
+                 .formValidation('removeField', $row.find('[name="fechaFab[]"]'))
+
+             // Remove element containing the fields
+             $row.remove();
+         })
+        .on('success.form.fv', function(e){
+            e.preventDefault();
+            var $form = $(e.target);
+           	var opcion_tabla_vacia =existen_registros_tabla($('#lista_cilindros'));
+		 	//console.log('opcion_tabla_vacia:',opcion_tabla_vacia)
+	    	if (opcion_tabla_vacia==0) {
+			  	alert('La lista de cilindros esta vacia,debe agregar cilindros para continuar')
+		 		$('#formulario').find('#btn_guardar_nuevo').removeAttr('disabled') 
+		 		$('#formulario').find('#btn_guardar_nuevo').removeClass('disabled') 
+	    		  return;
+	       	}     	   
+            
+           swal({
+               title: "Seguro de registrar datos de conversion?",   
+               text: "Usted registrara datos de instalacion",   
+               type: "warning",   
+               showCancelButton: true,   
+               confirmButtonColor: "#DD6B55",   
+               confirmButtonText: "Si, Continuar!",   
+               cancelButtonText: "No, Cancelar!",   
+               closeOnConfirm: false,   
+               closeOnCancel: false 
+               }, function(isConfirm){
+            	
+            	   if (isConfirm) {  
+                       $('#formulario').ajaxSubmit({
+                    	   data:{
+                    		   gestion:$('body').find('#select-gestion option:selected').text(),
+                    		   idtall_user:$('body').find('#select-talleres option:selected').val(),
+                    		   codigoBSISAC:$('#Bsisa_Num').val()
+                    	   },
+                           success:function(res){
+                               console.log('registrado',res)
+                               if(res.estado){
+                            	   $form.data('formValidation').resetForm();
+                                   $('#formulario')[0].reset();
+                                   $('#example').dataTable().fnDraw('page');
+                                   $('.modal').modal('hide')
+                                   
+                                   swal({
+                                       title:"Registrado",
+                                       text:"Se ha registrado Conversión de  Instalación de Kit exitosamente",
+                                       type:"success",
+                                       timer:500,   
+                                       showConfirmButton: false 
+                                   });
+                                    var idregistrokit=res.idregistrokit;
+                                   $("#frameReportes").attr("src",'RestInstalacionKit/Imprimir?idregistrokit='+idregistrokit);
+                                   $("#reportes").modal('show'); 
+                                   
+                                 
+                               }else{
+                            	   swal({
+                                       title:"Cancelado",
+                                       text:"No se pudo completar el registro, verifique que haya ingresado todos los datos correctamente, al momento de llenar el formulario",
+                                       type:"error",
+                                       timer:8000,
+                                       showCancelButton:false,
+                                       showConfirmButton:false
+
+                                   })
+                               
+                            	   $form.data('formValidation').resetForm();
+                                   $('#formulario')[0].reset();
+                                   $('.modal').modal('hide')
+                                   
+                               }
+                           }
+                       })
+
+                   } else {   
+                       // swal("Cancelled", "Your imaginary file is safe :)", "error");   
+                       swal({
+                           title:"Cancelado",
+                           text:"Se ha cancelado operacion",
+                           type:"error",
+                           timer:500,
+                           showCancelButton:false,
+                           showConfirmButton:false
+
+                       })
+                       $('#modalAdicionar').modal('hide');
+                   } 
+               });
+           
+        })
+
+        
+       $('#formularioModificar').formValidation({
+       })
+       .on('success.form.fv', function(e){
+          e.preventDefault();
+			var $form = $(e.target);
+        	var opcion_tabla_vacia =existen_registros_tabla($('#formularioModificar').find('#lista_cilindros'));
+	 	//console.log('opcion_tabla_vacia:',opcion_tabla_vacia)
+    		if (opcion_tabla_vacia==0) {
+			  	alert('La lista de cilindros esta vacia,debe agregar cilindros para continuar')
+		 		$('#formularioModificar').find('#btn_guardar_modificar').removeAttr('disabled') 
+		 		$('#formularioModificar').find('#btn_guardar_modificar').removeClass('disabled') 
+	    		  return;
+       		}     
+          
+          swal({ 
+              title: "Seguro de modificar Registros?",   
+              text: "Usted modificara los datos de conversion",   
+              type: "warning",   
+              showCancelButton: true,   
+              confirmButtonColor: "#DD6B55",   
+              confirmButtonText: "Si, Continuar!",   
+              cancelButtonText: "No, Cancelar!",   
+              closeOnConfirm: false,   
+              closeOnCancel: false 
+              }, function(isConfirm){  
+                  $('.doc-mod').removeAttr('disabled') 
+                  if (isConfirm) {
+                      $('#formularioModificar').ajaxSubmit({
+                    	  data:{
+                   		   gestion:$('body').find('#select-gestion option:selected').text(),
+                   		   idtall_user:$('body').find('#select-talleres option:selected').val(),
+                   		   codigoBSISAC:$('#formularioModificar').find('#Bsisa_Num').val()
+                   	   	  },
+                    	  success:function(res){
+                              console.log('modificado',res)
+                              if(res.estado){
+                                  $form.data('formValidation').resetForm();
+                                  $('#formularioModificar')[0].reset();
+                                  $('#example').dataTable().fnDraw('page');
+                                  swal({
+                                      title:"Modificado",
+                                      text:"Se ha modificado conversion exitosamente",
+                                      type:"success",
+                                      timer: 500,   
+                                      showConfirmButton: false 
+                                  });     
+                              }else{
+                            	  mostrarMensaje('error','No se realizo con exito la Transaccion');
+                              }
+                              $('.modal').modal('hide');
+                          }
+                      })
+
+                  } else {     
+                      // swal("Cancelled", "Your imaginary file is safe :)", "error");   
+                      swal({
+                          title:"Cancelado",
+                          text:"Se ha cancelado operacion",
+                          type:"error",
+                          timer:500,
+                          showCancelButton:false,
+                          showConfirmButton:false
+
+                      })
+                      $('#modalModificar').modal('hide')
+                  } 
+          });
+       })
+                
+
+
+        function verOrdenServicio(a){
+        	idOrdServ=$(a).attr('accesskey');
+        	console.log('idOrdServ: ',idOrdServ)
+			
+        	var listaComb;
+			$.getJSON('RestServicios/VerOS',{idOrdServ:idOrdServ},function(datos){
+				console.log('data:',datos)
+			 	listaComb=datos[2]
+				$('#formularioVer').find('#numOrdServ').html(datos[0].numords)
+				$('#formularioVer').find('#fechaCreacion').html(datos[0].fechaords)
+				$('#formularioVer').find('#nombreTall').val(datos[0].taller.nombretall)
+				$('#formularioVer').find('#telefonoTaller').val(datos[1].listaTelefonosTaller)
+				$('#formularioVer').find('#direccionTaller').val(datos[0].taller.direccion)
+				$('#formularioVer').find('input[name="numSolt"]').val(datos[0].solicitud.numSolt)
+				$('#formularioVer').find('input[name="fechaSolt"]').val(datos[0].solicitud.fecha)
+				$('#formularioVer').find('#nombreCompleto').val(datos[0].solicitud.persona.razonsocial)
+				$('#formularioVer').find('.beneficiario-data').loadJSON(datos[0].solicitud.persona)
+				$('#formularioVer').find('#institucion').val(datos[0].solicitud.persona.beneficiario.institucion)
+				$('#formularioVer').find('#telefonoBeneficiario').val(datos[1].listaTelefonosBeneficiario)
+				
+	
+				$('#formularioVer').find('.vehiculo-data').loadJSON(datos[0].solicitud.vehiculo)
+				$('#formularioVer').find('#modeloVeh').val(datos[0].solicitud.vehiculo.modeloVehiculo.nombre)
+				$('#formularioVer').find('#marcaVeh').val(datos[0].solicitud.vehiculo.marcaVehiculo.nombre)
+				$('#formularioVer').find('#tipoVeh').val(datos[0].solicitud.vehiculo.tipoVehiculo.nombre)
+				$('#formularioVer').find('#tipoServ').val(datos[0].solicitud.vehiculo.tipoServicio.nombre)
+				$('#formularioVer').find('#sistemaMotor').val(datos[0].solicitud.vehiculo.tipoMotor.nombre)
+				$('#formularioVer').find('#numeroMotor').val(datos[0].solicitud.vehiculo.num_motor)
+				$('#formularioVer').find('#numeroChasis').val(datos[0].solicitud.vehiculo.num_chasis)
+	            
+	            $(listaComb).each(function(i,tg){
+	                var checked1="",checked2="";
+	                $(datos[0].solicitud.vehiculo.combustibleVehiculo).each(function(j,item){
+	                    if (tg.idcomb==item.idcomb) {
+	                        checked1="checked";
+	                    }
+	                })
+	                if(checked1==""){
+						checked2="checked"
+					}
+	                $('#formularioVer').find('#js-comb').append(`
+	                    <div class="col-md-6" style="">
+	                        <div class="fg-line">${tg.nombre}</div>
+	                    </div>
+	                    <div class="col-md-6">
+	                        <span style="">SI</span> 
+	                        <input type="checkbox" disabled="disabled" class="" ${checked1}>
+	                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                        <span style="">NO</span> 
+	                        <input type="checkbox" disabled="disabled" class="" ${checked2}>
+	                    </div>
+	                `)
+	            })
+			})
+			
+			
+			$('#modal-ver').modal('show');
+            $('#formularioVer').formValidation({
+            }).on('success.form.fv', function(e){
+               e.preventDefault();
+               imprimir();
+            })
+            function imprimir(){
+                $("#frameReportes").attr("src",'RestServicios/ImprimirOS?idOrdServ='+idOrdServ);
+                $("#reportes").modal('show'); 
+            }
+        	
+        }
+        function verInstalacionKit(a){
+        	var idregistrokit=$(a).attr('accesskey');
+        	console.log('idregistroKit: ',idregistroKit) 
+            $("#frameReportes").attr("src",'RestInstalacionKit/Imprimir?idregistrokit='+idregistrokit);
+            $("#reportes").modal('show'); 
+            
+        	
+        }
+        
+        function verInstalacionKitmodal(a){
+            idregistroKit=$(a).attr('accesskey');
+            console.log('idregistroKit: ',idregistroKit)
+            $.ajax({
+                url:'InstalacionKit/modal-ver',
+                type:"post",
+                success:function(resp){
+                    $('#cont-modales').html(resp);
+                    $('#modal-ver').modal('show');
+                    $('#formulario-ver').formValidation({
+                    }).on('success.form.fv', function(e){
+                       e.preventDefault();
+                       imprimir();
+                    })
+                    function imprimir(){
+                        $("#frameReportes").attr("src",'RestInstalacionKit/Imprimir?idregistroKit='+idregistroKit);
+                        $("#reportes").modal('show'); 
+                    }
+                },
+                error:function(){
+                    alert('error del Servidor')
+                }
+            })
+        	
+        }
+        
+        
+		var pos=0;
+        
+		$('#formulario').find('#btn_agregar_cil').on('click',function(){
+            // alert('s')
+            var marcaCil=$('#formulario').find('#js-SelCil option:selected').text();
+            var valuemarcaCil=$('#formulario').find('#js-SelCil option:selected').val();
+            var serieCil=$('#formulario').find('#js_serie_cil').val();
+            var capacidadCil=$('#formulario').find('#js-capCil option:selected').text();
+            var valuecapacidadCil=$('#formulario').find('#js-capCil option:selected').val();
+            var fechaCil=$('#formulario').find('#js_fecha_cil').val();
+            var inmetroCil=$('#formulario').find('#js_nroinmetro_cil').val();
+            var marcavalvulaCil=$('#formulario').find('#js_marcavalvula_cil option:selected').text();
+            var valuemarcaCilvalvulaCil=$('#formulario').find('#js_marcavalvula_cil').val();
+            var serievalvulaCil=$('#formulario').find('#js_serievalvula_cil').val();
+            if(valuemarcaCil==""){
+            	alert('Debe seleccionar marca del cilindro')
+            	return;
+            }
+            if(serieCil==""){
+            	alert('Debe registrar serie del cilindro')
+            	return;
+            }
+            if(valuecapacidadCil==""){
+            	alert('Debe seleccionar capacidad del cilindro')
+            	return;
+            }
+            if(fechaCil==""){
+            	alert('Debe registrar fecha de fabricación del cilindro')
+            	return;
+            }
+            if(inmetroCil==""){
+            	alert('Debe registrar nro inmetro del cilindro')
+            	return;
+            }
+            if(valuemarcaCilvalvulaCil==""){
+            	alert('Debe registrar marca de valvula')
+            	return;
+            }
+            if(serievalvulaCil==""){
+            	alert('Debe registrar serie de valvula')
+            	return;
+            }
+            var id_row='row'+pos; 
+            var fila=`<tr id="${id_row}">
+                        <td>
+                        	<input type="hidden" value="${valuemarcaCil}" name="cilindro[]">
+                            <input readonly="readonly"  type="text" value="${marcaCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere cilindro">
+                            
+                        </td>
+                        <td>
+                        	<input readonly="readonly" name="serie[]" type="text" value="${serieCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere serie">
+                        </td>
+                        <td>
+                        	<input type="hidden" value="${valuecapacidadCil}" name="capacidad[]">
+                        	<input readonly="readonly" name="" type="text" value="${capacidadCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere capacidad">
+                    	</td>
+                        <td>
+ 							<input readonly="readonly" name="fechaFab[]" type="text" value="${fechaCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere fecha">
+                        </td>
+                        <td>
+	                    	<input readonly="readonly" name="nroinmetrocil[]" type="text" value="${inmetroCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere nro inmetro">
+	                    </td>
+                        <td>
+                       		<input type="hidden" value="${valuemarcaCilvalvulaCil}" name="marcavalvulacil[]">
+	                    	<input readonly="readonly" type="text" value="${marcavalvulaCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere marca de valvula">
+	                    </td>
+	                    <td>
+		                	<input readonly="readonly" name="nroserievalvula[]" type="text" value="${serievalvulaCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere nro de serie de valvula">
+		                </td>
+                        <td style="padding-top: 7px;">
+                            <a  href="#" type="button" onclick="eliminarCilindro(${pos});event.preventDefault();" class="" style="background: red; border-radius: 4px;
+                                color: white; display: block;padding: 4px 0px;text-align: center;"><i class="fa fa-minus"></i><b></b></a>    
+                        </td>
+  
+                    </tr>`;
+
+           	$('#formulario').find('#lista_cilindros').append(fila)
+            
+            
+
+//             $('#js-SelCil option:first').prop('selected',true);
+            $('#formulario').find('#js-SelCil').val('').trigger('chosen:updated');  
+            $('#formulario').find('#js-capCil').val('').trigger('chosen:updated');  
+            $('#formulario').find('#js_marcavalvula_cil').val('').trigger('chosen:updated');  
+            
+            $('#formulario').find('#js_serie_cil').val('');
+            $('#formulario').find('#js_nroinmetro_cil').val('');
+            $('#formulario').find('#js_serie_cil').val('');
+            $('#formulario').find('#js_fecha_cil').val('');
+            $('#formulario').find('#js_serievalvula_cil').val('');
+            
+            $('#formulario').find('#js-js_nroinmetro_cil').focus();
+            
+            pos++;        
+        })
+
+        function eliminarCilindro(row){
+        	$('#formulario').find('#row'+row).remove()     
+        }
+
+		
+// 		var pos_m=0;
+        
+		$('#formularioModificar').find('#btn_agregar_cil').on('click',function(){
+            // alert('s')
+            var marcaCil=$('#formularioModificar').find('#js-SelCil option:selected').text();
+            var valuemarcaCil=$('#formularioModificar').find('#js-SelCil option:selected').val();
+            
+            var serieCil=$('#formularioModificar').find('#js_serie_cil').val();
+            var capacidadCil=$('#formularioModificar').find('#js-capCil option:selected').text();
+            var valuecapacidadCil=$('#formularioModificar').find('#js-capCil option:selected').val();
+            var fechaCil=$('#formularioModificar').find('#js_fecha_cil').val();
+            var inmetroCil=$('#formularioModificar').find('#js_nroinmetro_cil').val();
+            
+            var marcavalvulaCil=$('#formularioModificar').find('#js_marcavalvula_cil option:selected').text();
+            var valuemarcaCilvalvulaCil=$('#formularioModificar').find('#js_marcavalvula_cil').val();
+            
+            var serievalvulaCil=$('#formularioModificar').find('#js_serievalvula_cil').val();
+            if(valuemarcaCil==""){
+            	alert('Debe seleccionar marca del cilindro')
+            	return;
+            }
+            if(serieCil==""){
+            	alert('Debe registrar serie del cilindro')
+            	return;
+            }
+            if(valuecapacidadCil==""){
+            	alert('Debe seleccionar capacidad del cilindro')
+            	return;
+            }
+            if(fechaCil==""){
+            	alert('Debe registrar fecha de fabricación del cilindro')
+            	return;
+            }
+            if(inmetroCil==""){
+            	alert('Debe registrar nro inmetro del cilindro')
+            	return;
+            }
+            if(valuemarcaCilvalvulaCil==""){
+            	alert('Debe registrar marca de valvula')
+            	return;
+            }
+            if(serievalvulaCil==""){
+            	alert('Debe registrar serie de valvula')
+            	return;
+            }
+            
+            var id_row='row'+pos_m_global; 
+            var fila=`<tr id="${id_row}">
+           				 <td>
+			            	<input type="hidden" value="${valuemarcaCil}" name="cilindro[]">
+			                <input readonly="readonly"  type="text" value="${marcaCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere cilindro">
+			                
+			            </td>
+	                    <td>
+	                    	<input readonly="readonly" name="serie[]" type="text" value="${serieCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere serie">
+	                    </td>
+	                    <td>
+	                    	<input type="hidden" value="${valuecapacidadCil}" name="capacidad[]">
+	                    	<input readonly="readonly" name="" type="text" value="${capacidadCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere capacidad">
+	                	</td>
+	                    <td>
+								<input readonly="readonly" name="fechaFab[]" type="text" value="${fechaCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere fecha">
+	                    </td>
+	                    <td>
+	                    	<input readonly="readonly" name="nroinmetrocil[]" type="text" value="${inmetroCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere nro inmetro">
+	                    </td>
+	                    <td>
+	                   		<input type="hidden" value="${valuemarcaCilvalvulaCil}" name="marcavalvulacil[]">
+	                    	<input readonly="readonly" type="text" value="${marcavalvulaCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere marca de valvula">
+	                    </td>
+	                    <td>
+		                	<input readonly="readonly" name="nroserievalvula[]" type="text" value="${serievalvulaCil}" class="form-control" data-fv-notempty="true" data-fv-message="Requiere nro de serie de valvula">
+		                </td>
+		                <td style="padding-top: 7px;">
+		                    <a  href="#" type="button" onclick="eliminarCilindro_mod(${pos_m_global});event.preventDefault();" class="" style="background: red; border-radius: 4px;
+		                        color: white; display: block;padding: 4px 0px;text-align: center;"><i class="fa fa-minus"></i><b></b></a>    
+		                </td>
+                        
+                    </tr>`;
+
+           	$('#formularioModificar').find('#lista_cilindros').append(fila)
+            
+            
+
+//             $('#js-SelCil option:first').prop('selected',true);
+            $('#formularioModificar').find('#js-SelCil').val('').trigger('chosen:updated');  
+            $('#formularioModificar').find('#js-capCil').val('').trigger('chosen:updated');  
+            $('#formularioModificar').find('#js-capCil').val('').trigger('chosen:updated');  
+            $('#formularioModificar').find('#js_marcavalvula_cil').val('').trigger('chosen:updated');  
+            
+            $('#formularioModificar').find('#js_serie_cil').val('');
+            $('#formularioModificar').find('#js_serievalvula_cil').val('');
+            $('#formularioModificar').find('#js_nroinmetro_cil').val('');
+            $('#formularioModificar').find('#js_fecha_cil').val('');
+            $('#formularioModificar').find('#js-SelCil').focus();
+            pos_m_global++;
+                    
+        })
+        
+        
+        $('#formulario').find('#js-SelReduc').on('change',function(){
+        	idmarcred=$(this).val();
+        	$('#formulario').find('.css-idmarcred').val(idmarcred).trigger('chosen:updated'); 
+        	$('#formulario').find('.css-idmarcred').prop('disabled', true).trigger("chosen:updated");
+        })
+       $('#formularioModificar').find('#js-SelReduc').on('change',function(){
+        	idmarcred=$(this).val();
+        	$('#formularioModificar').find('.css-idmarcred').val(idmarcred).trigger('chosen:updated'); 
+        	$('#formularioModificar').find('.css-idmarcred').prop('disabled', true).trigger("chosen:updated");
+        })
+        
+
+        function eliminarCilindro_mod(row){
+        	$('#formularioModificar').find('#row'+row).remove()     
+        }
+
+		
+		function existen_registros_tabla(tabla) {
+		  let filas = $(tabla).find('tbody tr').length;
+		  
+		  if(filas > 1) {
+		    return 1;
+		  }
+		  else {
+		    return 0;
+		  }
+		}
+
+
+            // $(function () {
+
+        
+    // })
+        
+    </script>
+	<script type="text/javascript"> 
+	    function MayusSerie(e){
+	        e.value=e.value.toUpperCase();
+	    }
+	
+	    $(function(){
+	    })
+	
+	</script>
+</body>
+</html>

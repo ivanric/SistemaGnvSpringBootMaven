@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html;UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>gestion</title>
+
+</head>
+<body>
+
+	<form name="formularioAprobacion" role="form" id="formularioAprobacion" method="post" action="RestAprobaciones/adicionar" data-fv-excluded="disabled"
+		>
+		<div class="modal fade" id="modalAdicionar" tabindex="-1" role="dialog"
+			data-backdrop="static" data-keyboard="false" aria-hidden="true"
+			style="display: none; padding-left: 0 !important">
+			<div class="modal-dialog modal-lg modal-responsivo-mediano" role="document">
+				<div class="modal-content">
+					<div class="card">
+						<div style="margin: 0 10px 0 10px">
+                        	<p style="">
+                        	   <button  type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            	</button>
+                        	</p>
+							
+                          	<div class="row">
+                                <div class="col-md-4">
+                                    <h4 style="margin-top: 0px;"><b>Aprobaciones de Solicitud</b></br><small>Aprobar solicitud por favor</small></h4>
+                                </div>
+<!--                                 <div class="col-md-8"> -->
+<!--                                     <b>N�MERO DE SOLICITUD: </b><span id="numSolt"></span>  -->
+<!--                                     <b style="margin-left: 15em;">FECHA DE REGISTRO: </b><span id="fechaCreacion"></span> -->
+<!--                                     <b style="">GESTION: </b><span id="s_gestion1"></span> -->
+                                    
+<!--                                 </div> -->
+                            </div>
+							
+						</div>
+						<div class="modal-body">
+							<input type="hidden" name="idsolt" id="idsolt" />
+							<div class="contenido-solicitud">
+								<div class="row">
+									<!-- .col-md-3*4>.form-group.fg-line>label{campo}+input[name="nombre" placeholder="Ingrese" value data-fv-notempty="true" data-fv-message="Requiere" disabled].form-control.fg-input.input-sm -->
+									<div class="col-md-3 ">
+										<div class="form-group fg-line"><label for="">Fecha de Creacion</label><input type="text" name="fecha" placeholder="Ingrese" value=""  disabled="disabled" class="form-control fg-input"></div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group fg-line"><label for="">Numero de Solicitud</label><input type="text" name="numSolt" placeholder="Ingrese" value=""  disabled="disabled" class="form-control fg-input"></div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group fg-line"><label for="">Usuario Creador de Solicitud</label><input type="text" name="nombreCompleto" placeholder="Ingrese" value=""  disabled="disabled" class="form-control fg-input"></div>
+									</div>
+								</div>	
+							</div>
+							<fieldset>
+								<legend style="margin-bottom: 0px !important"><strong>BENEFICIARIO</strong></legend>
+								<div class="beneficiario-datos">
+									<!-- .row*7>.col-md-6*2>.form-group>(label.col-md-2.control-label>b{campo})+.col-md-10>.fg-line>input[placeholder="ingrese"].form-control.input-sm -->
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Cedula:</b></label>
+												<input  disabled="disabled" type="text" placeholder="" class="form-control mcss_input input-sm" name="ci">
+												
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Nombre Completo:</b></label>
+												<input  disabled="disabled" type="text" placeholder="" class="form-control mcss_input input-sm" name="razonsocial">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Direccion:</b></label>
+												<input  disabled="disabled" type="text" placeholder="" class="form-control mcss_input input-sm" name="direccion">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Correo:</b></label>
+												<input  disabled="disabled" type="text" placeholder="" class="form-control mcss_input input-sm " name="email">
+											</div>
+										</div>
+
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Institucion:</b></label>
+												<input  disabled="disabled" type="text" placeholder="" class="form-control mcss_input input-sm" name="institucion">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Telefonos:</b></label>
+												<input  disabled="disabled" type="text" name="telefonos" placeholder="" class="form-control mcss_input input-sm">
+											</div>
+										</div>
+
+									</div>
+								
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend style="margin-bottom: 0px !important"><strong>APROBACIONES</strong></legend>
+								<div class="row">
+							        <div class="col-md-2"></div>
+							        <div class="col-md-8">
+							        	<div class="form-group aprobaciones-contenido">
+								           <!--  <div class="checkbox">
+								                <label>
+								                    <input type="checkbox" name="aprobacion[]" value="net" />
+								                    <i class="input-helper"></i> Aprobador
+								                </label>
+								            </div> -->
+											
+							        	</div>   
+							        </div>
+							        <div class="col-md-2">
+							        	<div id="id_Pausa" class="form-group" style="margin-top: 10px;">
+							        		
+							        	</div>
+							        </div>
+
+							    </div>	
+								<div class="row">
+									<div class="col-md-12">
+									  <div class="form-group">	
+									      <label data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+									        <input type="checkbox" id="check_pausa" value="" name="idtipoPausa" />
+									      	<!-- <i class="input-helper"></i> -->
+									      </label>
+									      <b>PAUSAR: </b><span id="title_pausa"></span> 
+									     
+									  </div>
+									  <div id="collapseOne" aria-expanded="false" class="collapse">
+								    	<textarea name="descripcionPausa" class="form-control " rows="5" placeholder="Ingrese detalle de pausa" id="cont_pausa"></textarea>
+									     
+									  </div>
+										
+									</div>	
+								</div>
+
+							</fieldset>	
+							<fieldset>
+								<legend style="margin-bottom: 0px !important" ><strong>VEHICULO</strong></legend>
+								<div class="vehiculo-datos">
+									<!-- .row*6>.col-md-6*2>.form-group>(label.col-md-2.control-label> style=""b{campo})+.col-md-10>.fg-line>input[placeholder=""].form-control mcss_input.input-sm -->
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Placa</b></label>
+												
+												<input disabled="disabled" type="text" placeholder="" class="form-control mcss_input input-sm" name="placa">
+												<input type="hidden" name="placa">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Color</b></label>
+												<input disabled="disabled" type="text" placeholder="" class="form-control mcss_input input-sm" name="color">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Targeta de Prioridad</b></label>
+												<input disabled="disabled" type="text" placeholder="" class="form-control mcss_input input-sm" name="tjeta_prioridad">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Cilindrada</b></label>
+												<input disabled="disabled" type="text" placeholder="" class="form-control mcss_input input-sm" name="cilindrada">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Numero de Chasis</b></label>
+												<input disabled="disabled" type="text" placeholder="" class="form-control mcss_input input-sm" name="num_chasis">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Numero de Motor</b></label>
+												<input disabled="disabled" type="text" placeholder="" class="form-control mcss_input input-sm" name="num_motor">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Sistema Motor</b></label>
+												<input disabled="disabled" type="text" placeholder="" class="form-control mcss_input input-sm" name="tipoMotor">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Tipo</b></label>
+												<input disabled="disabled" type="text" placeholder="" class="form-control mcss_input input-sm" name="tipoVehiculo">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Marca</b></label>
+												<input disabled="disabled" type="text" placeholder="" class="form-control mcss_input input-sm" name="marcaVehiculo">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Modelo</b></label>
+												<input disabled="disabled" type="text" placeholder="" class="form-control mcss_input input-sm" name="modeloVehiculo">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Tipo de Servicio</b></label>
+												<input disabled="disabled" type="text" placeholder="" class="form-control mcss_input input-sm" name="tipoServicio">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="" class="" style=""><b>Combustibles</b></label>
+												<input disabled="disabled" type="text" placeholder="" class="form-control mcss_input input-sm" name="combustibles">
+											</div>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+<!-- 							<fieldset>
+								<legend><strong>POLIZA DE SEGURO DEL VEHICULO</strong></legend>
+								<div class="poliza-data" style="display: none">
+									 <div class="row" >
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="" class="col-md-6 control-label" style=""><b>Numero de Poliza</b></label>
+                                                <div class="col-md-6">
+                                                    <div class="fg-line">
+                                                        <input type="text" placeholder="Numero de Poliza" class="form-control mcss_input input-sm dt-pol" name="numeroPol" data-fv-notempty="true" data-fv-message="Requiere numero de Poliza" data-fv-integer="true" data-fv-integer-message="Requiere solo numero" maxlength="10" id="numeroPol">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="" class="col-md-6 control-label">Aseguradora</label>
+                                                <div class="col-md-6">
+                                                    <div class="fg-line">
+                                                        <select data-placeholder="n" name="idaseg" class="form-control mcss_input fg-input dt-pol" data-fv-notempty='true' data-fv-message="Requiere Aseguradora"
+                                                            id="select-aseg">
+                                                            <option value="">Seleccione Aseguradora</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                    </div>      
+								</div>
+							</fieldset> -->
+
+							<!-- <div class="col-md-12">
+								<div class="form-group">
+									<label for="">prueba</label>
+									<input type="text" data-fv-notempty="true" data-fv-message="Requiere" name="prueba" val=""  class="form-control fg-input input-sm">
+								</div>
+							</div>		 -->
+						</div>
+
+						<div class="modal-footer">
+							<button disabled="disabled" type="button" id="btn-guardar-aprob" name="aprobar" class=" btn btn-primary waves-effect " data-id="7">Aprobar</button>
+							<!-- <button type="submit" disabled="disabled">BARCA</button> -->
+							<!-- <button type="button" disabled="disabled">BARCA1</button> -->
+							<button type="button" class="btn btn-danger waves-effect"
+								data-dismiss="modal" >Cancelar</button>
+						</div>
+ 
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+	</form>
+
+	<!-- <h2 style="text-align: center;">GESTION BENEFICIARIOS</h2> -->
+	<div class="contenido_gestion">
+	    <div class="" style="padding: 0 15px;">
+	    	<div class="row">
+	    		<div class="col-md-4">
+			    	<h2 class="panel-title">
+			            <b>APROBACIONES DE SOLICITUD</b>
+			        </h2>
+			        <h5>
+			       Administre aprobaciones registradas en el Sistema
+			        </h5>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<h1 class="panel-title"><b>GESTION: <label class="cs_gestion"></label></b></h1>
+	    		</div>
+	    	</div>
+	        
+	    </div>
+		<div class="panel-body">		
+			 <div class="row" style="margin-bottom: 10px;">   
+                <div class="col-md-3 col-xs-3"></div>
+                <div class="col-md-6 col-xs-6">
+                    <input id="input-solt" class="form-control_filtro unput-sm" placeholder="Ingrese nro de Solicitud o CI del beneficiario" type="" name="">    
+                </div>
+                <div class="col-md-3 col-xs-3"></div>       
+             </div>
+             <div class="row">
+                 <div class="col-md-12 table-responsive" id="cont-solt">
+                    <div class="col-md-12 table-responsive">
+<!--                         <table id="table" class="table table-vmiddle nowrap" style="width:100%"> -->
+                        <table id="table" class="table tabla_gestion" style="">
+                        
+                            <thead>
+                                <tr>
+                                    <th class="text-center" width="40px"># Solt</th>
+                                    <th class="text-center">fecha</th>
+                                    <th class="text-center">placa</th>
+                                    <th class="text-center">beneficiario</th>
+                                    <th class="text-center">ci</th>
+                                    <th class="text-center">Aprobado</th>
+                                    <th class="text-center">Opciones</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                     
+                </div>
+             </div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	
+	    var isGestion=$('body').find('#select-gestion option:selected').text();
+	    console.log('gestion',isGestion)
+	    $('.cs_gestion').html(isGestion);
+	
+        var GTamAprob=0;
+        var GminTam=1,GmaxTam;
+        var GDataOpciones=result;
+     	var GClickBotton=false;
+        var GAprobFinal=0;
+        var idsolt;
+       // var GJerarquiaApLegal;//Acicionado para Piliza
+
+        //TRAIDOS DEL MODAL ADD PARA POLIZA
+        var GTipoAprob;
+        var GTiposPausa;
+        var GtamComp;
+        var respPoliza=0;
+
+
+        var result=Get_Opciones(null);
+        console.log('GESTION_LIST: ',result)
+     
+        function ExisteOpcion(opc){
+            // alert('entro comparar')
+            console.log(result)
+            var resultado=false;
+            for (var i = 0; i < result.AccionesUser.length; i++) {
+//                 console.log('for_: ',result.AccionesUser[i]);
+                if(result.AccionesUser[i].codigo==opc){
+                    resultado=true;         
+                }
+            }
+            // console.log('result_dentro:',resultado)              
+            return resultado;
+        }
+
+        // if(ExisteOpcion('adicionar')){
+        //     $('#btn-add').attr({
+        //         onclick:"(Gestionar.Adicionar.modal())",
+        //         // accesskey:""
+        //         })
+        //     $('#btn-add').removeAttr("disabled ").focus().val("Ahora si lo puedes utilizar")
+        // }
+		
+       
+        
+        var DTtable=''
+            
+//         var filtro=$('#js-filtro').val();
+        var filtro=document.getElementById('input-solt').value
+//         var estado=$('input[name="iestado"]:checked').val();
+        
+        
+        
+        DTtable=$('#table').DataTable({
+            "oLanguage": {
+                "sUrl": GurlDataTable
+            },
+            // responsive:true,
+//             "dom":'rt<button>ip',
+            "dom":'rt<button>',
+            // "ordering":false,
+            "pageLength":10,
+//             "scrollCollapse":true,
+//            	"responsive":true,
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+            	"type": "POST",
+             "url": "RestAprobaciones/listar_d",
+	           	"data": function ( d ) {
+					//d.estado = estado
+	                //d.estado = 1;
+	                d.filtro=filtro,
+	                d.gestion=$("body").find('#select-gestion option:selected').text()
+           		}
+         	},
+            "columns": [
+                { "data": "numSolt" },
+                { "data": "numSolt" },
+                { "data": "numSolt" },
+                { "data": "numSolt" },
+                { "data": "numSolt" },
+                { "data": "estado" },
+                { "data": "numSolt" }
+      		],
+             "createdRow":function(row,data,index){
+                    $('td',row).eq(0).html(data.numSolt)
+                    $('td',row).eq(1).html(data.fecha)
+                    $('td',row).eq(2).html(data.vehiculo.placa)
+                    $('td',row).eq(3).html(data.persona.razonsocial)
+                    $('td',row).eq(4).html(data.persona.ci)
+//                     if(data.estado==1){
+// 						 $('td',row).eq(5).html('No').addClass('text-center').addClass('text-center');
+//                     }else{
+//                      	 $('td',row).eq(5).html('Si').addClass('text-center').addClass('text-center');
+//                     }
+					if (data.aprobadoSiNo==0) {
+						 $('td',row).eq(5).html('No').addClass('text-center').addClass('text-center')
+// 						$('td',row).eq(6).html('<input type="checkbox" class=""  disabled="disabled">').addClass('text-center');
+					} else {
+// 						$('td',row).eq(6).html('<input type="checkbox" class="" checked disabled="disabled">').addClass('text-center');
+						$('td',row).eq(5).html('Si').addClass('text-center').addClass('text-center')
+					}
+					
+                    if(data.estado==1){
+                        if (data.aprobadoSiNo==0){
+                            $('td',row).eq(6).html('<button id="btn-aprob" class="btn btn-xs btn-success waves-effect btn-sm aprobacion" accesskey="'+data.idsolt+'" data-href="'+data.idsolt+'" "><span class="zmdi zmdi-edit"></span> Realizar Aprobaciones</button>');
+                        }else{
+                            $('td',row).eq(6).html('<button id="btn-aprob" class="btn btn-xs btn-warning waves-effect btn-sm aprobacion" accesskey="'+data.idsolt+'" data-href="'+data.idsolt+'" "><span class="fa fa-edit"></span>Aprobado</button>');
+                        }   
+                    }else{
+						if (data.aprobadoSiNo==0){
+							$('td',row).eq(6).html('<button id="btn-aprob" class="btn btn-xs btn-success waves-effect btn-sm " accesskey="'+data.idsolt+'" data-href="'+data.idsolt+'" disabled><span class="zmdi zmdi-wrench zmdi-hc-fw"></span>Realizar Aprobaciones</button>');
+						}else{
+							$('td',row).eq(6).html('<button id="btn-aprob" class="btn btn-xs btn-warning waves-effect btn-sm" accesskey="'+data.idsolt+'" data-href="'+data.idsolt+'" disabled><span class="fa fa-edit"></span>Aprobado</button>');
+						}	
+
+                    }
+
+                    
+                  
+
+                }
+                ,
+                "drawCallback":function(settings){
+      	        	$('.aprobacion').click(function(){
+      	        		 $('#formularioAprobacion').data('formValidation').resetForm();
+      	        		idsolt=$(this).attr('accesskey');
+      	        		//se hace esto por que solo se bloquea a botones tipo button
+	      	  			$('#btn-guardar-aprob').removeAttr('type')
+	      	  			$('#btn-guardar-aprob').prop('type','button')
+      	        		$('body').find("#btn-guardar-aprob").attr("disabled",'disabled')
+      	        		$('body').find("#btn-guardar-aprob").prop("disabled",true)
+
+      	        		
+		      	  		$('body').on('click','.css_check',function(){
+		      	  			// Aqui se cambia el tipo de button a submit para enviar el formulario
+		      	  			$('#btn-guardar-aprob').removeAttr('disabled')
+		      	  			$('#btn-guardar-aprob').removeAttr('type')
+		      	  			$('#btn-guardar-aprob').prop('type','submit')
+		
+		      	  		})
+
+ 		
+      	      			$.getJSON('RestAprobaciones/getDatosSolicitud',{idsolt:idsolt},function(resp){
+      	      				$('input[name="idsolt"]').val(idsolt)		
+		      	  			console.log('getDatosSolicitudOS',resp)
+		      	  			/******Modificacion del usuario creador de solicitud****/
+		      	  			GTipoAprob=resp[1].ListaAprobaciones;
+		      	  			GTiposPausa=resp[1].ListPausaAprob;
+		      	  			var ObjUsuario=resp[1].UsuarioCreador;
+		      	  			var NombreCompleto=ObjUsuario.razonsocial;
+		      	  			ObjUsuario.nombreCompleto=NombreCompleto;
+		      	  			$('.contenido-solicitud').loadJSON(resp[0])
+		      	  			$('.contenido-solicitud').loadJSON(resp[1].UsuarioCreador)
+		      	  			/********Modificaci�n del Beneficiario********/
+		      	  			var ObjBenPer=resp[0].persona;
+		      	  			var GeneroPer;
+		      	  			if(ObjBenPer.genero='f'){
+		      	  				GeneroPer='Femenino'
+		      	  			}else{
+		      	  				GeneroPer='Masculino'
+		      	  			}
+		      	  			ObjBenPer.generoBen=GeneroPer
+		      	  			var NombreCompletoBen=ObjBenPer.nombres+" "+ObjBenPer.ap+" "+ObjBenPer.am
+		      	  			ObjBenPer.nombreCompletoBen=NombreCompletoBen
+		      	  			/******************HAcer para Telefonos concatenar**************************/
+		      	  			console.log('resp', resp )
+		      	  			ObjTelefonos=resp[1].ListaTelefonos
+		      	  			var Telefonos='';
+		      	  			$(ObjTelefonos).each(function(i,d){
+		      	  				Telefonos+=d.numero+' '
+		      	  			})
+		      	  			resp[0].persona.telefonos=Telefonos;
+		      	  			$('.beneficiario-datos').loadJSON(resp[0].persona)
+		      	  			// $('.beneficiario-datos').loadJSON(resp[1].ListaTelefonos)
+		      	  			$('.beneficiario-datos').loadJSON(resp[0].persona.beneficiario)
+		
+		      	  			$('.vehiculo-datos').loadJSON(resp[0].vehiculo)
+		      	  			$('input[name="tipoMotor"]').val(resp[0].vehiculo.tipoMotor.nombre)			
+		      	  			$('input[name="tipoVehiculo"]').val(resp[0].vehiculo.tipoVehiculo.nombre)			
+		      	  			$('input[name="marcaVehiculo"]').val(resp[0].vehiculo.marcaVehiculo.nombre)			
+		      	  			$('input[name="modeloVehiculo"]').val(resp[0].vehiculo.modeloVehiculo.nombre)			
+		      	  			$('input[name="tipoServicio"]').val(resp[0].vehiculo.tipoServicio.nombre)
+		      	  			var combustible='';
+		      	  			 $(resp[0].vehiculo.combustibleVehiculo).each(function(i,v){
+		      	  			 	combustible+=v.nombre+' - '
+		      	  			 })
+		
+		      	  			$('input[name="combustibles"]').val(combustible.trim().slice(0,combustible.length-2));
+		
+		
+		      	  			/**********************************************APROBACIONES**********************************************/
+		      	  			$('.aprobaciones-contenido').html("");
+		      	  			console.log('GDataOpciones: ',GDataOpciones);
+		      	  			
+		      	  			GTamAprob=resp[1].ListaAprobaciones.length;
+		      	  			$(resp[1].ListaAprobaciones).each(function(i,aprob){
+		      	  				var check='',bloqueo='';
+		      	  				var tipo;
+		      	  				var cont_pausa;
+		      	  				var SmallPermiso=''
+		      	  				var ReadOnly='';
+		      	  				var ServCheck=false;
+		      	  				var valueTipoAprob;
+		      	  				var codigoAprob;
+		
+		      	  				if(!ExisteOpcion(aprob.codigo)){
+		      	  					SmallPermiso='Sin Permiso para Aprobar'
+		      	  					// ReadOnly='readonly'
+		      	  					bloqueo='disabled'
+		      	  				}
+		      	  				valueTipoAprob=aprob.idacc;
+		      	  				codigoAprob=aprob.codigo;
+		
+		      	  				$(resp[0].aprobaciones).each(function(j,a){
+		      	  					if(aprob.idacc==a.idacc){
+		      	  						// alert('check')
+		      	  						check='checked'
+		      	  						bloqueo='disabled'
+		      	  						ServCheck=true
+		      	  						valueTipoAprob=''
+		      	  						
+		      	  					}
+		      	  				})
+// 		      	  				console.log('codigo:',codigoAprob)	
+		      	  				tipo=`<div class="checkbox click_aprob">
+		      	  			                <label>
+		      	  			                    <input class="css_check click_aprob" type="checkbox" id="id_aprob${aprob.jerarquia}" data-id="${valueTipoAprob}" data-cod="${codigoAprob}" name="aprobacion[]" accesskey="${aprob.jerarquia}" value="${valueTipoAprob}" ${check} ${bloqueo} servcheck="${ServCheck}"/>
+		      	  			                    <i class="input-helper"></i>${aprob.nombre}
+		      	  			                </label>
+		      	  								
+		      	  			               
+		      	  			                <small style="color:orange;">${SmallPermiso}</small>
+		      	  			          </div>
+		      	  			          ` 
+		
+		      	  			    $('.aprobaciones-contenido').append(tipo);
+		
+		      	  			})
+		      	  			$('#formularioAprobacion').formValidation('addField','aprobacion[]');      
+		      	  			console.log('respModificada: ',resp)
+		      	  			PausaAprob(-1);
+		      	  		})
+		      	  		
+//        			    	 document.getElementById('btn-guardar-aprob').disabled=true;
+      	        		
+// 						 $('body').find("#btn-guardar-aprob").attr("disabled",'disabled')
+// 	      	        	 $('body').find("#btn-guardar-aprob").prop("disabled",true)
+// 						 $('body').find("input[type=submit]").attr('disabled','disabled');
+// 						 $('body').find("input[type=submit]").prop("disabled",true)
+		      	  		
+                		$('#modalAdicionar').modal('show');
+
+
+                	});
+                	
+                	
+                    $('button[data-toggle="tooltip"]').tooltip({animated: 'fade',placement: 'bottom',});
+                    
+                	$('#input-solt').on( 'keyup', function () {
+                        DTtable.search(this.value ).draw();
+                    }) 
+                }
+
+        });
+        
+		//********************FUNCIONES EXTRAS
+		$('#cont_pausa').on('keyup',function(){
+			// alert('se esta escribiendo')
+			
+			$('#check_pausa').removeAttr('disabled')
+		})
+		
+		$('#btn-guardar-aprob').on('click',function(){
+			 // alert('se hizo click')
+			GClickBotton=true
+		})
+		function PausaAprob(value,idtip){
+	
+// 			console.log('Pausa_value: ',value)
+// 			console.log('Pausa_GTipoAprob: ',GTipoAprob)
+// 			console.log('Pausa_GTiposPausa: ',GTiposPausa)
+			var valueTipo=value;
+			
+			// $('#collapseOne').collapse('hide')
+			$('#check_pausa').removeAttr('disabled')
+			GtamComp=GTamAprob+1;
+			if(valueTipo<GtamComp){
+				GAprobFinal=0
+				$(GTipoAprob).each(function(i,tp){
+					var mayor=0;
+					var estadoPausa;
+					if(valueTipo==-1){ //SI HAT PAUSAS DESDE EL SERIVIDOR
+						// alert('entro -1')
+						// $('#check_pausa').prop('checked',true)
+						$('#check_pausa').attr('disabled','disabled')
+						$(GTiposPausa).each(function(j,tpPause){
+							if(mayor<=tpPause.idacc){
+								// alert('tpPASUAS')
+								mayor=tpPause.idacc;
+								estadoPausa=tpPause;
+							}
+						})
+	
+						if(tp.idacc==mayor){
+							// alert('entro pausaServer')
+							$('#check_pausa').removeAttr('disabled')
+							if(!$('#check_pausa').is(':checked')){
+								//alert('no esta checked')
+								$('#check_pausa').prop('checked',true)
+								$('#check_pausa').attr('checked','checked')
+							}
+							$('#check_pausa').val(tp.idacc)
+							$('#collapseOne').collapse('show')
+							$('#title_pausa').html(tp.nombre)
+							// $('#cont_pausa').val('')
+							$('#cont_pausa').val(estadoPausa.descripcion)
+						}
+					}else{
+						if(valueTipo==1){//controla para la primera aprobacion
+							//alert('entro reset')
+						//$('#check_pausa').removeAttr('checked')
+							$('#check_pausa').attr('disabled','disabled')
+							$('#check_pausa').val('')
+							$('#collapseOne').collapse('hide')
+							$('#title_pausa').html('')
+							$('#cont_pausa').val('')
+						}else{
+							if(tp.idacc==valueTipo){
+								$('#check_pausa').removeAttr('disabled')
+								$('#check_pausa').removeAttr('checked')
+								$('#check_pausa').prop('checked',false)
+								$('#check_pausa').val(tp.idacc)
+								$('#collapseOne').collapse('hide')
+								$('#title_pausa').html(tp.nombre)
+								$('#cont_pausa').val('')
+							}	
+						}
+					}
+				})
+			}else{
+			//alert(idtip)
+				GAprobFinal=idtip
+				$('#check_pausa').attr('disabled','disabled')
+				$('#check_pausa').removeAttr('checked')
+				$('#check_pausa').prop('checked',false)
+				$('#check_pausa').val('')
+				$('#collapseOne').collapse('hide')
+				$('#title_pausa').html('')
+				$('#cont_pausa').val('')
+				
+// 			    setTimeout(function() {
+	                $.bootstrapGrowl("Importante! Se realizara la aprobacion Final de esta Solicitud.", {
+			            type: 'info',
+			            align: 'center',
+			            
+			            width: 'auto',
+			            allow_dismiss: false
+			        });
+// 			    }, 1000);
+			
+// 	               $.growl.error({
+// 	                   title:'Verificacion!', 
+// 	                   message: "Se realizara la aprobacion Final de esta Solicitud.",
+// 	                   duration:1500,
+// 	                   size:'large',
+// 	                   location:'tc' 
+// 	               });
+			}
+		}
+
+		$('body').on('.click_aprob','click',function(e){
+			alert('clcik')
+			e.preventDefault()
+ 		})
+		/****************PARA POLIZA************/
+        $.post('RestAprobaciones/getAseguradoras',function(resp){
+            console.log('Aseguradora: ',resp)
+
+            iniciarCallback(IniciarChosen);
+
+            function iniciarCallback(metodo){
+                $(resp).each(function(index,item){
+
+                    $('#select-aseg').append('<option value="'+item.idaseg+'">'+item.nombre+'</option>')
+                })
+                metodo();    
+            }
+
+            function IniciarChosen(){
+                // $('#select-aseg').chosen()
+            }
+
+        })
+    	  		
+		
+		//********************FIN FUNCIONES EXTRAS
+        
+        
+        
+        //*********************FORM VALIDATION
+            	$('#formularioAprobacion').formValidation({
+                	fields: {
+                    'aprobacion[]': {
+                        validators: {
+                            // notEmpty: {
+                            //     message: 'Require Aprobaciones'
+                            // },
+                            choice: {
+                                min: 1,
+                                max: 4,
+                                message: 'Debe Seleccionar como minimo una Aprobacion'
+                            },
+                            callback:{
+                                callback:function(value,validators,$fields){
+                                    var id_check=$fields[0].id;
+                                    var accesskey=$fields[0].accessKey;
+                                    var Field_Id=id_check.slice(0,-1)
+                                    var ServerCheck=$('#'+Field_Id+accesskey).attr('servcheck');
+                                    var ServerCheck_ant;
+                                    var chec_ante='';
+                                    var id_ant;
+                                    var Loc_estado=true;
+                                    var invalidate=true;
+                                    var mensaje='';
+                                    var data_id=$('#'+id_check).data('id');
+
+                                    //ADD POLIZA
+
+                                    var padreNode=$('.dt-pol').parent(); 
+
+                                    var data_codigo=$fields[0].attributes[4].nodeValue;
+                                    console.log('data_codigo: ',data_codigo)
+                                    var estadoCheck;
+                                    //FIN 
+                                    console.log('fields_:',$fields)
+                                    console.log('accesskey_:',accesskey)
+                                    var check_actual=$('#'+Field_Id+$fields[0].accessKey);
+
+                                    GClickBotton=false
+
+                                    console.log('GClickBotton: ',GClickBotton)
+                                    if(GClickBotton==false){
+                                        if(check_actual.is(':checked')){
+                                            PausaAprob(parseInt(accesskey)+1,data_id)
+                                        }else{
+                                            invalidate=true
+                                            var boolch;    
+                                            var ck_an;
+                                            var cont=0;
+                                            for (var i = 1; i <=accesskey; i++) {
+                                                boolch=$('#'+Field_Id+i+'').is(':checked');
+                                                if(boolch!=true){
+                                                    cont=cont+1;
+                                                }
+                                                if(cont==1){
+                                                    ck_an=$('#'+Field_Id+i+'').attr('accesskey')
+                                                    id_ant=parseInt(ck_an)-1;
+
+                                                }
+                                            }
+                                            console.log('id_ant: ',id_ant)
+                                            ServerCheck_ant=$('#'+Field_Id+id_ant+'').attr('servcheck')
+
+                                            if(ServerCheck_ant=="true"){
+                                                // alert('entra1')
+                                                PausaAprob(-1,0)
+                                                console.log('Tamanio pausa: ',GTiposPausa.length)
+                                                if(GTiposPausa.length>0){
+                                                }else{
+                                                    PausaAprob(parseInt(ck_an),0)
+                                                }
+                                            }else{
+                                                // alert('entra2')
+                                                PausaAprob(parseInt(ck_an),0)
+                                            }
+                                            // PausaAprob(parseInt(ck_an),0)
+
+                                        }
+                                    }
+                                    if(accesskey>1){
+                                        for (var i = 1; i < accesskey; i++) {
+                                            var ckeck_for=$('#'+Field_Id+i).is(':checked');
+                                            console.log('ckeck_for_:'+i)
+                                            if(!ckeck_for){
+                                                Loc_estado=false;
+                                            }
+                                        }
+
+
+                                    }
+                                    console.log('GTamAprob: ',GTamAprob)
+                                    var iter=parseInt(accesskey)+1;
+                                    console.log('iter:',iter)
+                                    console.log('ServerCheck: ',ServerCheck)
+                                    if(ServerCheck=="false"){
+                                        for (var i =iter; i <= GTamAprob; i++) {
+                                            var check_before='#'+Field_Id+i;
+                                            console.log('check_before: '+check_before)
+                                            $(check_before).prop('checked',false)
+                                        }
+                                    }
+
+                                    //ASEGURADORA
+                                    // $('#formularioAprobacion').formValidation('removeField','numeroPol');      
+                                    // $('#formularioAprobacion').formValidation('removeField','idaseg');     
+                                    // $('#formularioAprobacion').data('formValidation').resetField($('#numeroPol'),true);     
+                                    // $('#formularioAprobacion').data('formValidation').resetField($('#select-aseg'),true);
+
+
+
+
+                                    // if (data_codigo=='al') {
+                                    //     $.ajax({
+                                    //         url:"RestAprobaciones/existePolizaByPlaca",
+                                    //         data:{
+                                    //             placa:$('input[name="placa"]').val()
+                                    //         },
+                                    //         type:"post",
+                                    //         dataType:"json",
+                                    //         async:false,
+                                    //         // cache:false,
+                                    //         success:function(resp){
+                                    //             console.log('existe: ',resp) 
+                                    //             respPoliza=resp.estado
+                                    //         },  
+                                    //         error:function(err){
+                                    //             alert('sin respuesta del servidor')
+                                    //         }
+
+                                    //     })
+
+                                    //     if(respPoliza==1){
+                                    //         // $('#mensaje-placa').html('se encontro placa registrada').show()
+                                    //         var poliza;
+                                    //         $.post('RestAprobaciones/PolizaDatos',{placa:$('input[name="placa"]').val()},function(resp){
+                                    //             poliza=resp;
+                                    //             console.log('Poliza: ',poliza)
+                                    //             padreNode.addClass('fg-toggled');
+                                    //             // $('#select-aseg').val(poliza.aseguradora.idaseg).trigger('chosen:updated');
+                                    //             $('#select-aseg option').each(function(){
+                                    //                 // alert('value'+$(this).val())
+                                    //                 if($(this).val()==poliza.aseguradora.idaseg){
+                                    //                     document.getElementById("select-aseg").value=""+poliza.aseguradora.idaseg+""
+                                    //                 }
+                                    //             })
+                                    //             $('input[name="numeroPol"]').val(poliza.numeroPol);                                                                                
+                                    //         })
+                                            
+                                    //         // return true
+                                    //     }
+                                    //     GJerarquiaApLegal=accesskey;
+                                        
+                                    // }
+                                    // if(accesskey<GJerarquiaApLegal){
+                                    //     $('.poliza-data').hide() 
+
+                                    // }
+                                    //FIM ASEGURADORA
+
+
+                                    if(!Loc_estado){
+                                        console.log('entro')
+
+                                        if(check_actual.is(':checked')){
+                                            invalidate=false;
+                                            mensaje="Debe Seguir las Aprobaciones segun su orden"
+                                        }else{
+                                            invalidate=true;
+                                        }
+                                        // console.log('Loc_estadof: ',Loc_estado)
+
+                                    }else{
+                                        if(accesskey==1){
+                                            var checkOne=$('#'+Field_Id+accesskey);
+                                            if(checkOne.is(':checked')==false){
+                                                invalidate=false;
+
+                                            }
+                                        }
+
+                                        //AQUI SE CONTROLA PARA HACER LA POLIZA
+
+                                        // if (data_codigo=='al') {
+
+                                        //     estadoCheck=$('#'+Field_Id+accesskey+'').is(':checked');
+                                        //     console.log('esta:',estadoCheck)    
+                                            
+                                        //     if(estadoCheck){
+                                        //         // alert('apr')
+                                        //         // $('#select-aseg').html('')
+                                        //         // $('#select-aseg').append('<option value="">Seleccione Aseguradora</option>')
+                                               
+
+                                        //          $('.poliza-data').slideDown( "slow" );
+
+                                        //         $('#formularioAprobacion').formValidation('addField','numeroPol');      
+                                        //         $('#formularioAprobacion').formValidation('addField','idaseg');      
+                                        //     }else{
+                                        //         // alert('cerrando')
+                                        //         $('.poliza-data').hide()  
+                                        //         $('#formularioAprobacion').data('formValidation').resetField($('#numeroPol'),true);     
+                                        //         $('#formularioAprobacion').data('formValidation').resetField($('#select-aseg'),true);     
+                                        //         $('#formularioAprobacion').formValidation('removeField','numeroPol');      
+                                        //         $('#formularioAprobacion').formValidation('removeField','idaseg');     
+                                                
+                                        //     }
+
+
+                                        // }else{
+                                        //     if (accesskey>GJerarquiaApLegal) {
+                                        //         // alert('GJerarquiaApLegal'+ GJerarquiaApLegal)
+                                        //         $('#formularioAprobacion').formValidation('addField','numeroPol');      
+                                        //         $('#formularioAprobacion').formValidation('addField','idaseg');  
+                                        //     }
+                                        // }    
+                                        //FIN POLIZA
+
+                                        
+                                        console.log('Loc_estado1: ',Loc_estado)
+
+                                    }
+                                    // GClickBotton=false
+                                    return{
+                                        valid:invalidate,
+                                        message:mensaje
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+			.on('success.field.fv', function(e, data) {
+		          if (data.fv.getInvalidFields().length > 0){    // There is invalid field
+		              data.fv.disableSubmitButtons(true);
+		          }
+		    })
+			.on('success.form.fv', function(e){
+                e.preventDefault();
+                var $form=$(e.target);       
+                var formData = new FormData();
+            	var params   = $form.serializeArray();
+            	var aprobacion    = $form.find('[name="aprobacion[]"]')[0];
+                console.log('serializado: ',$form.serialize())
+                console.log('params: ',params)
+                console.log('aprobacion: ',aprobacion)
+                
+                $.each(aprobacion, function(i, aprob) {
+	                formData.append('aprob-' + i, aprob);
+	            });
+                $.each(params, function(i, val) {
+	                formData.append(val.name, val.value);
+	            });
+                console.log('formData: ',formData)
+
+//                 if(GAprobFinal!=0){
+  
+//                 } 
+                swal({   
+                    title: "Seguro de registrar Aprobaciones?",   
+                    text: "Usted registrara Aprobaciones de solicitud",   
+                    type: "warning",   
+                    showCancelButton: true,   
+                    confirmButtonColor: "#DD6B55",   
+                    confirmButtonText: "Si, Continuar!",   
+                    cancelButtonText: "No, Cancelar!",   
+                    closeOnConfirm: false,   
+                    closeOnCancel: false 
+                    }, function(isConfirm){   
+                    if (isConfirm) {
+                        $('#formularioAprobacion').ajaxSubmit({
+                            dataType:'json',
+                            data:{
+                                dataFinal:GAprobFinal
+//                                 ,
+//                                 idsolt:idsolt
+                            },
+                            success:function(res){
+                                console.log('registrado',res)
+                                if(res.status){
+
+                                    $('#table').dataTable().fnDraw('page');
+
+                                    $('.modal').modal('hide')
+                                    
+                                     swal({
+                                         title:"Registrado",
+                                         text:"Se ha registrado Aprobaciones exitosamente",
+                                         type:"success",
+                                         timer: 500,   
+                                         showConfirmButton: false 
+                                     });
+                                    var idsolt=res.idsolt
+                                    $("#frameReportes").attr("src",'RestAprobaciones/Imprimir?idsolt='+idsolt+'&'+$form.serialize());
+                                    $("#reportes").modal('show');
+                                    
+                                    $form.data('formValidation').resetForm();
+                                    $('#formularioAprobacion')[0].reset();
+                                         
+                                }else{
+                                    swal({
+                                       title:"Error",
+                                       text:"Se ha encontrado un Error en el Sistema",
+                                       type:"error",
+                                       timer:2000,
+                                       showCancelButton:false,
+                                       showConfirmButton:false
+
+                                   })
+                                   $('.modal').modal('hide')
+                                }
+                            }
+                        })
+
+                    } else {     
+                        // swal("Cancelled", "Your imaginary file is safe :)", "error");   
+                        swal({
+                            title:"Cancelado",
+                            text:"Se ha cancelado operacion",
+                            type:"error",
+                            timer:2000,
+                            showCancelButton:false,
+                            showConfirmButton:false
+
+                        })
+                       $('#formularioAprobacion').modal('hide')
+                    } 
+                });
+			})
+        //********************* FIN FORM VALIDATION
+        
+
+         
+    </script>
+</body>
+</html>

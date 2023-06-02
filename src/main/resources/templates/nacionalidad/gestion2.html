@@ -1,0 +1,209 @@
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="en"> -->
+<!-- <head> -->
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" /> -->
+<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<!-- <meta name="description" content=""> -->
+<!-- <meta name="author" content=""> -->
+<!-- </head> -->
+<!-- <body> -->
+
+<!-- 	<div class="panel panel-default"> -->
+<!-- 		<div class="panel-body"> -->
+<!-- 			<ul class="nav nav-tabs" role="tablist" id="myTab"> -->
+<!-- 				<li role="presentation"><a href="#home" aria-controls="home" -->
+<!-- 					role="tab" data-toggle="tab">PAIS</a></li> -->
+<!-- 				<li role="presentation"><a href="#profile" -->
+<!-- 					aria-controls="profile" role="tab" data-toggle="tab">DEPARTAMENTO</a></li> -->
+<!-- 				<li role="presentation"><a href="#messages" -->
+<!-- 					aria-controls="messages" role="tab" data-toggle="tab">PROVINCIA</a></li> -->
+<!-- 							  <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li> -->
+<!-- 			</ul> -->
+
+<!-- 			<div class="tab-content"> -->
+<!-- 				<div role="tabpanel" class="tab-pane fade active" id="home"> -->
+<!-- 					<div class="panel panel-default"> -->
+<!-- 						<div class="panel-body"> -->
+<!-- 							<div class="row"> -->
+<!-- 								<div class="col-md-12"> -->
+<!-- 									<div class="row"> -->
+<!-- 										<div class="col-md-12" -->
+<!-- 											style="text-align: right; margin-bottom: 15px"> -->
+<!-- 											<button id="btnAdicionar" -->
+<!-- 												class="btn btn-succ  btn-xs btn-sm waves-effect" -->
+<!-- 												disabled="disabled">NUEVO</button> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+								
+<!-- 									<div class="row"> -->
+<!-- 										<div class="col-md-3 col-xs-12" style="margin-bottom: 10px;"> -->
+<!-- 											<input type="text" id="js-filtro" name="" -->
+<!-- 												class="form-control_filtro unput-sm" -->
+<!-- 												placeholder=" Buscar por nombre de Usuario.."> -->
+<!-- 										</div> -->
+<!-- 										<div class="col-md-3 col-xs-12"></div> -->
+<!-- 										<div class="col-md-6 col-xs-12" -->
+<!-- 											style="text-align: right; margin-top: 10px"> -->
+<!-- 											<label class="radio radio-inline m-r-20"> <input -->
+<!-- 												type="radio" name="iestado" id="activos" value="1"> -->
+<!-- 												<i class="input-helper"></i>activos -->
+<!-- 											</label> <label class="radio radio-inline m-r-20"> <input -->
+<!-- 												type="radio" name="iestado" id="bajas" value="0"> <i -->
+<!-- 												class="input-helper"></i>bajas -->
+<!-- 											</label> <label class="radio radio-inline m-r-20"> <input -->
+<!-- 												type="radio" name="iestado" id="todos" value="-1" -->
+<!-- 												checked="checked"> <i class="input-helper"></i>todos -->
+<!-- 											</label> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 								<div class="col-md-12 table-responsive"> -->
+<!-- 									<table id="table-pais" class="table  table-hover table-vmiddle table-bordered" width="100%"> -->
+<!-- 										<thead> -->
+<!-- 											<tr> -->
+<!-- 												<th>#</th> -->
+<!-- 												<th>Nombre</th> -->
+<!-- 											</tr> -->
+<!-- 										</thead> -->
+<!-- 										<tbody> -->
+
+<!-- 										</tbody> -->
+<!-- 									</table> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div role="tabpanel" class="tab-pane fade " id="profile"> -->
+<!-- 					<div class="panel panel-default"> -->
+<!-- 						<div class="panel-body"> -->
+<!-- 							<div class=""> -->
+<!-- 								<div class="col-md-12"> -->
+<!-- 									<button class="navbar-right btn btn-default waves-effect"> -->
+<!-- 										Agregar Departamento</button> -->
+<!-- 								</div> -->
+<!-- 								&nbsp; -->
+<!-- 								<div class="col-md-12"> -->
+<!-- 									<div class="row"> -->
+<!-- 										<div class="col-md-2"> -->
+<!-- 											<input type="text" name="" class="form-control unput-sm" -->
+<!-- 												placeholder="Buscar.."> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 								<div class="col-md-12"> -->
+<!-- 									<table id="table-departamento" -->
+<!-- 										class="table-gnv table table-vmiddle" width="100%"> -->
+<!-- 										<thead> -->
+<!-- 											<tr> -->
+<!-- 												<th>#</th> -->
+<!-- 												<th>Nombre</th> -->
+<!-- 												<th>Opciones</th> -->
+<!-- 											</tr> -->
+<!-- 										</thead> -->
+<!-- 										<tbody> -->
+<!-- 											<tr> -->
+<!-- 												<td>1</td> -->
+<!-- 												<td>prgrama</td> -->
+<!-- 											</tr> -->
+<!-- 										</tbody> -->
+<!-- 									</table> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div role="tabpanel" class="tab-pane fade " id="messages"> -->
+<!-- 					<div class="panel panel-default"> -->
+<!-- 						<div class="panel-body"> -->
+<!-- 							<div class=""> -->
+<!-- 								<div class="col-md-12"> -->
+<!-- 									<button class="navbar-right btn btn-default waves-effect"> -->
+<!-- 										Agregar Provincia</button> -->
+<!-- 								</div> -->
+<!-- 								&nbsp; -->
+<!-- 								<div class="col-md-12"> -->
+<!-- 									<div class="row"> -->
+<!-- 										<div class="col-md-2"> -->
+<!-- 											<input type="text" name="" class="form-control unput-sm" -->
+<!-- 												placeholder="Buscar.."> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 								<div class="col-md-12"> -->
+<!-- 									<table id="table-provincia" -->
+<!-- 										class="table-gnv table table-vmiddle" width="100%"> -->
+<!-- 										<thead> -->
+<!-- 											<tr> -->
+<!-- 												<th>#</th> -->
+<!-- 												<th>Nombre</th> -->
+<!-- 												<th>Opciones</th> -->
+<!-- 											</tr> -->
+<!-- 										</thead> -->
+<!-- 										<tbody> -->
+<!-- 											<tr> -->
+<!-- 												<td>1</td> -->
+<!-- 												<td>prgrama</td> -->
+<!-- 												<td> -->
+<!-- 													<button class="btn btn-icon btn-default waves-effect"> -->
+<!-- 														<span class="zmdi zmdi-edit"></span> -->
+<!-- 													</button> -->
+<!-- 													<button class="btn btn-icon btn-danger waves-effect"> -->
+<!-- 														<span class="zmdi zmdi-delete"></span> -->
+<!-- 													</button> -->
+<!-- 												</td> -->
+<!-- 											</tr> -->
+<!-- 										</tbody> -->
+<!-- 									</table> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 							  <div role="tabpanel" class="tab-pane" id="settings">cone4</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- 	<script type="text/javascript"> -->
+// 			$(function() {
+// 				$('#myTab a:first').tab('show')
+// 				var tablaPais = $('#table-pais');
+// // 				tablaGNV = $('.table-gnv').DataTable();
+// 				listarTable()
+// 				function listarTable() {
+// 		            $.ajax({
+// 		                url:"RestPaises",
+// 		                type:'get',
+// 		                contentType: "application/json",
+// 		                dataType:'json',
+// 						//	 	                data:{
+// 						//	 	                    filtro:filtro,
+// 						//	 	                    estado:estado,
+// 						//	 	                },
+// 		                success:function(resp){
+// 	 						console.log("lista:",resp)
+// 	 						 $.each(resp, function(i, item) {
+							   
+// 							    $('#table-pais > tbody ').append(`
+// 				                        <tr>
+// 				                        	<td>${i+1}</td>
+// 				                        	<td>${item.nombre}</td>
+// 				                        </tr>
+							    		
+// 							    		`)
+// 							  });
+	 	
+// 		                },
+// 		                error:function(err){
+// 		                    alert('sin respuesta del servidor')
+// 		                }
+// 		            })	
+// 				}
+
+				
+// 			})
+		
+<!-- 	</script> -->
+<!-- </body> -->
+<!-- </html> -->

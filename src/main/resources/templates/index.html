@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>LOGIN</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	
+
+ 	<link rel="stylesheet" href="static/node_modules/bootstrap/dist/css/bootstrap.css" th:href="@{/node_modules/bootstrap/dist/css/bootstrap.css}"></link>
+    
+	<link rel="stylesheet" href="static/node_modules/node-waves/dist/waves.css" th:href="@{/node_modules/node-waves/dist/waves.css}"></link>
+    <link rel="stylesheet" href="static/node_modules/formvalidation/dist/css/formValidation.css" th:href="@{/node_modules/formvalidation/dist/css/formValidation.css}"></link>
+    <link rel="stylesheet" href="static/node_modules/material-design-iconic-font/dist/css/material-design-iconic-font.css" th:href="@{/node_modules/material-design-iconic-font/dist/css/material-design-iconic-font.css}"></link>  
+    
+	<link rel="stylesheet" href="../resources/css/loginstyle1.css" th:href="@{/css/loginstyle1.css}"></link>
+	<link rel="stylesheet" href="../resources/css/tema/app.min.1.css" th:href="@{/css/tema/app.min.1.css}"></link>
+    <link rel="stylesheet" href="../resources/css/tema/mitema.css" th:href="@{/css/tema/mitema.css}"></link>
+	<meta charset="utf-8">	
+</head>
+<body>
+	<div class="contenedor">
+		<header class="">
+			<div class="logo">
+				
+				<a href="#" onclick="event.preventDefault();window.location.href=''"><img src="../resources/img/gnv/logo-gnv-2022.png" th:src="@{/img/gnv/logo-gnv-2022.png}" width="150" alt=""></a>
+				&nbsp; <span>Programa de Reconversion a</br> Gas Natural Vehicular</span>
+			</div>
+ 
+			<nav>
+				<a href="#" onclick="event.preventDefault();window.location.href=''">Inicio</a>
+				<a href="#" onclick="event.preventDefault();window.location.href=''">Blog</a>
+				<a href="#" onclick="event.preventDefault();window.location.href=''">Proyectos</a>
+				<a href="#" onclick="event.preventDefault();window.location.href=''">Contacto</a>
+			</nav>
+		</header>
+		<div class="franja">
+			<div class="col-xs-3 franja-roja"></div>
+	 		<div class="col-xs-6 franja-amarilla"></div>
+	 		<div class="col-xs-3 franja-roja"></div>
+<!--  		</div> -->
+		
+<!-- 		<div class="banner_fondo"> -->
+			
+		</div>
+		<div class="banner">
+<!-- 			<img src="../resources/img/gnv/gnv-banner-logo-1.png" th:src="@{/img/gnv/gnv-banner-logo-1.png}" alt=""> -->
+			<div class="row">
+				<div class="col-md-12" style="text-align: right;">
+					<small style="padding: 10px;font-size: 14px;">Gobierno Autonomo Departamental de Tarija</small>
+					<img src="../resources/img/escudo-tarija.png" th:src="@{/img/escudo-tarija.png}" alt="" style="width: 75px;height: 80px;padding: 10px;">
+					
+				</div>
+			</div>
+		</div>
+		
+
+		<section class="main">
+			<div class="login-box">
+				<div class="login-more">
+					<img class="avatar" src="../static/img/user.png" th:src="@{/img/user.png}" alt="logo">
+					<h1>LOGIN</h1>
+				</div>
+				<form action="#" method="post" id="form-logueo" class="form-logueo" novalidate="novalidate">
+					
+					<button type="button" class="waves-effect" id="resetear" name="resetear"> <i class="zmdi zmdi-refresh zmdi-hc-2x"></i></button>            
+					<div class="form-group">
+						<div class="input-group m-b-20">
+							<span class="input-group-addon"><i class="zmdi zmdi-face"></i></span>
+							<div class="fg-line">
+								<input type="text" class="form-control" id="xlogin" placeholder="Usuario.." name="login" autocomplete="off"></input>
+							</div>
+						</div>
+					</div>
+					
+		
+					<div class="form-group">    
+						<div class="input-group m-b-20">
+							<span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
+							<div class="fg-line">
+								<input type="password" class="form-control" id="xpassword"  placeholder="Contrasenia" name="password"></input>
+							</div>
+						</div>
+					</div>
+	    			<div id="mensaje" class="mensaje"></div>
+					<div class="form-group">
+						<div class="col-sm-12 text-center">
+							<button type="submit" class="waves-effect" id="btn-log"><span class="fa fa-external-link" ></span> INGRESAR</button>
+							<br>
+						</div>
+					</div>
+
+				</form>
+				<div class="login-social">
+					<a href="" class="login-social-item">
+						<i class="zmdi zmdi-facebook"></i>
+					</a>
+					<a href="" class="login-social-item">
+						<i class="zmdi zmdi-twitter"></i>
+					</a>
+					<a href="" class="login-social-item">
+						<i class="zmdi zmdi-google-old"></i>
+					</a>
+				</div>
+				<div class="cuentas">
+					<a href="#" onclick="cambiarContrasenia(this);event.preventDefault()">Olvidaste tu Contraseña?</a>
+					<br>
+					<a href="#" onclick="event.preventDefault();window.location.href=''">Resgistrarse</a>
+				</div>
+			</div>
+		</section>
+ 
+		<aside>
+			<div class="widget">
+<!-- 				<h4><b>Entidad Ejecutora del Programa GNV</b></h4> -->
+<!-- 				<p>La entidad es encargada del registro y control de las conversiones a gas natural  de todo parque automotor dentro de la provincia cercado, de la Ciudad de Tarija.</p> -->
+<!-- 				<div class=""></div> -->
+				<div class="gnv_qr">
+					<h1><b>UNIDAD OPERATIVA DEL PROGRAMAGNV</b></h1>
+					
+					<img src="../resources/img/gnv/CODIGO_QR_GNV.png" th:src="@{/img/gnv/CODIGO_QR_GNV.png}" alt="">
+					<div>
+						<h5 >Escanear el codigo QR para obtener
+							<br>solicitudes y requisitos para
+							<br>tramites de conversion, reposicion de kit y 
+							<br>recalificacion de cilindro
+						</h5>
+					</div>
+					
+				</div>
+				
+			</div>
+ 
+			<div class="widget" >
+				<div class="row">
+					<div class="col-md-12">
+					
+					<div id="carousel1" class="carousel slide" data-ride="carousel">
+					  <ol class="carousel-indicators">
+					    <li data-target="#carousel1" data-slide-to="0" class="active"></li>
+					    <li data-target="#carousel1" data-slide-to="1"></li>
+					    <li data-target="#carousel1" data-slide-to="2"></li>
+					  </ol>
+					
+
+					  <div class="carousel-inner" role="listbox">
+					
+					    <div class="item active">
+					      <img src="../resources/img/slider/auto1.png" th:src="@{/img/slider/auto1.png}" alt="Imagen 1" style="" class="img_carousel">
+					      <div class="carousel-caption">  </div>
+					    </div>
+					
+					    <div class="item">
+					      <img src="../resources/img/slider/auto6.jpg" th:src="@{/img/slider/auto6.jpg}" alt="Imagen 2" style="" class="img_carousel">
+					      <div class="carousel-caption">  </div>
+					    </div>
+					
+					    <div class="item">
+					      <img src="../resources/img/slider/auto7.jpg" th:src="@{/img/slider/auto7.jpg}" alt="Imagen 3" style="" class="img_carousel">
+					      <div class="carousel-caption"> </div>
+					    </div>
+					  </div>
+					
+					
+					  <a class="left carousel-control" href="#carousel1" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Anterior</span>
+					  </a>
+					  <a class="right carousel-control" href="#carousel1" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Siguiente</span>
+					  </a>
+					
+					</div>
+					
+					
+					</div>
+				</div>
+			</div>
+		</aside>
+ 
+		<footer>
+			<section class="links">
+				<a href="#" onclick="event.preventDefault();window.location.href=''">Inicio</a>
+				<a href="#" onclick="event.preventDefault();window.location.href=''">Blog</a>
+				<a href="#" onclick="event.preventDefault();window.location.href=''">Proyectos</a>
+				<a href="#" onclick="event.preventDefault();window.location.href=''">Contacto</a>
+			</section>
+ 
+			<div class="social">
+				<a href="#" onclick="event.preventDefault();window.location.href=''"><i class="zmdi zmdi-facebook"></i> Facebook</a>
+				<a href="#" onclick="event.preventDefault();window.location.href=''"><i class="zmdi zmdi-twitter"></i> Twitter</a>
+			</div>
+		</footer>
+		<div class="pie_pagina">
+			<div class="Desarrollador">
+				<div class="row">
+					<div class="col-md-12">
+						<div style="display: inline-flex;justify-content: center;align-items: center;">
+							<img class="avatar"  src="../resources/img/logos/icons8-modo-desarrollador-64.png" th:src="@{/img/logos/icons8-modo-desarrollador-64.png}" alt="logo" style="width: 35px;height: 35px;">
+							<div >
+								<b>Desarrollado por:</b> Ing. Ivan Ricardo Mamani Corzo &nbsp; </br>
+								<b>Ref:</b> 72368973
+							</div>
+						
+						
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+
+
+<script type="" src="static/node_modules/jquery/dist/jquery.js"  th:src="@{/node_modules/jquery/dist/jquery.js}"></script>
+<script type="" src="static/node_modules/bootstrap/dist/js/bootstrap.js" th:src="@{/node_modules/bootstrap/dist/js/bootstrap.js}"></script>
+<script type="" src="static/node_modules/jquery.nicescroll/dist/jquery.nicescroll.js" th:src="@{/node_modules/jquery.nicescroll/dist/jquery.nicescroll.js}"></script>
+
+<script type="" src="static/node_modules/node-waves/dist/waves.js" th:src="@{/node_modules/node-waves/dist/waves.js}"></script>
+<script type="" src="static/node_modules/jquery-form/dist/jquery.form.min.js" th:src="@{/node_modules/jquery-form/dist/jquery.form.min.js}"></script>
+<script type="" src="static/node_modules/formvalidation/dist/js/formValidation.js" th:src="@{/node_modules/formvalidation/dist/js/formValidation.js}"></script>
+<script type="" src="static/node_modules/formvalidation/dist/js/framework/bootstrap.js" th:src="@{/node_modules/formvalidation/dist/js/framework/bootstrap.js}"></script>
+<script type="" src="static/node_modules/formvalidation/dist/js/language/es_ES.js" th:src="@{/node_modules/formvalidation/dist/js/language/es_ES.js}"></script>
+<!-- para el tema de materialize -->
+<script type="" src="../resources/js/tema/js/functions.js" th:src="@{/js/tema/js/functions.js}"></script>
+	<script type="text/javascript"> 
+	
+	
+		var urlServer='http://localhost:8080';
+		var urlClient='http://localhost:3000';
+		$(document).ready(function() {
+			var form=$('#form-logueo')
+			.formValidation({
+				framework: 'bootstrap',
+				// icon: {
+				//  valid: 'glyphicon glyphicon-ok',
+				//  invalid: 'glyphicon glyphicon-remove',
+				//  validating: 'glyphicon glyphicon-refresh'
+				// },
+				fields: {
+					login: {
+						message: 'The username is not valid',
+						validators: {
+							notEmpty: {
+								message: 'ingrese un usuario'
+							},
+							stringLength: {
+								min: 4,
+								max: 200,
+								message: 'El login deve ser 4 caracteres y menor que 200 caracteres'
+							}
+// 							,
+// 							regexp: {
+// 								regexp: /^[a-zA-Z0-9_\.]+$/,
+// 								message: 'El login no acepta caracteres especiales'
+// 							}
+						}
+					},
+					password: {
+						validators: {
+							notEmpty: {
+								message: 'Requiere una clave'
+							}
+						}
+					}
+				}
+			}).on('success.form.fv', function(e){
+				e.preventDefault();
+						// alert('estoy dentro')
+				IngresoLogin(e);
+			})
+			function IngresoLogin(e){
+	//             var formData=new FormData($('#form-logueo'))
+				console.log(e);
+
+				
+				$('#form-logueo').ajaxSubmit({
+					url:'RestUsuario/validar',
+					// data: function() {
+				//      return $(this).serialize();
+				//    },
+					// contentType: "application/json;charset=UTF-8",
+					dataType:"json",
+					// async:false,
+					success:function(respuesta){
+							console.log(respuesta);
+							// $('#mensaje').html(respuesta.msg);
+							if(respuesta.status==true){
+								window.location.href='inicio';
+
+								// $.getJSON(urlServer+'/RestUsuario/salir',function(){
+								//     console.log('autorize: ',resp)
+								//     if(resp.autorize==true){
+								//         window.location.href=urlClient+'/inicio';
+								//         window.location.href=urlServer+'/RestUsuario/salir';
+								//     }else{
+								//      alert('no se ha podido iniciar session')
+								//     }
+								// })
+								// alert('si')
+							}else{
+								$('#mensaje').html(respuesta.msg);
+								
+							}   
+					},
+					error:function(e){
+						alert('Sin respuesta del servidor server');
+					}
+				});
+				
+			}
+			
+
+			$('#resetear').on('click',function(){
+				$('#form-logueo').data('formValidation').resetForm(true);
+				$('#mensaje').html('');
+			})
+			
+			
+			// $(function(){
+				Waves.attach('.btn',['waves-button']);
+				Waves.init();
+			// })
+			$("html").niceScroll();
+
+		});
+		
+		function cambiarContrasenia(a) {
+			
+			alert('USTED DEBE COMUNICARSE CON EL ADMINISTRADOR DEL SISTEMA.. GRACIAS')
+		}
+		
+	</script>
+</body>
+</html>

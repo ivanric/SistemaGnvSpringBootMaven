@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta http-equiv="Content-Type" content="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>gestion</title>
+</head>
+<body> 
+	<form id="formulario" action="RestServicios/adicionar_d"
+		method="post" data-fv-excluded="disabled"
+		>
+		<div class="modal fade modal-extra" id="modalAdicionar" tabindex="-1" role="dialog"
+			data-backdrop="static" data-keyboard="false" aria-hidden="true"
+			style="display: none; padding-left: 0 !important;">
+			<div class="modal-dialog modal-md " role="document">
+					<div class="modal-content">
+						<div class="card">
+							<div style="margin: 0 10px 0 10px">
+	                       	    <p>
+	                        	   <button  type="button" class="close" data-dismiss="modal"
+	                                aria-label="Close">
+	                                <span aria-hidden="true">&times;</span>
+	                            	</button>
+	                        	</p>
+	                       	    <h4 style="margin-top: 0px;"><b>Nuevo Servicio</b></br><small>Complete el formulario por
+	                                       favor</small></h4>
+	                          
+	                            <div class="row">
+	                                <div class="col-md-12">
+	                                    <b>GESTION: </b><span class="cs_gestion"></span>
+	                                    
+	                                </div>
+	                            </div>
+							</div>
+							<div class="modal-body">
+								<!-- .row>.col-md-6*2>.form-group>(label.col-md-6.control-label.espacio-form>b{campo})+.col-md-6>.fg-line>select.form-control>option{opcion $}*2 -->
+
+								<fieldset>
+									<legend style="margin-bottom: 0px !important"><strong>SERVICIO</strong></legend>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<div class="fg-line">
+														<label for="" class="control-label"><b>Tipo de Tecnologia</b></label>
+														<select  id="" class="cl-reductor form-control dt-serv " data-fv-notempty="true" data-fv-message="Requiere Tipo de Tecnologia" name="tipotecnologia">
+															<option value="">Seleccione Tipo de Tecnologia</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<div class="fg-line">
+														<label for="idcil" class=""><b>Capacidad Cilindro</b></label>
+														<select id="" class="cl-cilindro form-control dt-serv" data-fv-notempty="true" data-fv-message="Requiere Capacidad de cilindro" name="capacidad">
+															<option value="">Seleccione Capacidad Cilindro</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<div class="fg-line">
+														<label for="" class=""><b>Sistema Motor</b></label>
+														<select name="sistemamotor" id="" class="cl-sistemaMotor form-control dt-serv" data-fv-notempty="true" data-fv-message="Requiere Sistema Motor">
+															<option value="">Seleccione Sistema Motor</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<div class="fg-line">
+														<label for="" class=""><b>Combustible</b></label>
+														<select name="combustible" id="" class="cl-combustible form-control dt-serv" data-fv-notempty="true" data-fv-message="Requiere Combustible">
+															<option value="">Seleccione Combustible</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											
+										</div> 
+										<!-- .row*2>.col-md-6*2>.form-group>(label.col-md-6.control-label.espacio-form>b{campo})+.col-md-6>.fg-line>input[placeholder="ingrese"].form-control.input-sm -->
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<span for="" class="fg-label"><b>Nro de Pistones</b></span>
+													<input type="number" placeholder="ingrese nro de pistones" maxlength="4" data-fv-stringlength-message="Maximo 4 caracteres" class="form-control input-sm "  data-fv-notempty="true" data-fv-message="Campo Requerido" name="numpistones">
+												</div>
+
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span for="" class="fg-label"><b>Precio en Dolares ($us)</b></span>
+													<input type="text" placeholder="ingrese precio Dolares (0.00)" maxlength="20" data-fv-stringlength-message="Maximo 20 caracteres" class="form-control input-sm"   name="preciodolares" step=".01">
+													
+												</div>
+															
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="">
+													<div class="form-group">
+														<div class="fg-line">
+															<span for="" class="fg-label"><b>Precio en Bolicianos (Bs)</b></span>
+															<input type="text" placeholder="ingrese precio Bolivianos (0.00)" maxlength="20" data-fv-stringlength-message="Maximo 20 caracteres" class="form-control input-sm" data-fv-notempty="true" data-fv-message="Campo Requerido" name="preciobolivianos" step="0.01">
+														</div>
+													</div>
+												</div>
+											</div> 
+											<div class="col-md-6">
+												<div class="">
+													<div class="form-group">
+														<div class="fg-line">
+															<span for="" class="fg-label"><b>factor Cobro</b></span>
+															<input type="text" placeholder="ingrese factorcobro (0.00)" maxlength="4" data-fv-stringlength-message="Maximo 4 caracteres" class="form-control input-sm" data-fv-notempty="true" data-fv-message="Requiere campo,"  name="factorcobro" step=".01" value="0.00">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+													<div class="">
+														<div class="form-group">
+															<div class="fg-line">
+																<span for="" class="fg-label"><b>Precio Total (Bs)</b></span>
+																<input type="text" placeholder="ingrese precio Bolivianos (0.00)" maxlength="20" data-fv-stringlength-message="Maximo 20 caracteres" class="form-control input-sm" name="preciototal" step="0.01" readonly="readonly" >
+															</div>
+														</div>
+													</div>
+											</div> 
+										</div>
+								</fieldset>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" id="btn-guardar-aprob"
+									class="btn btn-primary waves-effect">Guardar</button>
+								<button type="button" class="btn btn-danger waves-effect"
+									data-dismiss="modal">Cancelar</button>
+							</div>
+
+						</div>
+					</div>
+					<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+	</form>
+	
+	<form id="formularioModificar" action="RestServicios/modificar"
+		method="post" data-fv-excluded="disabled"
+		>
+		<div class="modal fade modal-extra" id="modalModificar" tabindex="-1" role="dialog"
+			data-backdrop="static" data-keyboard="false" aria-hidden="true"
+			style="display: none; padding-left: 0 !important;">
+			<div class="modal-dialog modal-md " role="document">
+					<div class="modal-content">
+						<div class="card">
+							<div style="margin: 0 10px 0 10px">
+	                       	    <p>
+	                        	   <button  type="button" class="close" data-dismiss="modal"
+	                                aria-label="Close">
+	                                <span aria-hidden="true">&times;</span>
+	                            	</button>
+	                        	</p>
+	                       	    <h4 style="margin-top: 0px;"><b>Modificar Servicio</b></br><small>Complete el formulario por
+	                                       favor</small></h4>
+	                          
+	                            <div class="row">
+	                                <div class="col-md-12">
+	                                    <b>GESTION: </b><span class="cs_gestion"></span>
+	                                    
+	                                </div>
+	                            </div>
+							</div>
+							<div class="modal-body">
+								<!-- .row>.col-md-6*2>.form-group>(label.col-md-6.control-label.espacio-form>b{campo})+.col-md-6>.fg-line>select.form-control>option{opcion $}*2 -->
+								<input type="hidden" name="idserv" id="idserv" />
+								<fieldset>
+									<legend style="margin-bottom: 0px !important"><strong>SERVICIO</strong></legend>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<div class="fg-line">
+														<label for="" class="control-label"><b>Tipo de Tecnologia</b></label>
+														<select  id="jstipotecnologia" class="cl-reductor form-control dt-serv " data-fv-notempty="true" data-fv-message="Requiere Tipo de Tecnologia" name="tipotecnologia">
+															<option value="">Seleccione Tipo de Tecnologia</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<div class="fg-line">
+														<label for="idcil" class=""><b>Capacidad Cilindro</b></label>
+														<select id="jscilindro" class="cl-cilindro form-control dt-serv" data-fv-notempty="true" data-fv-message="Requiere Capacidad de cilindro" name="capacidad">
+															<option value="">Seleccione Capacidad Cilindro</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<div class="fg-line">
+														<label for="" class=""><b>Sistema Motor</b></label>
+														<select name="sistemamotor" id="jssistemamotor" class="cl-sistemaMotor form-control dt-serv" data-fv-notempty="true" data-fv-message="Requiere Sistema Motor">
+															<option value="">Seleccione Sistema Motor</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<div class="fg-line">
+														<label for="" class=""><b>Combustible</b></label>
+														<select name="combustible" id="jscombustible" class="cl-combustible form-control dt-serv" data-fv-notempty="true" data-fv-message="Requiere Combustible">
+															<option value="">Seleccione Combustible</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											
+										</div> 
+										<!-- .row*2>.col-md-6*2>.form-group>(label.col-md-6.control-label.espacio-form>b{campo})+.col-md-6>.fg-line>input[placeholder="ingrese"].form-control.input-sm -->
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<span for="" class="fg-label"><b>Nro de Pistones</b></span>
+													<input type="number" placeholder="ingrese nro de pistones" maxlength="100" data-fv-stringlength-message="Maximo 100 caracteres" class="form-control input-sm "  data-fv-notempty="true" data-fv-message="Campo Requerido" name="numPistones">
+												</div>
+
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<span for="" class="fg-label"><b>Precio en Dolares ($us)</b></span>
+													<input type="text" placeholder="ingrese precio Dolares (0.00)" maxlength="100" data-fv-stringlength-message="Maximo 100 caracteres" class="form-control input-sm"   name="precioDolares" step=".01">
+													
+												</div>
+															
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="">
+													<div class="form-group">
+														<div class="fg-line">
+															<span for="" class="fg-label"><b>Precio en Bolicianos (Bs)</b></span>
+															<input type="text" placeholder="ingrese precio Bolivianos (0.00)" maxlength="100" data-fv-stringlength-message="Maximo 100 caracteres" class="form-control input-sm" data-fv-notempty="true" data-fv-message="Campo Requerido" name="precioBolivianos" step=".01">
+														</div>
+													</div>
+												</div>
+											</div> 
+											<div class="col-md-6">
+												<div class="">
+													<div class="form-group">
+														<div class="fg-line">
+															<span for="" class="fg-label"><b>factor Cobro</b></span>
+															<input type="text" placeholder="ingrese factorcobro (0.00)" maxlength="100" data-fv-stringlength-message="Maximo 100 caracteres" class="form-control input-sm" data-fv-notempty="true" data-fv-message="Requiere campo,"  name="factorCobro" step=".01" value="0.00">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+													<div class="">
+														<div class="form-group">
+															<div class="fg-line">
+																<span for="" class="fg-label"><b>Precio Total (Bs)</b></span>
+																<input type="text" placeholder="ingrese precio Bolivianos (0.00)" maxlength="100" data-fv-stringlength-message="Maximo 100 caracteres" class="form-control input-sm" name="precioTotal" step="0.01" readonly="readonly" >
+															</div>
+														</div>
+													</div>
+											</div> 
+										</div>
+								</fieldset>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" id="btn-guardar-aprob"
+									class="btn btn-primary waves-effect">Guardar</button>
+								<button type="button" class="btn btn-danger waves-effect"
+									data-dismiss="modal">Cancelar</button>
+							</div>
+
+						</div>
+					</div>
+			</div>
+		</div>
+	</form>	
+	
+	
+	<div class="contenido_gestion">
+	    <div class="" style="padding: 0 15px;">
+	    	<div class="row">
+	    		<div class="col-md-4">
+			    	<h2 class="panel-title">
+			            <b>GESTION SERVICIOS</b>
+			        </h2>
+			        <h5>
+			       Administre servicios registrados en el Sistema
+			        </h5>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<h1 class="panel-title"><b>GESTION: <label class="cs_gestion"></label></b></h1>
+	    		</div>
+	    	</div>
+	        
+	    </div>
+		<div class="panel-body" style="margin-top: -30px"> 
+			<div class="row">
+				<div class="col-md-12" style="text-align: right;margin-bottom: 15px">			
+					<button id="btnAdicionar" class="btn btn-succ  btn-xs btn-sm waves-effect" disabled="disabled">NUEVO SERVICIO</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-3 col-xs-12" style="margin-bottom: 10px;">
+							<input type="text" id="js-filtro" name=""
+								class="form-control_filtro unput-sm"
+								placeholder="Buscar por generacion o capacidad..">
+						</div>
+						<div class="col-md-3 col-xs-12"></div>
+						<div class="col-md-6 col-xs-12 navbar-right" style="text-align: right; margin-top: 10px">
+							<label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="activos" value="1"> <i
+								class="input-helper"></i>activos
+							</label> <label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="bajas" value="0"> <i
+								class="input-helper"></i>bajas
+							</label> <label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="todos" value="-1"
+								checked="checked"> <i class="input-helper"></i>todos
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 table-responsive">
+					<table id="table"  class="table tabla_gestion" style="width: 100%">
+						<thead>
+							<tr>
+								<th class="text-center">#</th>
+<!--                                 <th class="text-center">Fecha y Hora</th> -->
+                                <th class="text-center">Sist Motor</th>
+                                <th class="text-center">Reductor</th>
+								<th class="text-center">Cilindro</th>
+                                <th class="text-center">Sist. Motor</th>
+								<th class="text-center">#Pistones</th>
+                                <th class="text-center">Precio Bs</th>
+                                <th class="text-center">Precio $us</th>
+                                <th class="text-center">Factor Cobro</th>
+                                <th class="text-center">Precio Total Bs</th>
+<!-- 								<th class="text-center">Usuario</th> -->
+								<th class="text-center">Estado</th>
+								<th class="text-center">M</th>
+								<th class="text-center">DH</th>
+
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+	    var isGestion=$('body').find('#select-gestion option:selected').text();
+	    console.log('gestion',isGestion)
+	    $('.cs_gestion').html(isGestion);
+	
+	
+        var result=Get_Opciones(null);
+        if(ExisteOpcion('adicionar')){
+//             $('#btnAdicionar').attr({
+//                 onclick:"(Gestion.add())",
+//                 // accesskey:""
+//             })
+            $('#btnAdicionar').removeAttr("disabled ").focus().val("Ahora si lo puedes utilizar")
+        }
+
+        function ExisteOpcion(opc){
+            // alert('entro comparar')
+            var resultado=false;
+            for (var i = 0; i < result.AccionesUser.length; i++) {
+//                 console.log('for_: ',result.AccionesUser[i]);
+                if(result.AccionesUser[i].codigo==opc){
+                    resultado=true;         
+                }
+            }
+            return resultado;
+        }
+
+        var DTtable=''
+        
+        var filtro=$('#js-filtro').val();
+        var estado=$('input[name="iestado"]:checked').val();
+        
+        
+
+        $('input[name="iestado"]').on('change',function(){
+            estado=$(this).val();
+            $('#table').dataTable().fnDraw('page');
+        })
+        
+        DTtable=$('#table').DataTable({
+            "oLanguage": {
+                "sUrl": GurlDataTable
+            },
+            "dom":'rt<button>ip',
+            "pageLength":10,
+//              responsive:true,
+            "processing": true,
+            "serverSide": true,
+            
+            "ajax": {
+            	"type": "POST",
+              "url": "RestServicios/listar_servicios_d",
+          	"data": function ( d ) {
+                    d.estado = estado,
+	                d.gestion=$("body").find('#select-gestion option:selected').text()
+                    // d.estado = 1;
+                    // filtro:filtro
+             }
+            },
+            "columns": [
+//                 { "data": "estado" },
+                { "data": "estado" },
+                { "data": "estado" },
+                { "data": "estado" },
+                { "data": "estado" },
+                { "data": "estado" },
+                { "data": "estado" },
+                { "data": "estado" },
+                { "data": "estado" },
+                { "data": "estado" },
+                { "data": "estado" },
+                { "data": "estado" },
+                { "data": "estado" },
+                { "data": "estado" }
+      		],
+            "createdRow":function(row,data,index){
+                console.log(data)
+                $('td',row).eq(0).html(index+1).addClass('text-center');
+//                 $('td',row).eq(1).html(data.fecha)
+                $('td',row).eq(1).html(data.combustible.nombre)
+                $('td',row).eq(2).html(data.reductor.tipoTecnologia)
+                $('td',row).eq(3).html(data.cilindro.capacidad)
+                $('td',row).eq(4).html(data.tipoMotorVehiculo.nombre)
+                $('td',row).eq(5).html(data.numPistones)
+                $('td',row).eq(6).html(data.precioBolivianos+" Bs.")
+                $('td',row).eq(7).html(data.precioDolares+" $us.")
+                $('td',row).eq(8).html(data.factorCobro)
+                $('td',row).eq(9).html(data.precioTotal+" Bs.")
+                //$('td',row).eq(10).html(data.persona.ap+" "+data.persona.am+" "+data.persona.nombres)
+                if(data.estado==1){
+                    $('td',row).eq(10).html('Activo');
+                }else{
+                    $('td',row).eq(10).html('Inactivo');
+                }
+                if(ExisteOpcion('modificar')){
+                    $('td',row).eq(11).html('<button id="btnModificar" class="btn btn-xs btn-info waves-effect btn-espacio modificar" data-toggle="tooltip" data-placement="top" title="Modificar"  accesskey="'+data.idserv+'" data-href="'+data.idserv+'"><span class="zmdi zmdi-edit"></span> Modificar</button>')
+                    // $('td',row).eq(5).append('<button>hola</button>')
+                }else{
+                    $('td',row).eq(11).html('<button id="btnModificar" class="btn btn-xs btn-info waves-effect btn-espacio modificar" data-toggle="tooltip" data-placement="top" title="Modificar" disabled="disabled"><span class="zmdi zmdi-edit"></span> Modificar</button>') 
+                }
+                if(data.estado==1){
+                    if(ExisteOpcion('eliminar')  ){
+                        // if()
+                        $('td',row).eq(12).html('<button id="btn-elim" class="btn btn-xs btn-danger btn-sm waves-effect btn-espacio eliminar" accesskey="'+data.idserv+'" data-href="'+data.idserv+'" "><span class="zmdi zmdi-delete"></span> Deshabilitar</button>');
+                    }else{
+                        $('td',row).eq(12).html('<button id="btn-elim" class="btn btn-xs btn-danger btn-sm waves-effect btn-espacio" disabled="disabled"><span class="zmdi zmdi-delete"></span> Deshabilitar</button>');  
+                    }
+                }else{
+                    if(ExisteOpcion('habilitar')){
+                        $('td',row).eq(12).html('<button id="btn-hab" class="btn btn-xs btn-success btn-sm waves-effect btn-espacio habilitar" accesskey="'+data.idserv+'" data-href="'+data.idserv+'" "><span class="zmdi zmdi-time-restore-setting"></span> Habilitar</button>');
+                    }else{
+                        $('td',row).eq(12).html('<button id="btn-hab" class="btn btn-xs btn-success btn-sm waves-effect btn-espacio" disabled="disabled"><span class="zmdi zmdi-time-restore-setting"></span> Habilitar</button>');   
+                    }                       
+                }
+				
+            } 
+        
+            ,
+            "drawCallback":function(settings){
+                $.post('RestServicios/datosNuevoServicio',function(respDoc){
+                    dataNewServices=respDoc
+                    console.log('datosNuevoServicio: ',dataNewServices)
+//        	        $(respDoc[0]).each(function(ind,obje){
+// 					if(obje.idmarcred==null){
+//                    		$('.cl-reductor').append(`<option value="${obje.idreduc}">${obje.tipotecnologia}</option>`);
+//                    	}else{
+//        		            $(respDoc[3]).each(function(i,t){
+//        		            	if(t.idmarcred==obje.idmarcred){
+//        		            		// alert(i)
+//        		            		$('.cl-reductor').append(`<option value="${obje.idreduc}">${obje.tipotecnologia} - ${t.nombre}</option>`);	
+//        		            	}
+//        		            })
+                   		
+//                    	}
+       	 
+//        	        })
+       	        
+	   	           	$(respDoc[0]).each(function(ind,obje){
+	       	            // console.log('objetoInit ',ind,': ',obje)
+	   	          	 	$('.cl-reductor').append(`<option value="${obje.idreduc}">${obje.tipotecnologia}</option>`);	
+		            	
+	       	        })
+	       	        
+	       	       	// $(respDoc[0]).each(function(ind,obje){
+	       	        // })
+	       	       	$(respDoc[1]).each(function(ind,obje){
+	       	            // console.log('objetoInit ',ind,': ',obje)
+	       	            $('.cl-cilindro').append(`<option value="${obje.idcil}">${obje.capacidad} M3</option>`)
+	       	        })
+	       	        $(respDoc[2]).each(function(ind,obje){
+	       	            // console.log('objetoInit ',ind,': ',obje)
+	       	            $('.cl-sistemaMotor').append(`<option value="${obje.idtipomotorveh}">${obje.nombre}</option>`)
+	       	        })
+	       	       	$(respDoc[3]).each(function(ind,obje){
+	       	            // console.log('objetoInit ',ind,': ',obje)
+	       	            $('.cl-combustible').append(`<option value="${obje.idcomb}">${obje.nombre}</option>`)
+	       	        })
+	       	        // $(respDoc[3]).each(function(ind,obje){
+	       	        //     // console.log('objetoInit ',ind,': ',obje)
+	       	        //     $('#js-factorcobro').append(`<option value="${obje.idfactCobro}">${obje.precio}</option>`)
+	       	        // })
+	       			$('select').chosen();
+               })
+            	
+            	
+ 	        	$('#btnAdicionar').click(function(){
+                    var isGestion=$('body').find('#select-gestion option:selected').text();
+                    console.log('gestion',isGestion)
+                    $('.cs_gestion').html(isGestion);
+
+                     $('#formulario').data('formValidation').resetForm();
+                     $('#formulario')[0].reset();
+            		 $('#modalAdicionar').modal('show');
+            	});
+  	        	
+                $('.modificar').click(function(){
+                    $('#formularioModificar').data('formValidation').resetForm();
+                    
+                    
+                    var idserv=$(this).attr('accesskey');
+                    $('#formularioModificar').find('#contenido-tel-mod').html('');
+                    
+                    $.post('RestServicios/datos-mod',{idserv:idserv},function(resp){
+                        console.log('respuesta: ',resp)
+                        // $('#formulario-mod').find('.fg-line').addClass('fg-toggled'); 
+                        $('#formularioModificar').loadJSON(resp)
+//                         $('input[name="precioModTotal"]').val(resp.preciototal)
+                        $('#jstipotecnologia').val(resp.reductor.idreduc).trigger('chosen:updated')
+                        $('#jscilindro').val(resp.cilindro.idcil).trigger('chosen:updated')
+                        $('#jssistemamotor').val(resp.tipoMotorVehiculo.idtipoMotorVeh).trigger('chosen:updated')
+                        $('#jscombustible').val(resp.combustible.idcomb).trigger('chosen:updated')
+
+//                        var pb=parseInt(resp.precioBolivianos, 10)
+//                        var pbc=resp.precioBolivianos;
+//                        var decpb=pbc%2;
+//                        console.log(decpb)
+//                        var rdpc=Math.round(decpb*1000)/1000;
+//                        console.log(rdpc)
+//                        var cmpb=pb+rdpc
+                       
+                       
+//                         $('#formularioModificar').find('input[name="precioBolivianos"]').val(cmpb)
+
+                    },'json')
+                    
+                    $('#formularioModificar')[0].reset();
+                    $('#modalModificar').modal('show');
+                });
+            	
+                $('.eliminar').click(function(){
+
+                    var idserv=$(this).attr('accesskey')
+                    // alert('id: '+idben)
+                    swal({   
+                        title: "Seguro de dar de baja Servicio?",   
+                        text: "Usted dara de baja al servicio",   
+                        type: "warning",   
+                        showCancelButton: true,   
+                        confirmButtonColor: "#DD6B55",   
+                        confirmButtonText: "Si, Continuar!",   
+                        cancelButtonText: "No, Cancelar!",   
+                        closeOnConfirm: false,   
+                        closeOnCancel: false 
+                        }, function(isConfirm){
+                        if (isConfirm) {
+                            $.post('RestServicios/eliminar',{idserv:idserv},function(resp){
+                                console.log(resp)
+                                if (resp.estado) {
+                                    $('#table').dataTable().fnDraw('page');
+                                    $('.modal').modal('hide')
+                                    swal({
+                                        title:"Eliminado",
+                                        text:"Se ha dado de baja al servicio exitosamente",
+                                        type:"success",
+                                        timer: 500,   
+                                        showConfirmButton: false 
+                                    });
+                                         
+                               
+                                } else {
+                                    aler('Sin respuesta del Servidor')
+                                }   
+                            })
+                        } else {
+                            swal({
+                                title:"Cancelado",
+                                text:"Se ha cancelado operacion",
+                                type:"error",
+                                timer:2000,
+                                showCancelButton:false,
+                                showConfirmButton:false
+
+                            })
+                        } 
+                    }); 
+                });
+                $('.habilitar').click(function(){
+
+                    var idserv=$(this).attr('accesskey')
+                    swal({   
+                        title: "Seguro de dar de alta al Servicio?",   
+                        text: "Usted dara de alta al servicio",   
+                        type: "warning",   
+                        showCancelButton: true,   
+                        confirmButtonColor: "#DD6B55",   
+                        confirmButtonText: "Si, Continuar!",   
+                        cancelButtonText: "No, Cancelar!",   
+                        closeOnConfirm: false,   
+                        closeOnCancel: false 
+                        }, function(isConfirm){
+                            if (isConfirm) {
+                                $.post('RestServicios/habilitar',{idserv:idserv},function(resp){
+                                    console.log(resp)
+                                    if (resp.estado) {
+                                        $('#table').dataTable().fnDraw('page');
+                                        $('.modal').modal('hide')
+                                        swal({
+                                            title:"Habilitado",
+                                            text:"Se ha dado de alta al servicio exitosamente",
+                                            type:"success",
+                                            timer: 500,   
+                                            showConfirmButton: false 
+                                        });
+                                   
+                                    } else {
+                                        aler('Sin respuesta del Servidor')
+                                    }   
+                                })  
+                            } else {
+                                swal({
+                                    title:"Cancelado",
+                                    text:"Se ha cancelado operacion",
+                                    type:"error",
+                                    timer:2000,
+                                    showCancelButton:false,
+                                    showConfirmButton:false
+
+                                })
+                            } 
+                    }); 
+                });
+                
+                
+                $('button[data-toggle="tooltip"]').tooltip({animated: 'fade',placement: 'bottom',});
+                
+            	$('#js-filtro').on( 'keyup', function () {
+                    DTtable.search(this.value ).draw();
+                }) 
+
+            }
+        });
+        
+        
+        
+       
+
+
+        
+        var respCi="";
+
+        $('#formulario').formValidation({
+        })
+        .on('success.form.fv', function(e){
+            e.preventDefault();
+            var $form = $(e.target);
+           
+           swal({   
+               title: "Seguro de registrar Servicio?",   
+               text: "Usted registrara nuevo Servicio",   
+               type: "warning",   
+               showCancelButton: true,   
+               confirmButtonColor: "#DD6B55",   
+               confirmButtonText: "Si, Continuar!",   
+               cancelButtonText: "No, Cancelar!",   
+               closeOnConfirm: false,   
+               closeOnCancel: false 
+               }, function(isConfirm){   
+                   if (isConfirm) {     
+                       $('#formulario').ajaxSubmit({
+                    	   data:{gestion:$('body').find('#select-gestion option:selected').text()},
+                           success:function(res){
+                               console.log('registrado',res)
+                               if(res.estado){
+                            	   $form.data('formValidation').resetForm();
+                                   $('#formulario')[0].reset();
+                                   $('#table').dataTable().fnDraw('page');
+                                   $('.modal').modal('hide')
+                                   
+                                   swal({
+                                       title:"Registrado",
+                                       text:"Se ha registrado Servicio exitosamente",
+                                       type:"success",
+                                       timer:500,   
+                                       showConfirmButton: false 
+                                   });       
+                               }
+                           }
+                       })
+
+                   } else {     
+                       // swal("Cancelled", "Your imaginary file is safe :)", "error");   
+                       swal({
+                           title:"Cancelado",
+                           text:"Se ha cancelado operacion",
+                           type:"error",
+                           timer:500,
+                           showCancelButton:false,
+                           showConfirmButton:false
+
+                       })
+                       $('#modalAdicionar').modal('hide');
+                   } 
+               });
+           
+        })
+        
+        
+        //formValidation Modificar
+        
+       $('#formularioModificar').formValidation({
+       })
+       .on('success.form.fv', function(e){
+          e.preventDefault();
+          var $form = $(e.target);
+          swal({ 
+              title: "Seguro de modificar Servicio?",   
+              text: "Usted modificara los datos del Servicio",   
+              type: "warning",   
+              showCancelButton: true,   
+              confirmButtonColor: "#DD6B55",   
+              confirmButtonText: "Si, Continuar!",   
+              cancelButtonText: "No, Cancelar!",   
+              closeOnConfirm: false,   
+              closeOnCancel: false 
+              }, function(isConfirm){  
+                  $('.doc-mod').removeAttr('disabled') 
+                  if (isConfirm) {
+                      $('#formularioModificar').ajaxSubmit({
+                    	  data:{gestion:$('body').find('#select-gestion option:selected').text()},
+                      	success:function(res){
+                              console.log('modificado',res)
+                              if(res.estado){
+                                  $form.data('formValidation').resetForm();
+                                  $('#formularioModificar')[0].reset();
+                                  $('#table').dataTable().fnDraw('page');
+                                  swal({
+                                      title:"Modificado",
+                                      text:"Se ha modificado Servicio exitosamente",
+                                      type:"success",
+                                      timer: 1000,   
+                                      showConfirmButton: false 
+                                  });     
+                              }else{
+                            	  mostrarMensaje('error','No se realizo con exito la Transaccion');
+                                  alert('error:'+'No se realizo con exito la Transaccion');
+                              }
+                              $('.modal').modal('hide');
+                          }
+                      })
+
+                  } else {     
+                      // swal("Cancelled", "Your imaginary file is safe :)", "error");   
+                      swal({
+                          title:"Cancelado",
+                          text:"Se ha cancelado operacion",
+                          type:"error",
+                          timer:2000,
+                          showCancelButton:false,
+                          showConfirmButton:false
+
+                      })
+                      $('#modalModificar').modal('hide')
+                  } 
+          });
+       })
+        
+
+        
+    	var total;
+        $('#formulario').find('input[name="preciobolivianos"]').on('keyup',function(i,t){
+        	var factor=$('input[name="factorcobro"]').val()
+        	total=(parseFloat(factor)+parseFloat($(this).val())).toFixed(2)
+        	$('#formulario').find('input[name="preciototal"]').val(total)
+        })
+
+        $('#formulario').find('input[name="factorcobro"]').on('keyup',function(i,t){
+        	var factor=$('input[name="preciobolivianos"]').val()
+        	total=(parseFloat(factor)+parseFloat($(this).val())).toFixed(2)
+        	$('#formulario').find('input[name="preciototal"]').val(total)
+        })
+        
+    // })
+        
+    </script>
+</body>
+</html>

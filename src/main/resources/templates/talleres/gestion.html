@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta http-equiv="Content-Type" content="ISO-8859-1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>gestion</title>
+</head>
+<body> 
+
+	<form id="formulario" action="RestTalleres/adicionar_d"
+		method="post" data-fv-excluded="disabled"
+		>
+		<div class="modal fade modal-extra" id="modalAdicionar" tabindex="-1" role="dialog"
+			data-backdrop="static" data-keyboard="false" aria-hidden="true"
+			style="display: none; padding-left: 0 !important;">
+			<div class="modal-dialog modal-md" role="document" style="">
+					<div class="modal-content">
+						<div class="card">
+							<div style="margin: 0 10px 0 10px">
+	                        	<p>
+	                        	   <button  type="button" class="close" data-dismiss="modal"
+	                                aria-label="Close">
+	                                <span aria-hidden="true">&times;</span>
+	                            	</button>
+	                        	</p>
+								 <h4 style="margin-top: 0px;"><b>Nuevo Taller</b></br><small>Complete el formulario por
+	                                        favor</small></h4>
+							</div>
+							<div class="modal-body">
+	                            <fieldset>
+	                                <legend style="margin-bottom: 0px !important"><strong>PROPIETARIO</strong></legend>
+	                                <div class="row">
+	                                    <div class="col-md-4">
+				                            <div class="form-group fg-float">
+				                            	<span class="fg-label"><b>Cedula</b></span>
+				                                <div class="fg-line">
+				                                    <input placeholder="ingrese ci" class="form-control fg-input" minlength="7" maxlength="8" data-fv-stringlength-message="La Cedula debe ser entre 7 u 8 caracteres" id="cedula" name="ci" type="text"  data-fv-notempty="true" data-fv-message="Requiere Cedula" data-fv-integer="true" data-fv-integer-message="El valor de este campo debe ser numerico y sin espacios en blanco">
+				                                </div>
+				                                
+				                            </div>
+				                        </div>
+				                        <div class="col-md-2">
+				                            <div class="form-group">
+				                                <div class="fg-line">
+				                                    <select style="width: 65px;height: 27px;margin-top: 15px;" data-placeholder="" name="ciCod" class="form-control" data-fv-notempty='true' data-fv-message="Requiere Ciudadania" id="ciCod">
+													<!--<option value="">SEL</option> -->
+				                                        <option value="TJ">TJ</option>
+				                                        <option value="PT">PT</option>
+				                                        <option value="PA">PA</option>
+				                                        <option value="LP">LP</option>
+				                                        <option value="OR">OR</option>
+				                                        <option value="CB">CB</option>
+				                                        <option value="BN">BN</option>
+				                                        <option value="CH">CH</option>
+				                                        <option value="SC">SC</option>
+				                                    </select>
+				                                </div>
+				                            </div>
+				                        </div>
+	                                </div>
+	                                <div class="row">  
+	                                 	<div class="col-md-12">
+				                            <div class="form-group fg-float">
+				                            	<span class="fg-label"><b>Nombres y Apellidos</b></span>
+				                                <div class="fg-line">
+				                                    <input placeholder="ingrese nombre completo" class="form-control fg-input data-per" name="razonsocial" type="text" data-fv-notempty="true" data-fv-message="Ingrese Beneficiario porfavor"  maxlength="100" data-fv-stringlength-message="Solo 100 caracteres">
+				                                </div>
+				                                
+				                            </div>
+				                        </div>
+	                                </div>    
+	                                <div class="row">
+       									 <div class="col-md-6" >
+       										 <span class="fg-label"><b>Correo</b></span>
+				                            <div class="form-group fg-float">
+				                                <div class="fg-line">
+				                                    <input placeholder="ingrese correo electronico" class="form-control fg-input"  name="email" type="email" maxlength='40'>
+				                                </div>
+				                                
+				                            </div>    
+				                        </div>
+	                                </div>
+	                                
+	                                    
+	                                <br>
+	                                <div class="row">
+				                        <div id="contenido-tel-add">
+				                            
+				                        </div>
+	                                </div>
+	                                <br>
+	                            </fieldset> 
+								<fieldset>
+									<legend style="margin-bottom: 0px !important"><strong>TALLER</strong></legend>
+										<div class="row">
+											<div class="col-md-6">
+											
+												<div class="">
+													<div class="form-group">
+														<label for="" class="fg-label "><b>NIT</b></label>
+														<div class="fg-line">
+															<input type="text" placeholder="ingrese nit de taller"   class="form-control input-sm"  data-fv-notempty="true" data-fv-message="Requiere NIT de taller" name="NIT">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+											
+												<div class="">
+													<div class="form-group">
+														<label for="" class="fg-label "><b>Codigo de Taller</b></label>
+														<div class="fg-line">
+															<input type="text" placeholder="ingrese codigo taller"  class="form-control input-sm"  data-fv-notempty="true" data-fv-message="Requiere cod. de taller" name="codigo">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+											
+												<div class="">
+													<div class="form-group">
+														<label for="" class="fg-label "><b>Nombre de Taller</b></label>
+														<div class="fg-line">
+															<input type="text" placeholder="ingrese nombre" maxlength="200" data-fv-stringlength-message="Maximo 200 caracteres" class="form-control input-sm"  data-fv-notempty="true" data-fv-message="Requiere nombre de taller" name="nombretall">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="">
+													<div class="form-group">
+														<label for="" class="fg-label"><b>Direccion de Taller</b></label>
+												
+														<div class="fg-line">
+															<input type="text" placeholder="ingrese direccion" maxlength="200" data-fv-stringlength-message="Maximo 200 caracteres" class="form-control input-sm"  data-fv-notempty="true" data-fv-message="Requiere direccion Taller" name="direcciontall">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <span class="control-label"><b>Departamento</b></span>
+                                                <select data-placeholder="" name="iddep"
+                                                    class="form-control fg-input sel-opcv" data-fv-notempty='true'
+                                                    data-fv-message="Seleccione el departamento"
+                                                    id="js_depart" style="height: 27px;">
+                                                    <option value="" selected="selected">Seleccione Departamento</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <span class="control-label"><b>Provincia</b></span>
+                                                <select data-placeholder="" name="idprov"
+                                                    class="form-control fg-input sel-opcv" data-fv-notempty='true'
+                                                    data-fv-message="Seleccione provincia"
+                                                    id="js_prov" style="height: 27px;">
+                                                    <option value="" selected="selected">Seleccione provincia</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+                                    
+                                </div>  
+								</fieldset>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" id="btn-guardar-aprob"
+									class="btn btn-primary waves-effect">Guardar</button>
+								<button type="button" class="btn btn-danger waves-effect"
+									data-dismiss="modal">Cancelar</button>
+							</div>
+
+						</div>
+					</div>
+			</div>
+		</div>
+	</form>
+	<form id="formularioModificar" action="RestTalleres/modificar"
+		method="post" data-fv-excluded="disabled"
+		>
+		<div class="modal fade modal-extra" id="modalModificar" tabindex="-1" role="dialog"
+			data-backdrop="static" data-keyboard="false" aria-hidden="true"
+			style="display: none; padding-left: 0 !important;">
+			<div class="modal-dialog modal-md " role="document">
+					<div class="modal-content">
+						<div class="card">
+							<div style="margin: 0 10px 0 10px">
+	                        	<p>
+	                        	   <button  type="button" class="close" data-dismiss="modal"
+	                                aria-label="Close">
+	                                <span aria-hidden="true">&times;</span>
+	                            	</button>
+	                        	</p>
+								 <h4 style="margin-top: 0px;"><b>Modificar Taller</b><br/><small>Complete el formulario por
+	                                        favor</small></h4>
+							</div>
+							<div class="modal-body">
+								<input type="hidden" name="idtall" id="idtall" />
+	                            <fieldset>
+	                                <legend style="margin-bottom: 0px !important"><strong>PROPIETARIO</strong></legend>
+	                                <div class="datos_propietario">
+	                                	<input type="hidden" name="idper">
+
+                                        <div class="row">
+		                                    <div class="col-md-4">    				                    
+            				                    <div class="form-group fg-float">
+					                            	<span class="fg-label"><b>Cedula</b></span>
+					                                <div class="fg-line">
+					                                    <input placeholder="ingrese ci" class="form-control fg-input" minlength="7" maxlength="8" data-fv-stringlength-message="La Cedula debe ser entre 7 u 8 caracteres" id="cedula" name="ci" type="text"  data-fv-notempty="true" data-fv-message="Requiere Cedula" data-fv-integer="true" data-fv-integer-message="El valor de este campo debe ser numerico y sin espacios en blanco">
+					                                </div>
+													<div id="mensaje" style="color: red;"></div>
+					                            </div>
+					                            
+					                        </div>
+					                        <div class="col-md-2">
+					                            <div class="form-group fg-float">
+					                                <div class="fg-line">
+					                                <select style="width: 65px;height: 27px;margin-top: 15px;" data-placeholder="" name="ciCod" class="form-control" data-fv-notempty='true' data-fv-message="Requiere Ciudadania" id="ciCod">
+														<!--<option value="">SEL</option> -->
+					                                        <option value="TJ">TJ</option>
+					                                        <option value="PT">PT</option>
+					                                        <option value="PA">PA</option>
+					                                        <option value="LP">LP</option>
+					                                        <option value="OR">OR</option>
+					                                        <option value="CB">CB</option>
+					                                        <option value="BN">BN</option>
+					                                        <option value="CH">CH</option>
+					                                        <option value="SC">SC</option>
+					                                    </select>
+					                                </div>
+					                            </div>
+					                        </div>
+		                                </div>
+		                                
+               	                        <div class="row">  
+		                                 	<div class="col-md-12">
+					                            <div class="form-group fg-float">
+					                            	<span class="fg-label"><b>Nombres y Apellidos</b></span>
+					                                <div class="fg-line">
+					                                    <input placeholder="ingrese nombre completo" class="form-control fg-input" name="razonsocial" type="text" data-fv-notempty="true" data-fv-message="Ingrese Beneficiario porfavor"  maxlength="100" data-fv-stringlength-message="Solo 100 caracteres">
+					                                </div>
+					                                
+					                            </div>
+					                        </div>
+		                                </div>  
+   
+		                                <div class="row">
+			                                <div class="col-md-6" >
+	       										 <span class="fg-label"><b>Correo</b></span>
+					                            <div class="form-group fg-float">
+					                                <div class="fg-line">
+					                                    <input placeholder="ingrese correo electronico" class="form-control fg-input"  name="email" type="email" maxlength='40'>
+					                                </div>
+					                                
+					                            </div>    
+					                        </div>
+		                                </div>    
+		                                <br>
+		                                <div class="row">
+					                        <div id="contenido-tel-mod">
+					                            
+					                        </div>
+		                                </div>
+	                                </div>
+	                                <br>
+	                            </fieldset>
+	                            
+	                            <fieldset>
+									<legend style="margin-bottom: 0px !important"><strong>TALLER</strong></legend>
+										<div class="row datos_taller">
+											<div class="col-md-6">
+											
+												<div class="">
+													<div class="form-group">
+														<label for="" class="fg-label "><b>Nombre de Taller</b></label>
+														<div class="fg-line">
+															<input type="text" placeholder="ingrese nombre" maxlength="200" data-fv-stringlength-message="Maximo 200 caracteres" class="form-control input-sm"  data-fv-notempty="true" data-fv-message="Requiere nombre de taller" name="nombretall">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="">
+													<div class="form-group">
+														<label for="" class="fg-label"><b>Direccion de Taller</b></label>
+												
+														<div class="fg-line">
+															<input type="text" placeholder="ingrese direccion" maxlength="200" data-fv-stringlength-message="Maximo 200 caracteres" class="form-control input-sm"  data-fv-notempty="true" data-fv-message="Requiere direccion Taller" name="direcciontall">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+	                                <div class="row">
+	                                    <div class="col-md-6">
+	                                        <div class="form-group">
+	                                            <div class="">
+	                                                <span class="control-label"><b>Departamento</b></span>
+	                                                <select data-placeholder="" name="iddep"
+	                                                    class="form-control fg-input sel-opcv" data-fv-notempty='true'
+	                                                    data-fv-message="Seleccione el departamento"
+	                                                    id="js_depart_mod" style="height: 27px;">
+	                                                    <option value="" selected="selected">Seleccione Departamento</option>
+	                                                </select>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                    <div class="col-md-6">
+	                                        <div class="form-group">
+	                                            <div class="">
+	                                                <span class="control-label"><b>Provincia</b></span>
+	                                                <select data-placeholder="" name="idprov"
+	                                                    class="form-control fg-input sel-opcv" data-fv-notempty='true'
+	                                                    data-fv-message="Seleccione provincia"
+	                                                    id="js_prov_mod" style="height: 27px;">
+	                                                    <option value="" selected="selected">Seleccione provincia</option>
+	                                                </select>
+	                                            </div>
+	                                        </div>
+	                                        
+	
+	                                    </div>
+	                                    
+	                                </div>  
+								</fieldset> 
+
+							</div>
+							<div class="modal-footer">
+								<button type="submit" id="btn-guardar"
+									class="btn btn-primary waves-effect">Guardar</button>
+								<button type="button" class="btn btn-danger waves-effect"
+									data-dismiss="modal">Cancelar</button>
+							</div>
+
+						</div>
+					</div>
+			</div>
+		</div>
+	</form>	
+	<div class="contenido_gestion">
+		<div class="" style="padding: 0 15px;">
+			<h2 class="panel-title">
+      	      <b>GESTION TALLERES</b>
+	        </h2>
+	        <h5>
+	      	  Administre talleres registrados en el Sistema.
+	        </h5>
+		</div>
+		<div class="panel-body" style="margin-top: -30px"> 
+			<div class="row">
+				<div class="col-md-12" style="text-align: right;margin-bottom: 15px">			
+					<button id="btnAdicionar" class="btn btn-succ  btn-xs btn-sm waves-effect" disabled="disabled">NUEVO TALLER</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-3 col-xs-12" style="margin-bottom: 10px;">
+							<input type="text" id="js-filtro" name=""
+								class="form-control_filtro unput-sm"
+								placeholder=" Buscar por nombre de Taller..">
+						</div>
+						<div class="col-md-3 col-xs-12"></div>
+						<div class="col-md-6 col-xs-12 navbar-right" style="text-align: right; margin-top: 10px">
+							<label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="activos" value="1"> <i
+								class="input-helper"></i>activos
+							</label> <label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="bajas" value="0"> <i
+								class="input-helper"></i>bajas
+							</label> <label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="todos" value="-1"
+								checked="checked"> <i class="input-helper"></i>todos
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 t">
+					<table id="table"  class="table table-vmiddle nowrap tabla_gestion" width="100%">
+						<thead>
+							<tr>
+								<th class="text-center" width="">#</th>
+                                <th class="text-center" width="">Nombre Taller</th>
+<!--                                 <th class="text-center" width="20px !important">Direccion Taller</th> -->
+                                <th class="text-center">Propietario</th>
+                                <th class="text-center">Cedula</th>
+                                <th class="text-center">Estado</th>
+								<th class="text-center">Opciones</th>
+
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+    	var MAX_TELEFONOS = 2;
+        var EstadoTel=0;
+	
+        var result=Get_Opciones(null);
+        if(ExisteOpcion('adicionar')){
+//             $('#btnAdicionar').attr({
+//                 onclick:"(Gestion.add())",
+//                 // accesskey:""
+//             })
+            $('#btnAdicionar').removeAttr("disabled ").focus().val("Ahora si lo puedes utilizar")
+        }
+
+        function ExisteOpcion(opc){
+            // alert('entro comparar')
+            var resultado=false;
+            for (var i = 0; i < result.AccionesUser.length; i++) {
+//                 console.log('for_: ',result.AccionesUser[i]);
+                if(result.AccionesUser[i].codigo==opc){
+                    resultado=true;         
+                }
+            }
+            return resultado;
+        }
+
+        var DTtable=''
+        
+        var filtro=$('#js-filtro').val();
+        var estado=$('input[name="iestado"]:checked').val();
+        
+        
+
+        $('input[name="iestado"]').on('change',function(){
+            estado=$(this).val();
+            $('#table').dataTable().fnDraw('page');
+        })
+        
+        DTtable=$('#table').DataTable({
+            "oLanguage": {
+                "sUrl": GurlDataTable
+            },
+            "dom":'rt<button>ip',
+            "pageLength":5,
+             responsive:true,
+            "processing": true,
+            "serverSide": true,
+            
+            "ajax": {
+            	"type": "POST",
+              "url": "RestTalleres/listar_d",
+          	"data": function ( d ) {
+                    d.estado = estado
+                    // d.estado = 1;
+                    // filtro:filtro
+             }
+            },
+            "columns": [
+                { "data": "idtall" },
+                { "data": "idtall" },
+                { "data": "idtall" },
+//                 { "data": "idtall" },
+                { "data": "idtall" },
+                { "data": "idtall" },
+                { "data": "idtall" }
+      		],
+            "createdRow":function(row,data,index){
+                
+            	$('td',row).eq(0).html(index+1).addClass('text-center');
+                $('td',row).eq(1).html(data.nombretall)
+//                 $('td',row).eq(2).html(data.direccion)
+                $('td',row).eq(2).html(data.persona.razonsocial)
+                $('td',row).eq(3).html(data.persona.ci+' '+data.persona.ciCod)
+
+                if(data.estado==1){
+                    $('td',row).eq(4).html('Activo');
+                }else{
+                    $('td',row).eq(4).html('Inactivo');
+                }
+                if(ExisteOpcion('modificar')){
+                    $('td',row).eq(5).html('<button id="btnModificar" class="btn btn-xs btn-info waves-effect btn-espacio modificar" data-toggle="tooltip" data-placement="top" title="Modificar"  accesskey="'+data.idtall+'" data-href="'+data.idtall+'"><span class="zmdi zmdi-edit"></span> Modificar</button>')
+                    // $('td',row).eq(5).append('<button>hola</button>')
+                }else{
+                    $('td',row).eq(5).html('<button id="btnModificar" class="btn btn-xs btn-info waves-effect btn-espacio modificar" data-toggle="tooltip" data-placement="top" title="Modificar" disabled="disabled"><span class="zmdi zmdi-edit"></span> Modificar</button>') 
+                }
+                if(data.estado==1){
+                    if(ExisteOpcion('eliminar')  ){
+                        // if()
+                        $('td',row).eq(5).append('<button id="btn-elim" class="btn btn-xs btn-danger waves-effect btn-espacio eliminar" accesskey="'+data.idtall+'" data-href="'+data.idtall+'" "><span class="zmdi zmdi-delete"></span> Deshabilitar</button>');
+                    }else{
+                        $('td',row).eq(5).append('<button id="btn-elim" class="btn btn-xs btn-danger waves-effect btn-espacio" disabled="disabled"><span class="zmdi zmdi-delete"></span> Deshabilitar</button>');  
+                    }
+                }else{
+                    if(ExisteOpcion('habilitar')){
+                        $('td',row).eq(5).append('<button id="btn-hab" class="btn btn-xs btn-success waves-effect btn-espacio habilitar" accesskey="'+data.idtall+'" data-href="'+data.idtall+'" "><span class="zmdi zmdi-time-restore-setting"></span> Habilitar</button>');
+                    }else{
+                        $('td',row).eq(5).append('<button id="btn-hab" class="btn btn-xs btn-success waves-effect btn-espacio" disabled="disabled"><span class="zmdi zmdi-time-restore-setting"></span> Habilitar</button>');   
+                    }                       
+                }
+				
+            } 
+        
+            ,
+            "drawCallback":function(settings){
+ 	        	$('#btnAdicionar').click(function(){
+
+ 	        		 var telSC;
+                     function asyncSqrt(callback){
+                         // $('#contenido-tel-add').html('');
+                          telSC=`<div class="form-group">
+                             <label class="col-xs-3 control-label">Telefonos/Celulares</label>
+                             <div class="col-xs-5">
+                                 <input type="text"  class="form-control telefono-class" name="telefono[]" placeholder="Ingrese numero"  data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico"/>
+                             </div>
+                             <div class="col-xs-4">
+                                 <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+                             </div>
+                         </div>
+                         <div class="form-group hide" id="optionTemplate" >
+                             <div class="col-xs-offset-3 col-xs-5">
+                                 <input class="form-control" type="text" name="" placeholder="Ingrese numero" maxlength="10" data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico"/>
+                             </div>
+                             <div class="col-xs-4">
+                                 <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                             </div>
+                         </div>
+                         `;
+                         $('#contenido-tel-add').html(telSC);
+                         $('#formulario').formValidation('addField','telefono[]')
+                         
+
+                     }
+                     asyncSqrt(function(result){
+
+                         // $('#contenido-tel-add').html('');
+                         // $('#contenido-tel-add').html(telSC);
+                         // var   $option   = $('.ClassExisteTel').find('[name="telefono[]"]');
+                         // $('#formulario').formValidation('addField','telefono[]')
+                     })
+
+
+                     $('#formulario').data('formValidation').resetForm();
+                     $('#formulario')[0].reset();
+
+                    $('#text-desc').val('');
+            		$('#modalAdicionar').modal('show');
+            	});
+  	        	
+                $('.modificar').click(function(){
+                    $('#formularioModificar').data('formValidation').resetForm();
+                    
+                    
+                    var idtall=$(this).attr('accesskey');
+                    $('#formularioModificar').find('#contenido-tel-mod').html('');
+                    
+                    $.post('RestTalleres/datos-mod',{idtall:idtall},function(resp){
+                        console.log('respuesta: ',resp)
+                        $('#contenido-tel-mod').html('');
+                        $('#formularioModificar').loadJSON(resp);
+                        $('#formularioModificar').find('.datos_taller').loadJSON(resp)
+                        $('#formularioModificar').find('input[name="direcciontall"]').val(resp.direccion)
+
+                        $('#formularioModificar').find('.datos_propietario').loadJSON(resp.persona)
+                        var telSC;
+                        if(resp.persona.listaTelf.length!=0){
+                           var bloqueo;
+                           if(resp.persona.listaTelf.length==MAX_TELEFONOS){
+                                bloqueo="disabled"
+                           }else{
+                                bloqueo=''
+                           } 
+
+                           $(resp.persona.listaTelf).each(function(index,item){
+                                // alert('pre')
+                               console.log('index: ',index)
+                               if(index==0){
+                                   telSC=`<div class="form-group" id="ExisteTelOr">
+                                            <label class="col-xs-3 control-label">Telefonos/Celulares</label>
+                                            <div class="col-xs-5">
+                                                <input type="text" class="form-control" name="telefono[]" value="${item.numero}" placeholder="Ingrese numero" maxlength="10" data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico"/>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <button type="button" class="btn btn-default addButton" ${bloqueo}><i class="fa fa-plus"></i></button>
+                                            </div>
+                                       </div>`
+                                         $('#contenido-tel-mod').append(telSC);
+                                         var   $option   = $('#ExisteTelOr').find('[name="telefono[]"]');
+                                        // $('#formularioModificar').formValidation('addField', $option);
+                               }else{
+                                    telSC=`<div class="form-group ClassExisteTel">
+                                              <div class="col-xs-offset-3 col-xs-5">
+                                                <input class="form-control" type="text" name="telefono[]" value="${item.numero}" placeholder="Ingrese numero" maxlength="10"/>
+                                              </div>
+                                              <div class="col-xs-4">
+                                                <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                                              </div>
+                                           </div>`
+                                     $('#contenido-tel-mod').append(telSC);
+                                     var   $option   = $('.ClassExisteTel').find('[name="telefono[]"]');
+                                     // $('#formularioModificar').formValidation('addField', $option);      
+                               }       
+
+                           }) 
+                           var opcionclone=`
+                               <div class="form-group hide" id="optionTemplateMod" >
+                                    <div class="col-xs-offset-3 col-xs-5">
+                                        <input class="form-control" type="text" name="" placeholder="Ingrese numero" maxlength="10" data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico"/>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                                    </div>
+                                </div>`; 
+                       		 $('#contenido-tel-mod').append(opcionclone);
+                        }else{
+                            telSC=`<div class="form-group" id="origenT">
+                                <label class="col-xs-3 control-label">Telefonos/Celulares</label>
+                                <div class="col-xs-5">
+                                    <input type="text" class="form-control" name="telefono[]" placeholder="Ingrese numero" maxlength="10"/>
+                                </div>
+                                <div class="col-xs-4">
+                                    <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+                                </div>
+                           </div>
+                            <div class="form-group hide" id="optionTemplateMod" >
+                                <div class="col-xs-offset-3 col-xs-5">
+                                    <input class="form-control" type="text" name="" placeholder="Ingrese numero" maxlength="10" data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico"/>
+                                </div>
+                                <div class="col-xs-4">
+                                    <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                           `
+		                    $('#contenido-tel-mod').html(telSC);
+		                    var   $option   = $('#origenT').find('[name="telefono[]"]');
+		                    // $('#formularioModificar').formValidation('addField', $option);      
+                        }
+                        
+                        $("#js_depart_mod option").each(function(){
+                        	if($(this).attr('value')==resp.provincia.departamento.iddep){
+                        		$(this).attr("selected",true);
+                        	}   
+                        });
+
+						//para cargar provincias de acuerdo al departamento
+                        var iddep_param=resp.provincia.departamento.iddep;
+                        $.getJSON('RestTalleres/getProvinciasByIdDep',{iddep:iddep_param},function(datos){
+                            console.log('ProvinciasDatos: ',datos)
+
+                            $('#js_prov_mod').html('');
+            				$('#js_prov_mod').html('<option value="" selected="selected">Seleccione provincias</option>');
+                            $(datos[0]).each(function(index,item){
+                                $('#formularioModificar').find('#js_prov_mod').append('<option value="'+item.idprov+'">'+item.nombre+'</option>')
+                            })
+                            
+                            $("#js_prov_mod option").each(function(){
+                            	if($(this).attr('value')==resp.provincia.idprov){
+                            		$(this).attr("selected",true);
+                            	}   
+                            });
+                       
+                        })
+
+                        $('#formularioModificar').formValidation('addField','telefono[]');  
+                        
+                        
+                    },'json')
+                    
+                    
+                    $('#formularioModificar')[0].reset();
+                    $('#modalModificar').modal('show');
+                });
+            	
+                $('.eliminar').click(function(){
+
+                    var idtall=$(this).attr('accesskey')
+                    // alert('id: '+idben)
+                    swal({   
+                        title: "Seguro de dar de baja Taller?",   
+                        text: "Usted dara de baja al taller",   
+                        type: "warning",   
+                        showCancelButton: true,   
+                        confirmButtonColor: "#DD6B55",   
+                        confirmButtonText: "Si, Continuar!",   
+                        cancelButtonText: "No, Cancelar!",   
+                        closeOnConfirm: false,   
+                        closeOnCancel: false 
+                        }, function(isConfirm){
+                        if (isConfirm) {
+                            $.post('RestTalleres/eliminar',{idtall:idtall},function(resp){
+                                console.log(resp)
+                                if (resp.estado) {
+                                    $('#table').dataTable().fnDraw('page');
+                                    $('.modal').modal('hide')
+                                    swal({
+                                        title:"Eliminado",
+                                        text:"Se ha dado de baja al taller exitosamente",
+                                        type:"success",
+                                        timer: 500,   
+                                        showConfirmButton: false 
+                                    });
+                                         
+                               
+                                } else {
+                                    aler('Sin respuesta del Servidor')
+                                }   
+                            })
+                        } else {
+                            swal({
+                                title:"Cancelado",
+                                text:"Se ha cancelado operacion",
+                                type:"error",
+                                timer:2000,
+                                showCancelButton:false,
+                                showConfirmButton:false
+
+                            })
+                        } 
+                    }); 
+                });
+                $('.habilitar').click(function(){
+
+                    var idtall=$(this).attr('accesskey')
+                    swal({   
+                        title: "Seguro de dar de alta al Taller?",   
+                        text: "Usted dara de alta al taller",   
+                        type: "warning",   
+                        showCancelButton: true,   
+                        confirmButtonColor: "#DD6B55",   
+                        confirmButtonText: "Si, Continuar!",   
+                        cancelButtonText: "No, Cancelar!",   
+                        closeOnConfirm: false,   
+                        closeOnCancel: false 
+                        }, function(isConfirm){
+                            if (isConfirm) {
+                                $.post('RestTalleres/habilitar',{idtall:idtall},function(resp){
+                                    console.log(resp)
+                                    if (resp.estado) {
+                                        $('#table').dataTable().fnDraw('page');
+                                        $('.modal').modal('hide')
+                                        swal({
+                                            title:"Habilitado",
+                                            text:"Se ha dado de alta al taller exitosamente",
+                                            type:"success",
+                                            timer: 500,   
+                                            showConfirmButton: false 
+                                        });
+                                   
+                                    } else {
+                                        aler('Sin respuesta del Servidor')
+                                    }   
+                                })  
+                            } else {
+                                swal({
+                                    title:"Cancelado",
+                                    text:"Se ha cancelado operacion",
+                                    type:"error",
+                                    timer:2000,
+                                    showCancelButton:false,
+                                    showConfirmButton:false
+
+                                })
+                            } 
+                    }); 
+                });
+                
+                
+                $('button[data-toggle="tooltip"]').tooltip({animated: 'fade',placement: 'bottom',});
+                
+            	$('#js-filtro').on( 'keyup', function () {
+                    DTtable.search(this.value ).draw();
+                }) 
+
+            }
+        });
+        
+        
+        
+       
+
+
+        
+        var respCi="";
+
+        $('#formulario').formValidation({
+            fields:{
+                ci:{
+                    validators:{
+                        callback:{
+                            message:'callback cedula existente',
+                            callback:function(value,validator,$field){
+                                console.log('valor de cedula: ',value)
+                                $.ajax({
+                                    url:"RestBeneficiarios/existeCi",
+                                    data:{
+                                        ci:value
+                                    },
+                                    type:"post",
+                                    dataType:"json",
+                                    async:false,
+                                    cache:false,
+                                    success:function(resp){
+                                        respCi=resp.estado
+                                    },  
+                                    error:function(err){
+                                        alert('sin respuesta del servidor ci')
+                                    }
+
+                                })
+                                if(respCi){
+                                     return {
+                                         valid:false,
+                                         message:'esta cedula ya esta registrada'
+                                     } 
+                                }else{
+                                    return true;    
+                                }
+                                
+                            }
+                        }
+                    }
+                },
+                'telefono[]': {
+                    validators: {
+                        stringLength: {
+                            max: 10,
+                            message: 'Maximo hasta 10 caracteres'
+                        }
+                    }
+                }
+            }
+        })
+        .on('click', '.addButton', function(){
+        	EstadoTel=0
+            var $template = $('#optionTemplate');
+            var   $clone    = $template
+                                .clone()
+                                .removeClass('hide')
+                                .removeAttr('id')
+                                .insertBefore($template);
+            $clone.find('.form-control').attr('name','telefono[]');
+            var   $option   = $clone.find('[name="telefono[]"]');
+            $('#formulario').formValidation('addField', $option);
+            EstadoTel++;
+        })
+        .on('click', '.removeButton', function() {
+            var $row    = $(this).parents('.form-group'),
+                $option = $row.find('[name="telefono[]"]');
+//             console.log('padre: ',$row)
+            $row.remove();
+            $('#formulario').formValidation('removeField', $option);
+            EstadoTel--;
+        })
+        .on('added.field.fv', function(e, data) {
+            if (data.field === 'telefono[]') {
+                if ($('#formulario').find(':visible[name="telefono[]"]').length >= MAX_TELEFONOS) {
+                    $('#formulario').find('.addButton').attr('disabled', 'disabled');
+                }
+            }
+        })
+        .on('removed.field.fv', function(e, data) {
+           if (data.field === 'telefono[]') {
+                if ($('#formulario').find(':visible[name="telefono[]"]').length < MAX_TELEFONOS) {
+                    $('#formulario').find('.addButton').removeAttr('disabled');
+                }
+            }
+        })
+        .on('success.form.fv', function(e){
+            e.preventDefault();
+            var $form = $(e.target);
+           swal({   
+               title: "Seguro de registrar Taller?",   
+               text: "Usted registrara nuevo Taller",   
+               type: "warning",   
+               showCancelButton: true,   
+               confirmButtonColor: "#DD6B55",   
+               confirmButtonText: "Si, Continuar!",   
+               cancelButtonText: "No, Cancelar!",   
+               closeOnConfirm: false,   
+               closeOnCancel: false 
+               }, function(isConfirm){   
+                   if (isConfirm) {     
+                       $('#formulario').ajaxSubmit({
+                           success:function(res){
+                               console.log('registrado',res)
+                               if(res.estado){
+                                   $form.data('formValidation').resetForm();
+                                   $('#formulario')[0].reset();
+                                   $('#table').dataTable().fnDraw('page');
+                                   $('.modal').modal('hide')
+                                   
+                                   swal({
+                                       title:"Registrado",
+                                       text:"Se ha registrado Taller exitosamente",
+                                       type:"success",
+                                       timer:1000,   
+                                       showConfirmButton: false 
+                                   });   
+                               }
+                           }
+                       })
+
+                   } else {     
+                       swal({
+                           title:"Cancelado",
+                           text:"Se ha cancelado operacion",
+                           type:"error",
+                           timer:2000,
+                           showCancelButton:false,
+                           showConfirmButton:false
+
+                       })
+                       $('#modal-add').modal('hide')
+                   } 
+               });
+        })
+        
+        
+        //formValidation Modificar
+        
+        $('#formularioModificar').formValidation({
+           fields:{
+            	
+               'telefono[]': {
+                   validators: {
+                       stringLength: {
+                           max: 10,
+                           message: 'El tamanio debe ser maximo hasta 10 caracteres'
+                       }
+                   }
+               }
+           }
+       })
+       .on('click', '.addButton', function(){
+           var $template = $('#optionTemplateMod');
+           var   $clone    = $template
+                               .clone()
+                               .removeClass('hide')
+                               .removeAttr('id')
+                               .insertBefore($template);
+           $clone.find('.form-control').attr('name','telefono[]');
+           var   $option   = $clone.find('[name="telefono[]"]');
+           $('#formularioModificar').formValidation('addField', $option);
+       })
+       .on('click', '.removeButton', function() {
+           var $row    = $(this).parents('.form-group'),
+               $option = $row.find('[name="telefono[]"]');
+//            console.log('padre: ',$row)
+           $row.remove();
+           $('#formularioModificar').formValidation('removeField', $option);
+       })
+       .on('added.field.fv', function(e, data) {
+           if (data.field === 'telefono[]') {
+               if ($('#formularioModificar').find(':visible[name="telefono[]"]').length >= MAX_TELEFONOS) {
+                   $('#formularioModificar').find('.addButton').attr('disabled', 'disabled');
+               }
+           }
+       })
+       .on('removed.field.fv', function(e, data) {
+          if (data.field === 'telefono[]') {
+               if ($('#formularioModificar').find(':visible[name="telefono[]"]').length < MAX_TELEFONOS) {
+                   $('#formularioModificar').find('.addButton').removeAttr('disabled');
+               }
+           }
+       })
+       .on('success.form.fv', function(e){
+          e.preventDefault();
+          var $form = $(e.target);
+          swal({ 
+              title: "Seguro de modificar Taller?",   
+              text: "Usted modificara los datos del Taller",   
+              type: "warning",   
+              showCancelButton: true,   
+              confirmButtonColor: "#DD6B55",   
+              confirmButtonText: "Si, Continuar!",   
+              cancelButtonText: "No, Cancelar!",   
+              closeOnConfirm: false,   
+              closeOnCancel: false 
+              }, function(isConfirm){  
+                  $('.doc-mod').removeAttr('disabled') 
+                  if (isConfirm) {
+                      $('#formularioModificar').ajaxSubmit({
+                      	success:function(res){
+                              console.log('modificado',res)
+                              if(res.estado){
+                                  $form.data('formValidation').resetForm();
+                                  $('#formularioModificar')[0].reset();
+                                  $('#table').dataTable().fnDraw('page');
+                                  swal({
+                                      title:"Modificado",
+                                      text:"Se ha modificado Taller exitosamente",
+                                      type:"success",
+                                      timer: 1000,   
+                                      showConfirmButton: false 
+                                  });     
+                              }else{
+                            	  mostrarMensaje('error','No se realizo con exito la Transaccion');
+                                  alert('error:'+'No se realizo con exito la Transaccion');
+                              }
+                              $('.modal').modal('hide');
+                          }
+                      })
+
+                  } else {     
+                      // swal("Cancelled", "Your imaginary file is safe :)", "error");   
+                      swal({
+                          title:"Cancelado",
+                          text:"Se ha cancelado operacion",
+                          type:"error",
+                          timer:2000,
+                          showCancelButton:false,
+                          showConfirmButton:false
+
+                      })
+                      $('#modalModificar').modal('hide')
+                  } 
+          });
+       })
+        
+        
+
+        $('#generarR').click(function(){ 
+  			$("#frameReportes").attr("src",'Talleres/listaReporte');
+			$("#reportes").modal('show');
+  		});
+        
+        
+        
+//         $.getJSON('RestTalleres/getDatosTalleres?gestion='+isGestio2,function(datos){
+        $.getJSON('RestTalleres/getDatosTalleres',function(datos){
+            console.log('opcionesDatosTalleres: ',datos)
+            $(datos[0]).each(function(index,item){
+                // console.log('tip: ',item)
+                $('#formulario').find('#js_depart').append('<option value="'+item.iddep+'">'+item.nombre+'</option>')
+                $('#formularioModificar').find('#js_depart_mod').append('<option value="'+item.iddep+'">'+item.nombre+'</option>')
+            })
+       
+        })
+      
+        
+        $('#formulario').find("#js_depart").on('change',function(){
+            
+            var iddep=$(this).val()
+            $('#js_prov').html('');   
+            
+            $('#js_prov').html('<option value="" selected="selected">Seleccione provincias</option>');   
+            $("#js_prov").val($("#js_prov").find("option:first").val())
+
+			$('#formulario').formValidation('addField','idprov');   
+            $('#formulario').formValidation('resetField','idprov'); 
+// 			alert('iddep:'+iddep)
+            if(iddep!=""){
+                $.getJSON('RestTalleres/getProvinciasByDepart',{iddep:iddep},function(datos){
+                    console.log('respuesta: ',datos)
+                    $(datos[0]).each(function(index,item){
+                        // console.log('tip: ',item)
+                        $('#js_prov').append('<option value="'+item.idprov+'">'+item.nombre+'</option>')
+                    }) 
+                })
+            }
+        })
+        
+       	$('#formularioModificar').find("#js_depart_mod").on('change',function(){
+            
+            var iddep=$(this).val()
+            $('#js_prov_mod').html('');   
+            
+            $('#js_prov_mod').html('<option value="" selected="selected">Seleccione provincias</option>');   
+            $("#js_prov_mod").val($("#js_prov").find("option:first").val())
+
+            $('#formularioModificar').formValidation('addField','idprov');   
+            $('#formularioModificar').formValidation('resetField','idprov'); 
+// 			alert('iddep:'+iddep)
+            if(iddep!=""){
+                $.getJSON('RestTalleres/getProvinciasByDepart',{iddep:iddep},function(datos){
+                    console.log('respuesta: ',datos)
+                    $(datos[0]).each(function(index,item){
+                        // console.log('tip: ',item)
+                        $('#js_prov_mod').append('<option value="'+item.idprov+'">'+item.nombre+'</option>')
+                    }) 
+                })
+            }
+        })
+        
+        
+    // })
+        
+    </script>
+</body>
+</html>

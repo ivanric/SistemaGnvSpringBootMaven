@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>gestion</title>
+   <link rel="stylesheet" href="../static/css/buscador.css" th:href="@{/css/buscador.css}"/>
+</head>
+<body>
+	<form name="formulario" role="form" id="formulario" method="post"
+		action="RestUser" enctype="multipart/form-data"
+		data-fv-excluded="disabled">
+
+		<div class="modal fade" id="modalAdicionar" tabindex="-1"
+			role="dialog" data-backdrop="static" data-keyboard="false"
+			aria-hidden="true" style="display: none; padding-left: 0">
+
+			<div class="modal-dialog modal-md" role="document">
+				<div class="modal-content">
+					<div class="card">
+						<div style="margin: 0 10px 0 10px">
+
+
+							<p>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</p>
+							<h4 style="margin-top: 0px;">
+								<b>Nuevo Usuario</b></br>
+								<small>Complete el formulario por favor</small>
+							</h4>
+							<div class="row">
+								<div class="col-md-12">
+									<b style="">GESTION: </b><span id="s_gestion1"></span>
+								</div>
+							</div>
+
+						</div>
+						<div class="modal-body">
+
+							<input type="hidden" name="idper"> <input type="hidden"
+								name="tipouser">
+							<div class="row">
+								<div class="col-md-12">
+									<label for="" class=""><b>Fotografia de Usuario</b></label> <input
+										class="file" id="fotografia" name="foto" type="file">
+
+								</div>
+							</div>
+							<br>
+							<br>
+
+							<fieldset>
+								<legend style="margin-bottom: 0px !important">
+									<b>DATOS GENERALES</b>
+								</legend>
+								<div class="row">
+									<div class="col-md-4">
+										<div class="form-group fg-float">
+											<span class="fg-label">Cedula</span>
+											<div class="fg-line">
+												<input placeholder="Ingrese cedula de indentidad"
+													class="form-control fg-input" minlength="5" maxlength="10"
+													data-fv-stringlength-message="La Cï¿½dula debe ser entre 5 a 10 caracteres"
+													id="cedula" name="ci" type="text" autocomplete="off">
+
+											</div>
+
+											<small class="help-block" id="mensaje-ben"
+												style="display: none;"></small>
+
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<div class="fg-line">
+												<select style="width: 65px; height: 27px; margin-top: 15px;"
+													data-placeholder="" name="ciCod"
+													class="form-control data-per" data-fv-notempty='true'
+													data-fv-message="Requiere Ciudadania" id="ciCod">
+													<option value="TJ">TJ</option>
+													<option value="PT">PT</option>
+													<option value="PA">PA</option>
+													<option value="LP">LP</option>
+													<option value="OR">OR</option>
+													<option value="CB">CB</option>
+													<option value="BN">BN</option>
+													<option value="CH">CH</option>
+													<option value="SC">SC</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group fg-float">
+											<span class="fg-label">Nombre Completo</span>
+											<div class="fg-line">
+												<input placeholder="Ingrese nombre completo"
+													class="form-control fg-input data-per" name="razonsocial"
+													type="text" data-fv-notempty="true"
+													data-fv-message="Ingrese nombre completo porfavor"
+													maxlength="100"
+													data-fv-stringlength-message="Solo 100 caracteres">
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+
+								<div class="row">
+									<div class="col-md-12" style="padding-top: 10px">
+										<div class="form-group fg-float">
+											<span class="fg-label">Direccion</span>
+											<div class="fg-line">
+												<input placeholder="Ingrese la doreccion"
+													class="form-control fg-input data-per" name="direccion"
+													type="text"  maxlength="800"
+													autocomplete="off">
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div id="contenido-tel">
+										<div class="form-group">
+											<label class="col-xs-3 control-label">Telefonos/Celulares</label>
+											<div class="col-xs-5">
+												<input type="text" class="form-control telefono-class"
+													name="telefono[]" placeholder="Ingrese numero"
+													data-fv-integer="true"
+													data-fv-integer-message="El campo debe ser numerico" />
+											</div>
+											<div class="col-xs-4">
+												<button type="button" class="btn btn-default addButton">
+													<i class="fa fa-plus"></i>
+												</button>
+											</div>
+										</div>
+										<div id="IdInitTelf"></div>
+									</div>
+									<!-- The option field template containing an option field and a Remove button -->
+									<div class="form-group hide" id="optionTemplate">
+										<div class="col-xs-offset-3 col-xs-5">
+											<input class="form-control" type="text" name=""
+												placeholder="Ingrese numero" data-fv-integer="true"
+												data-fv-integer-message="El campo debe ser numerico" />
+										</div>
+										<div class="col-xs-4">
+											<button type="button" class="btn btn-default removeButton">
+												<i class="fa fa-minus"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend style="margin-bottom: 0px !important">
+									<b>DATOS LOGUEO</b>
+								</legend>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group fg-float">
+
+											<span class="fg-label">Usuario</span>
+											<div class="fg-line">
+												<input autocomplete="false" placeholder="Ingrese usuario"
+													class="form-control fg-input " name="usuario" type="text"
+													data-fv-notempty="true" data-fv-message="Requiere login"
+													maxlength="100"
+													data-fv-stringlength-message="Solo 100 caracteres">
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group fg-float">
+											<span class="fg-label">Contrasenia de Usuario</span>
+											<div class="fg-line">
+												<input autocomplete="false"
+													placeholder="Ingrese contrasenia"
+													class="form-control fg-input " name="password"
+													type="password" maxlength="100"
+													data-fv-stringlength-message="Solo 100 caracteres">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6"></div>
+									<div class="col-md-6">
+										<div class="form-group fg-float">
+											<span class="fg-label">Repetir Contrasenia</span>
+											<div class="fg-line">
+
+												<input autocomplete="false" placeholder="Repita contrasenia"
+													class="form-control fg-input " name="repassword"
+													type="password" maxlength="100"
+													data-fv-stringlength-message="Solo 100 caracteres">
+											</div>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" id="btnAdicionarConfirmacion"
+								class="btn btn-primary waves-effect">Guardar</button>
+							<button type="button" class="btn btn-danger waves-effect"
+								data-dismiss="modal">Cancelar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<form id="formularioModificar" action="RestUser/modify" method="post"
+		data-fv-excluded="disabled">
+
+		<div class="modal fade" id="modalModificar" tabindex="-1"
+			role="dialog" data-backdrop="static" data-keyboard="false"
+			aria-hidden="true" style="display: none; padding-left: 0 !important;">
+			<div class="modal-dialog modal-md" role="document">
+				<div class="modal-content">
+					<div class="card">
+						<div style="margin: 0 10px 0 10px">
+							<p>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</p>
+							<h4 style="margin-top: 0px;">
+								<b>Modificar Usuario</b></br>
+								<small>Complete el formulario por favor</small>
+							</h4>
+
+						</div>
+						<div class="modal-body">
+						
+							<div class="row">
+								<div class="col-md-12">
+									<label for="" class=""><b>Fotografia de Usuario</b></label> <input
+										class="file" id="fotografia" name="foto" type="file">
+								</div>
+							</div>
+							<br>
+							<br>
+							<fieldset>
+								<legend>
+									<b>DATOS GENERALES</b>
+								</legend>
+								<div class="datos_propietario">
+
+
+
+									<input type="hidden" name="idper">
+
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group fg-float">
+												<span class="fg-label"><b>Cedula</b></span>
+												<div class="fg-line">
+													<input placeholder="ingrese ci"
+														class="form-control fg-input" minlength="7" maxlength="8"
+														data-fv-stringlength-message="La Cedula debe ser entre 7 u 8 caracteres"
+														id="cedula" name="ci" type="text" data-fv-notempty="true"
+														data-fv-message="Requiere Cedula" data-fv-integer="true"
+														data-fv-integer-message="El valor de este campo debe ser numerico y sin espacios en blanco">
+												</div>
+												<div id="mensaje" style="color: red;"></div>
+											</div>
+
+										</div>
+										<div class="col-md-2">
+											<div class="form-group fg-float">
+												<div class="fg-line">
+													<select
+														style="width: 65px; height: 27px; margin-top: 15px;"
+														data-placeholder="" name="ciCod" class="form-control"
+														data-fv-notempty='true'
+														data-fv-message="Requiere Ciudadania" id="ciCod">
+														<!--<option value="">SEL</option> -->
+														<option value="TJ">TJ</option>
+														<option value="PT">PT</option>
+														<option value="PA">PA</option>
+														<option value="LP">LP</option>
+														<option value="OR">OR</option>
+														<option value="CB">CB</option>
+														<option value="BN">BN</option>
+														<option value="CH">CH</option>
+														<option value="SC">SC</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group fg-float">
+												<span class="fg-label"><b>Nombres y Apellidos</b></span>
+												<div class="fg-line">
+													<input placeholder="ingrese nombre completo"
+														class="form-control fg-input" name="razonsocial"
+														type="text" data-fv-notempty="true"
+														data-fv-message="Ingrese Beneficiario porfavor"
+														maxlength="100"
+														data-fv-stringlength-message="Solo 100 caracteres">
+												</div>
+
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<span class="fg-label"><b>Direccion</b></span>
+											<div class="form-group fg-float">
+												<div class="fg-line">
+													<input class="form-control fg-input" name="direccion"
+													type="text"  maxlength="800">
+												</div>
+
+											</div>
+										</div>
+									</div>
+
+									<br>
+									<div class="row">
+										<div id="contenido-tel-mod"></div>
+									</div>
+								</div>
+							</fieldset>
+
+						</div>
+						<div class="modal-footer">
+							<button type="submit" id="btnAdicionarConfirmacion"
+								class="btn btn-primary waves-effect">Guardar</button>
+							<button type="button" class="btn btn-danger waves-effect"
+								data-dismiss="modal">Cancelar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	<form id="formularioAdicionarRol" action="RestRoles/asignarRolUser" method="post"
+		data-fv-excluded="disabled">
+
+		<div class="modal fade" id="modalAdicionarRol" tabindex="-1"
+			role="dialog" data-backdrop="static" data-keyboard="false"
+			aria-hidden="true" style="display: none; padding-left: 0 !important;">
+        <div class="modal-dialog "  role="document">
+        <div class="modal-content">
+            <div class="card">
+	            <div style="margin: 0 10px 0 10px">
+					<p>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</p>
+					<h4 style="margin-top: 0px;">
+						<b>Asignar Rol</b></br>
+						<small>Complete el formulario por favor</small>
+					</h4>
+	
+				</div>
+            </div>
+            <div class="modal-body">
+                    <!-- <input type="hidden" id="codr" name="codr" />	 -->
+                    	<input type="hidden" name="idper">
+                    <div class="row">
+                        <div class="col-md-9"><h3>Usuario:  <b id="nameUser"></b></h3></div>
+                    </div>
+                    <select id="js_roles_users" name="roles[]" multiple="multiple">
+                        <!-- #foreach($m in $menus)
+                        <option value="$m.codm">$m.nombre</option>
+                        #end -->
+                    </select>	
+        </div>
+            <div class="modal-footer">
+            <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i> Aceptar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="glyphicon glyphicon-remove-sign"></i> Cancelar</button>
+            </div>
+        </div>
+        </div>
+        </div>
+    </form>
+
+
+	<form id="formularioPassword" action="RestUsuario/ChangePassword" method="post" 
+	    data-fv-excluded="disabled">
+	
+	    <div class="modal fade" id="modalPassword" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true" style="display: none;padding-left: 0">
+	       <div class="modal-dialog modal-md" role="document">
+	         <div class="modal-content">
+	            <div class="card">
+		            <div style="margin: 0 10px 0 10px">
+						<p>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</p>
+						<h4 style="margin-top: 0px;">
+							<b>USUARIO: </b><span id="js_usuario_per"></span></br>
+							<small>Cambiar la contraseña</small>
+						</h4>
+		
+					</div>
+	                </div>
+	                <div class="modal-body">
+	                <input type="hidden" name="idper">
+	                    <div class="row">
+	                        <div class="col-md-4">
+	                            <img src="" id="user-avatar" style="width: 100%;">
+	                        </div>
+	                        <div class="col-md-8">
+	                        
+	                      		<h5 style="margin-top: 0px;">
+									<b>Nombre Completo: </b> <span id="js_razonsocial_per"></span></br>
+									<b>Cedula de Identidad: </b><span id="js_cedula_per"></span></br>
+									
+								</h5>
+							
+								
+								<div class="form-group fg-float">
+									<span class="fg-label">Password</span>
+									<div class="fg-line">
+										<input  class="form-control fg-input" maxlength="12" name="password" type="password"
+											autocomplete="off">
+									</div>
+
+								</div>
+								<div class="form-group fg-float">
+									<span class="fg-label">Repetir Password</span>
+									<div class="fg-line">
+										<input   class="form-control fg-input" maxlength="12" name="repassword" type="password"
+											autocomplete="off">
+									</div>
+
+								</div>
+	                        </div>
+	                    </div>
+	 
+	                </div>
+	                <div class="modal-footer">
+	                    <button type="submit" id="btnAdicionarConfirmacion" class="btn btn-primary waves-effect"> Guardar</button>
+	                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal"> Cancelar</button>
+	                </div>
+	            </div>
+	          </div>
+	        </div>
+	 
+	</form> 
+	<div class="contenido_gestion">
+		<div class="" style="padding: 0 15px;">
+			<h2 class="panel-title">
+				<b>GESTION USUARIOS</b>
+			</h2>
+			<h5>Administre usuarios registrados en el Sistema.</h5>
+		</div>
+		<div class="panel-body" style="margin-top: -30px">
+			<div class="row">
+				<div class="col-md-12"
+					style="text-align: right; margin-bottom: 15px">
+					<button id="btnAdicionar"
+						class="btn btn-succ  btn-xs btn-sm waves-effect"
+						disabled="disabled">NUEVO USUARIO</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-3 col-xs-12" style="margin-bottom: 10px;">
+							<input type="text" id="js-filtro" name=""
+								class="form-control_filtro unput-sm"
+								placeholder=" Buscar por nombre de Usuario..">
+						</div>
+						<div class="col-md-3 col-xs-12"></div>
+						<div class="col-md-6 col-xs-12 navbar-right"
+							style="text-align: right; margin-top: 10px">
+							<label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="activos" value="1"> <i
+								class="input-helper"></i>activos
+							</label> <label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="bajas" value="0"> <i
+								class="input-helper"></i>bajas
+							</label> <label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="todos" value="-1"
+								checked="checked"> <i class="input-helper"></i>todos
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 table-responsive">
+					<table id="table" class="table tabla_gestion" style="width: 100%">
+						<thead>
+							<tr>
+								<th class="text-center">#</th>
+								<th class="text-center">Imagen</th>
+								<th class="text-center">Usuario</th>
+								<th class="text-center">ci</th>
+								<th class="text-center">Login</th>
+								<th class="text-center">Estado</th>
+								<th class="text-center">Opciones</th>
+
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+//     	var MAX_TELEFONOS = 2;
+//         var EstadoTel=0;
+      	var MAX_TELEFONOS = 2;
+      	var GImg='user.png';
+        var campoCedulaGlobal="";
+        var btn_mod_veh_Global;
+	
+        var GBloqueoTel=0;
+        var EstadoTel=0;
+        
+        var EstadoEncontradoBeneficiario=false;
+        
+        $(document).ready(function() {
+        
+        var result=Get_Opciones(null);
+        if(ExisteOpcion('adicionar')){
+//             $('#btnAdicionar').attr({
+//                 onclick:"(Gestion.add())",
+//                 // accesskey:""
+//             })
+            $('#btnAdicionar').removeAttr("disabled ").focus().val("Ahora si lo puedes utilizar")
+        }
+
+        function ExisteOpcion(opc){
+            // alert('entro comparar')
+            var resultado=false;
+            for (var i = 0; i < result.AccionesUser.length; i++) {
+//                 console.log('for_: ',result.AccionesUser[i]);
+                if(result.AccionesUser[i].codigo==opc){
+                    resultado=true;         
+                }
+            }
+            return resultado;
+        }
+
+        var DTtable=''
+        
+        var filtro=$('#js-filtro').val();
+        var estado=$('input[name="iestado"]:checked').val();
+        
+        
+
+        $('input[name="iestado"]').on('change',function(){
+            estado=$(this).val();
+//             console.log('estado;',estado)
+            $('#table').dataTable().fnDraw('page');
+        })
+        
+        DTtable=$('#table').DataTable({
+            "oLanguage": {
+                "sUrl": GurlDataTable
+            },
+            "dom":'rt<button>ip',
+            "pageLength":5,
+//              responsive:true,
+            "processing": true,
+            "serverSide": true,
+            
+            "ajax": {
+            	"type": "GET",
+              "url": "RestUser",
+          	"data": function ( d ) {
+                    d.estado = estado
+                    // d.estado = 1;
+                    // filtro:filtro
+             }
+            },
+            "columns": [
+                { "data": "ci" },
+                { "data": "ci" },
+                { "data": "ci" },
+                { "data": "ci" },
+                { "data": "ci" },
+                { "data": "estado" },
+                { "data": "ci" }
+      		],
+            "createdRow":function(row,data,index){
+//                 console.log(data)
+                
+                $('td',row).eq(0).html(index+1).addClass('text-center');
+                if(data.foto!=null){
+                    $('td',row).eq(1).html(`<img src="../archivos/fotos/${data.foto}" width="32px;"></img>`)
+                    $('td',row).eq(1).html(`<img th:src="/archivos/fotos/${data.foto}" width="32px;"></img>`)
+                }else{
+                	 $('td',row).eq(1).html(`<img src="../archivos/fotos/${GImg}" width="32px;"></img>`)
+                	 $('td',row).eq(1).html(`<img th:src="/archivos/fotos/${GImg}" width="32px;"></img>`)
+                }
+                $('td',row).eq(2).html(data.razonsocial)
+                $('td',row).eq(3).html(data.ci+' '+data.ciCod)
+//                 $('td',row).eq(4).html(data.direccion)
+                $('td',row).eq(4).html(data.usuario.login)
+                if(data.estado==1){
+//                     $('td',row).eq(6).html('<button type="button" class="btn  btn-xs btn-success waves-effect" href="#" style="text-align:center"><i class="fa fa-thumbs-o-up"></i></button>').addClass('text-center').addClass('text-center');
+                    $('td',row).eq(5).html('activo');
+                	
+                }else{
+//                     $('td',row).eq(6).html('<button type="button" class="btn btn-xs btn-danger waves-effect" href="#" style="text-align:center"><i class="fa fa-thumbs-o-down"></i></button>').addClass('text-center').addClass('text-center');
+                    $('td',row).eq(5).html('inactivo');
+                }
+                if(ExisteOpcion('modificar')){
+                    $('td',row).eq(6).html('<button id="btn-mod" class="btn btn-xs btn-info btn-sm waves-effect btn-espacio modificar"  data-toggle="tooltip" data-placement="top" title="Modificar" accesskey="'+data.idper+'" data-href="'+data.idper+'" ><span class="zmdi zmdi-edit"></span> Modificar</button>')
+                    // $('td',row).eq(7).append('<button>hola</button>')
+                }else{
+                    $('td',row).eq(6).html('<button id="btn-mod" class="btn btn-xs btn-info btn-sm waves-effect btn-espacio modificar"  data-toggle="tooltip" data-placement="top" title="Modificar" disabled="disabled"><span class="zmdi zmdi-edit"></span> Modificar</button>') 
+                }
+                if(data.estado==1){
+                    if(ExisteOpcion('eliminar')  ){
+                        // if()
+                        $('td',row).eq(6).append('<button id="btn-elim" class="btn btn-xs btn-danger btn-sm waves-effect btn-espacio eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar" accesskey="'+data.idper+'" data-href="'+data.estado+'" ><span class="zmdi zmdi-delete"></span> Eliminar</button>');
+                    }else{
+                        $('td',row).eq(6).append('<button id="btn-elim" class="btn btn-xs btn-danger btn-sm waves-effect btn-espacio" data-toggle="tooltip" data-placement="top" title="Eliminar" disabled="disabled"><span class="zmdi zmdi-delete"></span> Eliminar</button>');  
+                    }
+                }else{
+                    if(ExisteOpcion('habilitar')){
+                        $('td',row).eq(6).append('<button id="btn-hab" class="btn btn-xs btn-success btn-sm waves-effect btn-espacio habilitar" data-toggle="tooltip" data-placement="top" title="Habilitar" accesskey="'+data.idper+'" data-href="'+data.estado+'" ><span class="zmdi zmdi-time-restore-setting"></span> Habilitar</button>');
+                    }else{
+                        $('td',row).eq(6).append('<button id="btn-hab" class="btn btn-xs btn-success btn-sm waves-effect btn-espacio" data-toggle="tooltip" data-placement="top" title="Habilitar" disabled="disabled"><span class="zmdi zmdi-time-restore-setting"></span> Habilitar</button>');   
+                    }                       
+                }
+                if(ExisteOpcion('asigRol')){
+                    $('td',row).eq(6).append('<button id="btn-asignarol" class="btn btn-xs btn-default btn-sm waves-effect btn-espacio asignarol" data-toggle="tooltip" data-placement="top" title="Asignar Rol" accesskey="'+data.idper+'" data-href="'+data.idper+'" ><span class="zmdi zmdi-edit"></span> Asignar Roles</button>')
+                    // $('td',row).eq(7).append('<button>hola</button>')
+                }else{
+                    $('td',row).eq(6).append('<button id="btn-asignarol" class="btn btn-xs btn-default btn-sm waves-effect btn-espacio" data-toggle="tooltip" data-placement="top" title="Asignar Rol" disabled="disabled"><span class="zmdi zmdi-edit"></span> Asignar Roles</button>') 
+                }
+                if(ExisteOpcion('ma')){
+                    $('td',row).eq(6).append('<button id="btn-modificaracceso" class="btn btn-xs btn-info btn-sm waves-effect btn-espacio modificaracceso" data-toggle="tooltip" data-placement="top" title="Modificar Acceso" accesskey="'+data.idper+'" data-href="'+data.idper+'" ><span class="zmdi zmdi-edit"></span> Modificar Accesso</button>')
+                    // $('td',row).eq(7).append('<button>hola</button>')
+                }else{
+                    $('td',row).eq(6).append('<button id="btn-modificaracceso" class="btn btn-xs btn-info btn-sm waves-effect btn-espacio" data-toggle="tooltip" data-placement="top" title="Modificar Acceso" disabled="disabled"><span class="zmdi zmdi-edit"></span>Modificar Accesso</button>') 
+                }
+
+				
+            } 
+        
+            ,
+            "drawCallback":function(settings){
+ 	        	$('#btnAdicionar').click(function(){
+//  	        		 $('#formulario').find('#fotografia').fileinput();
+ 	        		 var telSC;
+                     function asyncSqrt(callback){
+                         // $('#contenido-tel-add').html('');
+                          telSC=`<div class="form-group">
+                             <label class="col-xs-3 control-label">Telefonos/Celulares</label>
+                             <div class="col-xs-5">
+                                 <input type="text"  class="form-control telefono-class" name="telefono[]" placeholder="Ingrese numero"  data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico"/>
+                             </div>
+                             <div class="col-xs-4">
+                                 <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+                             </div>
+                         </div>
+                         <div class="form-group hide" id="optionTemplate" >
+                             <div class="col-xs-offset-3 col-xs-5">
+                                 <input class="form-control" type="text" name="" placeholder="Ingrese numero" maxlength="10" data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico"/>
+                             </div>
+                             <div class="col-xs-4">
+                                 <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                             </div>
+                         </div>
+                         `;
+                         $('#contenido-tel-add').html(telSC);
+                         
+                         $('#formulario').formValidation('addField','telefono[]')
+                         
+                         
+                         
+                                        //fin reseteando combustible
+						 $('#formulario').find('.telefono-class').val('')
+                         $('#formulario').find('input[name="telefono[]"]').val('');  
+                         $('#formulario').formValidation('resetField', 'telefono[]');
+                         
+                         $('#formulario').find('input[name="telefono[]"]').val('');//resetea el numero de telefono  
+                         
+                         
+
+                         $('#formulario').data('formValidation').resetForm(true);
+                         $('#formulario')[0].reset();
+                         
+                         resetearDatosBeneficiario();
+
+                         $('#formulario').find('input[name="tipouser"]').val('x')
+                     }
+                     asyncSqrt(function(result){
+
+                         // $('#contenido-tel-add').html('');
+                         // $('#contenido-tel-add').html(telSC);
+                         // var   $option   = $('.ClassExisteTel').find('[name="telefono[]"]');
+                         // $('#formulario').formValidation('addField','telefono[]')
+                     })
+
+
+                     $('#formulario').data('formValidation').resetForm(true);
+                     $('#formulario')[0].reset();
+
+            		$('#modalAdicionar').modal('show');
+            	});
+ 	        	$('.asignarol').click(function(){
+ 	        		$('#formularioAdicionarRol').find('#js_roles_users').html('');
+ 	        		$('#formularioAdicionarRol').find('#js_roles_users').val('')
+ 	        		var idper=$(this).attr('accesskey');
+ 	        		//me quede aqui
+ 	        		$('#formularioAdicionarRol').find('input[name="idper"]').val(idper)
+ 	        		 var asignar = $('select[name="roles[]"]').bootstrapDualListbox({
+                         nonSelectedListLabel: 'Roles disponibles con permisos al Sistema',
+                         selectedListLabel: 'Roles adquiridos',
+                         preserveSelectionOnMove: 'movido',
+                         moveOnSelect: false,
+                         showFilterInputs:false
+                     });
+                     $.post('RestRoles/getRoles/'+idper, function(result) {
+                         console.log(result)
+                         // $('#formAddRol').loadJSON(result.data);
+                         $('#nameUser').html(result[0]);
+                         $.each(result[1],function(index,valor){
+                             var sel="";
+                             $.each(result[2],function(index,item){
+                                if (valor.idrol==item.idrol) {
+                                    sel="selected";
+                                }     
+                             })
+                             var option=$(`<option value="${valor.idrol}" ${sel}>${valor.nombre}</option>`);
+                             // $(option).html(valor['nombre'])
+                             $(option).appendTo('#js_roles_users');
+                             var sel="";
+                         });
+                         asignar.bootstrapDualListbox('refresh');
+                         $('#modalAdicionarRol').modal('show')
+                     }, 'json');
+ 	        	})
+ 	        	$('.modificaracceso').click(function(){
+ 	        		$('#formularioPassword').data('formValidation').resetForm();    
+ 	        		$('#formularioPassword')[0].reset();
+ 	        		var idper=$(this).attr('accesskey');
+ 	        		//me quede aqui
+                    $.post('RestUser/dataModify/'+idper,function(resp){
+                            console.log('respuestaDatosModificarPost: ',resp)
+
+                            
+                            GImg=resp[0].foto;
+
+                            $('#formularioPassword').find('.fg-line').addClass('fg-toggled'); 
+                            $('#formularioPassword').loadJSON(resp[0])
+                            if(resp[0].foto!=null){
+                            	 $('#formularioPassword').find('#user-avatar').prop('src','../archivos/fotos/'+resp[0].foto)
+                            }else{
+                            	 GImg='user.png' 
+                            	 $('#formularioPassword').find('#user-avatar').prop('src','../archivos/fotos/'+GImg)
+                            }
+                            
+                           
+                            $('#formularioPassword').find('#js_razonsocial_per').html(resp[0].razonsocial)
+                            $('#formularioPassword').find('#js_cedula_per').html(resp[0].ci)
+                            $('#formularioPassword').find('input[name="idper"]').val(resp[0].idper)
+                            $('#formularioPassword').find('#js_usuario_per').html(resp[0].usuario.login)
+                            // $('#formularioPassword').find('input[name="password"]').val(resp[0].usuario.password)
+                            $('#ciCod').chosen()
+                            $('#select-genero').chosen()
+                            $('#modalPassword').modal('show')
+
+                   })
+ 	        		
+
+ 	        	})
+ 	        	
+ 	        	
+                $('.modificar').click(function(){
+                    $('#formularioModificar').data('formValidation').resetForm();         
+                    
+                    var idper=$(this).attr('accesskey');
+                    $('#formularioModificar').find('#contenido-tel-mod').html('');
+                    
+                    $.post('RestUser/dataModify/'+idper,function(resp){
+                    	
+                    	 console.log('respuestaDatosModificarPost: ',resp)
+                         
+                         
+                         var tipos = ['jpg','png','jpeg'];
+                         
+                    	 GImg=resp[0].foto;
+                         if(GImg==null){
+                        	 GImg='user.png' 
+                         }
+                         function iniciarFileInput(callback){
+//                         	 console.log('inicio call');
+//                         	 console.log("fileinput");
+                
+//                         	 console.log("foto:",GImg);
+                             $('#formularioModificar').find('#fotografia').fileinput({
+                                 language:'es',
+                                 showUpload: false,
+                                 showCaption: false,
+                                 showCancel: false,
+                                 allowedFileExtensions : tipos,
+                                 initialPreview: [
+                                     `<img src="../archivos/fotos/${GImg}" class="file-preview-image" alt="USER" title="USUARIO" width="200px;">`,
+                                 ],
+                                 previewFileType: "image",
+                                 // browseLabel: "Buscar",
+                                 browseClass: "btn btn-success",
+                                 browseLabel: "Cambiar Foto",
+                                 browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+                                 // removeLabel: "Quitar Imagen",
+                                 removeClass: "btn btn-danger",
+                                 removeLabel: "Restablecer Foto",
+                                 removeIcon: "<i class=\"glyphicon glyphicon-refresh\"></i> ",
+                                 uploadClass: "btn btn-info",
+
+                             })
+                             
+                         }
+
+
+                         iniciarFileInput(function(result){
+
+//                            	 console.log('fin call');
+     
+                         }) 
+                         $('#formularioModificar').find('#fotografia').on('fileclear', function(event) {
+//                              console.log("fileclear");
+
+                             $('#formularioModificar').find('#fotografia').fileinput('destroy');
+                             iniciarFileInput();
+                         });
+//                          $('#formularioModificar').find('#fotografia').on('filefoldererror', function(event) {
+// //                           console.log("fileclear");
+
+//                           	$('#formularioModificar').find('#fotografia').fileinput('destroy');
+                          	
+//                       	 });
+
+                         
+                        $('#contenido-tel-mod').html('');
+                        $('#formularioModificar').loadJSON(resp[0]);
+//                         $('#formularioModificar').find('.datos_taller').loadJSON(resp)
+//                         $('#formularioModificar').find('input[name="direcciontall"]').val(resp.direccion)
+
+//                         $('#formularioModificar').find('.datos_propietario').loadJSON(resp)
+                        var telSC;
+                        if(resp[1].length!=0){
+                           var bloqueo;
+                           if(resp[1].length==MAX_TELEFONOS){
+                                bloqueo="disabled"
+                           }else{
+                                bloqueo=''
+                           } 
+
+                           $(resp[1]).each(function(index,item){
+                                // alert('pre')
+                               console.log('index: ',index)
+                               if(index==0){
+                                   telSC=`<div class="form-group" id="ExisteTelOr">
+                                            <label class="col-xs-3 control-label">Telefonos/Celulares</label>
+                                            <div class="col-xs-5">
+                                                <input type="text" class="form-control" name="telefono[]" value="${item.numero}" placeholder="Ingrese numero" maxlength="10" data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico"/>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <button type="button" class="btn btn-default addButton" ${bloqueo}><i class="fa fa-plus"></i></button>
+                                            </div>
+                                       </div>`
+                                         $('#contenido-tel-mod').append(telSC);
+                                         var   $option   = $('#ExisteTelOr').find('[name="telefono[]"]');
+                                        // $('#formularioModificar').formValidation('addField', $option);
+                               }else{
+                                    telSC=`<div class="form-group ClassExisteTel">
+                                              <div class="col-xs-offset-3 col-xs-5">
+                                                <input class="form-control" type="text" name="telefono[]" value="${item.numero}" placeholder="Ingrese numero" maxlength="10"/>
+                                              </div>
+                                              <div class="col-xs-4">
+                                                <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                                              </div>
+                                           </div>`
+                                     $('#contenido-tel-mod').append(telSC);
+                                     var   $option   = $('.ClassExisteTel').find('[name="telefono[]"]');
+                                     // $('#formularioModificar').formValidation('addField', $option);      
+                               }       
+
+                           }) 
+                           var opcionclone=`
+                               <div class="form-group hide" id="optionTemplateMod" >
+                                    <div class="col-xs-offset-3 col-xs-5">
+                                        <input class="form-control" type="text" name="" placeholder="Ingrese numero" maxlength="10" data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico"/>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                                    </div>
+                                </div>`; 
+                                $('#formularioModificar').find('#contenido-tel-mod').append(opcionclone);
+                        }else{
+                            telSC=`<div class="form-group" id="origenT">
+                                <label class="col-xs-3 control-label">Telefonos/Celulares</label>
+                                <div class="col-xs-5">
+                                    <input type="text" class="form-control" name="telefono[]" placeholder="Ingrese numero" maxlength="10"/>
+                                </div>
+                                <div class="col-xs-4">
+                                    <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+                                </div>
+                           </div>
+                            <div class="form-group hide" id="optionTemplateMod" >
+                                <div class="col-xs-offset-3 col-xs-5">
+                                    <input class="form-control" type="text" name="" placeholder="Ingrese numero" maxlength="10" data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico"/>
+                                </div>
+                                <div class="col-xs-4">
+                                    <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                           `
+		                     $('#formularioModificar').find('#contenido-tel-mod').html(telSC);
+		                    var   $option   = $('#origenT').find('[name="telefono[]"]');
+		                    // $('#formularioModificar').formValidation('addField', $option);      
+                        }
+                       
+
+                        $('#formularioModificar').formValidation('addField','telefono[]');  
+                        
+                        
+                    },'json')
+                    
+                    
+                    $('#formularioModificar')[0].reset();
+                    $('#modalModificar').modal('show');
+                });
+            	
+                $('.eliminar').click(function(){
+
+                    var idper=$(this).attr('accesskey')
+                    var estado=$(this).data('href')
+                    // alert('id: '+idben)
+                    swal({   
+                        title: "Seguro de dar de baja Usuario?",   
+                        text: "Usted dara de baja al usuario",   
+                        type: "warning",   
+                        showCancelButton: true,   
+                        confirmButtonColor: "#DD6B55",   
+                        confirmButtonText: "Si, Continuar!",   
+                        cancelButtonText: "No, Cancelar!",   
+                        closeOnConfirm: false,   
+                        closeOnCancel: false 
+                        }, function(isConfirm){
+                        if (isConfirm) {
+                        	$.post('RestUser/changeStatus',{idper:idper,estado:estado},function(resp){
+                                console.log(resp)
+                                if (resp.estado) {
+                                    $('#table').dataTable().fnDraw('page');
+                                    $('.modal').modal('hide')
+                                    swal({
+                                        title:"Eliminado",
+                                        text:"Se ha dado de baja al usuario exitosamente",
+                                        type:"success",
+                                        timer: 500,   
+                                        showConfirmButton: false 
+                                    });
+                                         
+                               
+                                } else {
+                                    aler('Sin respuesta del Servidor')
+                                }
+                                $('#table').dataTable().fnDraw('page');
+                                
+                            })
+                        } else {
+                            swal({
+                                title:"Cancelado",
+                                text:"Se ha cancelado operacion",
+                                type:"error",
+                                timer:500,
+                                showCancelButton:false,
+                                showConfirmButton:false
+
+                            })
+                        } 
+                    }); 
+                });
+                $('.habilitar').click(function(){
+
+                    var idper=$(this).attr('accesskey')
+                    var estado=$(this).data('href')
+                    swal({   
+                        title: "Seguro de dar de alta al Usuario?",   
+                        text: "Usted dara de alta al usuario",   
+                        type: "warning",   
+                        showCancelButton: true,   
+                        confirmButtonColor: "#DD6B55",   
+                        confirmButtonText: "Si, Continuar!",   
+                        cancelButtonText: "No, Cancelar!",   
+                        closeOnConfirm: false,   
+                        closeOnCancel: false 
+                        }, function(isConfirm){
+                            if (isConfirm) {
+                            	$.post('RestUser/changeStatus',{idper:idper,estado:estado},function(resp){
+                                    console.log(resp)
+                                    if (resp.estado) {
+                                        $('#table').dataTable().fnDraw('page');
+                                        $('.modal').modal('hide')
+                                        swal({
+                                            title:"Habilitado",
+                                            text:"Se ha dado de alta al usuario exitosamente",
+                                            type:"success",
+                                            timer: 500,   
+                                            showConfirmButton: false 
+                                        });
+                                   
+                                    } else {
+                                        aler('Sin respuesta del Servidor')
+                                    }
+                                    $('#table').dataTable().fnDraw('page');
+                                    
+                                })  
+                            } else {
+                                swal({
+                                    title:"Cancelado",
+                                    text:"Se ha cancelado operacion",
+                                    type:"error",
+                                    timer:500,
+                                    showCancelButton:false,
+                                    showConfirmButton:false
+
+                                })
+                            } 
+                    }); 
+                });
+                
+                
+                $('button[data-toggle="tooltip"]').tooltip({animated: 'fade',placement: 'bottom',});
+                
+            	$('#js-filtro').on( 'keyup', function () {
+                    DTtable.search(this.value ).draw();
+                }) 
+
+            }
+        });
+        
+        
+        
+       
+
+
+        
+        var respCi="";
+
+        $('#formulario').formValidation({
+            fields:{
+                ci:{
+                    validators:{
+                        callback:{
+                            message:'callback cedula existente',
+                            callback:function(value,validator,$field){
+                                var telSC;
+                                respCi=false;
+                                respSolt=false;
+                                $('input[name="cedula"]').val('')
+//                                 console.log('valor de cedula: ',value)
+                                if(value=='' || value.indexOf(' ') != -1){
+//                                     alert('vacio')    
+                                    // $('.dt-veh').removeAttr('disabled')
+                                    return{
+                                        valid:false,
+                                        message:"Requiere cedula"
+                                    }
+                                }
+                                else{
+                                    // return false;
+//                                     console.log('value: ',value)
+									console.log('field_ci: ',$field)
+									/*
+                					$.ajax({
+                                        url:"RestBeneficiarios/existeCiSistema",
+                                        data:{
+                                            ci:value
+                                        },
+                                        type:"post",
+                                        dataType:"json",
+                                        async:false,
+                                        cache:false,
+                                        success:function(resp){
+                                            respCi=resp.estado
+                                        },  
+                                        error:function(err){
+                                           // alert('sin respuesta del servidor para verificar ci')
+                                        }
+
+                                    })
+                					if(respCi){
+                					     return {
+                                             valid:false,
+                                             message:'Esta cedula ya esta registrada como usuario del sistema'
+                                         }
+                					}else{
+    									if($('input[name="cedula"]').val()!=''){
+                                         datosValidar(value);
+ 										}
+    									return true;
+                					}
+									*/
+									
+									if($('input[name="cedula"]').val()!=''){
+//                                      console.log('no vacio')
+                                     datosValidar(value);
+										}
+									return true;
+
+                                    
+                                }
+                                return true;
+                            }
+                        }
+                    }
+                },
+                'telefono[]': {
+                    validators: {
+                        stringLength: {
+                            max: 10,
+                            message: 'Maximo hasta 10 caracteres'
+                        }
+                    }
+                },
+                password:{
+                    validators:{
+                        notEmpty:{
+                            message:'Ingrese una contrasenia'
+                        },
+                        // identical:{
+                        //     field:'repassword',
+                        //     message:'La contrasenia deve ser identica'
+                        // }
+                    }
+                },
+                repassword:{
+                    validators:{
+                        notEmpty:{
+                            message:'Repita la contrasenia para confirmar'
+                        }
+                        ,
+                        identical:{
+                            field:'password',
+                            message:'La contrasenia no es identica a la anterior'
+                        }
+
+                    }
+                }
+            }
+        })
+        .on('click', '.addButton', function(){
+        	EstadoTel=0
+            var $template = $('#optionTemplate');
+            var   $clone    = $template
+                                .clone()
+                                .removeClass('hide')
+                                .removeAttr('id')
+                                .insertBefore($template);
+            $clone.find('.form-control').attr('name','telefono[]');
+            var   $option   = $clone.find('[name="telefono[]"]');
+            $('#formulario').formValidation('addField', $option);
+            EstadoTel++;
+        })
+        .on('click', '.removeButton', function() {
+            var $row    = $(this).parents('.form-group'),
+                $option = $row.find('[name="telefono[]"]');
+//             console.log('padre: ',$row)
+            $row.remove();
+            $('#formulario').formValidation('removeField', $option);
+            EstadoTel--;
+        })
+        .on('added.field.fv', function(e, data) {
+            if (data.field === 'telefono[]') {
+                if ($('#formulario').find(':visible[name="telefono[]"]').length >= MAX_TELEFONOS) {
+                    $('#formulario').find('.addButton').attr('disabled', 'disabled');
+                }
+            }
+        })
+        .on('removed.field.fv', function(e, data) {
+           if (data.field === 'telefono[]') {
+                if ($('#formulario').find(':visible[name="telefono[]"]').length < MAX_TELEFONOS) {
+                    $('#formulario').find('.addButton').removeAttr('disabled');
+                }
+            }
+        })
+        .on('success.form.fv', function(e){
+            e.preventDefault();
+            var $form = $(e.target);
+           swal({   
+               title: "Seguro de registrar Usuario?",   
+               text: "Usted registrara nuevo Usuario",   
+               type: "warning",   
+               showCancelButton: true,   
+               confirmButtonColor: "#DD6B55",   
+               confirmButtonText: "Si, Continuar!",   
+               cancelButtonText: "No, Cancelar!",   
+               closeOnConfirm: false,   
+               closeOnCancel: false 
+               }, function(isConfirm){   
+                   if (isConfirm) {     
+                       $('#formulario').ajaxSubmit({
+                           success:function(res){
+                               console.log('registrado',res)
+                               if(res.estado){
+                                   $form.data('formValidation').resetForm();
+                                   $('#formulario')[0].reset();
+                                   $('#table').dataTable().fnDraw('page');
+                                   $('.modal').modal('hide')
+                                   
+                                   swal({
+                                       title:"Registrado",
+                                       text:"Se ha registrado Usuario exitosamente",
+                                       type:"success",
+                                       timer:500,   
+                                       showConfirmButton: false 
+                                   });   
+                               }
+                           }
+                       })
+
+                   } else {     
+                       swal({
+                           title:"Cancelado",
+                           text:"Se ha cancelado operacion",
+                           type:"error",
+                           timer:500,
+                           showCancelButton:false,
+                           showConfirmButton:false
+
+                       })
+                       $('.modal').modal('hide')
+                   } 
+               });
+        })
+        
+        
+        
+        
+        //*****************************************formValidation Modificar
+        $('#formularioModificar').formValidation({
+           fields:{
+            	
+               'telefono[]': {
+                   validators: {
+                       stringLength: {
+                           max: 10,
+                           message: 'El tamanio debe ser maximo hasta 10 caracteres'
+                       }
+                   }
+               },
+               password:{
+                   validators:{
+                       notEmpty:{
+                           message:'Ingrese una contrasenia'
+                       },
+                       // identical:{
+                       //     field:'repassword',
+                       //     message:'La contrasenia deve ser identica'
+                       // }
+                   }
+               },
+               repassword:{
+                   validators:{
+                       notEmpty:{
+                           message:'Repita la contrasenia para confirmar'
+                       }
+                       ,
+                       identical:{
+                           field:'password',
+                           message:'La contrasenia no es identica a la anterior'
+                       }
+
+                   }
+               }
+           }
+       })
+       .on('click', '.addButton', function(){
+           var $template = $('#optionTemplateMod');
+           var   $clone    = $template
+                               .clone()
+                               .removeClass('hide')
+                               .removeAttr('id')
+                               .insertBefore($template);
+           $clone.find('.form-control').attr('name','telefono[]');
+           var   $option   = $clone.find('[name="telefono[]"]');
+           $('#formularioModificar').formValidation('addField', $option);
+       })
+       .on('click', '.removeButton', function() {
+           var $row    = $(this).parents('.form-group'),
+               $option = $row.find('[name="telefono[]"]');
+//            console.log('padre: ',$row)
+           $row.remove();
+           $('#formularioModificar').formValidation('removeField', $option);
+       })
+       .on('added.field.fv', function(e, data) {
+           if (data.field === 'telefono[]') {
+               if ($('#formularioModificar').find(':visible[name="telefono[]"]').length >= MAX_TELEFONOS) {
+                   $('#formularioModificar').find('.addButton').attr('disabled', 'disabled');
+               }
+           }
+       })
+       .on('removed.field.fv', function(e, data) {
+          if (data.field === 'telefono[]') {
+               if ($('#formularioModificar').find(':visible[name="telefono[]"]').length < MAX_TELEFONOS) {
+                   $('#formularioModificar').find('.addButton').removeAttr('disabled');
+               }
+           }
+       })
+       .on('success.form.fv', function(e){
+          e.preventDefault();
+          var $form = $(e.target);
+          swal({ 
+              title: "Seguro de modificar Usuario?",   
+              text: "Usted modificara los datos del Usuario",   
+              type: "warning",   
+              showCancelButton: true,   
+              confirmButtonColor: "#DD6B55",   
+              confirmButtonText: "Si, Continuar!",   
+              cancelButtonText: "No, Cancelar!",   
+              closeOnConfirm: false,   
+              closeOnCancel: false 
+              }, function(isConfirm){  
+                  $('.doc-mod').removeAttr('disabled') 
+                  if (isConfirm) {
+                      $('#formularioModificar').ajaxSubmit({
+                      	success:function(res){
+                              console.log('modificado',res)
+                              if(res.estado){
+                                  $form.data('formValidation').resetForm();
+                                  $('#formularioModificar')[0].reset();
+                                  $('#table').dataTable().fnDraw('page');
+                                  swal({
+                                      title:"Modificado",
+                                      text:"Se ha modificado Usuario exitosamente",
+                                      type:"success",
+                                      timer: 500,   
+                                      showConfirmButton: false 
+                                  });     
+                              }else{
+                            	  mostrarMensaje('error','No se realizo con exito la Transaccion');
+                                  alert('error:'+'No se realizo con exito la Transaccion');
+                              }
+                              $('.modal').modal('hide');
+                          }
+                      })
+
+                  } else {     
+                      // swal("Cancelled", "Your imaginary file is safe :)", "error");   
+                      swal({
+                          title:"Cancelado",
+                          text:"Se ha cancelado operacion",
+                          type:"error",
+                          timer:500,
+                          showCancelButton:false,
+                          showConfirmButton:false
+
+                      })
+                      $('#modalModificar').modal('hide')
+                  } 
+          });
+       })
+        
+       
+       $('#formularioAdicionarRol').formValidation({
+       })
+       .on('success.form.fv', function(e){
+          e.preventDefault();
+          $('#formularioAdicionarRol').ajaxSubmit({
+              success:function(res){
+                  console.log('registrado',res)
+                  
+                  $('#table').dataTable().fnDraw('page');
+
+                  if(res.estado){
+                      swal({
+                          title:"Registrado",
+                          text:"Se ha registrado Roles exitosamente",
+                          type:"success",
+                          timer: 500,   
+                          showConfirmButton: false 
+                      });
+                      
+                      $('#modalAdicionarRol').modal('hide')
+                  }else{
+                	  swal({
+                          title:"Cancelado",
+                          text:"Se ha cancelado operacion",
+                          type:"error",
+                          timer:500,
+                          showCancelButton:false,
+                          showConfirmButton:false
+
+                      })
+                      $('#modalAdicionarRol').modal('hide')
+                  }
+              }
+          })  
+       })
+       
+       
+       
+       var form=$('#formularioPassword').formValidation({
+           framework: 'bootstrap',
+           fields: {
+               password:{
+                   validators:{
+                       notEmpty:{
+                           message:'Ingrese una contrasenia'
+                       },
+                       identical:{
+                           field:'repassword',
+                           message:'La contrasenia deve ser identica'
+                       }
+                   }
+               },
+               repassword:{
+                   validators:{
+                       notEmpty:{
+                           message:'Repita la contrasenia para confirmar'
+                       }
+                       ,
+                       identical:{
+                           field:'xpassword',
+                           message:'La contrasenia deve ser identica ,repita la anterior'
+                       }
+
+                   }
+               }
+           }
+       }).on('success.form.fv', function(e){
+           e.preventDefault();
+           swal({
+               title: "Seguro de cambiar contrasenia?",   
+               text: "Usted modificara los datos del Usuario",   
+               type: "warning",   
+               showCancelButton: true,   
+               confirmButtonColor: "#DD6B55",   
+               confirmButtonText: "Si, Continuar!",   
+               cancelButtonText: "No, Cancelar!",   
+               closeOnConfirm: false,   
+               closeOnCancel: false 
+               }, function(isConfirm){  
+                   $('.doc-mod').removeAttr('disabled') 
+                   if (isConfirm) {
+                       $('#formularioPassword').ajaxSubmit({
+                           // url:'/RestUsuario/validar',
+                           dataType:"json",
+                           // async:false,
+                           success:function(respuesta){
+                                   console.log(respuesta);
+                                   // $('#mensaje').html(respuesta.msg);
+                                   if(respuesta.status==true){
+                                       swal({
+                                           title:"Modificado",
+                                           text:"Se ha modificado contrasenia de  Usuario exitosamente",
+                                           type:"success",
+                                           timer: 500,   
+                                           showConfirmButton: false 
+                                       });
+                                   }else{
+                                       $('#mensaje').html(respuesta.msg);
+                                       
+                                   }
+                                   $('#modalPassword').modal('hide')
+
+                           },
+                           error:function(e){
+                               alert('Sin respuesta del servidor server');
+                           }
+                       });
+
+
+                   } else {     
+                       swal({
+                           title:"Cancelado",
+                           text:"Se ha cancelado operacion",
+                           type:"error",
+                           timer:2000,
+                           showCancelButton:false,
+                           showConfirmButton:false
+
+                       })
+                       $('#modal-mod').modal('hide')
+                   } 
+           });
+       })
+
+        
+        
+       });// fin $(document).ready(function() 
+
+        $('#generarR').click(function(){ 
+  			$("#frameReportes").attr("src",'Usuarioes/listaReporte');
+			$("#reportes").modal('show');
+  		});
+        
+   
+        
+                function datosValidar(value) {
+                  function asyncSqrt(value,callback){
+                      // alert('1')
+                      $.ajax({
+                          url:"RestBeneficiarios/existeCi",
+                          data:{
+                              ci:value
+                          },
+                          // type:"post", 
+                          dataType:"json",
+                          // async:false,
+                          // cache:false,
+                          success:function(resp)
+                          {
+                              respCi=resp.estado
+                              callback(respCi)
+                          },  
+                          error:function(err){
+                              alert('sin respuesta del servidor')
+                          }
+
+                      })
+                  }
+                  asyncSqrt(value,function(result){
+				  	console.log('resultado:',result)	
+                      if(result){
+                          EstadoEncontradoBeneficiario=true;
+                          GBloqueoTel=0;   
+                         
+                          
+                          $.post('RestBeneficiarios/verificacionUsuario',{ci:value},function(resp){
+                              console.log('respuestaDatosByCi: ',resp)
+                              $('#formulario').find('.fg-line').addClass('fg-toggled'); 
+                              $('#formulario').loadJSON(resp.persona)
+                              $('#formulario').find('.data-per').prop('disabled','disabled')
+							
+                              
+                              $('#mensaje-ben').html('');
+                              $('#mensaje-ben').hide()
+                              $('#mensaje-ben').addClass('mensaje_usuenc_solt');
+                               $('#mensaje-ben').html(resp.mensaje).show()
+                              
+                              if(resp.tipo='user'){
+                                  $('#formulario').find('input[name="tipouser"]').val('u')
+                              }else if(resp.tipo='usertaller'){
+                                  $('#formulario').find('input[name="tipouser"]').val('ut')
+                              }else if(resp.tipo='userestacion'){
+                                  $('#formulario').find('input[name="tipouser"]').val('ue')
+                              }
+                              
+                              
+                              
+                              if(EstadoTel!=1){
+                                  if(resp.telefonos.length!=0){//resp[1]=telefonos; si hay telefonos es por q es usuario o benficiario
+                                      $('#contenido-tel').html('');
+
+                                      var bloqueo;
+                                      var disabledTel;
+                                      // GBloqueoTel=resp[1].length;
+                                      if(resp.telefonos.length==MAX_TELEFONOS){
+                                          // alert('entro: '+resp[1].length)
+                                          bloqueo="disabled"
+                                      }else{
+                                          // alert('no entro')
+                                          bloqueo=''
+                                      } 
+//                                       if(resp[0].beneficiario!=null){
+//                                           disabledTel="disabled";
+//                                       }else{
+//                                           disabledTel="";
+//                                       }
+
+                                      $(resp.telefonos).each(function(index,item){
+                                          // alert('pre telefono')
+                                          console.log('index: ',index)
+                                    
+
+                                          if(index==0){
+                                             telSC=`<div class="form-group" id="ExisteTelOr">
+                                                  <label class="col-xs-3 control-label">Telï¿½fonos/Celulares</label>
+                                                  <div class="col-xs-5">
+                                                      <input type="text" class="form-control telefono-class" name="telefono[]" value="${item.numero}" placeholder="Ingrese numero" maxlength="10" data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico" ${disabledTel}/>
+                                                  </div>
+                                                  <div class="col-xs-4">
+                                                      <button type="button" class="btn btn-default addButton" ${bloqueo}><i class="fa fa-plus"></i></button>
+                                                  </div>
+                                              </div>
+                                              <div id="IdInitTelf"> </div>
+                                             `
+                                             $('#contenido-tel').append(telSC);
+                                             //var   $option   = $('#ExisteTelOr').find('[name="telefono[]"]');
+                                             $('#formulario').formValidation('addField','telefono[]');
+                                          }else{
+                                              telSC=`<div class="form-group ClassExisteTel">
+                                                        <div class="col-xs-offset-3 col-xs-5">
+                                                          <input class="form-control telefono-class" type="text" name="telefono[]" value="${item.numero}" placeholder="Ingrese numero" maxlength="10" ${disabledTel}/>
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                          <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                                                        </div>
+                                                     </div>`
+                                              $('#contenido-tel').append(telSC);
+                                              // var   $option   = $('.ClassExisteTel').find('[name="telefono[]"]');
+                                              $('#formulario').formValidation('addField','telefono[]');
+
+                                          }           
+                                        
+                                      })      
+                                   
+                                  }
+                                  else{//es por q se encontro usuario, o beneficiario pero no tiene telefonos
+                                      // alert('sin telefonos')
+                                      $('#contenido-tel').html('');
+
+                                     telSC=`<div class="form-group" id="origenT">
+                                              <label class="col-xs-3 control-label">Telefonos/Celulares</label>
+                                              <div class="col-xs-5">
+                                                  <input type="text" class="form-control telefono-class" name="telefono[]" placeholder="Ingrese numero" maxlength="10"/>
+                                              </div>
+                                              <div class="col-xs-4">
+                                                  <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+                                              </div>
+                                          </div>
+                                          <div id="IdInitTelf"> </div>
+                                         `
+                                      $('#contenido-tel').html(telSC);
+                                      // var   $option   = $('#origenT').find('[name="telefono[]"]');
+                                      $('#formulario').formValidation('addField','telefono[]');
+                                  }
+
+                                  EstadoTel++;;
+                              }
+
+                          },'json')
+                      }
+                      else{
+                          EstadoEncontradoBeneficiario=false;
+                          console.log('no encontrado')
+
+                          // BandKeyup=false;
+                          $('input[name="idper"]').val('')
+                          $('input[name="telefono[]"]').removeAttr('disabled');    
+
+                          var v_ci=$('input[name="ci"]').val()
+                          
+
+                          $('.data-per').removeAttr('disabled')
+
+                          $('#cedula').val(value)
+                          $('#mensaje-ben').html('').hide();
+                          $('#mensaje-ben').removeClass ('mensaje_usuenc_solt');
+
+                      }
+                      
+                  })
+           
+                  
+              }
+        
+        
+        $('body').on('keyup click','#cedula',function(e){
+          	
+          	console.log('1ro e: ',e)
+              BandKeyup=false;
+              EstadoTel=0;
+    
+              EstadoEncontradoBeneficiario=false;
+              if(e.type=='keyup'){//al escribir en el campo
+
+                  campoCedulaGlobal=$(this).val()
+                  $.ajax({
+                      url:"RestBeneficiarios/existeCi",
+                      data:{
+                          ci:campoCedulaGlobal
+                      },
+                      // type:"post", 
+                      dataType:"json",
+                      async:false,
+                      cache:false,
+                      success:function(resp)
+                      {
+                          EstadoEncontradoBeneficiario=resp.estado
+                      },  
+                      error:function(err){
+                          alert('sin respuesta del servidor')
+                      }
+
+                  })
+
+                  if(!EstadoEncontradoBeneficiario){//si no se ha encontrado ci en el sistema se va reseteando el formulario
+                  	
+                      $('#mensaje-ben').html('');
+                      $('#mensaje-ben').removeClass ('mensaje_usuenc_solt');
+                      $('#mensaje-ben').hide()
+                      //$('#formulario').data('formValidation').resetForm(true);
+                      $('#cedula').val(campoCedulaGlobal)
+                  }else{
+						//$('.data-per').prop('disabled','disabled')
+                  }
+              }
+
+              if(e.type=='click'){
+              	console.log('click metodo')
+              	resetearDatosBeneficiario();
+
+              }
+
+
+          })
+          
+          
+          function resetearDatosBeneficiario(){
+
+              document.getElementsByClassName("telefono-class").value="";
+              
+              $('#formulario').find('.telefono-class').val('')
+              $('#mensaje-ben').html('');
+              $('#mensaje-ben').removeClass ('mensaje_usuenc_solt');
+              $('#mensaje-ben').hide()
+
+              $('#formulario').find('input[name="telefono[]"]').val('');  
+              $('#formulario').formValidation('resetField', 'telefono[]');
+
+
+              $('#formulario').data('formValidation').resetForm(true);
+              $('#formulario')[0].reset();
+              $('#formulario').find('input[name="telefono[]"]').val('');//resetea el numero de telefono  
+              
+              $('#formulario').find('input[name="idper"]').val('')
+              $('#formulario').find('input[name="tipouser"]').val('x')
+
+              //aqui se resetea los campos bloqueados
+              $('.data-per').removeAttr('disabled')
+
+              $('input[name="telefono[]"]').removeAttr('disabled')
+              
+          }
+        
+    // })
+        
+    </script>
+</body>
+</html>

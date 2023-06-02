@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/> 
+<!-- <meta charset="ISO-8859-1"> -->
+<!-- <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"> -->
+<!-- <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> -->
+<!-- <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> -->
+	<title></title>
+<link rel="stylesheet" href="/css/buscador.css">
+
+</head> 
+<body>	
+<form name="formulario" role="form" id="formulario" method="post" action="RestSolicitudes/adicionar_d1"
+		data-fv-excluded="disabled">                       
+
+        <div class="modal fade" id="modalAdicionar" tabindex="-1" role="dialog"
+            data-backdrop="static" data-keyboard="false" aria-hidden="true"
+            style="display: none; padding-left: 0">
+
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="card">
+                        <div style="margin: 0 10px 0 10px">
+
+                        	
+                       	    <p>
+                        	   <button  type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            	</button>
+                        	</p>
+                       	    <h4 style="margin-top: 0px;">Nueva Solicitud</br><small>Complete el formulario por
+                                       favor</small></h4>
+                          
+                            <div class="row">
+                                <div class="col-md-12">
+<!--                                     <b>NÚMERO DE SOLICITUD: </b><span id="numSolt"></span>  -->
+                                    <b style="margin-left: 10em;">FECHA DE REGISTRO: </b><span id="fechaCreacion"></span>
+                                    <b style="margin-left: 5em;">GESTION: </b><span id="s_gestion1"></span>
+                                    
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div class="modal-body">
+                            <input id="fechaHidden" name="fecha" type="hidden" value="" >
+                            <!-- numSolt -->
+<!--                             <input  id="numSoltHidden" name="numSolt" type="hidden"  value="" > -->
+                            <!-- idben -->
+                            <input type="hidden" name="idben"> <br>
+                            <!-- idper: -->
+                            <input type="hidden" name="idper">
+
+                            <div class="row">
+                                <div class="col-md-6"></div>
+                                <div class="col-md-6">
+                        
+<!--                                        <label class="control-label"><b>Fecha de Solicitud</b></label> -->
+<!--                                         <input type="date" class="form-control" name="fechasolicitud" id="js_fechasolicitud">   -->
+                                        
+                                        
+                                        <!-- <div class="form-group">
+                                            <div class="fg-line">
+                                                <select data-placeholder="n" name="fechasolicitud" class="form-control data-per" data-fv-notempty='true' data-fv-message="Requiere fechasolicitud" id="select-fecha">
+                                                    <option value="">Seleccione Año</option>
+                                                    <option value="2011">2011</option>
+                                                    <option value="2012">2012</option>
+                                                </select>
+                                            </div>
+                                        </div> -->
+                                 
+                                </div>
+                            </div>
+
+                            <fieldset>
+                              <legend style="margin-bottom: 0px !important"><b>BENEFICIARIO</b></legend>
+
+                                <div class="beneficiario-data">
+                
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group fg-float">
+                                             	<span class="fg-label">Cédula</span>
+                                                <div class="fg-line">
+                                                    <input placeholder="Ingrese cedula de indentidad" class="form-control fg-input" minlength="5" maxlength="10" data-fv-stringlength-message="La Cédula debe ser entre 5 a 10 caracteres" id="cedula" name="ci" type="text"  autocomplete="off">
+												</div>
+                                               
+                                                <small class="help-block" id="mensaje-ben" style="display: none;"></small>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <div class="fg-line">
+                                                    <select style="width: 65px;height: 27px;margin-top: 15px;" data-placeholder="" name="ciCod" class="form-control data-per" data-fv-notempty='true' data-fv-message="Requiere Ciudadania" id="ciCod">
+                                                        <option value="TJ">TJ</option>
+                                                        <option value="PT">PT</option>
+                                                        <option value="PA">PA</option>
+                                                        <option value="LP">LP</option>
+                                                        <option value="OR">OR</option>
+                                                        <option value="CB">CB</option>
+                                                        <option value="BN">BN</option>
+                                                        <option value="CH">CH</option>
+                                                        <option value="SC">SC</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+<!--                                         <div class="col-md-6"> -->
+<!--                                             <div class="form-group"> -->
+<!--                                             <span class="fg-label">Fecha Creacion</span> -->
+<!--                                                 <div class="fg-line"> -->
+<!--                                         		   <input placeholder="fecha" style="height: 27px;"  class="form-control fg-input data-per" name="fechasolicitud" type="date"  data-fv-notempty="true" data-fv-message="Ingrese fecha de creacion" autocomplete="off"> -->
+                                                
+<!--                                                 </div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+
+                                      </div>
+
+				                    <div class="row">
+				                        <div class="col-md-12">
+				                            <div class="form-group fg-float">
+				                            	<span class="fg-label">Beneficiario</span>
+				                                <div class="fg-line">
+				                                    <input placeholder="Ingrese beneficiario" class="form-control fg-input data-per" name="razonsocial" type="text" data-fv-notempty="true" data-fv-message="Ingrese Beneficiario porfavor"  maxlength="100" data-fv-stringlength-message="Solo 100 caracteres">
+				                                </div>
+				                                
+				                            </div>
+				                        </div>
+				                    </div>
+				                    <div class="row">
+				                    
+                                         <div class="col-md-6">
+                                             <div class="form-group fg-float">
+                                               <span class="fg-label">Estado Civil</span>
+                                                 <div class="fg-line">
+                                                     <input placeholder="estado civil del beneficiario" class="form-control fg-input data-ben"  name="estadocivil" type="text" maxlength='500' data-fv-stringlength-message='Maximo 500 caracteres' autocomplete="off">
+                                                 </div>
+                                               
+                                             </div>    
+                                         </div>
+                                         
+                                         <div class="col-md-6">
+                                             <div class="form-group fg-float">
+                                               <span class="fg-label">Profesion</span>
+                                                 <div class="fg-line">
+                                                     <input placeholder="profesion del beneficiario" class="form-control fg-input data-ben"  name="profesion" type="text" maxlength='500' data-fv-stringlength-message='Maximo 500 caracteres' autocomplete="off">
+                                                 </div>
+                                               
+                                             </div>    
+                                         </div>
+				                    </div>
+				                    <div class="row">
+                                         <div class="col-md-12">
+                                             <div class="form-group fg-float">
+                                               <span class="fg-label">Natural de</span>
+                                                 <div class="fg-line">
+                                                     <input placeholder="natural de.." class="form-control fg-input data-ben"  name="naturalde" type="text" maxlength='1000' data-fv-stringlength-message='Maximo 1000 caracteres' autocomplete="off">
+                                                 </div>
+                                               
+                                             </div>    
+                                         </div>
+                                         
+				                    </div>
+				                    
+                                    <div class="row">
+                                        <div class="col-md-12" style="padding-top: 10px">
+                                            <div class="form-group fg-float">
+                                             <span class="fg-label">Dirección</span>
+                                                <div class="fg-line">
+                                                    <input placeholder="Ingrese la doreccion" class="form-control fg-input data-per"  name="direccion" type="text" data-fv-notempty="true" data-fv-message="Requiere Direccion" maxlength="200" autocomplete="off">
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group fg-float">
+                                                     <span class="fg-label">Correo</span>
+                                                    <div class="fg-line">
+                                                        <input placeholder="Ingrese el correo electronico" class="form-control fg-input data-per"  name="email" type="email" maxlength='40' autocomplete="off">
+                                                    </div>
+                                                   
+                                                </div>    
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group fg-float">
+                                                  <span class="fg-label">Institucion</span>
+                                                    <div class="fg-line">
+                                                        <input placeholder="Institucion perteneciente del beneficiario" class="form-control fg-input data-ben"  name="institucion" type="text" maxlength='40' data-fv-stringlength-message='Maximo 40 caracteres' autocomplete="off">
+                                                    </div>
+                                                  
+                                                </div>    
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row" >
+                                        <div id="contenido-tel">
+                                            <div class="form-group">
+                                                <label class="col-xs-3 control-label">Teléfonos/Celulares</label>
+                                                <div class="col-xs-5">
+                                                    <input type="text"  class="form-control telefono-class" name="telefono[]" placeholder="Ingrese número"  data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico"/>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+                                                </div>
+                                            </div>
+                                            <div id="IdInitTelf"> </div>
+                                        </div>
+                                        <!-- The option field template containing an option field and a Remove button -->
+                                        <div class="form-group hide" id="optionTemplate" >
+                                            <div class="col-xs-offset-3 col-xs-5">
+                                                <input class="form-control" type="text" name="" placeholder="Ingrese número"  data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico"/>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-md-5 control-label">Documentos Presentados</label>
+                                                <div class="col-md-7" id="js_doc">
+                    
+                                                </div>                        
+                                            </div>
+
+                                        </div>
+                                    </div> 
+                                </div>  
+                            </fieldset>
+                            <fieldset>
+                              <legend style="margin-bottom: 0px !important"><b>VEHICULO</b></legend>
+                              <div class="vehiculo-data">
+                                <div class="row" >
+                                    <div class="col-md-12">
+                                        <div class="form-group" id="div-mod-veh" style="display: none;"></div>
+                                    </div>
+                                </div>  
+                                <div class="row" >
+                                    <div class="col-md-6">
+                                        <div class="form-group fg-float">
+                                            <div class="fg-line">
+                                            <span class="fg-label">Placa</span>
+                                                <input placeholder="Ingrese la placa del vehiculo" minlength="6" maxlength="9" data-fv-stringlength-message="Requiere por lo menos 6 caracteres " class="form-control fg-input" id="placa" name="placa" type="text" autocomplete="off">
+                                                <!-- <input class="form-control fg-input" id="placa" name="placa" type="text" data-fv-notempty="true" data-fv-message="Requiere ingresar placa"> -->
+
+                                            </div>
+                                            
+                                            <small class="help-block" id="mensaje-placa" style="display: none;"></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group fg-float">
+                                            <div class="fg-line">
+                                             <span class="fg-label">Carnet de Propiedad</span>
+                                                <input placeholder="Ingrese carnet de propiedad" class="form-control fg-input dt-veh input-veh" id="tg"
+                                                    name="tjeta_prioridad" type="text" data-fv-notempty="true"
+                                                    data-fv-message="Requiere carnet de Propiedad" maxlength="20" autocomplete="off">
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="row" >
+                                    <div class="col-md-6">
+                                        <div class="form-group fg-float">
+                                            <div class="fg-line">
+                                              <span class="fg-label">Cilindrada (CC)</span>
+                                                <input placeholder="Ingrese cilindrada" class="form-control fg-input dt-veh input-veh" id="cil"
+                                                    name="cilindrada" type="text" data-fv-notempty="true"
+                                                    data-fv-message="Requiere Cilindrada" data-fv-integer="true" data-fv-integer-message="Requiere solo número" autocomplete="off">
+                                            </div>
+                                          
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group fg-float">
+                                        
+                                            <div class="fg-line">
+                                            <span class="fg-label">Color</span>
+                                                <input placeholder="Ingrese el color" class="form-control fg-input dt-veh input-veh" id="color" name="color" type="text" data-fv-notempty="true" data-fv-message="Requiere Color" maxlength="25" autocomplete="off">
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" >  
+                                    <div class="col-md-6">
+                                        <div class="form-group fg-float">
+                                            <div class="fg-line">
+                                            <span class="fg-label">Número de Chasis</span>
+                                                <input placeholder="Ingrese numero de chasis" class="form-control fg-input dt-veh input-veh" id="numC"
+                                                    name="num_chasis" type="text" data-fv-notempty="true"
+                                                    data-fv-message="Requiere Número de Chasis" maxlength="20" autocomplete="off">
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group fg-float">
+                                            <div class="fg-line">
+                                            <span class="fg-label">Número de Motor</span>
+                                                <input placeholder="Ingrese numero de motor" class="form-control fg-input dt-veh input-veh" id="numM"
+                                                    name="num_motor" type="text" data-fv-notempty="true"
+                                                    data-fv-message="Requiere Numero de Motor" maxlength="20" autocomplete="off">
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>  
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="fg-line">
+                                                <!-- <label for="">Tipo de Vehiculo</label> -->
+                                                <span class="control-label">Clase de Vehiculo</span>
+                                                <select data-placeholder="n" name="idtipv"
+                                                    class="form-control fg-input sel-opcv dt-veh " data-fv-notempty='true'
+                                                    data-fv-message="Seleccione la clase de Vehiculo" id="tipv">
+                                                    <option value="" selected="selected">Seleccione clase </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="fg-line">
+                                                <span class="control-label">Modelo de Vehiculo</span>
+                                                <select data-placeholder="n" name="idmodv"
+                                                    class="form-control fg-input sel-opcv dt-veh" data-fv-notempty='true'
+                                                    data-fv-message="Seleccione el modelo del Vehiculo"
+                                                    id="modv">
+                                                    <option value="" selected="selected">Seleccione Modelo</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="fg-line">
+                                                <!-- <label for="">Tipo de Vehiculo</label> -->
+                                                <span class="control-label">Marca de Vehículo</span>
+                                                <select data-placeholder="n" name="idmarcv"
+                                                    class="form-control fg-input sel-opcv dt-veh" data-fv-notempty='true'
+                                                    data-fv-message="Seleccione la marca del Vehiculo"
+                                                    id="marv">
+                                                    <option value="" selected="selected">Seleccione Marca</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+<!--                                         <div class="form-group"> -->
+<!--                                             <div class="fg-line"> -->
+<!--                                                 <span class="control-label">Típo de Vehiculo</span> -->
+<!--                                                 <select data-placeholder="n" name="idtipmarc" -->
+<!--                                                     class="form-control fg-input sel-opcv dt-veh" data-fv-notempty='true' -->
+<!--                                                     data-fv-message="Seleccione el tipo de vehículo" -->
+<!--                                                     id="idtipmarc"> -->
+<!--                                                     <option value="" selected="selected">Seleccione Tipo</option> -->
+<!--                                                 </select> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+                                        
+                                        <div class="form-group fg-float">
+                                            <div class="fg-line">
+                                            <span class="fg-label">Tipo de Vehiculo</span>
+                                                <input placeholder="Ingrese el tipo de vehiculo" class="form-control fg-input dt-veh input-veh" id="tipoveh" name="tipoveh" type="text" data-fv-notempty="true" data-fv-message="Requiere tipo de vehiculo"  autocomplete="off">
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                </div>  
+                                <!-- </div> -->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="fg-line">
+                                                <span class="control-label">Típo de Motor Vehiculo</span>
+                                                <select data-placeholder="n" name="idtipoMotorVeh"
+                                                    class="form-control fg-input sel-opcv dt-veh" data-fv-notempty='true'
+                                                    data-fv-message="Seleccione el Sistema de motor del Vehiculo"
+                                                    id="tipmv">
+                                                    <option value="" selected="selected">Seleccione Típo de Motor</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="fg-line">
+                                                <span class="control-label">Típo de Servicio</span>
+                                                <select data-placeholder="n" name="idTipSv"
+                                                    class="form-control fg-input sel-opcv dt-veh" data-fv-notempty='true'
+                                                    data-fv-message="Seleccione el tipo de servicio del Vehiculo"
+                                                    id="tipserv">
+                                                    <option value="" selected="selected">Seleccione Servicio</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <select multiple="multiple"  data-placeholder="Seleccione combustible"  name="combustible"
+                                            data-fv-notempty='true' 
+                                            data-fv-message="Requiere tipo de Combustible" 
+                                            data-fv-choice="true"
+                                            data-fv-choice-min="1"
+                                            data-fv-choice-max="2"
+                                            data-fv-choice-message="Selecione entre 1 y 2 combustibles"
+                                            id="select-comb" 
+                                            class="form-control sel-opcv dt-veh">
+                                            </select>                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="" class="col-md-6 control-label"><b>KIT GLP :</b></label>
+                                            <div class="col-md-6">
+                                                <label class="radio-inline">
+                                                    <input type="radio" style="margin-top: 1px;" id="kitglpsi"  value="1" name="kitGlpSiNo" maxlength='2' data-fv-stringlength-message='' data-fv-notempty="true" data-fv-message="Seleccione Kit" > SI
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" style="margin-top: 1px;" id="kitglpno"  value="0" name="kitGlpSiNo" maxlength='2' data-fv-stringlength-message='' data-fv-notempty="true" data-fv-message="Seleccione Kit" > NO
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- <br> -->
+                                    <div class="col-md-12">
+                                        <div class="form-group fg-float">
+                                            <div class="fg-line">
+                                            <span class="fg-label">Observaciones de Solicitud</span>
+                                                <textarea  class="form-control fg-input" id="text-obs" name="observaciones"  maxlength="300" style="margin-top: 7px">                                    
+                                                </textarea>
+                                            </div>
+                                            
+                                        </div>    
+                                    </div>  
+                                    
+                                </div>
+                              </div>
+                            </fieldset>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" id="btnAdicionarConfirmacion"
+                                class="btn btn-primary waves-effect">Guardar</button>
+                            <button type="button" class="btn btn-danger waves-effect"
+                                data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+          
+        </div>
+</form>
+<form name="formularioModificar" role="form" id="formularioModificar" method="post" action="../servicios_csk/actualizar"
+		data-fv-excluded="disabled"
+		data-fv-icon-valid="glyphicon glyphicon-ok"
+	      data-fv-icon-invalid="glyphicon glyphicon-remove"
+	      data-fv-icon-validating="glyphicon glyphicon-refresh">
+<div class="modal fade" id="modalModificar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog"role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modificar categoria</h4>
+      </div>
+				<div class="modal-body">
+					<input type="hidden" name="idsolt" id="idsolt" />
+					<!-- Text input-->
+					<div class="form-group">
+						<label>Nombre</label> <input id="nombre1" name="nombre" type="text"
+							placeholder="ingrese nombres" class="form-control input-md"
+							data-fv-notempty="true">
+					</div>
+					<!-- 
+					<div class="form-group">
+						<label>Proyectos:</label>
+							<select id="codsuc1" name="vsucursales" multiple data-placeholder="[Seleccione Sucursal]" class="form-control" data-fv-notempty="true">
+								<option value="">[Seleccione sucursal]</option>
+								#foreach($s in $sucursales)
+								<option value="$s.codsuc">$s.nombre</option>
+								#end
+							</select>
+					</div> -->
+				</div>
+				<div class="modal-footer">
+        <button type="submit" id="btnModificarConfirmacion" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="glyphicon glyphicon-remove-sign"></i> Cancelar</button>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+ </form>
+<div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<form name="formularioEliminar" role="form" id="formularioEliminar" method="post" action="../servicios_csk/eliminar"
+		data-fv-excluded="disabled"
+		data-fv-icon-valid="glyphicon glyphicon-ok"
+	      data-fv-icon-invalid="glyphicon glyphicon-remove"
+	      data-fv-icon-validating="glyphicon glyphicon-refresh">
+  <div class="modal-dialog " style="width: 40%" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Eliminar Categoria</h4>
+      </div>
+      <div class="modal-body">
+   			<input type="hidden" id="idsolt3" name="idsolt" />	
+   			<div class="row">
+   				<div class="col-md-9"><h3>Desea eliminar a categoria <b id="rolLabel"></b></h3></div>
+   			</div>		
+	</div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i> Aceptar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="glyphicon glyphicon-remove-sign"></i> Cancelar</button>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+
+<div class="contenido_gestion" style="">
+    <div class="" style="padding: 0 15px;">
+    	<div class="row">
+    		<div class="col-md-4">
+		    	<h2 class="panel-title">
+		            <b>GESTION SOLICITUDES</b>
+		        </h2>
+		        <h5>
+		       Administre solcitudes
+		                registradas en el Sistema
+		        </h5>
+    		</div>
+    		<div class="col-md-6">
+    			<h1 class="panel-title"><b>GESTION: <label class="cs_gestion"></label></b></h1>
+    		</div>
+    	</div>
+        
+    </div>
+    <div class="panel-body" style="margin-top: -15px;">
+    <!--<div class="panel-body" style="margin-top: -30px;height: 435px">-->
+
+      <div class="row"> 
+        <div class="col-md-12" style="text-align: right;margin-bottom: 15px">           
+            <button id="btnAdicionar" class="btn btn-succ  btn-xs btn-sm waves-effect" disabled="disabled">NUEVA SOLICITUD</button>
+        </div>
+      </div>    
+      <div class="row">  
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-4 col-xs-12" style="margin-bottom: 10px;">
+                    <input type="text" id="filt-sol" name=""
+                        class="form-control unput-sm"
+                        placeholder="Buscar por Nº de Solt. | cedula de beneficiario | placa..">
+                </div>
+                <div class="">
+                	
+                </div>
+                <div class="col-md-6 col-xs-12 navbar-right" >
+                    <label class="radio radio-inline m-r-20"> <input
+                        type="radio" name="iestado" id="activos" value="1" class="iestado"> <i
+                        class="input-helper"></i>Activos
+                    </label> <label class="radio radio-inline m-r-20"> <input
+                        type="radio" name="iestado" id="bajas" value="0" class="iestado"> <i
+                        class="input-helper"></i>Anulados
+                    </label> <label class="radio radio-inline m-r-20"> <input
+                        type="radio" name="iestado" id="todos" value="-1"
+                        checked="checked" class="iestado"> <i class="input-helper"></i>Todos
+                    </label>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="row" style="">
+        <div class="col-md-12 table-responsive" >
+<!--             <table id="example" class="table table-condensed w3-table-all w3-tiny w3-table-hoverable w3-card-4" style="">   <thead> -->
+            <table id="example" class="table tabla_gestion" style="width: 100%">   
+           			 <thead>
+                        <tr>
+                            <th class="text-center" ># solt</th>
+                            <th class="text-center" width="">fecha</th>
+                            <th class="text-center" width="">placa</th>
+                            <th class="text-center">beneficiario</th>
+                            <th class="text-center">Cedula</th>
+                            <th class="text-center" width="" >Anulado</th>
+<!--                             <th class="text-center" width="">Aprobado</th> -->
+                            <th class="text-center">Opciones</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+        </div>
+      </div>        
+        
+    </div>
+</div>
+
+                        <script type="text/javascript">
+                            //BENEFICIARIO
+                            var MAX_TELEFONOS = 2;
+                            var cont_doc;
+                            var m_cont_doc;  
+
+                        $(document).ready(function() {
+                            var campoCedulaGlobal="";
+                            var btn_mod_veh_Global;
+
+                            //****************************************************solicitud
+                            
+                            //get Gestion
+                            var isGestion=$('body').find('#select-gestion option:selected').text();
+                            console.log('gestion',isGestion)
+                            $('.cs_gestion').html(isGestion);
+                            $('body').find('#s_gestion1').html(isGestion);
+                            $('body').find('#s_gestion1_ver').html(isGestion);
+                            
+                            
+                            //SOLT                    
+                            var i=0;
+                            var respCall=0; 
+                            var respPlaca=0;
+                            var idsoltVer=0;
+                            var click_selec = 0;
+
+                            var JsonListaBen = null;
+                            var respCi=false;
+
+                            var BandKeyup=false;
+                            // $('#select-genero').chosen()      
+                            var FormVal;
+                            var GBloqueoTel=0;
+                            var EstadoTel=0;
+                            var EstadoDoc=0;
+
+                            var EstadoEncontradoBeneficiario=false;
+                            var result=Get_Opciones(null);
+                            // console.log('GESTION_LIST: ',result)
+                            // console.log('tam: ',result.AccionesUser.length)
+                            if(ExisteOpcion('adicionar')){
+
+                                //esto se hace abajo
+                                // $('#btnAdicionar').attr({
+                                    // onclick:"(Gestionar.Adicionar.modal())",
+                                    // accesskey:""
+                                // })
+                                $('#btnAdicionar').removeAttr("disabled ").focus().val("Ahora si lo puedes utilizar")
+                                
+                            }
+                            function ExisteOpcion(opc){
+                                // alert('entro comparar')
+                                var resultado=false;
+                                for (var i = 0; i < result.AccionesUser.length; i++) {
+//                                     console.log('for_: ',result.AccionesUser[i]);
+                                    if(result.AccionesUser[i].codigo==opc){
+                                        resultado=true;         
+                                    }
+                                }
+                                // console.log('result_dentro:',resultado)              
+                                return resultado;
+                            }
+
+                            var DTtable=''
+                            var btnGroup='';
+                            
+                            var estado='';
+                            estado=$('input[name="iestado"]:checked').val();
+
+                            $('input[name="iestado"]').on('change',function(){
+                                 estado=$('input[name="iestado"]:checked').val();
+                                $('#example').dataTable().fnDraw('page');
+                
+                            })
+                        	DTtable=$('#example').DataTable({
+                        		"oLanguage": {
+                                    "sUrl": GurlDataTable
+                                },
+//                       			 "dom":'rt<button>ip',
+                      			 "dom":'rt<button>',
+                      			"pageLength":10,
+                                "processing": true,
+                      		    "serverSide": true,
+                      		    "ajax": {
+                      		    	"type": "POST",
+                      	            url:'RestSolicitudes/listar_d1',
+                      	        	"data": function ( d ) {
+                      	                d.estado = estado;
+                      	                d.gestion=$('body').find('#select-gestion option:selected').text();
+                      	            }
+                              	},
+                      		    "columns": [
+                                            { "data": "idsolt" },
+                                            { "data": "idsolt" },
+                                            { "data": "idsolt" },
+                                            { "data": "idsolt" },
+                                            { "data": "idsolt" },
+                      		                { "data": "idsolt" },
+                      		            	{ "data": "idsolt" }
+                      		    ],
+                      		    "createdRow": function ( row, data, index ){
+//                       		    	console.log('data_row:',data)
+                      		    	$('td',row).eq(0).html(data.numSolt).addClass('text-center');
+                                    $('td',row).eq(1).html(data.fecha)
+                                    $('td',row).eq(2).html(data.vehiculo.placa)
+                                    $('td',row).eq(3).html(data.persona.razonsocial)
+                                    $('td',row).eq(4).html(data.persona.ci)
+
+                                     if(data.estado==1){
+                                        $('td',row).eq(5).html('No');
+                                    }else{
+                                        $('td',row).eq(5).html('Si');
+                                    }
+//                                     if (data.aprobadoSiNo==0) {
+//                                     	 $('td',row).eq(6).html('No');
+//                                     } else {
+//                                      $('td',row).eq(6).html('Si');
+//                                     }      
+
+              
+
+                      		    	if(data.estado==1){
+                          		    	btnGroup='';
+                                        if(ExisteOpcion('anular')){
+                                            btnGroup+='<button id="btn-elim" class="btn btn-xs btn-danger btn-sm waves-effect btn-espacio" accesskey="'+data.idsolt+'" data-href="'+data.idsolt+'" onclick="anular(this)"><span class="fa fa-ban"></span> Anular</button>';
+                                        }else{
+                                            btnGroup+='<button id="btn-elim" class="btn btn-xs btn-danger btn-sm waves-effect btn-espacio" disabled="disabled"><span class="fa fa-ban"></span> Anular</button>';
+                                        }
+                      		    		
+                      		    	}else{
+                                        btnGroup='';
+                                        btnGroup+='<button id="btn-elim" class="btn btn-xs btn bgm-bluegray  btn-sm waves-effect btn-espacio" disabled="disabled"><span class="zmdi zmdi-delete"></span> Anulado</button>';
+                                    }
+                                    if(ExisteOpcion('ver')  ){
+                                        
+                                        btnGroup+='<button id="btn-ver" class="btn btn-xs btn-info bgm-cyan waves-effect btn-sm btn-espacio" accesskey="'+data.idsolt+'" data-href="'+data.idsolt+'" onclick="verSolicitud(this)"><span class="zmdi zmdi-print"></span> Ver</button>';
+                                    }else{
+                                         btnGroup+='<button id="btn-ver" class="btn btn-xs btn-infobgm-cyan waves-effect btn-sm  btn-espacio" disabled="disabled"><span class="zmdi zmdi-print"></span>Ver</button>';
+                                    }
+
+                                    $('td', row).eq(6).html('<div class="btn-group">'+btnGroup+'</div>');
+
+                      	        },
+                      	        "drawCallback": function( settings ) {
+                      	        	$('#tableTitle').html('<h6><b>Gestion Solicitudes de Items</b></h6>');
+                      	        	$('#tableHeader').html('<button class="btn btn-xs btn-primary" id="btnAdicionar"><i class="fa fa-plus-circle"></i> | adicionar</button>');
+	
+                      	        	$('#btnAdicionar').click(function(){
+
+                                        //reseteando combustible
+
+
+                                        $('.dt-veh').removeAttr('disabled')
+
+                                        $('#formulario').formValidation('resetField', 'idtipv');
+                                        $('#tipv').val('').trigger('chosen:updated');
+                                        $('#formulario').formValidation('resetField', 'idmarcv');
+                                        $('#marv').val('').trigger('chosen:updated');
+                                        $('#formulario').formValidation('resetField', 'idmodv');
+                                        $('#modv').val('').trigger('chosen:updated');
+                                        $('#formulario').formValidation('resetField', 'idtipoMotorVeh');
+                                        $('#tipmv').val('').trigger('chosen:updated');
+                                        $('#formulario').formValidation('resetField', 'idTipSv');
+                                        $('#tipserv').val('').trigger('chosen:updated');
+
+                                        $('#formulario').formValidation('resetField', 'combustible');
+                                        var arrayChosen=[];
+                                        $('#select-comb').val(arrayChosen);
+                                        $('#select-comb').trigger('chosen:updated');
+
+                                        //fin reseteando combustible
+// 										console.log('reset_1')
+                                        $('input[name="telefono[]"]').val('');
+                                        $('body').find('.telefono-class').val('')
+                                        document.getElementsByClassName("telefono-class").value="";
+                                        $('#formulario').find('.telefono-class').val('')
+//                                         console.log('reset_2')
+                                        $('#formulario').find('input[name="telefono[]"]').val('');  
+                                        $('#formulario').formValidation('resetField', 'telefono[]');
+
+
+                                        $('#formulario').data('formValidation').resetForm();
+                                		$('#formulario')[0].reset();
+
+
+                                        $.post('RestBeneficiarios/documentosBeneficiario',function(respDoc){
+                                             cont_doc=respDoc.length
+                                        }); 
+
+                                        $('#text-desc').val('');
+                                        $('#text-obs').val('');
+                                        $('input[name="idben"]').val('')
+                                        campoCedulaGlobal="";
+
+                                        resetearDatosBeneficiario();
+
+                                        $('body').find('#kitglpsi').val('1')
+                                        $('body').find('#kitglpno').val('0')
+                                        
+                                        
+//                                        document.getElementById('numSolt').innerHTML=''
+// 							            document.getElementById('numSoltHidden').value=''
+//                                         var isGestio2=$('body').find('#select-gestion option:selected').text();
+							
+// 							            $.getJSON('RestSolicitudes/getNumSoltByAnio?gestion='+isGestio2,function(datos){
+// 							                console.log('getNumSoltByAnio: ',datos)
+// 							                var numS=datos.numSolt;
+// 							                // alert('numS: '+numS)
+// 							                document.getElementById('numSolt').innerHTML=numS
+// 							                document.getElementById('numSoltHidden').value=numS
+							
+							               
+// 							            })
+                                        
+                                		$('#modalAdicionar').modal('show');
+                                	});
+                      	        	
+                      	        	
+                              		$('.modificar').click(function(){ 
+                              			$('#formularioModificar').data('formValidation').resetForm();
+                                		$('#formularioModificar')[0].reset();
+                                  		$.post('../servicios_csk/obtener?idsolt='+$(this).data('id'), function(result) {
+                      		            	if(result.status){
+                      			    	        $('#modalModificar').modal('show');
+                      							$('#formularioModificar').loadJSON(result.data);
+                      		            	}else{
+                      		            		mostrarMensaje('error','No se realizo con exito la Transaccion');
+                      		            	}
+                      			        }, 'json');
+                              		});
+                              		$('.eliminar').click(function(){ 
+                              			$('#formularioEliminar').data('formValidation').resetForm();
+                                		$('#formularioEliminar')[0].reset();
+                                  		$.post('../servicios_csk/obtener?idsolt='+$(this).data('id'), function(result) {
+                      		            	if(result.status){
+                      			    	        $('#modalEliminar').modal('show');
+                      							$('#formularioEliminar').loadJSON(result.data);
+                      							$('#rolLabel').html(result.data.nombre);
+                      		            	}else{
+                      		            		mostrarMensaje('error','No se realizo con exito la Transaccion');
+                      		            	}
+                      			        }, 'json');
+                              		});
+                              		
+                              		$('button[data-toggle="tooltip"]').tooltip({animated: 'fade',placement: 'bottom',});
+
+                      		        $('#filt-sol').on( 'keyup', function () {
+                                        DTtable.search(this.value ).draw();
+                                    }) 
+                      	        }
+                            });
+                        
+                            $('.estado').click(function(){
+                            	$('#example').dataTable().fnDraw('page');
+                            });
+                  
+                            $.post('RestBeneficiarios/documentosBeneficiario',function(respDoc){
+                                $('#formulario').find('#js_doc').html('')
+                                console.log('listaDoc: ',respDoc)
+                                $(respDoc).each(function(index,item){
+                                    console.log('index_ckec:',index)
+                                    contador_tam=index+1;
+                                    $('#js_doc').append(
+                                        `<div class="checkbox m-b-15">
+                                            <label>
+                                                <input value="${item.iddocb}" type="checkbox" name="documentos[]" >
+                                                <i class="input-helper" ></i>${item.nombre}
+                                            </label>
+                                        </div>`
+                                    );
+                                })
+                                $('#formulario').find('#m_cont_doc').val(respDoc.length);
+                                // cont_doc=respDoc.length
+                                $('#formulario').formValidation('addField','documentos[]');
+                                
+                            })
+                            
+
+                            FormVal=$('#formulario').formValidation({
+                                fields:{
+                                    ci:{
+                                        validators:{
+                                            callback:{
+                                                message:'callback cedula existente',
+                                                callback:function(value,validator,$field){
+                                                    var telSC;
+                                                    respCi=false;
+                                                    respSolt=false;
+                                                    $('input[name="idben"]').val('')
+                                                    // console.log('valor de cedula: ',value)
+                                                    if(value=='' || value.indexOf(' ') != -1){
+                                                        // alert('vacio')    
+                                                        // $('.dt-veh').removeAttr('disabled')
+                                                        return{
+                                                            valid:false,
+                                                            message:"Requiere cedula"
+                                                        }
+                                                    }
+                                                    else{
+                                                        // return false;
+                                                        // console.log('value: ',value)
+                                                        console.log('field_ci: ',$field)
+                                                        if($('input[name="cedula"]').val()!=''){
+                                                            // console.log('no vacio')
+                                                            datosValidar(value);
+                                                        }
+                                                        return true;
+                                                    }
+                                                    return true;
+                                                }
+                                            }
+                                        }
+                                    },
+                                    nombres:{
+                                        validators:{
+                                            callback:{
+                                                message:"Call",
+                                                callback:function(value,validators,$field){
+                                                    var Patron=/^[a-zA-Z\s]*$/;//a-zA-Z
+                                                    if (!value.search(Patron)) {
+                                                        return true
+                                                    } else {
+                                                        return {
+                                                             valid:false,
+                                                             message:'Este campo solo acepta letras'
+                                                         } 
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ap:{
+                                        validators:{
+                                            callback:{
+                                                message:"Call",
+                                                callback:function(value,validators,$field){
+                                                    var Patron=/^[a-zA-Zñ]*$/;
+                                                    if (!value.search(Patron)) {
+                                                        return true
+                                                    } else {
+                                                        return {
+                                                             valid:false,
+                                                             message:'Este campo solo acepta letras'
+                                                         } 
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    am:{
+                                        validators:{
+                                            callback:{
+                                                message:"Call",
+                                                callback:function(value,validators,$field){
+                                                    var Patron=/^[a-zA-Z]*$/;
+                                                    if (!value.search(Patron)) {
+                                                        return true
+                                                    } else {
+                                                        return {
+                                                             valid:false,
+                                                             message:'Este campo solo acepta letras'
+                                                         } 
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    'documentos[]': {
+                                        validators: {
+                                            notEmpty: {
+                                                message: 'Seleccione Docuementos'
+                                            },
+//                                             choice: {
+//                                                 min: cont_doc,
+//                                                 max: cont_doc,
+//                                                 message: 'Seleccione todos los documentos '
+//                                             }
+                                        }
+                                    },
+                                    'telefono[]': {
+                                        validators: {
+                                            stringLength: {
+                                                min:7,
+                                                max: 8,
+                                                message: 'Digite entre 7 u 8 digitos'
+                                            }
+                                        }
+                                    },
+                                    placa:{     
+                                        validators:{
+                                            callback:{
+                                                message:'callback placa',
+                                                callback:function(value,validator,$field){
+                                                    // alert('BUSCANDO..')
+                                                    $("#div-mod-veh").html("").hide();
+                                                    var padreNode=$('.dt-veh').parent(); 
+                                                    if(value=='' || value.indexOf(' ') != -1){
+                                                                                                     
+                                                        $('#mensaje-placa').hide()
+                                                        $('.dt-veh').removeAttr('disabled')
+                                                        return{
+                                                            valid:false,
+                                                            message:"Requiere una placa"
+                                                        }
+                                                    }
+
+                                                    $.ajax({
+                                                        url:"RestSolicitudes/existePlaca",
+                                                        data:{
+                                                            placa:value
+                                                        },
+                                                        type:"post",
+                                                        dataType:"json",
+                                                        async:false,
+                                                        cache:false,
+                                                        success:function(resp){
+                                                            console.log('existePlaca: ',resp) 
+                                                            respPlaca=resp.estado
+                                                        },  
+                                                        error:function(err){
+                                                            alert('sin respuesta del servidor')
+                                                        }
+
+                                                    })
+                                                    if(respPlaca==1){
+                                                        console.log('estado 1')
+                                                        $('#mensaje-placa').hide();
+                                                        $('.dt-veh').attr('disabled','disabled')
+                                                        $('.dt-veh').val('').trigger('chosen:updated'); 
+                                                        return {
+                                                            valid:false,
+                                                            message:'esta placa esta en tramite'
+                                                        } 
+                                                    }else if(respPlaca==2){
+                                                        console.log('estado')    
+
+                                                        $('#mensaje-placa').html('se encontro placa registrada').show()
+                                                        var vehiculo;
+
+                                                        $.getJSON('RestSolicitudes/getTipoMarcaVeh',function(datos){
+                                                            console.log('resp: ',datos)
+                                                            $(datos[0]).each(function(index,item){
+                                                                // console.log('tip: ',item)
+                                                                $('#idtipmarc').append('<option value="'+item.idtipmarc+'">'+item.nombre+'</option>')
+                                                            })
+                                                            // $('#idtipmarc').chosen()
+                                                            $('#idtipmarc').trigger('chosen:updated');  
+                                                        }) 
+
+                                                        $.post('RestSolicitudes/PlacaDatos',{placa:value},function(resp){
+                                                            vehiculo=resp;
+                                                            console.log('vechiculo: ',vehiculo)
+                                                            padreNode.addClass('fg-toggled');
+                                                            $('#tipv').val(vehiculo.tipoVehiculo.idtipv).trigger('chosen:updated');
+                                                            $('#marv').val(vehiculo.marcaVehiculo.idmarcv).trigger('chosen:updated');
+                                                            $('#idtipmarc').val(vehiculo.tipoMarcaVehiculo.idtipmarc).trigger('chosen:updated');
+                                                            $('#modv').val(vehiculo.modeloVehiculo.idmodv).trigger('chosen:updated');
+                                                            $('#tipmv').val(vehiculo.tipoMotor.idtipoMotorVeh).trigger('chosen:updated');
+                                                            $('#tipserv').val(vehiculo.tipoServicio.idTipSv).trigger('chosen:updated');
+                                                            
+                                                            var arrayChosen=[];
+                                                            $(vehiculo.combustibleVehiculo).each(function(index,item){                              
+                                                                arrayChosen.push(item.idcomb);
+                                                            })
+                                                            console.log('array: ',arrayChosen);
+                                                            $('#select-comb').val(arrayChosen);
+                                                            $('#select-comb').trigger('chosen:updated');
+                                                            
+                                                            $('.vehiculo-data').loadJSON(resp)
+
+                                                            $('input[name="kitGlpSiNo"]').val(placa.kitGlpSiNo);
+                                                            $('input[name="kitGlpSiNo"]').prop("checked",true);
+                                                            $(`input[name=kitGlpSiNo][value="${placa.kitGlpSiNo}"]`).prop("checked",true);
+
+                                                        })
+                                                        $('.dt-veh').attr('disabled','disabled')
+                                                        // $('.dt-veh').val('').trigger('chosen:updated');          
+                                                        
+                                    
+
+                                                        if(ExisteOpcion('mv')){
+
+                                                            $("#div-mod-veh").html(`
+                                                                <a class="btn btn-xs bgm-purple href="#"   waves-effect" id="btn_modVehS" disabled="disabled">
+                                                                    <span class="zmdi zmdi-edit"> Modificar Vehiculo</span>
+                                                                </a>
+                                                            `).show();
+                                                            $('#btn_modVehS').attr({
+                                                                onclick:"modificarVehiculo(this)",
+                                                                // accesskey:""
+                                                                })
+                                                            $('#btn_modVehS').removeAttr("disabled ").focus().val("Ahora si lo puedes utilizar")
+                                                        }
+                                                        
+                                                        return true
+                                                    }else{
+                                                        console.log('reset- no registrado')
+                                                        padreNode.removeClass('fg-toggled'); 
+                                                        $('.dt-veh').removeAttr('disabled')
+                                                        
+                                                        $('#mensaje-placa').hide();
+                                                        $(".dt-veh").val($(".dt-veh").find("option:first").val())
+                                                        $('.dt-veh ').val('').trigger('chosen:updated');
+
+                                                        // //PARA TIPO MARCA
+                                                        // $('#idtipmarc').html('');   
+                                                        // $('#idtipmarc').html('<option value="" selected="selected">Tipo de Marca Vehículo</option>');   
+                                                        // $("#idtipmarc").val($("#idtipmarc").find("option:first").val())
+                                                        // $('#idtipmarc').val('').trigger('chosen:updated');
+                                                        
+                                                        // $('#formulario').formValidation('addField','idtipmarc');  
+
+                                                        // //FIN PARA TIPO MARCA
+
+                                                        $('.input-veh').val('')
+                                                        $('#kitglpsi').val('1')
+                               							$('#kitglpno').val('0')
+                                                        //$('.dt-veh').val('').trigger('chosen:updated');   
+                                                        
+                                                        return {
+                                                            valid:true,
+                                                            message:'esta disponible'
+                                                        }
+                                                    }
+
+                                                    return {
+                                                        valid:true,
+                                                        message:'ok'
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    cilindrada: {
+                                        validators: {
+                                            stringLength: {
+                                                min:2,
+                                                max: 4,
+                                                message: 'Digite entre 2 u 4 digitos'
+                                            }
+                                        }
+                                    },
+                                    color:{
+                                        validators:{
+                                            callback:{
+                                                message:"Call",
+                                                callback:function(value,validators,$field){
+                                                    var Patron=/^[a-zA-Z\s]*$/;// (\s) agregue para espacio
+                                                    if (!value.search(Patron)) {
+                                                        return true
+                                                    } else {
+                                                        return {
+                                                             valid:false,
+                                                             message:'Este campo solo acepta letras'
+                                                         } 
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    num_chasis:{
+                                        validators:{
+                                            callback:{
+                                                message:"Call",
+                                                callback:function(value,validators,$field){
+                                                    var Patron=/^[a-zA-Z0-9]*$/;
+                                                    if (!value.search(Patron)) {
+                                                        return true
+                                                    } else {
+                                                        return {
+                                                             valid:false,
+                                                             message:'Este campo es alfanumérico'
+                                                         } 
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+//                                     ,
+//                                     num_motor:{
+//                                         validators:{
+//                                             callback:{
+//                                                 message:"Call",
+//                                                 callback:function(value,validators,$field){
+//                                                     var Patron=/^[a-zA-Z0-9]*$/;
+//                                                     if (!value.search(Patron)) {
+//                                                         return true
+//                                                     } else {
+//                                                         return {
+//                                                              valid:false,
+//                                                              message:'Este campo es alfanumérico'
+//                                                          } 
+//                                                     }
+//                                                 }
+//                                             }
+//                                         }
+//                                     }
+                                    
+                                }
+                            })
+                            .on('click', '.addButton', function() {
+                                EstadoTel=0
+                                var $template = $('#optionTemplate');
+                                var   $clone    = $template
+                                                    .clone()
+                                                    .removeClass('hide')
+                                                    .removeAttr('id')
+                                                    // .insertBefore($template);
+                                                    .insertBefore($('#IdInitTelf'));//modificado
+
+                                $clone.find('.form-control').attr('name','telefono[]');
+                                var   $option   = $clone.find('[name="telefono[]"]');
+                                $('#formulario').formValidation('addField', $option);
+                                EstadoTel++;
+                                // alert('EstadoTel: '+EstadoTel)
+                            })
+                            .on('click', '.removeButton', function() {
+                                var $row    = $(this).parents('.form-group'),
+                                    $option = $row.find('[name="telefono[]"]');
+                                console.log('padre: ',$row)
+                                // Remove element containing the option
+                                $row.remove();
+                    
+                                // Remove field
+                                $('#formulario').formValidation('removeField', $option);
+                                EstadoTel--;
+                            })
+                            .on('added.field.fv', function(e, data) {
+                                if (data.field === 'telefono[]') {
+                                    if ($('#formulario').find(':visible[name="telefono[]"]').length >= MAX_TELEFONOS) {
+                                        $('#formulario').find('.addButton').attr('disabled', 'disabled');
+                                    }
+                                }
+                            })
+                            .on('removed.field.fv', function(e, data) {
+                               if (data.field === 'telefono[]') {
+                                    if ($('#formulario').find(':visible[name="telefono[]"]').length < MAX_TELEFONOS) {
+                                        $('#formulario').find('.addButton').removeAttr('disabled');
+                                    }
+                                }
+                            })
+                            .on('success.form.fv', function(e){
+                                e.preventDefault();
+                                var $form = $(e.target);
+
+                                swal({   
+                                    title: "Seguro de registrar Solicitud?",   
+                                    text: "Usted registrará una nueva Solicitud",   
+                                    type: "warning",   
+                                    showCancelButton: true,   
+                                    confirmButtonColor: "#DD6B55",   
+                                    confirmButtonText: "Si, Continuar!",   
+                                    cancelButtonText: "No, Cancelar!",   
+                                    closeOnConfirm: false,   
+                                    closeOnCancel: false 
+                                    }, function(isConfirm){ 
+                                        if (isConfirm) {
+                                            //aqui se desavilita los campos del vehiculo
+                                            $('.dt-veh').removeAttr('disabled')
+                                            $('.dt-veh').trigger('chosen:updated');     
+                                            //fin de desavilitacion
+                                            $('#formulario').ajaxSubmit({
+                                            	data:{gestion:$('body').find('#select-gestion option:selected').text()},
+                                                success:function(res){
+                                                    console.log('registrado',res)
+                                                    if(res.estado){
+//                                                         $form.data('formValidation').resetForm();
+//                                                         $('#formulario')[0].reset();
+                                                        $('#example').dataTable().fnDraw('page');
+
+                                                        $('.modal').modal('hide')
+                                                        swal({
+                                                            title:"Registrado",
+                                                            text:"Se ha registrado solicitud exitosamente",
+                                                            type:"success",
+                                                            timer: 500,   
+                                                            showConfirmButton: false 
+                                                        }); 
+                                                        var idsolt=res.idsolt
+                                                        console.log('idsolt: ',idsolt)
+                                                        $("#frameReportes").attr("src",'RestSolicitudes/Imprimir_d1/'+idsolt);
+
+                                                        $("#reportes").modal('show');
+                                                    }
+                                                }
+                                            })
+
+                                        } else {     
+                                            // swal("Cancelled", "Your imaginary file is safe :)", "error");   
+                                            swal({
+                                                title:"Cancelado",
+                                                text:"Se ha cancelado operacion",
+                                                type:"error",
+                                                timer:500,
+                                                showCancelButton:false,
+                                                showConfirmButton:false
+
+                                            })
+                                            $('.modal').modal('hide')
+                                        } 
+                                });
+                             })
+
+                            // $('#formulario,#formularioModificar,#formularioEliminar').formValidation(
+                            $('#formularioModificar,#formularioEliminar').formValidation(
+                  				{locale: 'es_ES'}).on('success.form.fv', function(e) {
+                              e.preventDefault();
+                              var $form = $(e.target);
+                              $.post($form.attr('action'), $form.serialize(), function(result) {
+                                  	if(result.status){
+                          	            $form.data('formValidation').resetForm();
+                          	          	$('#formulario')[0].reset();
+                          	        	$('#formularioModificar')[0].reset();
+                          	            $('#formularioEliminar')[0].reset();
+    									$('#example').dataTable().fnDraw('page');
+                          	        	mostrarMensaje('info','Se realizo con exito la Transaccion');
+                          	        }else{
+                                  		mostrarMensaje('error','No se realizo con exito la Transaccion');
+                                  	}
+                                	$('.modal').modal('hide');
+                          	    }, 'json');
+                            });
+
+
+                        });// fin $(document).ready(function() 
+
+
+                        //*********************metodos implementados
+
+                        function modificarVehiculo(a){
+                          // alert('modificar el vehiculo') 
+                          // $('.dt-veh').parent().removeClass('fg-toggled'); 
+                          $('.dt-veh').removeAttr('disabled')
+                          $('.dt-veh').trigger('chosen:updated');
+                              
+                        }
+
+                        function anular(a)//a es btn
+                        {
+                            var idsolt=$(a).attr('accesskey');
+                            console.log('anular_solicitud',idsolt) 
+                            swal({   
+                                title: "Seguro de Anular Solicitud?",   
+                                text: "Usted anular? la Solicitud",   
+                                type: "warning",   
+                                showCancelButton: true,   
+                                confirmButtonColor: "#DD6B55",   
+                                confirmButtonText: "Si, Continuar!",   
+                                cancelButtonText: "No, Cancelar!",   
+                                closeOnConfirm: false,   
+                                closeOnCancel: false 
+                                }, function(isConfirm){   
+                                    if (isConfirm) {     
+                                        $.ajax({
+                                            url:'RestSolicitudes/anular',
+                                            type:'post',
+                                            data:{
+                                                idsolt:idsolt
+                                            },
+                                            success:function(resp){
+                                                //console.log('registrado',resp)
+                                                if(resp.estado){
+                                                    $('#example').dataTable().fnDraw('page');
+                                                    swal({
+                                                        title:"Anulado",
+                                                        text:"Se ha anulado solicitud exitosamente",
+                                                        type:"success",
+                                                        timer: 2000,   
+                                                        showConfirmButton: false 
+                                                    });
+                                                }else{
+                                                    alert('No se ha podido anular la solicitud, consulte con el administrador')
+                                                }
+                                            },
+                                            error:function(err){
+                                                alert('sin respuesta del servidor')
+                                            }
+                                        })
+
+                                    } else {     
+                                        swal({
+                                            title:"Cancelado",
+                                            text:"Se ha cancelado operacion",
+                                            type:"error",
+                                            timer:2000,
+                                            showCancelButton:false,
+                                            showConfirmButton:false
+
+                                        })
+                                    } 
+                            });
+                        }
+
+                        function verSolicitud(a){
+                            idsoltVer=$(a).attr('accesskey');
+                            console.log('idsolt: ',idsoltVer)
+                             $("#frameReportes").attr("src",'RestSolicitudes/Imprimir_d1/'+idsoltVer);
+                            $("#reportes").modal('show'); 
+//                             $.ajax({
+//                                 url:'Solicitudes/modal-ver',
+//                                 type:"post",
+//                                 success:function(resp){
+//                                     $('#cont-modales').html(resp);
+//                                     $('#modal-ver').modal('show');
+//                                     $('#formulario-ver').formValidation({
+//                                     }).on('success.form.fv', function(e){
+//                                        e.preventDefault();
+//                                        imprimir();
+//                                     })
+//                                     function imprimir(){
+//                                         $("#frameReportes").attr("src",'RestSolicitudes/Imprimir_d1/'+idsoltVer);
+//                                         $("#reportes").modal('show'); 
+
+//                                     }
+//                                 },
+//                                 error:function(){
+//                                     alert('error del Servidor')
+//                                 }
+//                             })
+                        }
+                            $('#select-genero').chosen()
+                            function datosValidar(value) {
+                                // console.log('entro datosValidar')
+                                function asyncSqrt(value,callback){
+                                    // alert('1')
+                                    $.ajax({
+                                        url:"RestBeneficiarios/existeCi",
+                                        data:{
+                                            ci:value
+                                        },
+                                        // type:"post", 
+                                        dataType:"json",
+                                        // async:false,
+                                        // cache:false,
+                                        success:function(resp)
+                                        {
+                                            respCi=resp.estado
+                                            callback(respCi)
+                                        },  
+                                        error:function(err){
+                                            alert('sin respuesta del servidor')
+                                        }
+
+                                    })
+                                }
+                                asyncSqrt(value,function(result){
+                                    console.log('result: ',result)
+                                    // alert('2')
+
+                                    // $('input[name="idben"]').val('')
+                                    // $('input[name="idper"]').val('')
+                                    if(result){
+                                        // alert('encontrado')
+                                       	console.log('result:'+result)
+                                        EstadoEncontradoBeneficiario=true;
+                                        GBloqueoTel=0;   
+                                        $('#mensaje-ben').html('Esta persona ya esta registrada como beneficiario').show()
+                                        
+                                        $.post('RestBeneficiarios/datos-modByCi_d1',{ci:value},function(resp){
+                                            console.log('respuestaDatosByCi: ',resp)
+                                            $('#text-desc').val('')
+                                            $('#formulario').find('.fg-line').addClass('fg-toggled'); 
+                                            $('#formulario').loadJSON(resp[0])
+                                            if (resp[0]!=null) {
+                                                $('#formulario').find('#select-genero').val(resp[0].genero).trigger("chosen:updated");
+                                             	$('input[name="idper"]').val(resp[0].idper)
+                                                $('#formulario').find('.data-per').prop('disabled','disabled')
+                                            }
+                                            if (resp[0].beneficiario!=null) {
+                                                $('input[name="idben"]').val(resp[0].beneficiario.idben)
+                                            }
+                                            if (resp[0].beneficiario!=null) {
+                                                $('#formulario').find('input[name="institucion"]').val(resp[0].beneficiario.institucion);
+                                                $('#formulario').find('textarea[name="descripcion"]').val(resp[0].beneficiario.descripcion);
+                                                $('.data-ben').prop('disabled','disabled')
+                                            }else{
+                                            	$('.data-ben').removeAttr('disabled')
+                                            }
+                                            if(EstadoTel!=1){   
+                                                if(resp[1].length!=0){//resp[1]=telefonos; si hay telefonos es por q es usuario o benficiario
+                                                    $('#contenido-tel').html('');
+                                                    var bloqueo;
+                                                    var disabledTel;
+                                                    // GBloqueoTel=resp[1].length;
+                                                    if(resp[1].length==MAX_TELEFONOS){
+                                                        // alert('entro: '+resp[1].length)
+                                                        bloqueo="disabled"
+                                                    }else{
+                                                        // alert('no entro')
+                                                        bloqueo=''
+                                                    } 
+                                                    if(resp[0].beneficiario!=null){
+                                                        disabledTel="disabled";
+                                                        // bloqueo="disabled"
+                                                    }else{
+                                                        disabledTel="";
+                                                        // bloqueo=""
+                                                        // if (resp[1]!=null){
+                                                            
+                                                        // }
+                                                    }
+
+                                                    // $('#contenido-tel').html('');
+                                                    $(resp[1]).each(function(index,item){
+                                                        // alert('pre telefono')
+                                                        console.log('index: ',index)
+                                                  
+
+                                                        if(index==0){
+                                                           telSC=`<div class="form-group" id="ExisteTelOr">
+                                                                <label class="col-xs-3 control-label">Teléfonos/Celulares</label>
+                                                                <div class="col-xs-5">
+                                                                    <input type="text" class="form-control telefono-class" name="telefono[]" value="${item.numero}" placeholder="Ingrese número" maxlength="10" data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico" ${disabledTel}/>
+                                                                </div>
+                                                                <div class="col-xs-4">
+                                                                    <button type="button" class="btn btn-default addButton" ${bloqueo}><i class="fa fa-plus"></i></button>
+                                                                </div>
+                                                            </div>
+                                                            <div id="IdInitTelf"> </div>
+                                                           `
+                                                           $('#contenido-tel').append(telSC);
+                                                           //var   $option   = $('#ExisteTelOr').find('[name="telefono[]"]');
+                                                           $('#formulario').formValidation('addField','telefono[]');
+                                                        }else{
+                                                            telSC=`<div class="form-group ClassExisteTel">
+                                                                      <div class="col-xs-offset-3 col-xs-5">
+                                                                        <input class="form-control telefono-class" type="text" name="telefono[]" value="${item.numero}" placeholder="Ingrese número" maxlength="10" ${disabledTel}/>
+                                                                      </div>
+                                                                      <div class="col-xs-4">
+                                                                        <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                                                                      </div>
+                                                                   </div>`
+                                                            $('#contenido-tel').append(telSC);
+                                                            // var   $option   = $('.ClassExisteTel').find('[name="telefono[]"]');
+                                                            $('#formulario').formValidation('addField','telefono[]');
+
+                                                        }           
+                                                      
+                                                    })      
+                                                 
+                                                }
+                                                else{//es por q se encontro usuario, o beneficiario pero no tiene telefonos
+                                                    // alert('sin telefonos')
+                                                    $('#contenido-tel').html('');
+
+                                                   telSC=`<div class="form-group" id="origenT">
+                                                            <label class="col-xs-3 control-label">Telefonos/Celulares</label>
+                                                            <div class="col-xs-5">
+                                                                <input type="text" class="form-control telefono-class" name="telefono[]" placeholder="Ingrese número" maxlength="10"/>
+                                                            </div>
+                                                            <div class="col-xs-4">
+                                                                <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+                                                            </div>
+                                                        </div>
+                                                        <div id="IdInitTelf"> </div>
+                                                       `
+                                                    $('#contenido-tel').html(telSC);
+                                                    // var   $option   = $('#origenT').find('[name="telefono[]"]');
+                                                    $('#formulario').formValidation('addField','telefono[]');
+                                                }
+
+                                                EstadoTel++;;
+                                            }
+
+                                            if (EstadoDoc<1) {
+                                                //DE AQUI EN ABAJO NP HAY PROBLEMAS CON EL FORMVALIDATION    
+                                                if (resp[3]!=null) {//es por que se encontro beneficiario, y haya documentos presentados
+                                                    $('#js_doc').html('')    
+                                                    // $('#formulario').formValidation('removeField', 'documentos[]');
+                                                    $(resp[3]).each(function(i,d){
+                                                    	var check="";
+                                                    	$(resp[2]).each(function(i1,d1){
+                                        					if(d.iddocb==d1.iddocb){
+                                        						check="checked"
+                                        					}
+                                                    	})
+                                                    	
+                                                        $('#js_doc').append(
+                                                        `<div class="checkbox m-b-15">
+                                                            <label>
+                                                                <input value="${d.iddocb}" type="checkbox" name="documentos[]" ${check} class="doc-mod">
+                                                                    <i class="input-helper" ></i>${d.nombre}
+                                                            </label>
+                                                        </div>`    
+                                                        )
+                                                        m_cont_doc=d.length
+                                                    })
+                                                    $('#formulario').formValidation('addField','documentos[]');  
+
+                                                }else{
+                                                    $('#mensaje-ben').html('');
+                                                    $('#mensaje-ben').hide()
+                                                    $('#mensaje-ben').addClass('mensaje_usuenc_solt');
+                                                    $('#mensaje-ben').html('se ha encontrado persona registrada en el sistema').show()
+                                                    
+                                                    $('input[name="documentos[]"]').removeAttr('checked');    
+
+                                                    
+                                                    //es por que es una persona encontrada pero no beneficiario
+                                                    
+                                                     $('input[name="idben"]').val('')
+// 													 $('input[name="idper"]').val('')
+													 $('input[name="telefono[]"]').removeAttr('disabled');    
+													 
+													 $('input[name="documentos[]"]').removeAttr('checked');    
+// 													 $('input[name="telefono[]"]').val('');    
+													
+													 $('.data-per').removeAttr('disabled')
+													 $('.data-ben').removeAttr('disabled')
+													
+													
+// 													 $('#cedula').val(value)
+// 													 $('#mensaje-ben').html('').hide();
+                                                }     
+                                                EstadoDoc++;
+                                            }
+
+                                            // $('#formulario').formValidation('addField','documentos[]');   
+
+                                        },'json')
+                                    }
+                                    else{
+                                        EstadoEncontradoBeneficiario=false;
+                                        console.log('no encontrado')
+
+                                        // BandKeyup=false;
+                                        $('input[name="idben"]').val('')
+                                        $('input[name="idper"]').val('')
+                                        $('input[name="telefono[]"]').removeAttr('disabled');    
+                                        
+                                        $('input[name="documentos[]"]').removeAttr('checked');
+                                        var v_ci=$('input[name="ci"]').val()
+                                        var v_placa=$('input[name="placa"]').val()
+                                        
+                                        var b_ci=v_ci=="";
+                                        var b_placa=v_placa=="";
+                                        
+                                         
+                                        console.log('b_ci:',b_ci)
+                                        console.log('b_placa:',b_placa)
+//                                         console.log('reset_3')
+										//artifio para registrar telefonos en la solicitud
+                                        if(b_ci==false && b_placa==true){
+
+                                            $('input[name="telefono[]"]').val('');
+                                        }
+                                      
+
+                                        $('.data-per').removeAttr('disabled')
+                                        $('.data-ben').removeAttr('disabled')
+                                        // $('#select-genero').val("").trigger("chosen:updated")
+                                        // $('#ciCod').val("TJ").trigger("chosen:updated")
+                                        // $('#select-genero').chosen()
+
+
+                                        $('#cedula').val(value)
+                                        $('#mensaje-ben').html('').hide();
+                                        $('#mensaje-ben').removeClass ('mensaje_usuenc_solt');
+                                        // if(GBloqueoTel<MAX_TELEFONOS){
+                                        //     $('.addButton').removeAttr('disabled')
+                                        // }
+
+                                        // $('#formulario').formValidation('addField','telefono[]');     
+                                        // $('#formulario').formValidation('addField','documentos[]');   
+
+                                    }
+                                    
+                                })
+                            }
+
+                            $('body').on('keyup click','#cedula',function(e){
+                                
+//                             	var valueCi=$(this).val();
+                            	
+                            	console.log('1ro e: ',e)
+                                BandKeyup=false;
+                                EstadoTel=0;
+                                EstadoDoc=0;
+
+                                EstadoEncontradoBeneficiario=false;
+                                if(e.type=='keyup'){
+
+                                    console.log('keyup')
+                                 
+                                    campoCedulaGlobal=$(this).val()
+                                    // BandKeyup=true;
+                    
+                                    $.ajax({
+                                        url:"RestBeneficiarios/existeCi",
+                                        data:{
+                                            ci:campoCedulaGlobal
+                                        },
+                                        // type:"post", 
+                                        dataType:"json",
+                                        async:false,
+                                        cache:false,
+                                        success:function(resp)
+                                        {
+                                            EstadoEncontradoBeneficiario=resp.estado
+                                        },  
+                                        error:function(err){
+                                            alert('sin respuesta del servidor')
+                                        }
+
+                                    })
+
+                                    if(!EstadoEncontradoBeneficiario){
+                                        $('#mensaje-ben').html('');
+                                        $('#mensaje-ben').removeClass ('mensaje_usuenc_solt');
+                                        $('#mensaje-ben').hide()
+                                        $('#formulario').data('formValidation').resetForm(true);
+                                        $('#cedula').val(campoCedulaGlobal)
+                                    }else{
+//                                     	   $('.data-per').prop('disabled','disabled')
+                                    }
+                                }
+
+
+                                if(e.type=='click'){
+                                	resetearDatosBeneficiario();
+                                	resetearVehiculo();
+
+                                }
+
+                                
+//                                 if(valueCi==''){
+//                                 	$('.data-per').removeAttr('disabled')	
+//                                 }
+
+                            })
+                            
+                            function resetearDatosBeneficiario(){
+//                                 var vr_fechasolicitud=$('#js_fechasolicitud').val();
+//                                 console.log('fechasolicitud',$('#js_fechasolicitud').val())
+                                
+                                $('#select-genero').val("").trigger("chosen:updated")
+//                                 console.log('telefono-class reset_:')
+                                document.getElementsByClassName("telefono-class").value="";
+                                
+                                $('#formulario').find('.telefono-class').val('')
+                                $('#mensaje-ben').html('');
+                                $('#mensaje-ben').removeClass ('mensaje_usuenc_solt');
+                                $('#mensaje-ben').hide()
+                                $('input[name="documentos[]"]').removeAttr('checked');
+//                                 console.log('reset_4')
+                                $('#formulario').find('input[name="telefono[]"]').val('');  
+                                $('#formulario').formValidation('resetField', 'telefono[]');
+
+
+                                $('#formulario').data('formValidation').resetForm(true);
+                                $('#formulario')[0].reset();
+//                                 console.log('reset_5')
+                                $('body').find('input[name="telefono[]"]').val('');//resetea el numero de telefono  
+                                
+                                $('input[name="idben"]').val('')
+                                $('input[name="idper"]').val('')
+								
+                                //aqui se resetea los campos bloqueados
+                                $('.data-per').removeAttr('disabled')	
+                                $('.data-ben').removeAttr('disabled')	
+                                
+//                                 if (vr_fechasolicitud!=null || vr_fechasolicitud!='') {
+//                                     $('#js_fechasolicitud').val(vr_fechasolicitud)
+//                                 } 
+                                
+                                $('input[name="telefono[]"]').removeAttr('disabled')
+                                $('input[name="documentos[]"]').removeAttr('disabled')
+                                
+                                //cargar valores de kit
+                                $('body').find('#kitglpsi').val('1')
+                                $('body').find('#kitglpno').val('0')
+                            }
+                            
+                            function resetearVehiculo(){
+                                $('#mensaje-placa').html('').hide()
+                                $('#formulario').formValidation('resetField', 'placa');
+                                $('input[name="placa"]').val('')
+
+
+                                $('.dt-veh').removeAttr('disabled')
+
+                                $('#formulario').formValidation('resetField', 'tjeta_prioridad');
+                                $('input[name="tjeta_prioridad"]').val('')
+                                $('#formulario').formValidation('resetField', 'cilindrada');
+                                $('input[name="cilindrada"]').val('')
+                                $('#formulario').formValidation('resetField', 'color');
+                                $('input[name="color"]').val('')
+                                $('#formulario').formValidation('resetField', 'num_chasis');
+                                $('input[name="num_chasis"]').val('')
+                                $('#formulario').formValidation('resetField', 'num_motor');
+                                $('input[name="num_motor"]').val('')
+
+                                $('#formulario').formValidation('resetField', 'idtipv');
+                                $('#tipv').val('').trigger('chosen:updated');
+                                $('#formulario').formValidation('resetField', 'idmarcv');
+                                $('#marv').val('').trigger('chosen:updated');
+                                $('#formulario').formValidation('resetField', 'idmodv');
+                                $('#modv').val('').trigger('chosen:updated');
+                                
+                                $('#formulario').formValidation('resetField', 'tipoveh');
+                                $('input[name="tipoveh"]').val('')
+                                
+                                $('#formulario').formValidation('resetField', 'idtipoMotorVeh');
+                                $('#tipmv').val('').trigger('chosen:updated');
+                                $('#formulario').formValidation('resetField', 'idTipSv');
+                                $('#tipserv').val('').trigger('chosen:updated');
+                                $('#formulario').formValidation('resetField', 'combustible');
+                                var arrayChosen=[];
+                                $('#select-comb').val(arrayChosen);
+                                $('#select-comb').trigger('chosen:updated');
+
+                               //PARA TIPO MARCA
+                                $('#idtipmarc').html('');   
+                                $('#idtipmarc').html('<option value="" selected="selected">Tipo de Marca Vehículo</option>');   
+                                $("#idtipmarc").val($("#idtipmarc").find("option:first").val())
+                                $('#formulario').formValidation('resetField','idtipmarc');  
+                                $('#idtipmarc').val('').trigger('chosen:updated');
+                                //FIN PARA TIPO MARCA
+
+                                $('#formulario').formValidation('resetField', 'kitGlpSiNo');
+                                $('input[name="kitGlpSiNo"]').prop('checked',false);
+                                $('#formulario').formValidation('resetField', 'observaciones');
+                                $('#text-obs').val('')
+                                
+				 	 	  	    //cargar valores de kit
+                                $('#kitglpsi').val('1')
+                                $('#kitglpno').val('0')
+                            }
+                        </script>
+
+    <script type="text/javascript">
+        // $(document).ready(function() {
+
+            var meses = new Array("01", "02", "03","04", "05", "06", "07","08", "09", "10","11", "12");
+            var f= new Date();
+            var fecha= f.getDate()+ "/" + meses[f.getMonth()] +'/'+f.getFullYear();
+            console.log('date:',fecha)
+            document.getElementById('fechaCreacion').innerHTML=fecha;
+            // document.getElementById('fechaHidden').value=fecha;
+
+            $('#idtipmarc').chosen()
+            var isGestio2=$('body').find('#select-gestion option:selected').text();
+			
+//             alert(isGestio2)
+
+            $.getJSON('RestSolicitudes/opcionesVehiculo?gestion='+isGestio2,function(datos){
+                console.log('opcionesVehiculo: ',datos)
+                //var numS=datos.numSolt;
+                // alert('numS: '+numS)
+                //document.getElementById('numSolt').innerHTML=numS
+                //document.getElementById('numSoltHidden').value=numS
+
+                $(datos.tipoVehiculo).each(function(index,item){
+                    // console.log('tip: ',item)
+                    $('#tipv').append('<option value="'+item.idtipv+'">'+item.nombre+'</option>')
+                })
+                $('#tipv').chosen()
+                $(datos.marcaVehiculo).each(function(index,item){
+                    // console.log('tip: ',item)
+                    $('#marv').append('<option value="'+item.idmarcv+'">'+item.nombre+'</option>')
+                })
+                $('#marv').chosen()
+                $(datos.modeloVehiculo).each(function(index,item){
+                    // console.log('tip: ',item)
+                    $('#modv').append('<option value="'+item.idmodv+'">'+item.nombre+'</option>')
+                })
+                $('#modv').chosen()
+                $(datos.tipoMotor).each(function(index,item){
+                    // console.log('tip: ',item)
+                    $('#tipmv').append('<option value="'+item.idtipoMotorVeh+'">'+item.nombre+'</option>')
+                })
+                $('#tipmv').chosen()
+                $(datos.tipoServicio).each(function(index,item){
+                    // console.log('tip: ',item)
+                    $('#tipserv').append('<option value="'+item.idTipSv+'">'+item.nombre+'</option>')
+                })
+                $('#tipserv').chosen()
+                $(datos.combustibles).each(function(index,item){
+                    $('#select-comb').append('<option value="'+item.idcomb+'">'+item.nombre+'</option>')
+                })
+                $('#select-comb').chosen()
+            })
+          
+            
+            $('#formulario').find('#placa').on('click',function(){
+                // alert('ss')
+                
+                resetearVehiculo();
+                /*
+                $('#mensaje-placa').html('').hide()
+                $('#formulario').formValidation('resetField', 'placa');
+                $('input[name="placa"]').val('')
+
+
+                $('.dt-veh').removeAttr('disabled')
+
+                $('#formulario').formValidation('resetField', 'tjeta_prioridad');
+                $('input[name="tjeta_prioridad"]').val('')
+                $('#formulario').formValidation('resetField', 'cilindrada');
+                $('input[name="cilindrada"]').val('')
+                $('#formulario').formValidation('resetField', 'color');
+                $('input[name="color"]').val('')
+                $('#formulario').formValidation('resetField', 'num_chasis');
+                $('input[name="num_chasis"]').val('')
+                $('#formulario').formValidation('resetField', 'num_motor');
+                $('input[name="num_motor"]').val('')
+
+                $('#formulario').formValidation('resetField', 'idtipv');
+                $('#tipv').val('').trigger('chosen:updated');
+                $('#formulario').formValidation('resetField', 'idmarcv');
+                $('#marv').val('').trigger('chosen:updated');
+                $('#formulario').formValidation('resetField', 'idmodv');
+                $('#modv').val('').trigger('chosen:updated');
+                
+                $('#formulario').formValidation('resetField', 'tipoveh');
+                $('input[name="tipoveh"]').val('')
+                
+                $('#formulario').formValidation('resetField', 'idtipoMotorVeh');
+                $('#tipmv').val('').trigger('chosen:updated');
+                $('#formulario').formValidation('resetField', 'idTipSv');
+                $('#tipserv').val('').trigger('chosen:updated');
+                $('#formulario').formValidation('resetField', 'combustible');
+                var arrayChosen=[];
+                $('#select-comb').val(arrayChosen);
+                $('#select-comb').trigger('chosen:updated');
+
+               //PARA TIPO MARCA
+                $('#idtipmarc').html('');   
+                $('#idtipmarc').html('<option value="" selected="selected">Tipo de Marca Vehículo</option>');   
+                $("#idtipmarc").val($("#idtipmarc").find("option:first").val())
+                $('#formulario').formValidation('resetField','idtipmarc');  
+                $('#idtipmarc').val('').trigger('chosen:updated');
+                //FIN PARA TIPO MARCA
+
+                $('#formulario').formValidation('resetField', 'kitGlpSiNo');
+                $('input[name="kitGlpSiNo"]').prop('checked',false);
+                $('#formulario').formValidation('resetField', 'observaciones');
+                $('#text-obs').val('')
+                */
+
+            })
+            $('#marv').on('change',function(){
+                // alert('seleccion')
+                var idmarcv=$(this).val()
+                $('#idtipmarc').html('');   
+                //modificado como tipo de vehiculo asi como el ruat
+                // $('#idtipmarc').html('<option value="" selected="selected">Tipo de Marca Vehículo</option>');   
+                $('#idtipmarc').html('<option value="" selected="selected">Seleccione Tipo</option>');   
+                $("#idtipmarc").val($("#idtipmarc").find("option:first").val())
+                $('#idtipmarc').val('').trigger('chosen:updated');
+                
+                $('#formulario').formValidation('addField','idtipmarc');   
+                $('#formulario').formValidation('resetField','idtipmarc');  
+
+                // $('.dt-veh ').val('').trigger('chosen:updated');
+                // console.log(idmarcv=="")
+                // console.log(idmarcv==null)
+                if(idmarcv!=""){
+                    $.getJSON('RestSolicitudes/getTipoMarcaVehByMarca',{idmarcv:idmarcv},function(datos){
+                        console.log('respuesta: ',datos)
+                        $(datos[0]).each(function(index,item){
+                            // console.log('tip: ',item)
+                            $('#idtipmarc').append('<option value="'+item.idtipmarc+'">'+item.nombre+'</option>')
+                        })
+                        // $('#idtipmarc').chosen()
+                        $('#idtipmarc').trigger('chosen:updated');  
+                    })
+                }
+            })
+            // $(function(){
+                
+            // })
+        // });
+    </script>
+</body>
+</html>

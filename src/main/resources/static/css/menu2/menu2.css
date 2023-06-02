@@ -1,0 +1,155 @@
+/* * { */
+/* 	padding:0; */
+/* 	margin:0; */
+/* 	-webkit-box-sizing: border-box; */
+/* 	-moz-box-sizing: border-box; */
+/* 	box-sizing: border-box; */
+/* } */
+
+/* body {background:#FEFEFE;} */
+
+.menu_bar {
+	display:none;
+}
+
+.menu2 {
+	width: 100%;
+}
+
+.menu2 nav {
+	background:#000;
+	z-index:1000;
+/* 	max-width: 1000px; */
+	width:100%;
+	margin:0;
+/* 	margin:30px auto; */
+}
+
+.menu2 nav ul {
+	list-style:none;
+}
+
+.menu2 nav ul li {
+	display:inline-block;
+	position: relative;
+}
+
+.menu2 nav ul li:hover {
+	background:#c0392b;
+	transition: 0.7s;
+}
+
+.menu2 nav ul li a {
+	color:#fff;
+	display:block;
+	text-decoration:none;
+	padding: 7px;
+	font-size: 11px;
+}
+
+.menu2 nav ul li a span {
+	margin-right:12px;
+}
+
+.menu2 nav ul li:hover .children {
+	display:block;
+}
+
+.menu2 nav ul li .children {
+	display: none;
+	background:#011826;
+	position: absolute;
+	width: 150%;
+	z-index:1000;
+}
+
+.menu2 nav ul li .children li {
+	display:block;
+	overflow: hidden;
+	border-bottom: 1px solid rgba(255,255,255,.5);
+}
+
+.menu2 nav ul li .children li a {
+	display: block;
+}
+
+.menu2 nav ul li .children li a span {
+	float: right;
+	position: relative;
+	top:3px;
+	margin-right:0;
+	margin-left:10px;
+}
+
+.menu2 nav ul li .careta {
+	position: relative;
+	top:3px;
+	margin-left:10px;
+	margin-right:0px;
+}
+
+@media screen and (max-width: 800px) {
+	body {
+		padding-top:80px;
+	}
+	
+	.menu_bar {
+		display:block;
+		width:100%;
+		position: fixed;
+		top:0;
+		background:#ab182a;
+		z-index: 5;
+	}
+
+	.menu_bar .bt-menu {
+		display: block;
+		padding: 20px;
+		color: #fff;
+		overflow: hidden;
+		font-size: 25px;
+		font-weight: bold;
+		text-decoration: none;
+	}
+
+	.menu_bar span {
+		float: right;
+		font-size: 40px;
+	}
+
+	.menu2 nav {
+		width: 80%;
+		height: calc(100% - 80px);
+		position: fixed;
+		right:100%;
+		margin: 0;
+		overflow: scroll;
+ 		top: 80px;/*add*/
+	}
+
+	.menu2 nav ul li {
+		display: block;
+		border-bottom:1px solid rgba(255,255,255,.5);
+	}
+
+	.menu2 nav ul li a {
+		display: block;
+	}
+
+	.menu2 nav ul li:hover .children {
+		display: none;
+	}
+
+	.menu2 nav ul li .children {
+		width: 100%;
+		position: relative;
+	}
+
+	.menu2 nav ul li .children li a {
+		margin-left:20px;
+	}
+
+	.menu2 nav ul li .careta {
+		float: right;
+	}
+}

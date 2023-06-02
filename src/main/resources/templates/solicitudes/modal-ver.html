@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title></title>
+</head>
+<body>
+
+	<form id="formulario-ver" action="#"
+		method="post" data-fv-excluded="disabled"
+		>
+
+		<div class="modal fade" id="modal-ver" tabindex="-1" role="dialog"
+			data-backdrop="static" data-keyboard="false" 
+			style=" padding-left: 0;display: none;">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="card">
+						<div class="modal-header">
+                        	<p>
+                        	   <button  type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            	</button>
+                        	</p>
+							
+							<div class="row">
+								 <div class="col-md-2">
+                                    <h4 style="margin-top: 0px;"><b>SOLICITUD</b></br><small>Datos de Registro</small></h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <b>N�MERO DE SOLICITUD: </b><span id="numSolt_form"></span> 
+                                    <b style="margin-left: 7em;">FECHA DE REGISTRO: </b><span id="fechaCreacion_form"></span>
+                                    <b style="margin-left: 2em;">GESTION: </b><span id="s_gestion1_ver"></span>
+                                    
+                                </div>
+							</div>
+						</div>
+						<div class="modal-body">
+							<fieldset>
+								 <legend style="margin-bottom: 0px !important"><b>BENEFICIARIO</b></legend>
+								<div class="beneficiario-data">
+									<!-- .col-md-6*6>.form-group>(label.col-md-4.control-label>b{campo})+.col-md-6>.fg-line>input[type=text].form-control.mcss_input -->
+									<div class="row">
+				                        <div class="col-md-6">
+				                            <div class="form-group fg-float">
+				                            	<span class="fg-label">Beneficiario</span>
+				                                <div class="fg-line">
+				                                    <input  disabled="disabled" class="form-control fg-input" name="razonsocial" type="text" data-fv-notempty="true" data-fv-message="Ingrese Beneficiario porfavor"  maxlength="100" data-fv-stringlength-message="Solo 100 caracteres">
+				                                </div>
+				                                
+				                            </div>
+				                        </div>
+             				           	<div class="col-md-6">
+				                            <div class="form-group fg-float">
+				                            	<span class="fg-label">Cedula</span>
+				                                <div class="fg-line">
+				                                    <input  disabled="disabled" class="form-control fg-input" name="ci" type="text" data-fv-notempty="true" data-fv-message="Ingrese cedula porfavor">
+				                                </div>
+				                            </div>
+				                        </div>
+									</div>	
+									<div class="row">
+             				           	<div class="col-md-6">
+				                            <div class="form-group fg-float">
+				                            	<span class="fg-label">Direccion</span>
+				                                <div class="fg-line">
+				                                    <input  disabled="disabled" class="form-control fg-input" name="direccion" type="text" data-fv-notempty="true" data-fv-message="Ingrese direccion porfavor">
+				                                </div>
+				                            </div>
+				                        </div>
+             				           	<div class="col-md-6">
+				                            <div class="form-group fg-float">
+				                            	<span class="fg-label">Correo</span>
+				                                <div class="fg-line">
+				                                    <input  disabled="disabled" class="form-control fg-input" name="email" type="text" maxlength='40' data-fv-stringlength-message='Maximo 40 caracteres'>
+				                                </div>
+				                            </div>
+				                        </div>
+									</div>
+									<div class="row">
+
+             				           	<div class="col-md-6">
+				                            <div class="form-group fg-float">
+				                            	<span class="fg-label">Institucion</span>
+				                                <div class="fg-line">
+				                                    <input  disabled="disabled" class="form-control fg-input" name="institucion" type="text" maxlength='40' data-fv-stringlength-message='Maximo 40 caracteres'>
+				                                </div>
+				                            </div>
+				                        </div>
+
+             				           	<div class="col-md-6">
+				                            <div class="form-group fg-float">
+				                            	<span class="fg-label">Telefonos</span>
+				                                <div class="fg-line">
+				                                    <input  disabled="disabled" class="form-control fg-input" name="telefono" id="telefono" type="text" maxlength='100' data-fv-stringlength-message='Maximo 100 caracteres'>
+				                                </div>
+				                            </div>
+				                        </div>
+										
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="" class="col-md-12 control-label text-center"><b>Documentacion Recepcionada</b></label>
+											</div>
+										</div>										
+									</div>
+									<div class="row">
+										<div class="documentacion">
+											
+										</div>
+									</div>
+					
+								</div>
+							</fieldset>	
+							<br/>						
+							<fieldset>
+								<legend style="margin-bottom: 0px !important"><b>VEHICULO</b></legend>
+							  	<div class="vehiculo-data row">
+									<div class="col-md-6">
+										<div class="form-group fg-float">
+			                            	<span class="fg-label">Placa</span>
+			                                <div class="fg-line">
+			                                   <input disabled="disabled" type="text" class="form-control mcss_input" name="placa"> 
+			                                </div>
+			                            </div>
+									
+
+									</div>
+									<div class="col-md-6">
+										<div class="form-group fg-float">
+			                            	<span class="fg-label">Carnet Propiedad</span>
+			                                <div class="fg-line">
+			                                   <input disabled="disabled" type="text" class="form-control mcss_input" name="tjeta_prioridad"> 
+			                                </div>
+			                            </div>
+									</div>
+									
+									<div class="col-md-6">
+										<div class="form-group fg-float">
+			                            	<span class="fg-label">Cilindrada (CC)</span>
+			                                <div class="fg-line">
+			                                   <input disabled="disabled" type="text" class="form-control mcss_input" name="cilindrada"> 
+			                                </div>
+			                            </div>
+									</div>
+									
+									<div class="col-md-6">
+										<div class="form-group fg-float">
+			                            	<span class="fg-label">Color</span>
+			                                <div class="fg-line">
+			                                   <input disabled="disabled" type="text" class="form-control mcss_input" name="color"> 
+			                                </div>
+			                            </div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group fg-float">
+			                            	<span class="fg-label">Numero de Chasis</span>
+			                                <div class="fg-line">
+			                                   <input disabled="disabled" type="text" class="form-control mcss_input" name="num_chasis"> 
+			                                </div>
+			                            </div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group fg-float">
+			                            	<span class="fg-label">Numero de Motor</span>
+			                                <div class="fg-line">
+			                                   <input disabled="disabled" type="text" class="form-control mcss_input" name="num_motor"> 
+			                                </div>
+			                            </div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group fg-float">
+			                            	<span class="fg-label">Clase de Vechiculo</span>
+			                                <div class="fg-line">
+			                                   <input disabled="disabled" type="text" class="form-control mcss_input" name="tipoVeh" id="tipoVeh"> 
+			                                </div>
+			                            </div>
+									</div>	
+									<div class="col-md-6">
+										<div class="form-group fg-float">
+			                            	<span class="fg-label">Modelo de Vechiculo</span>
+			                                <div class="fg-line">
+			                                   <input disabled="disabled" type="text" class="form-control mcss_input" name="modeloVeh" id="modeloVeh"> 
+			                                </div>
+			                            </div>
+									</div>									
+									<div class="col-md-6">
+										<div class="form-group fg-float">
+			                            	<span class="fg-label">Marca de Vechiculo</span>
+			                                <div class="fg-line">
+			                                   <input disabled="disabled" type="text" class="form-control mcss_input" name="marcaVeh" id="marcaVeh"> 
+			                                </div>
+			                            </div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group fg-float">
+			                            	<span class="fg-label">Tipo de Vechiculo</span>
+			                                <div class="fg-line">
+			                                   <input disabled="disabled" type="text" class="form-control mcss_input" name="tipoMarcaVeh" id="tipoMarcaVeh"> 
+			                                </div>
+			                            </div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group fg-float">
+			                            	<span class="fg-label">Sistema Motor</span>
+			                                <div class="fg-line">
+			                                   <input disabled="disabled" type="text" class="form-control mcss_input"  name="sistemaMotor" id="sistemaMotor"> 
+			                                </div>
+			                            </div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group fg-float">
+			                            	<span class="fg-label">Tipo Servicio</span>
+			                                <div class="fg-line">
+			                                   <input disabled="disabled" type="text" class="form-control mcss_input" name="tipoServ" id="tipoServ"> 
+			                                </div>
+			                            </div>
+									</div>
+							 	</div>
+								<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="" class="col-md-12 control-label text-center"><b>Combustible</b></label>
+											</div>
+										</div>										
+									</div>
+							 	<div class="row">
+	                                <div id="js-comb"> 
+	                                   
+	                                </div>
+							 	</div>
+							 	
+							</fieldset>
+							<br/>
+                            <div class="row">
+                                <!-- <br> -->
+                                <div class="col-md-12">
+                                    <div class="form-group fg-float">
+                                        <div class="fg-line">
+                                        <span class="fg-label"><b>Observaciones de Solicitud</b></span>
+                                            <textarea  disabled="disabled" class="form-control fg-input" id="observaciones" name="observaciones"  maxlength="300" style="margin-top: 7px">                                    
+                                            </textarea>
+                                        </div>
+                                        
+                                    </div>    
+                                </div>  
+                                
+                            </div>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" id="btnAdicionarConfirmacion"
+								class="btn btn-primary waves-effect">Imprimir</button>
+							<button type="button" class="btn btn-danger waves-effect"
+								data-dismiss="modal">Cancelar</button>
+						</div>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+	</form>
+	<script type="text/javascript">
+		var isGestion=$('body').find('#select-gestion option:selected').text();
+        $('body').find('#s_gestion1_ver').html(isGestion);
+	
+		$.getJSON('RestSolicitudes/Ver',{idsolt:idsoltVer},function(datos){
+			console.log('data:',datos)
+			
+			$('body').find('#numSolt_form').html(datos[0].numSolt)	
+			$('body').find('#fechaCreacion_form').html(datos[0].fecha)
+			
+			listaComb=datos[3]
+			$('.beneficiario-data').loadJSON(datos[0].persona)
+			$('input[name="ci"]').val(datos[0].persona.ci+' '+datos[0].persona.ciCod)
+			$('input[name="institucion"]').val(datos[0].persona.beneficiario.institucion)
+			$('#telefono').val(datos[1].listaTelefonos)
+			// $('.vehiculo-data').loadJSON(resp)
+			$('.documentacion').html('')
+			$(datos[2]).each(function(i,t){
+				var check="",checkf=""
+				$(datos[0].persona.beneficiario.documentos).each(function(i,y){
+					if(t.iddocb==y.iddocb){
+						check="checked"
+					}
+					// return false
+				})
+				if(check==""){
+					checkf="checked"
+				}
+				$('.documentacion').append(
+					`<div class="">
+						<div class="col-md-6">
+								${t.nombre}
+						</div>
+						<div class="col-md-6">
+							SI <input type="checkbox" ${check} disabled="disabled">
+							NO <input type="checkbox" ${checkf} disabled="disabled">	
+						</div>
+					</div>`
+				);
+			})
+			$('.vehiculo-data').loadJSON(datos[0].vehiculo)
+			
+			$('#tipoVeh').val(datos[0].vehiculo.tipoVehiculo.nombre)//clase
+			$('#modeloVeh').val(datos[0].vehiculo.modeloVehiculo.nombre)
+			$('#marcaVeh').val(datos[0].vehiculo.marcaVehiculo.nombre)
+			$('#tipoMarcaVeh').val(datos[0].vehiculo.tipoveh) //tipovehiculo
+			$('#tipoServ').val(datos[0].vehiculo.tipoServicio.nombre)
+			$('#sistemaMotor').val(datos[0].vehiculo.tipoMotor.nombre)
+
+			$(listaComb).each(function(i,tg){
+                var checked1="",checked2="";
+                $(datos[0].vehiculo.combustibleVehiculo).each(function(j,item){
+                    if (tg.idcomb==item.idcomb) {
+                        checked1="checked";
+                    }
+                })
+                if(checked1==""){
+					checked2="checked"
+				}
+                $('#js-comb').append(`
+                    <div class="col-md-6">
+                        <div class="fg-line">${tg.nombre}</div>
+                    </div>
+                    <div class="col-md-6">
+                        <span style="">SI</span> 
+                        <input type="checkbox" disabled="disabled" class="" ${checked1}>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="">NO</span> 
+                        <input type="checkbox" disabled="disabled" class="" ${checked2}>
+                    </div>
+                `)
+            })
+            
+            var checked3="",checked4=""
+            if (datos[0].vehiculo.kitGlpSiNo==1) {
+            	checked3="checked";
+            }else{
+            	checked4="checked";
+            }
+            $('#js-comb').append(`
+               <div class="col-md-6">
+                   <div class="fg-line">KIT GLP</div>
+               </div>
+               <div class="col-md-6">
+                   <span style="">SI</span> 
+                   <input type="checkbox" disabled="disabled" class="" ${checked3}>
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   <span style="">NO</span> 
+                   <input type="checkbox" disabled="disabled" class="" ${checked4}>
+               </div>
+           `)
+           
+           
+           $('#observaciones').html('')
+           $('#observaciones').html(datos[0].observaciones)
+		})
+
+	</script>
+</body>
+</html>

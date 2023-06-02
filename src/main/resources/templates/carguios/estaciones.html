@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<style>
+.selected {
+	background-color: #B0BED9 !important;
+}
+</style>
+<style>
+	.selected {
+		background-color: #B0BED9;
+	}
+	
+	.imagen-contenedor {
+		width: 100%;
+		overflow: hidden;
+		}
+		
+		.imagen-contenedor img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		}
+	
+	.card_eess{
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+		font-family: "Poppins", Arial, sans-serif;
+		cursor: pointer;
+		border-radius: 5px;
+	}
+	.card_eess_title{
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+		font-family: "Poppins", Arial, sans-serif;
+/* 		cursor: pointer; */
+		border-radius: 5px;
+	}
+	.card_eess_title_eess{
+		box-shadow: 0 4px 8px 0 rgb(201 201 201 / 92%);
+		font-family: "Poppins", Arial, sans-serif;
+		border-radius: 5px;
+	}
+	.card_body_eess{
+		display: flex;
+		color:#000;
+		background: white;
+		margin: 5px;
+	    padding: 10px 10px;
+	    border-radius: 5px;
+	}
+
+	.card_body_eess:hover{
+		background-color: #ffab22ed;
+		color: #fff;
+		transition: all 0.2s ease;
+	/* 	transform: scale(1.1); */
+	}
+	.card_body_eess_title{
+		display: flex;
+/* 		color:#000; */
+		color:#fff;
+/* 		background: #f3f3f3; */
+		background: black; 
+		padding: 5px;
+	    border-radius: 5px;
+	}
+	.card_body_eess_title_eess{
+		display: flex;
+/* 		color:#000; */
+		color:#000;
+		background: #f3f3f3; 
+/* 		background: black;  */
+		padding: 5px;
+	    border-radius: 5px;
+	}
+	.card_body_eess_title:hover{
+		background-color: black; 
+		color: #fff;
+		transition: all 0.2s ease;
+	/* 	transform: scale(1.1); */
+	}
+	.card_body_eess_title_eess:hover{
+/* 		background-color: #ebebeb;  */
+		color: #000;
+		transition: all 0.2s ease;
+	/* 	transform: scale(1.1); */
+	}
+
+	
+	
+
+	/* Add some padding inside the card container */
+	.btn-personalizado {
+		background: rgb(235 150 18);
+		color: #f0f2f5;
+		height: 40px;
+		border: none;
+		width: 100%;
+	}
+
+	.btn-personalizado:hover {
+		background: #000000;
+		color: #f0f2f5;
+		transition: 0.8s;
+	}
+
+	.img-card-eess {
+		width: 50px;
+	}
+	.container-eess{
+		display: flex;
+		flex-wrap:wrap;
+		flex-direction: column;
+	}
+	.container-eess_title{
+		display: flex;
+		flex-wrap:wrap;
+		flex-direction: column;
+	}
+	.container-eess_title_eess{
+		display: flex;
+		flex-wrap:wrap;
+		flex-direction: column;
+	}
+	.data-eess{
+		 word-break:break-all;
+		 padding: 0 20px 0 20px;
+		 flex-grow: 1;
+	}
+	.data-eess_title{
+		 word-break:break-all;
+		 padding: 5px;
+		 flex-grow: 1;
+	}
+
+</style>
+</head>
+<body>
+	<form name="formulario" role="form" id="formulario" method="post" action="RestCarguio/adicionar"
+		enctype="multipart/form-data" data-fv-excluded="disabled">
+
+		<div class="modal fade" id="modalAdicionar" tabindex="-1"
+			role="dialog" data-backdrop="static" data-keyboard="false"
+			aria-hidden="true" style="display: none; padding-left: 0">
+
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="card">
+						<div class="modal-header">
+
+							<div class="row">
+								<div class="col-md-3">
+									<b>EESS</b></a>
+								</div>
+								<div class="col-md-9" style="text-align: right;">
+									<div class="opciones_btn_modal"></div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-body">
+							<div id="div_put"></div>
+<!-- 							<input type="hidden" name="id" value="">  -->
+<!-- 							<input type="hidden" name="codigo" value="">  -->
+<!-- 							<input type="hidden" name="estado" value="1"> -->
+							<input type="hidden" name="descripcion" value="archiv csv">
+							
+							<fieldset>
+								<legend style="margin-bottom: 0px !important">
+									<b>ESTACION DE SERVICIO</b>
+								</legend>
+
+<!-- 								<div class="row"> -->
+<!-- 									<div class="col-md-12"> -->
+<!-- 										<div class="form-group fg-float"> -->
+<!-- 											<span class="fg-label">Nombre </span> -->
+<!-- 											<div class="fg-line"> -->
+<!-- 												<input placeholder="Ingrese nombre completo " -->
+<!-- 													class="form-control fg-input data-per field_css" -->
+<!-- 													name="nombre" type="text" data-fv-notempty="true" -->
+<!-- 													data-fv-message="Ingrese nombre porfavor" maxlength="100" -->
+<!-- 													data-fv-stringlength-message="Solo 100 caracteres"> -->
+<!-- 											</div> -->
+
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+								
+								
+								<div class="row">
+			                        <div class="col-md-12">
+			                            <label for="" class=""><b>SUBIR ARCHIVO..</b></label>
+			                            <!-- <input class="file"  id="fileExcel" name="archivo" type="file" data-fv-file="true" data-fv-file-extension="csv" data-fv-file-type="image/jpeg,image/png" data-fv-file-maxsize="2097152" data-fv-file-message="The selected file is not valid"> -->
+		   		                        <div class="form-group fg-float">
+		                                	<div class="fg-line">
+      			                           		 <input class="file"  id="fileExcel" name="archivo" type="file" data-fv-file="true" data-fv-file-extension="csv" data-fv-file-message="El archivo seleccionado no es valido" data-fv-notempty="true" data-fv-message="Requiere que seleccione Documento" >
+			                                </div>
+			                            </div>
+			                            <h5 style="text-align: center;"><b>TOMAR EN CUENTA (MUY IMPORTANTE):</b></h5>
+			                            <div class="row">
+			                            	<div class="col-md-12">
+			                            		<p style="text-transform: uppercase;">- El Archivo a seleccionar debe ser en formato "archivo.csv" (Delimitado por comas)</p>
+			                            		<p style="text-transform: uppercase;">- El Archivo debe cumplir exactamente el mismo emcabezado y orden mostrado en el Diseño.</p>
+			                            		<p style="text-transform: uppercase;">- Tomar en cuenta que la <b>Estación de Servicio</b> del carguio a subir este registrada en el Sistema 
+			                            		</p>
+			                            	</div>
+			                            	<div class="col-md-12 ">
+			                            		<div class="imagen-contenedor">
+			                            			<img src="../img/gnv/formatoCarguio.PNG" width="850px" alt=""
+			                            			th:src="@{/img/gnv/formatoCarguio.PNG}">
+			                            		</div>
+			                            		
+			                            	</div>
+			                            	
+			                            </div>
+			                        </div>
+							
+								</div>
+
+							</fieldset>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	<ol class="breadcrumb">
+		<li class="active"><b>FONDO ROTATORIO EESS</b></li>
+	</ol>
+
+	<div class="contenido_gestion">
+
+		<div class="panel-body" style="margin-top: -30px">
+			<div class="row">
+
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="container-eess_title">
+							<div class="card_eess_title">
+					    		<div class="card_body_eess_title">
+									<div class="data-eess_title">
+										<h5>
+											<b>RESUMEN GENERAL :</b>
+										</h5>
+										<div class="data-body-eess">
+											<b>GESTION: </b><span><span class="resumen_anio"></span><br>
+											<b>TOTAL: </b><span></span><span class="resumen_total"> </span> <b> Bs.</b></span><br>
+											<b>VOLUMEN: </b><span><span class="resumen_volumen"> </span> <b> M3.</b></span><br>
+											<b>FONDO ROTATORIO: </b><span><span class="resumen_ffrr"> </span> <b> Bs.</b></span>
+										</div>
+										
+									</div>
+
+								</div>
+							</div>
+					</div>
+				</div>	
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="container-eess">
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="row" style="margin-bottom: 5px;margin-top: 5px">
+						<div class="col-md-12">
+							<div class="container-eess_title_eess">
+									<div class="card_eess_title_eess">
+							    		<div class="card_body_eess_title_eess">
+											<div class="data-eess_title">
+												<h5>
+													<b>DETALLE GENERAL EESS: <span class="resumen_det_eess"></span></b>
+												</h5>
+												<div class="data-body-eess">
+													<b>GESTION: </b><span><span class="resumen_anio_eess"></span><br>
+													<b>TOTAL: </b><span></span><span class="resumen_total_eess"> </span> <b> Bs.</b></span><br>
+													<b>VOLUMEN: </b><span><span class="resumen_volumen_eess"> </span> <b> M3.</b></span><br>
+													<b>FONDO ROTATORIO: </b><span><span class="resumen_ffrr_eess"> </span> <b> Bs.</b></span>
+												</div>
+												
+											</div>
+		
+										</div>
+									</div>
+							</div>
+						</div>
+						
+
+					</div>
+					<div class="row" style="margin-bottom: 10px;margin-top: 10px">
+						<div class="col-md-3 col-xs-12">
+							<input type="text" id="js_filtro" name=""
+								class="form-control_filtro unput-sm"
+								placeholder=" Buscar estacion..">
+						</div>
+
+						<div class="col-md-5 col-xs-12" style="text-align: right;">
+							<div class="opciones_estado"></div>
+
+							<label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="activos" value="1"
+								checked="checked"> <i class="input-helper"></i>activos
+							</label> <label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="bajas" value="0"> <i
+								class="input-helper"></i>bajas
+							</label>
+						</div>
+						<div class="col-md-4 col-xs-12" style="text-align: right;">
+							<div>
+								<!-- 								<button id="btnAdicionar" class="btn btn-success  btn-xs btn-sm waves-effect" style="margin: 0 2px;">Nuevo</button> -->
+								<span class="opciones_btn_nuevo"></span> <span
+									class="opciones_btn_eliminar"></span> <span
+									class="opciones_btn_habilitar"></span>
+							</div>
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 table-responsive">
+							<table id="table" class="table  table-condensed"
+								style="width: 100%; background: white;">
+								<thead>
+									<tr>
+										<th width="200px">#</th>
+										<th>ESTACION DE SERVICIO</th>
+										<th>MES</th>
+										<th>AÑO</th>
+										<th>TOTAL Bs</th>
+										<th>VOLUMEN M3</th>
+										<th>FONDO ROTATORIO Bs</th>
+									</tr>
+								</thead>
+								<tbody>
+		
+								</tbody>
+							</table>
+		
+							
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		var GOPCION=""
+		var result=Get_Opciones(null);
+		var GID=""
+		var GSEARCH=""
+		var GESTADO='';
+		var nameEntityEstacion="RestEstacion"
+		var nameEntity="RestCarguio"
+		//eventos
+		var GDATO="";
+		var GIDE=-1;
+	    function ExisteOpcion(opc){
+	        // alert('entro comparar')
+	        var resultado=false;
+	        for (var i = 0; i < result.AccionesUser.length; i++) {
+// 			console.log('for_: ',result.AccionesUser[i]);
+	            if(result.AccionesUser[i].codigo==opc){
+	                resultado=true;         
+	            }
+	        }
+	        // console.log('result_dentro:',resultado)              
+	        return resultado;
+	    }
+		
+	    
+		//     var tipos = ['pdf','xls','xlsx','csv'];
+		//     iniciarFileInput();
+
+	    function iniciarFileInput(){
+// 	    	console.log('url:',$('#fileExcel'))
+	
+	        $('#fileExcel').fileinput({
+	            language:'es',
+	            showUpload: false,
+	            showCaption: false,
+	            showCancel: false,
+	            allowedFileExtensions : tipos,
+	            // initialPreview: [
+	            //     '<img src="resources/archivos/fotos/user.png" class="file-preview-image" alt="USER" title="USUARIO" width="200px;">',
+	            // ],
+	            previewFileType: "image",
+	            browseClass: "btn btn-success",
+	            browseLabel: "Buscar Archivo",
+	            // browseLabel: "Buscar",
+	            browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+	            removeClass: "btn btn-danger",
+	            removeLabel: "Eliminar Archivo",
+	            // removeLabel: "Quitar Imagen",
+	            removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+	            uploadClass: "btn btn-info",
+	
+	        })
+	        
+	    }
+		
+	    
+	    
+		GSEARCH=$('#js_filtro').val()
+		GESTADO=$('input[name="iestado"]:checked').val();
+		
+		
+		listarTable()
+		$('#js_filtro').on('keyup',function(){
+			GSEARCH=$(this).val()
+// 			console.log(GSEARCH)
+			listarEESS()
+		})
+		
+
+
+        $('input[name="iestado"]').on('change',function(){
+        	GESTADO=$('input[name="iestado"]:checked').val();
+        	GSEARCH=$('#js_filtro').val()
+        	listarEESS()
+//             $('#example').dataTable().fnDraw('page');
+        	setButtonCrud(GESTADO)
+        	GDATO="";//para que al momento de eliminar o habilitar se tenga que seleccionar un registro de la tabla
+
+        })
+	
+		
+
+
+
+		setButtonCrud(GESTADO)
+		function setButtonCrud(estado) {
+			if (estado==1) {
+		 	    if(ExisteOpcion('adicionar')){
+			        $('.opciones_btn_nuevo').html(`<button id="btnAdicionar" class="btn btn-success  btn-xs btn-sm waves-effect " onclick="funtNewFormModal()" style="margin: 0 2px;">Nuevo</button>`)  
+			    }
+//		 	    if(ExisteOpcion('modificar')){
+//	 	       	 	$('.opciones_btn').append(`<button id="btnEditar" class="btn btn-warning  btn-xs btn-sm waves-effect"  style="margin: 0 2px;">Editar</button>`)  
+//	 	    	}
+			    if(ExisteOpcion('eliminar')){
+			    	$('.opciones_btn_habilitar').html('')
+					$('.opciones_btn_eliminar').html(`<button id="btnEliminar" class="btn btn-danger  btn-xs btn-sm waves-effect" style="margin: 0 2px;" onclick="funtDeleteRow()">Eliminar</button>`)  
+			    }
+			}else{
+			    if(ExisteOpcion('habilitar')){
+			    	$('.opciones_btn_nuevo').html('')
+			    	$('.opciones_btn_eliminar').html('')
+			        $('.opciones_btn_habilitar').html(`<button id="btnHabilitar" class="btn btn-info  btn-xs btn-sm waves-effect" style="margin: 0 2px;" onclick="funtUpdateRow()">Habilitar</button>`)  
+			    }
+			}
+		}
+		
+		
+	  //INICIO QUERY PRINCIPAL
+// 		$(function() {
+
+		$('#myTab a:first').tab('show')
+		
+		
+		var table = $('#table');
+		//tablaGNV = $('.table-gnv').DataTable();
+		
+
+			function listarTable(){
+// 				var valor_busqueda=valor
+				$('#table > tbody ').html('')
+	            $.ajax({
+	                url:nameEntity,
+	                type:'get',
+	                data:{
+	                	anio:$('body').find('#select-gestion option:selected').text()
+	                },
+	                contentType: "application/json",
+	                dataType:'json',
+	                success:function(resp){
+// 	                	console.log("DETALLE LIST GENERAL:",resp)
+	                	var GENERAL_DETALLE="";
+	                	if(resp[1].length!=0){
+	                		GENERAL_DETALLE=resp[1];
+//Agregando al detalle general
+		                	
+		    				const item_total =GENERAL_DETALLE[0].total;
+		    				const item_vol =GENERAL_DETALLE[0].volumen;
+		    				const item_ffrr =GENERAL_DETALLE[0].fondorotatorio;
+// 		    				console.log('item_total:',item_total)
+		    				const opciones2 = {
+		    				  style: "decimal",
+		    				  useGrouping: true,
+		    				  minimumFractionDigits: 2,
+		    				  maximumFractionDigits: 2,
+		    				};
+	
+	
+		    				const cv_total = item_total.toLocaleString("es-BO", opciones2);
+		    				const cv_vol = item_vol.toLocaleString("es-BO", opciones2);
+		    				const cv_ffrr = item_ffrr.toLocaleString("es-BO", opciones2);
+		                	
+// 		                	console.log(GENERAL_DETALLE[0].anio)
+		                	$('.resumen_anio').html(GENERAL_DETALLE[0].anio);
+		                	$('.resumen_total').html(cv_total);
+		                	$('.resumen_volumen').html(cv_vol);
+		                	$('.resumen_ffrr').html(cv_ffrr);
+		                	
+		                	//Agregando a la lista de eess
+	 						console.log("listaA:",resp)
+	                	}
+	                	
+	                	
+
+		                	
+							$('.container-eess').html('')
+							
+							if(resp[0].length!=0){
+	 						 $.each(resp[0], function(i, item) {
+	 								addRowLastModel(item)
+
+							 });
+	                		}else{
+	                			if(resp[1].length!=0){
+	                				addRowLastModel(null)
+	                			}
+	                			
+	                		}
+
+ 	
+	                },
+	                error:function(err){
+	                    alert('sin respuesta del servidor')
+	                }
+	            })	
+			}
+			
+// 			function listarTable(){
+// // 				var valor_busqueda=valor
+// 				$('#table > tbody ').html('')
+// 	            $.ajax({
+// 	                url:nameEntity,
+// 	                type:'get',
+// 	                data:{
+// 	                	anio:$('body').find('#select-gestion option:selected').text()
+// 	                },
+// 	                contentType: "application/json",
+// 	                dataType:'json',
+// 	                success:function(resp){
+	                	
+	                	
+
+	    				
+// 	                	console.log(resp)
+// 	                	if(resp[1].length!=0){
+// 	                		var GENERAL_DETALLE=resp[1];
+	                		
+// 	                	}
+	                	
+	                	
+// 	                	if(resp[0].length!=0){
+// 		                	//Agregando al detalle general
+		                	
+// 		    				const item_total =GENERAL_DETALLE[0].total;
+// 		    				const item_vol =GENERAL_DETALLE[0].volumen;
+// 		    				const item_ffrr =GENERAL_DETALLE[0].fondorotatorio;
+// 		    				console.log('item_total:',item_total)
+// 		    				const opciones2 = {
+// 		    				  style: "decimal",
+// 		    				  useGrouping: true,
+// 		    				  minimumFractionDigits: 2,
+// 		    				  maximumFractionDigits: 2,
+// 		    				};
+	
+	
+// 		    				const cv_total = item_total.toLocaleString("es-BO", opciones2);
+// 		    				const cv_vol = item_vol.toLocaleString("es-BO", opciones2);
+// 		    				const cv_ffrr = item_ffrr.toLocaleString("es-BO", opciones2);
+		                	
+// 		                	console.log(GENERAL_DETALLE[0].anio)
+// 		                	$('.resumen_anio').html(GENERAL_DETALLE[0].anio);
+// 		                	$('.resumen_total').html(cv_total);
+// 		                	$('.resumen_volumen').html(cv_vol);
+// 		                	$('.resumen_ffrr').html(cv_ffrr);
+		                	
+// 		                	//Agregando a la lista de eess
+// 	 						console.log("listaA:",resp)
+// 							$('.container-eess').html('')
+// 	 						 $.each(resp[0], function(i, item) {
+// 	 								addRowLastModel(item)
+
+// 							 });
+// 	                	}
+
+ 	
+// 	                },
+// 	                error:function(err){
+// 	                    alert('sin respuesta del servidor')
+// 	                }
+// 	            })	
+// 			}
+
+
+			function listarEESS() {
+// 				var valor_busqueda=valor
+				$('#table > tbody ').html('')
+				$('.resumen_det_eess').html('');
+               	$('.resumen_anio_eess').html('');
+               	$('.resumen_total_eess').html('');
+               	$('.resumen_volumen_eess').html('');
+               	$('.resumen_ffrr_eess').html('');
+				
+	            $.ajax({
+	                url:nameEntity+"/carguioseess",
+	                type:'get',
+	                data:{
+	                	search:GSEARCH,
+	                	status:GESTADO,
+	                	anio:$('body').find('#select-gestion option:selected').text(),
+	                	id:GIDE
+	                },
+	                contentType: "application/json",
+	                dataType:'json',
+	                success:function(resp){
+//  						console.log("listacon detalle_eess:",resp)
+
+ 						
+ 						var GENERAL_DETALLE_EESS="";
+	                	if(resp[1].length!=0){
+	                		GENERAL_DETALLE_EESS=resp[1];
+	                		
+	                	}
+	                	
+	                	
+	                	if(resp[0].length!=0){
+		                	//Agregando al detalle general
+		                	
+		    				const item_total_eess =GENERAL_DETALLE_EESS[0].total;
+		    				const item_vol_eess =GENERAL_DETALLE_EESS[0].volumen;
+		    				const item_ffrr_eess =GENERAL_DETALLE_EESS[0].fondorotatorio;
+// 		    				console.log('item_total:',item_total_eess)
+		    				const opciones2_eess = {
+		    				  style: "decimal",
+		    				  useGrouping: true,
+		    				  minimumFractionDigits: 2,
+		    				  maximumFractionDigits: 2,
+		    				};
+	
+	
+		    				const cv_total_eess = item_total_eess.toLocaleString("es-BO", opciones2_eess);
+		    				const cv_vol_eess = item_vol_eess.toLocaleString("es-BO", opciones2_eess);
+		    				const cv_ffrr_eess = item_ffrr_eess.toLocaleString("es-BO", opciones2_eess);
+		                	
+// 		                	console.log(GENERAL_DETALLE_EESS[0].anio)
+		                	$('.resumen_det_eess').html(GENERAL_DETALLE_EESS[0].nombreestacion);
+		                	$('.resumen_anio_eess').html(GENERAL_DETALLE_EESS[0].anio);
+		                	$('.resumen_total_eess').html(cv_total_eess);
+		                	$('.resumen_volumen_eess').html(cv_vol_eess);
+		                	$('.resumen_ffrr_eess').html(cv_ffrr_eess);
+		                	
+		                	//Agregando a la lista de eess
+// 	 						console.log("listaA:",resp)
+// 							$('.container-eess').html('')
+// 	 						 $.each(resp[0], function(i, item) {
+// 	 								addRowLastModel(item)
+
+// 							 });
+	                	}
+ 						
+ 						
+ 						
+// 						$('.container-eess').html('')
+ 						 $.each(resp[0], function(i, item) {
+ 								addRowLastTable(item)
+
+						 });
+ 	
+	                },
+	                error:function(err){
+	                    alert('sin respuesta del servidor')
+	                }
+	            })	
+			}
+			
+
+
+				
+// 			})//FIN QUERY PRINCIPAL
+			
+
+			//click en la tabla
+			$('#table tbody').on( 'click dblclick', 'tr', function (e) {
+				
+				if(e.type=='dblclick'){//mostramos el modal para el CRUD
+					console.log($(this).find("td:eq(1)").text());
+					
+					addDisabledForm()
+					
+					opcionesCrudModal();
+					getEntityId()
+	        	    $('body').css('padding-right','0px !important')
+	          		$('#modalAdicionar').modal('show');
+				}
+				
+				console.log("GESTADO:",GESTADO)
+// 				console.log('event?? ', e);
+				var row = $(this).closest('tr');
+// 				console.log('row:',row);
+				var idr = parseInt(row.find('.idhidden').val(), 10);
+// 				console.log('idr:',idr);
+          		 if ( $(this).hasClass('selected') ) {
+                       $(this).removeClass('selected');
+                       GDATO=""
+                  }
+                  else {
+                      $('#table tr.selected').removeClass('selected');
+                      $(this).addClass('selected');
+                      
+           	          	 GDATO=$(this).find("td:eq(0)").text();
+//                    console.log('GDATO:',GDATO);
+                      
+                  }
+
+				GID=idr
+// 				console.log('GID:',GID);
+			})
+			
+			
+						
+// 			$('#table tbody').on( 'dblclick', 'tr', function (){
+				
+// 				console.log($(this).find("td:eq(1)").text());
+			
+// 				addDisabledForm()
+// 				opcionesCrudModal();
+// 				getEntityId()
+        	        
+//           		$('#modalAdicionar').modal('show');
+// 			})
+			
+// 			$('body').find('.btnAdicionar').on( 'click',function(){
+				
+// 				$('.field_css').removeAttr('disabled') 
+// 				opcionesNuevo()
+//        			$('#modalAdicionar').modal('show');
+// 			})
+			function JsonDataForm() {
+				var serialized = $('#formulario').serializeArray();
+		        var s = '';
+		        var data = {};
+		        for(s in serialized){
+		            data[serialized[s]['name']] = serialized[s]['value']
+		        }
+
+// 		        console.log(JSON.stringify(data));
+		        return JSON.stringify(data);
+			}
+			
+			function addRowLastModel(item) {
+// 				$('.container-eess').html('')
+				if(item!=null){
+// 					console.log("EESS_:",item)
+					var nombre_eess=item.nombreestacion;
+
+
+
+					if(nombre_eess==null)nombre_eess=""
+				    $('.container-eess').append(`
+					<div class="card_eess" accesskey="${item.idest}"  onclick="mostrarhistorial(${item.idest})" >
+			    		<div class="card_body_eess data_eess_${item.idest}">
+							<img th:src="@{/img/gnv/estacion3.png}" src="img/gnv/estacion3.png" alt="Avatar" style=""
+								class="img-card-eess">
+							<div class="data-eess">
+								<h4>
+									<b>EESS ${nombre_eess}</b>
+								</h4>
+
+							</div>
+							<!--
+							<button type="submit" id="" class="btn-personalizado" onclick="mostrarhistorial(${item.id})">SUBIR DATOS</button>
+							-->
+						</div>
+					</div>
+					 `)
+				}
+				else{
+						var nombre_eess=""
+					    $('.container-eess').append(`
+						<div class="card_eess" accesskey="-1"  onclick="mostrarhistorial(-1)" >
+				    		<div class="card_body_eess data_eess_-1">
+								<img th:src="@{/img/gnv/estacion3.png}" src="img/gnv/estacion3.png" alt="Avatar" style=""
+									class="img-card-eess">
+								<div class="data-eess">
+									<h4>
+										<b>EESS ${nombre_eess}</b>
+									</h4>
+
+								</div>
+							</div>
+						</div>
+						 `)
+				}
+			    
+			    
+			}
+			
+			
+// 			function addRowLastModel(item) {
+// 				console.log("EESS_:",item)
+// 				var nombre_eess=item.nombreestacion;
+// // 				console.log("nombre_eess:",nombre_eess)
+// // 				if(nombre_eess==null)nombre_eess="NO ESPECIFICADO"
+// 				const item_total =item.total;
+// 				const item_vol =item.volumen;
+// 				const item_ffrr =item.fondorotatorio;
+// //					console.log(numeroBolivianos)
+// 				const opciones2 = {
+// 				  style: "decimal",
+// 				  useGrouping: true,
+// 				  minimumFractionDigits: 2,
+// 				  maximumFractionDigits: 2,
+// 				};
+
+
+// 				const cv_total = item_total.toLocaleString("es-BO", opciones2);
+// 				const cv_vol = item_vol.toLocaleString("es-BO", opciones2);
+// 				const cv_ffrr = item_ffrr.toLocaleString("es-BO", opciones2);
+
+// 				if(nombre_eess==null)nombre_eess=""
+// 			    $('.container-eess').append(`
+// 				<div class="card_eess" accesskey="${item.id}"  onclick="mostrarhistorial(${item.id})" >
+// 		    		<div class="card_body_eess data_eess_${item.id}">
+// 						<img th:src="@{/img/gnv/estacion3.png}" src="img/gnv/estacion3.png" alt="Avatar" style=""
+// 							class="img-card-eess">
+// 						<div class="data-eess">
+// 							<h4>
+// 								<b>EESS ${nombre_eess}</b>
+// 							</h4>
+// 							<div class="data-body-eess">
+// 								<b>AÑO: </b><span>${item.anio} </span><br>
+// 								<b>TOTAL: </b><span>${cv_total} <b>Bs.</b></span><br>
+// 								<b>VOLUMEN: </b><span>${cv_vol} <b>M3.</b></span><br>
+// 								<b>FONDO ROTATORIO: </b><span>${cv_ffrr} <b>Bs.</b></span>
+// 							</div>
+							
+// 						</div>
+// 						<!--
+// 						<button type="submit" id="" class="btn-personalizado" onclick="mostrarhistorial(${item.id})">SUBIR DATOS</button>
+// 						-->
+// 					</div>
+// 				</div>
+// 				 `)
+			    
+			    
+// 			}
+			
+			
+			function addRowLastTable(item) {
+				console.log(item)
+// 				const fecha = new Date(item.fecha);
+// 				let mes=fecha.toLocaleString('default', { month: 'long' })
+// 				let anio=fecha.getFullYear()
+// 				console.log(mes)
+				var mane_station="";
+				if(item.nombreestacion!=null)mane_station=item.nombreestacion
+				var nFilas = $("#table tr").length;
+				const item_total =item.total;
+				const item_vol =item.volumen;
+				const item_ffrr =item.fondorotatorio;
+//					console.log(numeroBolivianos)
+				const opciones2 = {
+				  style: "decimal",
+				  useGrouping: true,
+				  minimumFractionDigits: 2,
+				  maximumFractionDigits: 2,
+				};
+
+				const cv_total = item_total.toLocaleString("es-BO", opciones2);
+				const cv_vol = item_vol.toLocaleString("es-BO", opciones2);
+				const cv_ffrr = item_ffrr.toLocaleString("es-BO", opciones2);
+// 				console.log('cv_total:',cv_total)	
+				
+			    $('#table > tbody:last').append(`
+                        <tr>
+                        	<td>
+                       
+                        	
+							${nFilas}
+                        	<input type="hidden" value="${item.id}" class="idhidden"></td>
+                        	<td>${mane_station}</td>
+                        	<td>${item.mes}</td>
+                        	<td>${item.anio}</td>
+                        	<td>${cv_total}</td>
+                        	<td>${cv_vol}</td>
+                        	<td>${cv_ffrr}</td>
+                        </tr>
+			    		
+			    `)	    
+			}
+			
+
+			function removeRowLastTable(id) {
+				console.log("id:",id)
+				var nFilas = $("#table tr").length;
+				
+				$('#table tbody tr').each(function(index,row){
+					console.log("row:",row)
+					var row=$(row)
+					var id_row = parseInt(row.find('.idhidden').val(), 10);
+	 				console.log('id_row:',id_row);
+	 				if(id_row==id){
+	 					row.remove()
+	 				}
+				})
+
+			}
+			
+			function funtNewFormModal() {
+				$('.field_css').removeAttr('disabled') 
+				opcionesNuevo()
+       			$('#modalAdicionar').modal('show');
+			}
+			function funtDeleteRow() {
+				if (GDATO!="" ) {
+					updateStatusEntity(1)//si quiero dar de baja pongo 1
+				}else{
+					alert("!seleccione un registro de la lista para eliminar el registro!")
+				}
+			}
+			function funtUpdateRow() {
+				if (GDATO!="" ) {
+					updateStatusEntity(0)//si quiero dar de baja pongo 0
+				}else{
+					alert("!seleccione un registro de la lista para habilitar el registro!")
+				}
+			}
+			
+			$('#btnEditar').click(function(){
+// 				console.log(GDATO)
+				if (GDATO!="" ) {
+					opcionesEditarForm()
+					getEntityId()
+					removeDisabledForm()
+	       			$('#modalAdicionar').modal('show');
+				}else{
+					alert("!seleccione un registro de la lista para editar!")
+				}
+				
+			})
+			function addDisabledForm() {
+				
+				$('body .field_css').attr('disabled', 'disabled');
+			}
+			function removeDisabledForm() {
+				
+				$('.field_css').removeAttr('disabled');
+			}
+			function addActionform(action) {
+				$('#formulario').removeAttr("action")
+				$('#formulario').attr("action",action)
+				
+			}
+			function addPutForm(value) {
+				$('#formulario #div_put').html("")
+				
+				if(value!== undefined){
+				//+console.log("value",value)
+					$('#formulario #div_put').html(`<input type="hidden" name="_method" value="PUT">`)
+				}
+				
+				
+			}
+			
+			function nuevo() {
+				opcionesNuevo()
+				removeDisabledForm()
+			}
+			function editar() {
+				opcionesEditarForm()
+				getEntityId()
+                removeDisabledForm()
+			}
+			function eliminar() {
+				updateStatusEntity(1)
+				
+			}
+			function opcionesNuevo() {
+				GOPCION="ADD"
+                $('.opciones_btn_modal').html(`<button id="btnGuardar_modal" type="submit"  class="btn btn-success  btn-xs btn-sm waves-effect" style="margin: 0 2px;">Guardar</button>`)  
+       	        $('.opciones_btn_modal').append(`<button id="btnCancelar_modal" data-dismiss="modal" aria-label="Close" class="btn btn-danger   btn-xs btn-sm waves-effect" style="margin: 0 2px;">Cancelar</button>`)  
+                addActionform(nameEntity)
+       	        $('#formulario').data('formValidation').resetForm(true);
+                $('#formulario')[0].reset();
+			}
+			function opcionesEditarForm() {
+				GOPCION="EDIT"
+                $('.opciones_btn_modal').html(`<button id="btnGuardar_modal" type="submit"  class="btn btn-success  btn-xs btn-sm waves-effect" style="margin: 0 2px;">Guardar</button>`)  
+       	        $('.opciones_btn_modal').append(`<button id="btnCancelar_modal" data-dismiss="modal" aria-label="Close" class="btn btn-danger   btn-xs btn-sm waves-effect" style="margin: 0 2px;">Cancelar</button>`)  
+                addActionform(nameEntity)
+       	        $('#formulario').data('formValidation').resetForm(true);
+                $('#formulario')[0].reset();
+                
+               
+			}
+			function getEntityId() {
+                
+          		$.get(nameEntity+'/'+GID, function(result) {
+//           			console.log('result:',result)
+          			$('#formulario').loadJSON(result);
+		        }, 'json');
+			}
+			function opcionesCrudModal() {
+				$('body').find('.opciones_btn_modal').html('')
+				
+				if(GESTADO!=0){
+					$('.opciones_btn_modal').html(`<button id="btnAdicionar_modal" type="button"  class="btn btn-success  btn-xs btn-sm waves-effect" style="margin: 0 2px;" onclick="nuevo()">Nuevo</button>`)  
+	    	        
+				}
+                $('.opciones_btn_modal').append(`<button id="btnEditar_modal" type="button"  class="btn btn-warning  btn-xs btn-sm waves-effect"  style="margin: 0 2px;" onclick="editar()">Editar</button>`)  
+    	        if(GESTADO!=0){
+    	        	$('.opciones_btn_modal').append(`<button id="btnEliminar_modal" type="button"  class="btn btn-danger  btn-xs btn-sm waves-effect" style="margin: 0 2px;" onclick="eliminar()">Eliminar</button>`)  
+        	        
+    	        }
+    	        $('.opciones_btn_modal').append(`<button id="btnCancelar_modal"  data-dismiss="modal" aria-label="Close" class="btn btn-default   btn-xs btn-sm waves-effect" style="margin: 0 2px;">Cancelar</button>`)  
+   	        	addActionform(nameEntity)
+    	        $('#formulario').data('formValidation').resetForm(true);
+                $('#formulario')[0].reset();
+			}
+			
+
+			
+			function saveEntityForm() {
+				$('#cargando').modal('show');
+				
+//        	    	console.log('url1:',$('#fileExcel').val())
+//     	    	console.log('url2:',document.getElementById("fileExcel").files[0].name)
+//     	    	console.log('url3:',document.getElementById("fileExcel").files[0])
+				var input = document.getElementById("fileExcel");
+				var fReader = new FileReader();
+				// fReader.readAsDataURL(input.files[0]);
+				
+//     	    	console.log('url4:',fReader.readAsDataURL(input.files[0]))
+				
+				// fReader.onloadend = function(event){
+				//     // var img = document.getElementById("yourImgTag");
+				//     // img.src = event.target.result;
+//          	    		console.log('url4:',event.target.result)
+				// }
+ 
+                
+    	    	 // Get form
+    	        var form = $('#formulario')[0];
+
+    	        var data = new FormData(form);
+				var init_porc=0;
+				var final_porc=0;
+				var respserv=false;
+//     	        data.append("CustomField", "This is some extra data, testing");
+				
+				
+				
+                $.ajax({
+              	   	url:nameEntity+"/adicionar",
+              	    type: "POST",
+					'contentType': false,
+// 					'data': JsonDataForm(),
+					'data': data,
+              	    'dataType': "json",
+              	  cache:false,
+              	  processData:false,
+              	  start_time: new Date().getTime(),
+                  complete: function(data) {
+                	  var mls=(new Date().getTime() - this.start_time)
+                	  var seg=Math.round(mls/1000)
+                      console.log('TIEMPO:'+seg+' segundos');
+                  },
+//               	    'dataType': 'json',
+                     success:function(res){
+//                     	contador_porcentaje(true)
+//                     	final_porc=init_porc
+//                     	 console.log('final_porc',final_porc)
+                    	 
+                    	
+                    	
+						console.log('registrado',res)
+						
+// 		              	while(!respserv){
+// 		              		init_porc++;
+// 		              		console.log("init_porc:",init_porc)
+// 		              	} 
+						
+                        	 $('#formulario').data('formValidation').resetForm();
+                             $('#formulario')[0].reset();
+// 							addRowLastModel(res)
+							listarTable()
+							
+                             $('.modal').modal('hide')
+                             
+                             swal({
+                                 title:"Registrado",
+                                 text:"Se ha registrado exitosamente",
+                                 type:"success",
+                                 timer:500,   
+                                 showConfirmButton: false 
+                             });   
+// 							 $('#cargando').modal('hide'); 
+							
+                     },
+//                      xhr: function(){
+//                          var xhr = $.ajaxSettings.xhr() ;
+//                          var total=0;
+//                          xhr.upload.onprogress = function(e){
+                       
+//                              if (e.lengthComputable) {
+//                                  var percent = Math.round((e.loaded / e.total) * 100);
+//                                  console.log('loaded:', e.loaded)
+//                                  $('#progressBar').width(percent + '%').text(percent + '%');
+//                                  total=e.total
+//                                   console.log('percent:', percent)
+//                              }
+                        	
+// //                         	 console.log('progress', evt.loaded/evt.total*100)
+// //                         	 contador(evt.total)
+//                        	 } ;
+
+//                          	xhr.upload.onload = function(){ 
+// // 								for (var i = total; i >= 0; i--) {
+// // 									 console.log('i:',i)
+// // 								}
+                            
+//                         	 console.log('DONE!') 
+//                         	} ;
+//                          return xhr ;
+//                      },
+                     xhr: function(){
+                         var xhr =new window.XMLHttpRequest();
+                         // set the onprogress event handler
+                         xhr.upload.addEventListener('progress',function(e){
+                        	 console.log(e)
+                        	 contador(10)
+                        	 if(e.lengthComputable){
+                        		 console.log('Bytes loaded:'+e.loaded)
+                        		 console.log('total size:'+e.total)
+                        		 console.log('proventaje:'+(e.loaded/e.total))
+                        		 var porcentaje=Math.round((e.loaded/e.total)*100)
+                        		 console.log('porcentaje:',porcentaje)
+                        	 }
+                        	 
+                         },false)
+                         return xhr ;
+                     },
+// 			xhr: function () {
+// 				var xhr = $.ajaxSettings.xhr();
+				
+// 				if (xhr.upload) {
+// 					xhr.upload.onprogress = function(e) {
+// 						console.log("e",e)
+// 						var tmp = Math.round(100.0 * (e.loaded / e.total));
+						
+// 						console.log( tmp + '%')
+// 					};
+// 				}
+// // 				contador_porcentaje(false)
+// 				return xhr;
+// 			},
+                     error:function(erro){
+                    	 alert("No se a completado la transaccion")
+                     }
+                 })
+
+                 
+
+//                 $('#formulario').ajaxSubmit({
+// //                 	contentType: 'multipart/form-data',
+// // 					enctype: 'multipart/form-data',
+// 					'contentType': "application/json",
+					
+// 					'dataType': 'json',
+//                     success:function(res){
+//                         console.log('registrado',res)
+//             				console.log('registrado',res)
+// //                          if(res.estado){
+//                         	 $('#formulario').data('formValidation').resetForm();
+//                              $('#formulario')[0].reset();
+// // 							addRowLastModel(res)
+// 							listarEESS()
+//                              $('.modal').modal('hide')
+                             
+//                              swal({
+//                                  title:"Registrado",
+//                                  text:"Se ha registrado exitosamente",
+//                                  type:"success",
+//                                  timer:500,   
+//                                  showConfirmButton: false 
+//                              });   
+// //                          }
+
+//                     }
+//                 })
+			}
+			
+			function contador(cont){
+				console.log('cont:',cont)
+              	while(cont>=0){
+              		console.log('cont:',cont)
+              		cont--;
+              	} 
+				console.log('cont_fn:',cont)
+			}
+			
+	         function contador_porcentaje(){
+	              	while(!respserv){
+	              		init_porc++;
+	              		console.log("init_porc:",init_porc)
+	              	} 
+//	             return   init_porc;	
+	         }        
+
+			function updateTable(id,objectMod){
+                $('#table > tbody  > tr').each(function(index, tr) {
+             	   
+	               	var row = $(this).closest('tr');
+	    			var idrow = parseInt(row.find('.idhidden').val(), 10);
+					//console.log('idrow:',idrow);
+                	if(id==idrow){
+                		$(this).find("td:eq(1)").html(objectMod.nombre);
+                	}
+               	 });
+			}
+			function updateEntityForm() {
+				var id=$('#formulario').find('input[name="id"]').val()
+				var objectMod;
+                $.ajax({
+              	   	url:nameEntity+"/"+id,
+              	    type: "PUT",
+						'contentType': "application/json",
+						'data': JsonDataForm(),
+              	    'dataType': 'json',
+                     success:function(res){
+                    	 
+                    	 console.log("resp:",res)
+                    	 objectMod=res
+                    	 console.log("objectMod:",objectMod)
+                    	 $('#formulario').data('formValidation').resetForm();
+                         $('#formulario')[0].reset();
+						 updateTable(id,res)
+                         $('.modal').modal('hide')
+                         swal({
+                             title:"Registrado",
+                             text:"Se ha modificado exitosamente",
+                             type:"success",
+                             timer:500,   
+                             showConfirmButton: false 
+                         });  
+   
+                     }
+                 })
+
+                 
+			}
+			
+			function updateStatusEntity(status) {
+				console.log("GID:",GID," STATUS:",status)
+	        swal({
+               title: "¿Estas Seguro de continuar?",   
+               text: "Se registrara en el Sistema",   
+               type: "warning",   
+               showCancelButton: true,   
+               confirmButtonColor: "#DD6B55",   
+               confirmButtonText: "Si, Continuar!",   
+               cancelButtonText: "No, Cancelar!",   
+               closeOnConfirm: false,   
+               closeOnCancel: false 
+               }, function(isConfirm){  
+                   if (isConfirm) {
+       				var data= {
+       	          	    	id:GID,
+       	          	    	codigo:"",
+       	          	    	nombre:"",
+       	          	    	estado:status
+       	          	    }
+       	                $.ajax({
+       	              	   	url:nameEntity+"/updateStatus",
+       	              	    type: "POST",
+
+//       	 	                data:{
+//       	 	                	search:valor_busqueda,
+//       	 	                	status:GESTADO
+//       	 	                },
+       		                contentType: "application/json",
+       		                dataType:'json',
+       						'data': JSON.stringify(data),
+       	 
+       	                     success:function(res){
+       							console.log('registrado',res)
+//       	                          if(status==1){
+//       	                         	 removeRowLastTable(res.id)
+//       	                          }else{
+
+//       	 							 addRowLastModel(res)
+//       	                          }
+       							removeRowLastTable(res.id)
+       	                         swal({
+       	                             title:"Completado",
+       	                             text:"Se ha completado la transaccion exitosamente",
+       	                             type:"success",
+       	                             timer:400,   
+       	                             showConfirmButton: false 
+       	                         }); 
+       	                     }
+       	                 })
+       	                 $('.modal').modal('hide')
+                   } else {   
+                       swal({
+                           title:"Cancelado",
+                           text:"Se ha cancelado operacion",
+                           type:"error",
+                           timer:400,
+                           showCancelButton:false,
+                           showConfirmButton:false
+
+                       })
+//                        $('.modal').modal('hide')
+                   } 
+               });
+				
+				
+
+			}
+		function mostrarhistorial(id) {
+// 			var id=$(div).attr("accesskey");
+			//alert(id)
+      		 if ( $(".data_eess_"+id+"").hasClass('selected') ) {
+                       $(".data_eess_"+id+"").removeClass('selected');
+                  }
+                  else {
+                      $(".card_body_eess").removeClass('selected');
+                      $(".data_eess_"+id+"").addClass('selected');
+
+                      
+                  }
+      		GIDE=id;  
+      		listarEESS()
+// 			$('.card_body_eess').addClass('selected')
+			
+		}
+		
+		$("body").find('.card_eess').on('click',function(){
+			var id=$(this).prop('accesskey')
+			alert(id)
+		  	if ( $(this).hasClass('selected') ) {
+                 $(this).removeClass('selected');
+//                  GDATO=""
+            }
+            else {
+                $(this).addClass('selected');
+//      	          	 GDATO=$(this).find("td:eq(0)").text();
+                
+            }
+		})
+			
+	    $('#formulario').formValidation({
+
+       	})
+        .on('success.form.fv', function(e){
+            e.preventDefault();
+            var $form = $(e.target);
+           swal({
+               title: "¿Estas Seguro de registrar?",   
+               text: "Se registrara en la Base de datos del Sistema",   
+               type: "warning",   
+               showCancelButton: true,   
+               confirmButtonColor: "#DD6B55",   
+               confirmButtonText: "Si, Continuar!",   
+               cancelButtonText: "No, Cancelar!",   
+               closeOnConfirm: false,   
+               closeOnCancel: false 
+               }, function(isConfirm){  
+                   if (isConfirm) {
+                	   if(GOPCION=="ADD"){
+                		   saveEntityForm()
+                	   }else{
+                		   updateEntityForm()
+                	   }
+                	   
+                   } else {   
+                       swal({
+                           title:"Cancelado",
+                           text:"Se ha cancelado operacion",
+                           type:"error",
+                           timer:500,
+                           showCancelButton:false,
+                           showConfirmButton:false
+
+                       })
+                   }
+                   $('.opciones_btn_modal').html
+               });
+        })
+        
+		
+	</script>
+</body>
+</html>

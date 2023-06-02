@@ -1,0 +1,446 @@
+ <form name="formulario" role="form" id="formulario" method="post" action="RestMarcaReductor/guardar"
+		data-fv-excluded="disabled">    
+
+<div class="modal fade" id="modalAdicionar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Nuevo</h4>
+      </div>
+      	<div class="modal-body">
+					<!-- Text input-->
+					<div class="form-group">
+						<label>Nombre</label> <input id="nombre" name="nombre" type="text"
+							placeholder="ingrese nombre de marca Reductor" class="form-control input-md"
+							data-fv-notempty="true" data-fv-message="Por favor introdusca el nombre de Marca de Reductor" >
+					</div>
+				</div>
+      <div class="modal-footer">
+        <button type="submit" id="btnAdicionarConfirmacion" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="glyphicon glyphicon-remove-sign"></i> Cancelar</button>
+      </div>
+    </div>
+  </div>
+  
+</div>
+</form>
+<form name="formularioModificar" role="form" id="formularioModificar" method="post" action="RestMarcaReductor/modificar"
+		data-fv-excluded="disabled">
+<div class="modal fade" id="modalModificar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+  <div class="modal-dialog"role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modificar </h4>
+      </div>
+				<div class="modal-body">
+					<input type="hidden" name="idmarcred" id="idmarcred" />
+					<!-- Text input-->
+					<div class="form-group">
+						<label>Nombre</label> <input id="nombre" name="nombre" type="text"
+							placeholder="ingrese nombres" class="form-control input-md"
+							data-fv-notempty="true">
+					</div>
+				</div>
+				<div class="modal-footer">
+        <button type="submit" id="btnModificarConfirmacion" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="glyphicon glyphicon-remove-sign"></i> Cancelar</button>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+
+ </form>
+
+<div class="contenido_gestion">
+
+  <div class="" style="padding: 0 15px;">
+    	<div class="row">
+    		<div class="col-md-4">
+		    	<h2 class="panel-title">
+		            <b>GESTION MARCA REDUCTORES</b>
+		        </h2>
+		        <h5>
+		       Administre su informacion
+		        </h5>
+    		</div>
+    		<div class="col-md-6">
+    			<h1 class="panel-title"><b>GESTION: <label class="cs_gestion"></label></b></h1>
+    		</div>
+    	</div>
+        
+    </div>
+	<div class="panel-body">
+    <div class="row">
+      <div class="col-md-12" style="text-align: right;margin-bottom: 15px">     
+        <button id="btn-add" class="btn btn-xs btn-succ " disabled="disabled">NUEVO</button>
+      </div>
+    </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-3 col-xs-12" style="margin-bottom: 10px;">
+          <input type="text" id="js-filtro" name=""
+            class="form-control_filtro unput-sm"
+            placeholder=" Buscar por nombre de marca Reductor..">
+        </div>
+        <div class="col-md-3 col-xs-12"></div>
+        <div class="col-md-6 col-xs-12 navbar-right" style="text-align: right; margin-top: 10px">
+          <label class="radio radio-inline m-r-20"> <input
+            type="radio" name="iestado" id="activos" value="1" checked="checked"> <i
+            class="input-helper"></i>activos
+          </label> <label class="radio radio-inline m-r-20"> <input
+            type="radio" name="iestado" id="bajas" value="0"> <i
+            class="input-helper"></i>bajas
+        <!--   </label> <label class="radio radio-inline m-r-20"> <input
+            type="radio" name="iestado" id="todos" value="-1"
+            checked="checked"> <i class="input-helper"></i>todos
+          </label> -->
+        </div>
+       </div>
+      </div>
+      <div class="col-md-12">
+        <table id="example" class="table table-vmiddle nowrap tabla_gestion" width="100%">
+          <thead>
+          <tr>
+            <th width="20px">#</th>
+            <th class="text-center">Nombre de Marca de Reductor</th>
+            <th class="text-center" width="200px">Opciones</th>
+          </tr>
+          </thead>
+          <tbody >
+            
+          </tbody>
+        </table>  
+      </div>
+  </div>
+
+	</div>
+</div>
+
+<script type="text/javascript">
+  var result=Get_Opciones(null);
+  if(ExisteOpcion('adicionar')){
+      // $('#btn-add').attr({
+      //     onclick:"(Gestion.add())",
+      //     // accesskey:""
+      // })
+      $('#btn-add').removeAttr("disabled ").focus().val("Ahora si lo puedes utilizar")
+  }
+
+  function ExisteOpcion(opc){
+      // alert('entro comparar')
+      var resultado=false;
+      for (var i = 0; i < result.AccionesUser.length; i++) {
+          console.log('for_: ',result.AccionesUser[i]);
+          if(result.AccionesUser[i].codigo==opc){
+              resultado=true;         
+          }
+      }
+      return resultado;
+  }
+
+  $(document).ready(function() {
+    var DTtable=''
+    var estado='';
+    estado=$('input[name="iestado"]:checked').val();
+    
+    asyncSqrt(function() {
+        console.log('FIN ');
+
+    });
+
+    function asyncSqrt(callback) {
+      console.log('START' );
+      callback();
+    }
+ 	
+    DTtable=$('#example').DataTable( {
+      "oLanguage": {
+            "sUrl": GurlDataTable
+      },
+      // "dom":"<'row'<'col-sm-3'<'aling_izq'f>><'col-sm-5'<'#tableHeader'>><'col-sm-3'>><'row'<'col-sm-12'tr>><'row w3-tiny'<'col-sm-5'i><'col-sm-7'p>>",
+      "dom":'rt<button>ip',
+      "pageLength":5,
+       responsive:true,
+      "processing": true,
+      "serverSide": true,
+      "ajax": {
+        	"type": "POST",
+          "url": "RestMarcaReductor/lista",
+      	"data": function ( d ) {
+                d.estado = estado
+                // d.estado = 1;
+                // filtro:filtro
+         }
+        },
+      "columns": [
+                { "data": "idmarcred" },
+                { "data": "nombre" },
+                { "data": "idmarcred" }
+      ],
+      "createdRow": function ( row, data, index ){
+        $('td', row).eq(0).html(index+1);
+
+        if(ExisteOpcion('modificar')){
+          $('td', row).eq(2).html('<button class="btn btn-xs btn-primary waves-effect btn-espacio modificar"  data-toggle="tooltip" data-placement="top" title="Modificar" data-id="'+data.idmarcred+'"><i class="fa fa-edit"></i> | modificar</button>').css({'padding-left':'0','padding-right': '0'});
+        }else{
+          $('td', row).eq(2).html('<button class="btn btn-xs btn-primary waves-effect btn-espacio modificar"  data-toggle="tooltip" data-placement="top" title="Modificar" disabled="disabled"><i class="fa fa-edit"></i> | modificar</button>').css({'padding-left':'0','padding-right': '0'});
+        }
+
+        if(data.estado==1){
+          if(ExisteOpcion('eliminar')  ){
+            $('td', row).eq(2).append('<button class="btn btn-xs btn-danger waves-effect btn-espacio eliminar"  data-toggle="tooltip" data-placement="top" title="Deshabilitar" data-id="'+data.idmarcred+'"><i class="glyphicon glyphicon-remove-sign"></i> | Deshabilitar</button>');
+          }else{
+            $('td', row).eq(2).append('<button class="btn btn-xs btn-danger waves-effect btn-espacio eliminar"  data-toggle="tooltip" data-placement="top" title="Deshabilitar" disabled="disabled"><i class="glyphicon glyphicon-remove-sign"></i> | Deshabilitar</button>');
+          }
+        }else{
+          if(ExisteOpcion('habilitar')){
+            $('td', row).eq(2).append('<button class="btn btn-xs btn-success waves-effect btn-espacio habilitar"  data-toggle="tooltip" data-placement="top" title="Habilitar" data-id="'+data.idmarcred+'"><i class="glyphicon glyphicon-remove-sign"></i> | Habilitar</button>');
+          }else{
+            $('td', row).eq(2).append('<button class="btn btn-xs btn-success waves-effect btn-espacio habilitar"  data-toggle="tooltip" data-placement="top" title="Habilitar" data-id="'+data.idmarcred+'"><i class="glyphicon glyphicon-remove-sign"></i> | Habilitar</button>'); 
+          }  
+
+        }
+      },
+      "drawCallback": function( settings ){ 
+          // $('#tableTitle').html('<h6><b>Gestion Marca Reductor</b></h6>');
+          // $('#tableHeader').html('<button class="btn btn-xs btn-primary" id="btn-add"><i class="fa fa-plus-circle"></i> | adicionar</button>');
+          $('#btn-add').click(function(){
+            // alert('debe salir del drawCallback')
+            $('#formulario').data('formValidation').resetForm();
+            $('#formulario')[0].reset();
+            $('#modalAdicionar').modal('show');
+          });
+          $('.modificar').click(function(){ 
+            $('#formularioModificar').data('formValidation').resetForm();
+            $('#formularioModificar')[0].reset();
+              $.post('RestMarcaReductor/datos-mod?idmarcred='+$(this).data('id'), function(result) {
+                console.log('datos-mod: ',result)
+                if(result.status){
+                  $('#modalModificar').modal('show');
+                  $('#formularioModificar').loadJSON(result.data);
+                }else{
+                  mostrarMensaje('error','No se realizo con exito la Transaccion');
+                }
+            }, 'json');
+          });
+          $('.eliminar').click(function(){ 
+            var idmarcred=$(this).data('id')
+            swal({   
+              title: "Seguro de Deshabilitar Marca Reductor?",   
+              text: "Usted Deshabilitar� Marca Reductor",   
+              type: "warning",   
+              showCancelButton: true,   
+              confirmButtonColor: "#DD6B55",   
+              confirmButtonText: "Si, Continuar!",   
+              cancelButtonText: "No, Cancelar!",   
+              closeOnConfirm: false,   
+              closeOnCancel: false 
+              }, function(isConfirm){
+                if (isConfirm) {
+                    $.post('RestMarcaReductor/eliminar?idmarcred='+idmarcred,function(resp){
+                      console.log(resp)
+                      if (resp.status) {
+                        $('#example').dataTable().fnDraw('page');//hace que se actualize la tabla
+                        swal({
+                            title:"Deshabilitar",
+                            text:"Se ha Deshabilitado Marca Reductor exitosamente",
+                            type:"success",
+                            timer: 500,   
+                            showConfirmButton: false 
+                        });
+                     
+                      } else {
+                          mostrarMensaje('error','No se realizo con exito la Transacciion');
+                      } 
+                    },'json')
+                }else {
+                    swal({
+                        title:"Cancelado",
+                        text:"Se ha cancelado operacion",
+                        type:"error",
+                        timer:2000,
+                        showCancelButton:false,
+                        showConfirmButton:false
+
+                    })
+                } 
+              }); 
+
+
+          });
+          $('.habilitar').click(function(){ 
+            var idmarcred=$(this).data('id')
+            swal({   
+              title: "Seguro de Habilitar Marca Reductor?",   
+              text: "Usted Habilitar� Marca Reductor",   
+              type: "warning",   
+              showCancelButton: true,   
+              confirmButtonColor: "#DD6B55",   
+              confirmButtonText: "Si, Continuar!",   
+              cancelButtonText: "No, Cancelar!",   
+              closeOnConfirm: false,   
+              closeOnCancel: false 
+              }, function(isConfirm){
+                if (isConfirm) {
+                    $.post('RestMarcaReductor/habilitar?idmarcred='+idmarcred,function(resp){
+                      console.log(resp)
+                      if (resp.status) {
+                        $('#example').dataTable().fnDraw('page');//hace que se actualize la tabla
+                        swal({
+                            title:"Habilitar",
+                            text:"Se ha Habilitado Marca Reductor exitosamente",
+                            type:"success",
+                            timer: 500,   
+                            showConfirmButton: false 
+                        });
+                     
+                      } else {
+                          mostrarMensaje('error','No se realizo con exito la Transacciion');
+                      } 
+                    },'json')
+                }else {
+                    swal({
+                        title:"Cancelado",
+                        text:"Se ha cancelado operacion",
+                        type:"error",
+                        timer:2000,
+                        showCancelButton:false,
+                        showConfirmButton:false
+
+                    })
+                } 
+              }); 
+          });
+          
+          $('button[data-toggle="tooltip"]').tooltip({animated: 'fade',placement: 'bottom',});
+   
+          $('#js-filtro').on( 'keyup', function () {
+            DTtable.search(this.value ).draw();
+          }) 
+          
+        }
+        // ,
+        // "fnDrawCallback":function(oSetttings){
+        //     // destruir(DTable);
+        // }
+  });
+  $('input[name="iestado"]').change(function(){
+    estado=$(this).val();
+    $('#example').dataTable().fnDraw('page');
+  });
+
+  $('#formulario').formValidation({locale: 'es_ES'})
+    .on('success.form.fv', function(e) {
+        e.preventDefault();
+        var $form = $(e.target);
+
+        swal({   
+          title: "Seguro de registrar Marca Reductor?",   
+          text: "Usted registrara nueva Marca Reductor",   
+          type: "warning",   
+          showCancelButton: true,   
+          confirmButtonColor: "#DD6B55",   
+          confirmButtonText: "Si, Continuar!",   
+          cancelButtonText: "No, Cancelar!",   
+          closeOnConfirm: false,   
+          closeOnCancel: false 
+          }, function(isConfirm){  
+            if (isConfirm) {   
+              $.post($form.attr('action'), $form.serialize(), function(result) {
+                  if(result.status){
+                      $form.data('formValidation').resetForm();
+                      $('#formulario')[0].reset();
+                      $('#example').dataTable().fnDraw('page');//hace que se actualize la tabla
+                      swal({
+                          title:"Registrado",
+                          text:"Se ha registrado Marca Reductor exitosamente",
+                          type:"success",
+                          timer: 500,   
+                          showConfirmButton: false 
+                      });
+                    // mostrarMensaje('info','Se realizo con exito la Transaccion');
+                  }else{
+                    mostrarMensaje('error','No se realizo con exito la Transaccin');
+                  }
+                $('.modal').modal('hide');
+              }, 'json');
+            } else {     
+                swal({
+                    title:"Cancelado",
+                    text:"Se ha cancelado operacion",
+                    type:"error",
+                    timer:500,
+                    showCancelButton:false,
+                    showConfirmButton:false
+
+                })
+                $('.modal').modal('hide')
+            } 
+        });
+
+
+    });
+
+  $('#formularioModificar').formValidation({locale: 'es_ES'})
+    .on('success.form.fv', function(e) {
+        e.preventDefault();
+        var $form = $(e.target);
+        swal({   
+          title: "Seguro de modificar Marca Reductor?",   
+          text: "Usted modificara nueva Marca Reductor",   
+          type: "warning",   
+          showCancelButton: true,   
+          confirmButtonColor: "#DD6B55",   
+          confirmButtonText: "Si, Continuar!",   
+          cancelButtonText: "No, Cancelar!",   
+          closeOnConfirm: false,   
+          closeOnCancel: false 
+          }, function(isConfirm){  
+            if (isConfirm) {   
+              $.post($form.attr('action'), $form.serialize(), function(result) {
+                  if(result.status){
+                      $form.data('formValidation').resetForm();
+                      $('#formularioModificar')[0].reset();
+                      $('#example').dataTable().fnDraw('page');//hace que se actualize la tabla
+                      swal({
+                          title:"Registrado",
+                          text:"Se ha modificado Marca Reductor exitosamente",
+                          type:"success",
+                          timer: 500,   
+                          showConfirmButton: false 
+                      });
+                      // var idmarcred=res.ordServ;
+                      // $("#frameReportes").attr("src",'RestServicios/ImprimirOS?idmarcred='+idmarcred);
+                      // $("#reportes").modal('show');
+                      // mostrarMensaje('info','Se realizo con exito la Transaccion');
+                  }else{
+                      mostrarMensaje('error','No se realizo con exito la Transaccion');
+                  }
+                $('.modal').modal('hide');
+              }, 'json');
+            } else {     
+                swal({
+                    title:"Cancelado",
+                    text:"Se ha cancelado operacion",
+                    type:"error",
+                    timer:500,
+                    showCancelButton:false,
+                    showConfirmButton:false
+
+                })
+                $('.modal').modal('hide')
+            } 
+        });
+
+
+    });
+
+  });
+
+</script>
+                

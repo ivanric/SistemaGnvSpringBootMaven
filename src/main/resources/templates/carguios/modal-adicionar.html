@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title></title>  
+</head>	
+<body>
+	<form id="formulario-add" action="RestCarguios/adicionar"
+		method="post" data-fv-excluded="disabled" enctype="multipart/form-data">
+		<div class="modal fade modal-extra" id="modal-add" tabindex="-1" role="dialog"
+			data-backdrop="static" data-keyboard="false" aria-hidden="true"
+			style="display: none; padding-left: 0 !important;">
+			<div class="modal-dialog modal-md " role="document">
+					<div class="modal-content">
+						<div class="card">
+							<div class="card-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<h2>
+									Nuevo Carguio<small>Llene los campos por favor</small>
+								</h2>
+							</div>
+							<div class="modal-body">
+								<fieldset>
+									<legend><strong>Carguio</strong></legend>
+										<div class="row">
+					                        <div class="col-md-12">
+					                            <label for="" class=""><b>Archivo a Cargar</b></label>
+					                            <!-- <input class="file"  id="fileExcel" name="archivo" type="file" data-fv-file="true" data-fv-file-extension="csv" data-fv-file-type="image/jpeg,image/png" data-fv-file-maxsize="2097152" data-fv-file-message="The selected file is not valid"> -->
+				   		                        <div class="form-group fg-float">
+				                                	<div class="fg-line">
+        			                           		 <input class="file"  id="fileExcel" name="archivo" type="file" data-fv-file="true" data-fv-file-extension="csv" data-fv-file-message="El archivo seleccionado no es valido" data-fv-notempty="true" data-fv-message="Requiere que seleccione Documento" >
+					                                </div>
+					                            </div>
+					                            <h5 style="text-align: center;"><b>TOMAR EN CUENTA (MUY IMPORTANTE):</b></h5>
+					                            <div class="row">
+					                            	<div class="col-md-12">
+					                            		- El Archivo a seleccionar debe ser en formato "archivo.csv" (Delimitado por comas)
+					                            	</div>
+					                            	<div class="col-md-12">
+					                            		- El Archivo debe cumplir exactamente el mismo emcabezado y orden en el Diseño.
+					                            		<img src="../resources/img/gnv/formatoCarguio.PNG" width="520px" alt="">
+					                            	</div>
+					                            	<div class="col-md-12">
+					                            		-Tomar en cuenta que la <b>Estación de Servicio</b> del carguio a subir este registrada en el Sistema 
+					                            	</div>
+					                            </div>
+					                        </div>
+									
+										</div>
+								</fieldset>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" id="btn-guardar-aprob"
+									class="btn btn-primary waves-effect">Guardar</button>
+								<button type="button" class="btn btn-danger waves-effect"
+									data-dismiss="modal">Cancelar</button>
+							</div>
+
+						</div>
+					</div>
+			</div>
+		</div>
+	</form>
+
+	
+	<script type="" src="../resources/bower_components/jquery.nicescroll/dist/jquery.nicescroll.js"></script>
+	<script type="" src="../resources/bower_components/autosize/dist/autosize.js"></script>
+	<script type="text/javascript">
+//     var tipos = ['pdf','xls','xlsx','csv'];
+//     iniciarFileInput();
+
+    function iniciarFileInput(){
+    	console.log('url:',$('#fileExcel'))
+
+        $('#fileExcel').fileinput({
+            language:'es',
+            showUpload: false,
+            showCaption: false,
+            showCancel: false,
+            allowedFileExtensions : tipos,
+            // initialPreview: [
+            //     '<img src="resources/archivos/fotos/user.png" class="file-preview-image" alt="USER" title="USUARIO" width="200px;">',
+            // ],
+            previewFileType: "image",
+            browseClass: "btn btn-success",
+            browseLabel: "Buscar Archivo",
+            // browseLabel: "Buscar",
+            browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+            removeClass: "btn btn-danger",
+            removeLabel: "Eliminar Archivo",
+            // removeLabel: "Quitar Imagen",
+            removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+            uploadClass: "btn btn-info",
+
+        })
+        
+    }
+
+//     $('#fileExcel').on('fileclear', function(event) {
+//         console.log("fileclear");
+//            $('#fileExcel').val('')
+//         $('#fileExcel').fileinput('destroy');
+//         iniciarFileInput();
+//     });
+
+
+	</script>
+</body>
+</html>

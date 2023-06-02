@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>gestion</title>
+</head>
+<body>
+ 
+ <form name="formulario" role="form" id="formulario" method="post" action="RestBeneficiarios/adicionar"
+        data-fv-excluded="disabled">  
+
+<div class="modal fade modal-extra" id="modalAdicionar" tabindex="-1" role="dialog"
+		data-backdrop="static" data-keyboard="false" aria-hidden="true"
+		style="display: none; padding-left: 0 !important;">
+	<div class="modal-dialog modal-md" role="document" style="">
+		<div class="modal-content">
+			<div class="card">
+				<div style="margin: 0 10px 0 10px">
+	               	<p>
+	               	   <button  type="button" class="close" data-dismiss="modal"
+	                       aria-label="Close">
+	                       <span aria-hidden="true">&times;</span>
+	                   	</button>
+	               	</p>
+					 <h4 style="margin-top: 0px;"><b>Nuevo Beneficiario</b></br><small>Complete el formulario porfavor</small></h4>
+		
+				</div>
+                <div class="modal-body">                      
+                    <div class="row">
+                         <div class="col-md-4">
+                             <div class="form-group fg-float">
+                              	<span class="fg-label">Cedula</span>
+                                 <div class="fg-line">
+                                     <input placeholder="Ingrese cedula de indentidad" class="form-control fg-input" minlength="5" maxlength="10" data-fv-stringlength-message="La C�dula debe ser entre 5 a 10 caracteres" id="cedula" name="ci" type="text"  autocomplete="off">
+								 </div>
+                        		 <small class="help-block" id="mensaje-ben" style="display: none;"></small>
+                             </div>
+                         </div>
+                         <div class="col-md-2">
+                             <div class="form-group">
+                                 <div class="fg-line">
+                                     <select style="width: 65px;height: 27px;margin-top: 15px;" data-placeholder="" name="ciCod" class="form-control data-per" data-fv-notempty='true' data-fv-message="Requiere Ciudadania" id="ciCod">
+                                         <option value="TJ">TJ</option>
+                                         <option value="PT">PT</option>
+                                         <option value="PA">PA</option>
+                                         <option value="LP">LP</option>
+                                         <option value="OR">OR</option>
+                                         <option value="CB">CB</option>
+                                         <option value="BN">BN</option>
+                                         <option value="CH">CH</option>
+                                         <option value="SC">SC</option>
+                                     </select>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>                     
+ 				     <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group fg-float">
+                            	<span class="fg-label">Beneficiario</span>
+                                <div class="fg-line">
+                                    <input placeholder="Ingrese beneficiario" class="form-control fg-input data-per" name="razonsocial" type="text" data-fv-notempty="true" data-fv-message="Ingrese Beneficiario porfavor"  maxlength="100" data-fv-stringlength-message="Solo 100 caracteres">
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group fg-float">
+                              <span class="fg-label">Estado Civil</span>
+                                <div class="fg-line">
+                                    <input placeholder="estado civil del beneficiario" class="form-control fg-input data-ben"  name="estadocivil" type="text" maxlength='500' data-fv-stringlength-message='Maximo 500 caracteres' autocomplete="off">
+                                </div>
+                              
+                            </div>    
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group fg-float">
+                              <span class="fg-label">Profesion</span>
+                                <div class="fg-line">
+                                    <input placeholder="profesion del beneficiario" class="form-control fg-input data-ben"  name="profesion" type="text" maxlength='500' data-fv-stringlength-message='Maximo 500 caracteres' autocomplete="off">
+                                </div>
+                              
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="row">
+	                    <div class="col-md-12">
+	                        <div class="form-group fg-float">
+	                          <span class="fg-label">Natural de</span>
+	                            <div class="fg-line">
+	                                <input placeholder="natural de.." class="form-control fg-input data-ben"  name="naturalde" type="text" maxlength='1000' data-fv-stringlength-message='Maximo 1000 caracteres' autocomplete="off">
+	                            </div>
+	                          
+	                        </div>    
+	                    </div>  
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group fg-float">
+                             <span class="fg-label">Direccion</span>
+                                <div class="fg-line">
+                                    <input placeholder="Ingrese la doreccion" class="form-control fg-input data-per"  name="direccion" type="text" data-fv-notempty="true" data-fv-message="Requiere Direccion" maxlength="200" autocomplete="off">
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <div class="form-group fg-float">
+                                     <span class="fg-label">Correo</span>
+                                    <div class="fg-line">
+                                        <input placeholder="Ingrese el correo electronico" class="form-control fg-input data-per"  name="email" type="email" maxlength='40' autocomplete="off">
+                                    </div>
+                                   
+                                </div>    
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group fg-float">
+                                  <span class="fg-label">Institucion</span>
+                                    <div class="fg-line">
+                                        <input placeholder="Institucion perteneciente del beneficiario" class="form-control fg-input data-ben"  name="institucion" type="text" maxlength='40' data-fv-stringlength-message='Maximo 40 caracteres' autocomplete="off">
+                                    </div>
+                                  
+                                </div>    
+                            </div>
+
+                        </div>
+                    </div>
+                   <div class="row">
+                       <div class="col-md-12">
+                           <div class="form-group fg-float">
+                               <div class="fg-line">
+                               <span class="fg-label">Referencias</span>
+                                   <textarea  class="form-control fg-input" id="text-desc" name="descripcion" type="descripcion" maxlength="100" style="margin-top: 7px">                                    
+                                   </textarea>
+                               </div>
+                               
+                           </div>    
+                       </div>  
+                       
+                   </div>
+
+
+                    <div class="row">
+
+                        <div id="contenido-tel-add">
+ 
+                        </div>
+
+                    </div>
+<!--                     <br><br> -->
+<!--                     <div class="row"> -->
+<!--                         <div class="col-md-12"> -->
+<!--                             <div class="form-group"> -->
+<!--                                 <label class="col-md-5 control-label">Documentos Presentados</label> -->
+<!--                                 <div class="col-md-7" id="js_doc"> -->
+    
+<!--                                 </div>                         -->
+<!--                             </div> -->
+
+<!--                         </div> -->
+<!--                     </div>    -->
+                </div>
+                <div class="modal-footer">
+                    <button type="submit"  id="btnAdicionarConfirmacion" class="btn btn-primary waves-effect"> Guardar</button>
+                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal"> Cancelar</button>
+                </div>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</form>
+
+<form name="formularioModificar" role="form" id="formularioModificar" method="post" action="RestBeneficiarios/modificar_d"data-fv-excluded="disabled">
+    <div class="modal fade" id="modalModificar" tabindex="-1" role="dialog" 
+    data-backdrop="static" data-keyboard="false" aria-hidden="true"
+		style="display: none; padding-left: 0 !important;">
+	<div class="modal-dialog modal-md" role="document" style="">
+		<div class="modal-content">
+			<div class="card">
+				<div style="margin: 0 10px 0 10px">
+	               	<p>
+	               	   <button  type="button" class="close" data-dismiss="modal"
+	                       aria-label="Close">
+	                       <span aria-hidden="true">&times;</span>
+	                   	</button>
+	               	</p>
+					 <h4 style="margin-top: 0px;"><b>Modificar Beneficiario</b></br><small>Complete el formulario porfavor</small></h4>
+		
+				</div>            
+				<div class="modal-body">  
+				
+                   	 <div class="row">
+                         <div class="col-md-4">
+                             <div class="form-group fg-float">
+                              	<span class="fg-label">Cedula</span>
+                                 <div class="fg-line">
+                                     <input placeholder="Ingrese cedula de indentidad" class="form-control fg-input" minlength="5" maxlength="10" data-fv-stringlength-message="La Cedula debe ser entre 5 a 10 caracteres" id="cedula_mod" name="ci" type="text"  autocomplete="off">
+								 </div>
+                        		 <div id="mensaje" style="color: red; font-size: 11px;"></div>
+                             </div>
+                         </div>
+                         <div class="col-md-2">
+                             <div class="form-group">
+                                 <div class="fg-line">
+                                     <select style="width: 65px;height: 27px;margin-top: 15px;" data-placeholder="" name="ciCod" class="form-control data-per" data-fv-notempty='true' data-fv-message="Requiere Ciudadania" id="ciCod">
+                                         <option value="TJ">TJ</option>
+                                         <option value="PT">PT</option>
+                                         <option value="PA">PA</option>
+                                         <option value="LP">LP</option>
+                                         <option value="OR">OR</option>
+                                         <option value="CB">CB</option>
+                                         <option value="BN">BN</option>
+                                         <option value="CH">CH</option>
+                                         <option value="SC">SC</option>
+                                     </select>
+                                 </div>
+                             </div>
+                         </div>
+                    </div>                        
+                    
+   				    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group fg-float">
+                            	<span class="fg-label">Beneficiario</span>
+                                <div class="fg-line">
+                                    <input placeholder="Ingrese beneficiario" class="form-control fg-input data-per" name="razonsocial" type="text" data-fv-notempty="true" data-fv-message="Ingrese Beneficiario porfavor"  maxlength="100" data-fv-stringlength-message="Solo 100 caracteres">
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group fg-float">
+                              <span class="fg-label">Estado Civil</span>
+                                <div class="fg-line">
+                                    <input placeholder="estado civil del beneficiario" class="form-control fg-input data-ben"  name="estadocivil" type="text" maxlength='500' data-fv-stringlength-message='Maximo 500 caracteres' autocomplete="off">
+                                </div>
+                              
+                            </div>    
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group fg-float">
+                              <span class="fg-label">Profesion</span>
+                                <div class="fg-line">
+                                    <input placeholder="profesion del beneficiario" class="form-control fg-input data-ben"  name="profesion" type="text" maxlength='500' data-fv-stringlength-message='Maximo 500 caracteres' autocomplete="off">
+                                </div>
+                              
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="row">
+	                    <div class="col-md-12">
+	                        <div class="form-group fg-float">
+	                          <span class="fg-label">Natural de</span>
+	                            <div class="fg-line">
+	                                <input placeholder="natural de.." class="form-control fg-input data-ben"  name="naturalde" type="text" maxlength='1000' data-fv-stringlength-message='Maximo 1000 caracteres' autocomplete="off">
+	                            </div>
+	                          
+	                        </div>    
+	                    </div>  
+                    </div>
+                    
+					<div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group fg-float">
+                             <span class="fg-label">Direccion</span>
+                                <div class="fg-line">
+                                    <input placeholder="Ingrese la doreccion" class="form-control fg-input data-per"  name="direccion" type="text" data-fv-notempty="true" data-fv-message="Requiere Direccion" maxlength="200" autocomplete="off">
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <div class="form-group fg-float">
+                                     <span class="fg-label">Correo</span>
+                                    <div class="fg-line">
+                                        <input placeholder="Ingrese el correo electronico" class="form-control fg-input data-per"  name="email" type="email" maxlength='40' autocomplete="off">
+                                    </div>
+                                   
+                                </div>    
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group fg-float">
+                                  <span class="fg-label">Institucion</span>
+                                    <div class="fg-line">
+                                        <input placeholder="Institucion perteneciente del beneficiario" class="form-control fg-input data-ben"  name="institucion" type="text" maxlength='40' data-fv-stringlength-message='Maximo 40 caracteres' autocomplete="off">
+                                    </div>
+                                  
+                                </div>    
+                            </div>
+
+                        </div>
+                    </div>
+                   <div class="row">
+                       <div class="col-md-12">
+                           <div class="form-group fg-float">
+                               <div class="fg-line">
+                               <span class="fg-label">Referencias</span>
+                                   <textarea  class="form-control fg-input" id="text-desc" name="descripcion" type="descripcion" maxlength="100" style="margin-top: 7px">                                    
+                                   </textarea>
+                               </div>
+                               
+                           </div>    
+                       </div>  
+                       
+                   </div>
+                    
+                    <div class="row">
+                        <div id="contenido-tel">
+                            
+                        </div>
+                    </div>
+                    <br>    
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label">Documentos Presentados</label>
+                                <div class="col-md-7" id="js_docMod">
+                                   
+                                </div>
+                        
+                            </div>
+
+                        </div>
+                    </div>   
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btn-guardar" class="btn btn-primary waves-effect"> Guardar</button>
+                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal"> Cancelar</button>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+ </form>
+
+	<div class="contenido_gestion">
+		<div  class="" style="padding: 0 15px;">
+			<h2 class="panel-title">
+      	      <b>GESTION BENEFICIARIOS</b>
+	        </h2>
+	        <h5>
+	      	  Administre beneficiarios registrados en el Sistema.
+	        </h5>
+		</div>
+		<div class="panel-body" style="margin-top: -30px"> 
+			<div class="row">
+				<div class="col-md-12" style="text-align: right;margin-bottom: 15px">			
+					<button id="btnAdicionar" class="btn btn-succ  btn-xs btn-sm waves-effect" disabled="disabled">NUEVO BENEF.</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-3 col-xs-12" style="margin-bottom: 10px;">
+							<input type="text" id="filt-ben" name=""
+								class="form-control_filtro unput-sm"
+								placeholder=" Buscar Apellidos nombres o cedula..">
+						</div>
+						<div class="col-md-3 col-xs-12"></div>
+						<div class="col-md-6 col-xs-12 navbar-right" style="text-align: right; margin-top: 10px">
+							<label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="activos" value="1"> <i
+								class="input-helper"></i>activos
+							</label> <label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="bajas" value="0"> <i
+								class="input-helper"></i>bajas
+							</label> <label class="radio radio-inline m-r-20"> <input
+								type="radio" name="iestado" id="todos" value="-1"
+								checked="checked"> <i class="input-helper"></i>todos
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<table id="example"  class="table table-vmiddle nowrap tabla_gestion" width="100%">
+						<thead>
+							<tr>
+								<th class="text-center">#</th>
+								<th class="text-center">beneficiario</th>
+								<th class="text-center">ci</th>
+								<th class="text-center">direccion</th>
+								<th class="text-center">Estado</th>
+								<th class="text-center">Opciones</th>
+
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="" src="../static/node_modules/jquery.nicescroll/dist/jquery.nicescroll.js" th:src="@{/node_modules/jquery.nicescroll/dist/jquery.nicescroll.js}"></script>
+	
+	
+    <script type="" src="../static/js/tema/js/functions.js" th:src="@{/js/tema/js/functions.js}"></script>
+	<script type="text/javascript">
+        var GIDBEN;
+        var GIDPER;
+
+        var MAX_TELEFONOS = 2;
+        var cont_doc;
+        var m_cont_doc;
+
+        var EstadoTel=0;
+
+
+        var result=Get_Opciones(null);
+        // console.log('GESTION_LIST: ',result)
+        // console.log('tam: ',result.AccionesUser.length)
+        if(ExisteOpcion('adicionar')){
+            // $('#btnAdicionar').attr({
+            //     onclick:"(Beneficiario.add())",
+            //     })
+            $('#btnAdicionar').removeAttr("disabled ").focus().val("Ahora si lo puedes utilizar")
+        }
+
+        function ExisteOpcion(opc){
+            // alert('entro comparar')
+            var resultado=false;
+            for (var i = 0; i < result.AccionesUser.length; i++) {
+                // console.log('for_: ',result.AccionesUser[i]);
+                if(result.AccionesUser[i].codigo==opc){
+                    resultado=true;         
+                }
+            }
+            // console.log('result_dentro:',resultado)              
+            return resultado;
+        }
+        // $('#formulario').find('#contenido-tel-add').html('');
+
+        var DTtable=''
+        var btnGroup='';
+
+        // var filtro=$('#filt-ben').val();
+        var estado=$('input[name="iestado"]:checked').val();
+        // listar();
+
+        // $('#filt-ben').on('keyup',function(){
+        //     filtro=$(this).val();
+        //     listar();
+        // })
+
+        $('input[name="iestado"]').on('change',function(){
+            estado=$(this).val();
+            $('#example').dataTable().fnDraw('page');
+        })
+
+        DTtable=$('#example').DataTable({
+            "oLanguage": {
+                "sUrl": GurlDataTable
+            },
+             // responsive:true,
+            "dom":'rt<button>ip',
+            "processing": true,
+            "serverSide": true,
+            // async:false,
+            "ajax": {
+                "type": "POST",
+                url:'RestBeneficiarios/listar_d',
+                "data": function ( d ) {
+                    d.estado = estado;
+                }
+            },
+            columns:[
+                {data:'ci'},
+                {data:'ci'},
+                {data:'ci'},
+                {data:'ci'},
+                {data:'estado'},
+                {data:'ci'},
+            ]
+            ,
+            "createdRow":function(row,data,index){
+                $('td',row).eq(0).html(index+1).addClass('text-center');
+                // $('td',row).eq(1).html(data.ap+' '+data.am+' '+data.nombres)
+                $('td',row).eq(1).html(data.razonsocial)
+                $('td',row).eq(2).html(data.ci+' '+data.ciCod)
+                $('td',row).eq(3).html(data.direccion)
+                if(data.beneficiario.estado==1){
+                    // $('td',row).eq(4).html('<button type="button" class="btn btn-xs btn-success waves-effect" href="#" style="text-align:center"><i class="fa fa-thumbs-o-up"></i></button>').addClass('text-center').addClass('text-center');
+                    $('td',row).eq(4).html('Activo').addClass('text-center');
+
+                }else{
+                    // $('td',row).eq(4).html('<button type="button" class="btn btn-xs btn-danger waves-effect" href="#" style="text-align:center"><i class="fa fa-thumbs-o-down"></i></button>').addClass('text-center').addClass('text-center');
+                    $('td',row).eq(4).html('Inactivo').addClass('text-center');
+
+                }
+                if(ExisteOpcion('modificar')){
+                    $('td',row).eq(5).html('<button id="btnModificar" class="btn btn-xs btn-info btn-sm waves-effect btn-espacio modificar" data-toggle="tooltip" data-placement="top" data-original-title="Modificar" accesskey="'+data.beneficiario.idben+'" data-href="'+data.beneficiario.idper+'" ><span class="zmdi zmdi-edit"></span> Modificar</button>')
+                    // $('td',row).eq(5).append('<button>hola</button>')
+                }else{
+                    $('td',row).eq(5).html('<button id="btnModificar" class="btn btn-xs btn-info btn-sm waves-effect btn-espacio modificar" disabled="disabled"><span class="zmdi zmdi-edit"></span> Modificar</button>') 
+                }
+                if(data.beneficiario.estado==1){
+                    if(ExisteOpcion('eliminar')  ){
+                        // if()
+                        $('td',row).eq(5).append('<button id="btn-elim" class="btn btn-xs btn-danger btn-sm waves-effect btn-espacio eliminar" accesskey="'+data.beneficiario.idben+'" data-href="'+data.beneficiario.idper+'" ><span class="zmdi zmdi-delete"></span> Eliminar</button>');
+                    }else{
+                        $('td',row).eq(5).append('<button id="btn-elim" class="btn btn-xs btn-danger btn-sm waves-effect btn-espacio" disabled="disabled"><span class="zmdi zmdi-delete"></span> Eliminar</button>');  
+                    }
+                }else{
+                    if(ExisteOpcion('habilitar')){
+                        $('td',row).eq(5).append('<button id="btn-hab" class="btn btn-xs btn-success btn-sm waves-effect btn-espacio habilitar" accesskey="'+data.beneficiario.idben+'" data-href="'+data.beneficiario.idper+'" ><span class="zmdi zmdi-time-restore-setting"></span> Habilitar</button>');
+                    }else{
+                        $('td',row).eq(5).append('<button id="btn-hab" class="btn btn-xs btn-success btn-sm waves-effect btn-espacio" disabled="disabled"><span class="zmdi zmdi-time-restore-setting"></span> Habilitar</button>');   
+                    }                       
+                }
+
+            }
+            ,
+            "drawCallback":function(settings){
+                $('button[data-toggle="tooltip"]').tooltip({animated: 'fade',placement: 'bottom',});
+
+                $('#filt-ben').on( 'keyup', function () {
+                    DTtable.search(this.value ).draw();
+                }) 
+
+                $('#btnAdicionar').click(function(){
+                    $.post('RestBeneficiarios/documentosBeneficiario',function(respDoc){
+                         // alert('tamanio: '+respDoc.length)
+                         cont_doc=respDoc.length
+                    })  
+                    $('#text-desc').val('')
+
+                    $('#formulario').find('#select-genero').chosen()
+                    // $('#ciCod').chosen()
+
+                    var respCi="";
+                    
+//                     $.post('RestBeneficiarios/documentosBeneficiario',function(respDoc){
+//                         $('#formulario').find('#js_doc').html('')
+//                         console.log('listaDoc: ',respDoc)
+//                         $(respDoc).each(function(index,item){
+//                             console.log('index_ckec:',index)
+//                             contador_tam=index+1;
+//                             $('#js_doc').append(
+//                                 `<div class="checkbox m-b-15">
+//                                     <label>
+//                                         <input value="${item.iddocb}" type="checkbox" name="documentos[]" >
+//                                         <i class="input-helper" ></i>${item.nombre}
+//                                     </label>
+//                                 </div>`
+//                             );
+//                         })
+//                         $('#formulario').find('#m_cont_doc').val(respDoc.length);
+//                         // cont_doc=respDoc.length
+//                         $('#formulario').formValidation('addField','documentos[]');
+                        
+//                     })
+                    var telSC;
+                    function asyncSqrt(callback){
+                        // $('#contenido-tel-add').html('');
+                         telSC=`<div class="form-group">
+                            <label class="col-xs-3 control-label">Telefonos/Celulares</label>
+                            <div class="col-xs-5">
+                                <input type="text"  class="form-control telefono-class" name="telefono[]" placeholder="Ingrese numero"  data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico"/>
+                            </div>
+                            <div class="col-xs-4">
+                                <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group hide" id="optionTemplate" >
+                            <div class="col-xs-offset-3 col-xs-5">
+                                <input class="form-control" type="text" name="" placeholder="Ingrese numero" maxlength="10" data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico"/>
+                            </div>
+                            <div class="col-xs-4">
+                                <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                            </div>
+                        </div>
+                        `;
+                        $('#contenido-tel-add').html(telSC);
+                        $('#formulario').formValidation('addField','telefono[]')
+                        
+
+                    }
+                    asyncSqrt(function(result){
+
+                        // $('#contenido-tel-add').html('');
+                        // $('#contenido-tel-add').html(telSC);
+                        // var   $option   = $('.ClassExisteTel').find('[name="telefono[]"]');
+                        // $('#formulario').formValidation('addField','telefono[]')
+                    })
+
+
+                    $('#formulario').data('formValidation').resetForm();
+                    $('#formulario')[0].reset();
+
+
+                    $.post('RestBeneficiarios/documentosBeneficiario',function(respDoc){
+                         cont_doc=respDoc.length
+                    }); 
+
+                    $('#text-desc').val('');
+                    // $('#text-obs').val('');
+                    // $('input[name="idben"]').val('')
+                    // campoCedulaGlobal="";
+
+                    $('#modalAdicionar').modal('show');
+                });
+
+                $('.modificar').click(function(){
+                    // $('#formularioModificar').formValidation('removeField', 'documentos[]');
+
+                    $('#formularioModificar').data('formValidation').resetForm();
+                    // $('#formularioModificar')[0].reset();
+                    $('#mensaje').html('');
+                    $('#js_docMod').html('')
+                    $('#contenido-tel').html('');
+
+
+
+                    var idben=$(this).attr('accesskey');
+                    GIDBEN=idben;
+                    var idper=$(this).data('href');
+                    GIDPER=idper;
+                    
+                    $.post('RestBeneficiarios/datos-mod_d',{idben:idben},function(resp){
+                        console.log('respuestaDatosModificarPost: ',resp)
+                        $('#text-desc').val('')
+                        $('#js_docMod').html('')
+                        $('#contenido-tel').html('');
+
+//                         $('#formularioModificar').loadJSON(resp[0])
+                        $('#formularioModificar').find('input[name="ci"]').val(resp[0].ci);
+                        $('#formularioModificar').find('input[name="razonsocial"]').val(resp[0].razonsocial);
+                        $('#formularioModificar').find('input[name="estadocivil"]').val(resp[0].estadocivil);
+                        $('#formularioModificar').find('input[name="profesion"]').val(resp[0].profesion);
+                        $('#formularioModificar').find('input[name="naturalde"]').val(resp[0].naturalde);
+                        $('#formularioModificar').find('input[name="direccion"]').val(resp[0].direccion);
+                        $('#formularioModificar').find('input[name="email"]').val(resp[0].email);
+                        $('#formularioModificar').find('input[name="institucion"]').val(resp[0].beneficiario.institucion);
+                        $('#formularioModificar').find('textarea[name="descripcion"]').val(resp[0].beneficiario.descripcion);
+                        // $('#modalModificar').modal('show')
+                       var telSC;
+                        if(resp[1].length!=0){
+                           var bloqueo;
+                           if(resp[1].length==MAX_TELEFONOS){
+                                // alert('entro: '+resp[1].length)
+                                bloqueo="disabled"
+                           }else{
+                                // alert('no entro')
+                                bloqueo=''
+                           } 
+
+                           $(resp[1]).each(function(index,item){
+                                // alert('pre')
+                                console.log('resp[1] TAM:',resp[1].length)
+                                console.log('index: ',index)
+
+                               if(index==0){
+                                   telSC=`<div class="form-group" id="ExisteTelOr">
+                                            <label class="col-xs-3 control-label">Telefonos/Celulares</label>
+                                            <div class="col-xs-5">
+                                                <input type="text" class="form-control" name="telefono[]" value="${item.numero}" placeholder="Ingrese numero" maxlength="10" data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico"/>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <button type="button" class="btn btn-default addButton" ${bloqueo}><i class="fa fa-plus"></i></button>
+                                            </div>
+                                       </div>`
+                                         $('#contenido-tel').append(telSC);
+                                         var   $option   = $('#ExisteTelOr').find('[name="telefono[]"]');
+                                        // $('#formularioModificar').formValidation('addField', $option);
+                               }else{
+                                    telSC=`<div class="form-group ClassExisteTel">
+                                              <div class="col-xs-offset-3 col-xs-5">
+                                                <input class="form-control" type="text" name="telefono[]" value="${item.numero}" placeholder="Ingrese numero" maxlength="10"/>
+                                              </div>
+                                              <div class="col-xs-4">
+                                                <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                                              </div>
+                                           </div>`
+                                     $('#contenido-tel').append(telSC);
+                                     var   $option   = $('.ClassExisteTel').find('[name="telefono[]"]');
+                                     // $('#formularioModificar').formValidation('addField', $option);      
+                               } 
+                               var opcionclone=`
+                                       <div class="form-group hide" id="optionTemplate" >
+                                            <div class="col-xs-offset-3 col-xs-5">
+                                                <input class="form-control" type="text" name="" placeholder="Ingrese numero" maxlength="10" data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico"/>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                                            </div>
+                                        </div>
+
+                               `; 
+                                $('#contenido-tel').append(opcionclone);
+
+                              
+                           })      
+                        }else{
+                           telSC=`<div class="form-group" id="origenT">
+                                        <label class="col-xs-3 control-label">Telefonos/Celulares</label>
+                                        <div class="col-xs-5">
+                                            <input type="text" class="form-control" name="telefono[]" placeholder="Ingrese numero" maxlength="10"/>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+                                        </div>
+                                   </div>
+                                    <div class="form-group hide" id="optionTemplate" >
+                                        <div class="col-xs-offset-3 col-xs-5">
+                                            <input class="form-control" type="text" name="" placeholder="Ingrese numero" maxlength="10" data-fv-integer="true" data-fv-integer-message="El campo debe ser numerico"/>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                   `
+                            $('#contenido-tel').html(telSC);
+                            var   $option   = $('#origenT').find('[name="telefono[]"]');
+                            // $('#formularioModificar').formValidation('addField', $option);    
+                        }
+                        $('#formularioModificar').formValidation('addField','telefono[]');   
+
+//                         $(resp[3]).each(function(i,d){
+//                             var encontrado=false;
+//                             $(resp[2]).each(function(i2,dn){
+//                                 console.log('dn:',dn)
+//                                 if (dn.iddocb==d.iddocb){
+//                                     encontrado=true;
+//                                     m_cont_doc=d.length;
+                                    
+//                                 }else{
+//                                     // encontrado=false;
+//                                 }
+
+//                                 // continue;
+//                             })
+//                             console.log('encontrado:',encontrado)
+//                             if (encontrado) {
+//                                 $('#js_docMod').append(
+//                                 `<div class="checkbox m-b-15">
+//                                     <label>
+//                                         <input value="${d.iddocb}" type="checkbox" name="documentos[]" checked="checked" class="doc-mod">
+//                                             <i class="input-helper" ></i>${d.nombre}
+//                                     </label>
+//                                 </div>`    
+//                                 )
+
+//                             }else{
+//                                 $('#js_docMod').append(
+//                                 `<div class="checkbox m-b-15">
+//                                     <label>
+//                                         <input value="${d.iddocb}" type="checkbox" name="documentos[]" class="doc-mod">
+//                                             <i class="input-helper" ></i>${d.nombre}
+//                                     </label>
+//                                 </div>`
+//                                 )
+//                                 // m_cont_doc=d.length
+
+//                             }
+
+//                         })
+
+//                         $('#formularioModificar').formValidation('addField','documentos[]');   
+
+                    },'json')
+                    // $('#formularioModificar').data('formValidation').resetForm();
+                    $('#formularioModificar')[0].reset();
+
+                    $('#modalModificar').modal('show');
+
+                });
+
+                $('.eliminar').click(function(){
+
+                    var idben=$(this).attr('accesskey')
+                    // alert('id: '+idben)
+                    swal({   
+                        title: "Seguro de Eliminar Beneficiario?",   
+                        text: "Usted eliminara al Beneficiario",   
+                        type: "warning",   
+                        showCancelButton: true,   
+                        confirmButtonColor: "#DD6B55",   
+                        confirmButtonText: "Si, Continuar!",   
+                        cancelButtonText: "No, Cancelar!",   
+                        closeOnConfirm: false,   
+                        closeOnCancel: false 
+                        }, function(isConfirm){
+                        if (isConfirm) {
+                            $.post('RestBeneficiarios/eliminar',{idben:idben},function(resp){
+                                console.log(resp)
+                                if (resp.estado) {
+                                    $('#example').dataTable().fnDraw('page');
+                                    $('.modal').modal('hide')
+                                    swal({
+                                        title:"Eliminado",
+                                        text:"Se ha Eliminado al beneficiario exitosamente",
+                                        type:"success",
+                                        timer: 2000,   
+                                        showConfirmButton: false 
+                                    });
+                                         
+                               
+                                } else {
+                                    aler('Sin respuesta del Servidor')
+                                }   
+                            })
+                        } else {
+                            swal({
+                                title:"Cancelado",
+                                text:"Se ha cancelado operacion",
+                                type:"error",
+                                timer:2000,
+                                showCancelButton:false,
+                                showConfirmButton:false
+
+                            })
+                        } 
+                    }); 
+                });
+                $('.habilitar').click(function(){
+
+                    var idben=$(this).attr('accesskey')
+                    swal({   
+                        title: "Seguro de Habilitar Beneficiario?",   
+                        text: "Usted habilitar� al Beneficiario",   
+                        type: "warning",   
+                        showCancelButton: true,   
+                        confirmButtonColor: "#DD6B55",   
+                        confirmButtonText: "Si, Continuar!",   
+                        cancelButtonText: "No, Cancelar!",   
+                        closeOnConfirm: false,   
+                        closeOnCancel: false 
+                        }, function(isConfirm){
+                            if (isConfirm) {
+                                $.post('RestBeneficiarios/habilitar',{idben:idben},function(resp){
+                                    console.log(resp)
+                                    if (resp.estado) {
+                                        $('#example').dataTable().fnDraw('page');
+                                        $('.modal').modal('hide')
+                                        swal({
+                                            title:"Habilitado",
+                                            text:"Se ha Habilitado al beneficiario exitosamente",
+                                            type:"success",
+                                            timer: 2000,   
+                                            showConfirmButton: false 
+                                        });
+                                   
+                                    } else {
+                                        aler('Sin respuesta del Servidor')
+                                    }   
+                                })  
+                            } else {
+                                swal({
+                                    title:"Cancelado",
+                                    text:"Se ha cancelado operacion",
+                                    type:"error",
+                                    timer:2000,
+                                    showCancelButton:false,
+                                    showConfirmButton:false
+
+                                })
+                            } 
+                    }); 
+                });
+
+            }
+           
+        }); 
+        $('.estado').click(function(){
+            $('#example').dataTable().fnDraw('page');
+        });
+
+
+        $('#formulario').formValidation({
+            fields:{
+                ci:{
+                    validators:{
+                        callback:{
+                            message:'callback cedula existente',
+                            callback:function(value,validator,$field){
+                                console.log('valor de cedula: ',value)
+                                $.ajax({
+                                    url:"RestBeneficiarios/existeCi",
+                                    data:{
+                                        ci:value
+                                    },
+                                    type:"post",
+                                    dataType:"json",
+                                    async:false,
+                                    cache:false,
+                                    success:function(resp){
+                                        respCi=resp.estado
+                                    },  
+                                    error:function(err){
+                                        alert('sin respuesta del servidor')
+                                    }
+
+                                })
+                                if(respCi){
+                                     return {
+                                         valid:false,
+                                         message:'esta cedula ya esta registrada'
+                                     } 
+                                }else{
+                                    return true;    
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+                ,
+                ap:{
+                    validators:{
+                        callback:{
+                            message:"Call",
+                            callback:function(value,validators,$field){
+                                var Patron=/^[a-zA-Z]*$/;
+                                if (!value.search(Patron)) {
+                                    return true
+                                } else {
+                                    return {
+                                         valid:false,
+                                         message:'Este campo solo acepta letras'
+                                     } 
+                                }
+                            }
+                        }
+                    }
+                },
+                am:{
+                    validators:{
+                        callback:{
+                            message:"Call",
+                            callback:function(value,validators,$field){
+                                var Patron=/^[a-zA-Z]*$/;
+                                if (!value.search(Patron)) {
+                                    return true
+                                } else {
+                                    return {
+                                         valid:false,
+                                         message:'Este campo solo acepta letras'
+                                     } 
+                                }
+                            }
+                        }
+                    }
+                },
+                'documentos[]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'Seleccione Docuementos'
+                        },
+                        choice: {
+                            min: cont_doc,
+                            max: cont_doc,
+                            message: 'Seleccione todos los documentos '
+                        }
+                    }
+                },
+                'telefono[]': {
+                    validators: {
+                        stringLength: {
+                            // max: 10,
+                            // message: 'El tama�o debe ser maximo hasta 10 caracteres'
+                            min:7,
+                            max: 8,
+                            message: 'Digite entre 7 u 8 digitos'
+                        }
+                    }
+                }
+            }
+        })
+        .on('click', '.addButton', function() {
+            EstadoTel=0
+
+            var $template = $('#optionTemplate');
+            var   $clone    = $template
+                                .clone()
+                                .removeClass('hide')
+                                .removeAttr('id')
+                                .insertBefore($template);
+            $clone.find('.form-control').attr('name','telefono[]');
+            var   $option   = $clone.find('[name="telefono[]"]');
+            $('#formulario').formValidation('addField', $option);
+            EstadoTel++;
+
+        })
+        .on('click', '.removeButton', function() {
+            var $row    = $(this).parents('.form-group'),
+                $option = $row.find('[name="telefono[]"]');
+            console.log('padre: ',$row)
+            // Remove element containing the option
+            $row.remove();
+
+            // Remove field
+            $('#formulario').formValidation('removeField', $option);
+        })
+        .on('added.field.fv', function(e, data) {
+            if (data.field === 'telefono[]') {
+                if ($('#formulario').find(':visible[name="telefono[]"]').length >= MAX_TELEFONOS) {
+                    $('#formulario').find('.addButton').attr('disabled', 'disabled');
+                }
+            }
+        })
+        .on('removed.field.fv', function(e, data) {
+           if (data.field === 'telefono[]') {
+                if ($('#formulario').find(':visible[name="telefono[]"]').length < MAX_TELEFONOS) {
+                    $('#formulario').find('.addButton').removeAttr('disabled');
+                }
+            }
+        })
+        .on('success.form.fv', function(e){
+            e.preventDefault();
+            var $form = $(e.target);
+            swal({   
+                title: "Seguro de registrar Beneficiario?",   
+                text: "Usted registrara nuevo Beneficiario",   
+                type: "warning",   
+                showCancelButton: true,   
+                confirmButtonColor: "#DD6B55",   
+                confirmButtonText: "Si, Continuar!",   
+                cancelButtonText: "No, Cancelar!",   
+                closeOnConfirm: false,   
+                closeOnCancel: false 
+                }, function(isConfirm){   
+                    if (isConfirm) {     
+                        $('#formulario').ajaxSubmit({
+                            success:function(res){
+                                console.log('registrado',res)
+
+                                if(res.estado){
+                                    $form.data('formValidation').resetForm();
+                                    $('#formulario')[0].reset();
+                                    $('#example').dataTable().fnDraw('page');
+                                    $('.modal').modal('hide')
+
+                                    swal({
+                                        title:"Registrado",
+                                        text:"Se ha registrado beneficiario exitosamente",
+                                        type:"success",
+                                        timer: 2000,   
+                                        showConfirmButton: false 
+                                    });
+                                   
+                                }
+                            }
+                        })
+
+                    } else {     
+                        swal({
+                            title:"Cancelado",
+                            text:"Se ha cancelado operacion",
+                            type:"error",
+                            timer:2000,
+                            showCancelButton:false,
+                            showConfirmButton:false
+
+                        })
+                        $('#modal-add').modal('hide')
+                    } 
+                });
+        })
+
+
+        $('#formularioModificar').formValidation({  
+        fields:{
+                nombres:{
+                    validators:{
+                        callback:{
+                            message:"Call",
+                            callback:function(value,validators,$field){
+                                var Patron=/^[a-zA-Z]*$/;
+                                if (!value.search(Patron)) {
+                                    return true
+                                } else {
+                                    return {
+                                         valid:false,
+                                         message:'Este campo solo acepta letras'
+                                     } 
+                                }
+                            }
+                        }
+                    }
+                },
+                ap:{
+                    validators:{
+                        callback:{
+                            message:"Call",
+                            callback:function(value,validators,$field){
+                                var Patron=/^[a-zA-Z]*$/;
+                                if (!value.search(Patron)) {
+                                    return true
+                                } else {
+                                    return {
+                                         valid:false,
+                                         message:'Este campo solo acepta letras'
+                                     } 
+                                }
+                            }
+                        }
+                    }
+                },
+                am:{
+                    validators:{
+                        callback:{
+                            message:"Call",
+                            callback:function(value,validators,$field){
+                                var Patron=/^[a-zA-Z]*$/;
+                                if (!value.search(Patron)) {
+                                    return true
+                                } else {
+                                    return {
+                                         valid:false,
+                                         message:'Este campo solo acepta letras'
+                                     } 
+                                }
+                            }
+                        }
+                    }
+                },
+                'documentos[]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'Seleccione Docuementos'
+                        },
+                        choice: {
+                            min: m_cont_doc,
+                            max: m_cont_doc,
+                            message: 'Seleccione todos los documentos '
+                        }
+                    }
+                },
+                'telefono[]': {
+                    validators: {
+                        stringLength: {
+                            max: 10,
+                            message: 'El tama�o debe ser maximo hasta 10 caracteres'
+                        }
+                    }
+                }
+            }                          
+        })
+    
+        .on('click', '.addButton', function() {
+            EstadoTel=0
+
+            var $template = $('#optionTemplate');
+            var   $clone    = $template
+                                .clone()
+                                .removeClass('hide')
+                                .removeAttr('id')
+                                .insertBefore($template);
+            $clone.find('.form-control').attr('name','telefono[]');
+            var   $option   = $clone.find('[name="telefono[]"]');
+            $('#formularioModificar').formValidation('addField', $option);
+            EstadoTel++;
+
+        })
+        .on('click', '.removeButton', function() {
+            var $row    = $(this).parents('.form-group'),
+                $option = $row.find('[name="telefono[]"]');
+            console.log('padre: ',$row)
+            // Remove element containing the option
+            $row.remove();
+
+            // Remove field
+            $('#formularioModificar').formValidation('removeField', $option);
+        })
+        // Called after adding new field
+        .on('added.field.fv', function(e, data) {
+            // data.field   --> The field name
+            // data.element --> The new field element
+            // data.options --> The new field options
+            if (data.field === 'telefono[]') {
+                if ($('#formularioModificar').find(':visible[name="telefono[]"]').length >= MAX_TELEFONOS) {
+                    $('#formularioModificar').find('.addButton').attr('disabled', 'disabled');
+                }
+            }
+        })
+        // Called after removing the field
+        .on('removed.field.fv', function(e, data) {
+           if (data.field === 'telefono[]') {
+                if ($('#formularioModificar').find(':visible[name="telefono[]"]').length < MAX_TELEFONOS) {
+                    $('#formularioModificar').find('.addButton').removeAttr('disabled');
+                }
+            }
+        })
+        .on('success.form.fv', function(e){
+           e.preventDefault();
+          var $form = $(e.target);
+           
+            swal({ 
+                title: "Seguro de modificar Beneficiario?",   
+                text: "Usted modificara los datos del Beneficiario",   
+                type: "warning",   
+                showCancelButton: true,   
+                confirmButtonColor: "#DD6B55",   
+                confirmButtonText: "Si, Continuar!",   
+                cancelButtonText: "No, Cancelar!",   
+                closeOnConfirm: false,   
+                closeOnCancel: false 
+                }, function(isConfirm){  
+                    $('.doc-mod').removeAttr('disabled') 
+                    if (isConfirm) {
+                        $('#cedula_mod').removeAttr("disabled")
+                        $('#formularioModificar').find('#ciCod').removeAttr("disabled")
+                        $('#formularioModificar').ajaxSubmit({
+                            data:{
+                                idben:GIDBEN,
+                                idper:GIDPER
+                            },
+                            success:function(res){
+                                console.log('modificado',res)
+                                if(res.estado){
+                                    // $form.data('formValidation').resetForm();
+                                    // $('#formularioModificar')[0].reset();
+                                    $('#example').dataTable().fnDraw('page');
+                                    $('.modal').modal('hide')
+                                    swal({
+                                        title:"Modificado",
+                                        text:"Se ha modificado beneficiario exitosamente",
+                                        type:"success",
+                                        timer: 2000,   
+                                        showConfirmButton: false 
+                                    });     
+                                }
+                            }
+                        })
+
+                    } else {     
+                        // swal("Cancelled", "Your imaginary file is safe :)", "error");   
+                        swal({
+                            title:"Cancelado",
+                            text:"Se ha cancelado operacion",
+                            type:"error",
+                            timer:2000,
+                            showCancelButton:false,
+                            showConfirmButton:false
+
+                        })
+                        $('.modal').modal('hide')
+                    } 
+            });
+        })
+
+            // $(function () {
+
+
+       
+
+        function resetearFormulario(form){
+            $(form).data('formValidation').resetForm(true)
+        }
+        
+        $('#generarR').click(function(){ 
+  			$("#frameReportes").attr("src",'Beneficiarios/listaReporte');
+
+			$("#reportes").modal('show');
+  		});
+        
+        
+    // })
+        
+    </script>
+    <script type="text/javascript"> 
+        $('#mensaje').html('');
+        $('#text-desc').html('')
+        $('#cedula_mod').on('click keyup',function(e){
+            $('#mensaje').html('');
+            // alert($(this).val())
+
+            $.ajax({
+                url:"RestBeneficiarios/existeCi",
+                data:{
+                    ci:$(this).val()
+                },
+                type:"post",
+                dataType:"json",
+                async:false,
+                cache:false,
+                success:function(resp){
+                    respCi=resp.estado
+                },  
+                error:function(err){
+                    alert('sin respuesta del servidor')
+                }
+            })
+
+            if (respCi) {
+                $('#mensaje').html('Esta cedula ya esta registrada');
+                $('#btn-guardar').prop("disabled","disabled")
+            }else{   
+                $('#btn-guardar').removeAttr("disabled")
+            }
+
+        })
+</script>
+</body>
+</html>

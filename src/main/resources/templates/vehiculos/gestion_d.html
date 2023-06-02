@@ -1,0 +1,734 @@
+
+<form name="formulario" role="form" id="formulario" method="post"
+	action="RestVehiculos/adicionar" data-fv-excluded="disabled">
+
+	<div class="modal fade" id="modalAdicionar" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" data-backdrop="static"
+		data-keyboard="false" aria-hidden="true">
+
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">NUEVA</h4>
+				</div>
+				<div class="modal-body">
+					<!-- Text input-->
+					<div class="form-group">
+						<label>Nombre</label> <input id="nombre" name="nombre" type="text"
+							placeholder="ingrese nombre de marca Reductor"
+							class="form-control input-md" data-fv-notempty="true"
+							data-fv-message="Por favor introdusca el nombre de Marca de Reductor">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" id="btnAdicionarConfirmacion"
+						class="btn btn-primary">
+						<i class="glyphicon glyphicon-floppy-disk"></i> Guardar
+					</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">
+						<i class="glyphicon glyphicon-remove-sign"></i> Cancelar
+					</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</form>
+<form name="formularioModificar" role="form" id="formularioModificar"
+	method="post" action="RestVehiculos/modificarVeh"
+	data-fv-excluded="disabled">
+	<div class="modal fade" id="modalModificar" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" data-backdrop="static"
+		data-keyboard="false" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">
+						<b>MODIFICAR DATOS</b>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<!-- 					<input type="hidden" name="idmarcred" id="idmarcred" /> -->
+					<input class="" id="" name="placa_hidden" type="hidden">
+					<!-- Text input-->
+					<div class="row">
+						<div class="col-md-6 form-group" >
+							<label>Placa</label> <input minlength="6" maxlength="7"
+								data-fv-stringlength-message="Requiere placa por lo menos 6 caracteres "
+								class="form-control fg-input dt-veh input-veh"
+								data-fv-notempty="true" data-fv-message="Requiere Placa"
+								id="placa" name="placa" type="text" placeholder="Placa..">
+
+
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Carnet de Propiedad</label> <input
+								class="form-control fg-input dt-veh input-veh" id="tg"
+								name="tjeta_prioridad" type="text" data-fv-notempty="true"
+								data-fv-message="Requiere carnet de Propiedad" maxlength="100" placeholder="Carnet de Propiedad..">
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label>Cilindrada</label> <input
+								class="form-control fg-input dt-veh input-veh" id="cil"
+								name="cilindrada" type="text" data-fv-notempty="true"
+								data-fv-message="Requiere Cilindrada" data-fv-integer="true"
+								data-fv-integer-message="Requiere solo numero" placeholder="Cilindrada..">
+
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Color</label> <input
+								class="form-control fg-input dt-veh input-veh" id="color"
+								name="color" type="text" data-fv-notempty="true"
+								data-fv-message="Requiere Color" maxlength="25" placeholder="Color..">
+
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Numero de Chasis</label> <input
+								class="form-control fg-input dt-veh input-veh" id="numC"
+								name="num_chasis" type="text" data-fv-notempty="true"
+								data-fv-message="Requiere Numero de Chasis" maxlength="100" placeholder="Numero de Chasis..">
+
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Numero de Motor</label> <input
+								class="form-control fg-input dt-veh input-veh" id="numM"
+								name="num_motor" type="text" data-fv-notempty="true"
+								data-fv-message="Requiere Numero de Motor" maxlength="100" placeholder="Numero de Motor..">
+
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Tipo </label> <input
+								class="form-control fg-input dt-veh input-veh" id="tipoveh"
+								name="tipoveh" type="text" data-fv-notempty="true"
+								data-fv-message="Requiere Tipo" maxlength="100" placeholder="Tipo..">
+
+						</div>
+												<div class="col-md-6">
+							<label>Clase</label>
+
+						<div class="form-group">
+							<select data-placeholder="n" name="idtipv"
+								class="form-control fg-input sel-opcv dt-veh "
+								data-fv-notempty='true'
+								data-fv-message="Seleccione el Tipo de Vehiculo" id="tipv">
+								<option value="" selected="selected">Tipo Vehiculo</option>
+							</select>
+
+						</div>
+						</div>
+					</div>
+					<div class="row">
+
+
+						<div class="col-md-6">
+							<label>Modelo</label>
+
+							<div class="form-group">
+							<select data-placeholder="n" name="idmodv"
+								class="form-control fg-input sel-opcv dt-veh"
+								data-fv-notempty='true'
+								data-fv-message="Seleccione el modelo del Vehiculo" id="modv">
+								<option value="" selected="selected">Modelo Vehiculo</option>
+							</select>
+
+						</div>
+						</div>
+												<div class="col-md-6">
+							<label>Marca</label> 
+							<div class="form-group">
+							<select data-placeholder="n" name="idmarcv"
+								class="form-control fg-input sel-opcv dt-veh"
+								data-fv-notempty='true'
+								data-fv-message="Seleccione la marca del Vehiculo" id="marv">
+								<option value="" selected="selected">Marca Vehiculo</option>
+							</select>
+
+						</div>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col-md-6">
+
+							<label>Sistema Motor</label>
+							<div class="form-group">
+								<!-- <label for="">Tipo de Vehículo</label> -->
+								<select data-placeholder="n" name="idtipoMotorVeh"
+									class="form-control fg-input sel-opcv dt-veh"
+									data-fv-notempty='true'
+									data-fv-message="Seleccione el Sistema de motor del Vehiculo"
+									id="tipmv">
+									<option value="" selected="selected">Sistema Motor
+										Vehiculo</option>
+								</select>
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label>Servicio</label>
+							<div class="form-group">
+								<select data-placeholder="n" name="idTipSv"
+									class="form-control fg-input sel-opcv dt-veh"
+									data-fv-notempty='true'
+									data-fv-message="Seleccione el tipo de servicio del Vehiculo"
+									id="tipserv">
+									<option value="" selected="selected">Tipo de Servicio</option>
+								</select>
+
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<label>Combustible</label>
+							<div class="form-group">
+								<select multiple="multiple"
+									data-placeholder="Seleccione combustible" name="combustible"
+									data-fv-notempty='true'
+									data-fv-message="Requiere tipo de Combustible"
+									data-fv-choice="true" data-fv-choice-min="1"
+									data-fv-choice-max="2"
+									data-fv-choice-message="Selecione entre 1 y 2 combustibles"
+									id="select-comb" class="form-control sel-opcv dt-veh">
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="" class="col-md-6 control-label"><b>KIT
+										GLP :</b></label>
+								<div class="col-md-6">
+									<label class="radio-inline"> <input type="radio"
+										style="margin-top: 1px;" id="kitsi" value="1"
+										name="kitGlpSiNo" maxlength='2'
+										data-fv-stringlength-message='' data-fv-notempty="true"
+										data-fv-message="Seleccione Kit Glp" class="dt-veh"> SI
+									</label> <label class="radio-inline"> <input type="radio"
+										style="margin-top: 1px;" id="kitno" value="0"
+										name="kitGlpSiNo" maxlength='2'
+										data-fv-stringlength-message='' data-fv-notempty="true"
+										data-fv-message="Seleccione Kit Glp" class="dt-veh"> NO
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" id="btnModificarConfirmacion"
+						class="btn btn-primary">
+						<i class="glyphicon glyphicon-floppy-disk"></i> Guardar
+					</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">
+						<i class="glyphicon glyphicon-remove-sign"></i> Cancelar
+					</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</form>
+
+<div class="contenido_gestion">
+
+	<div class="" style="padding: 0 15px;">
+		<div class="row">
+			<div class="col-md-4">
+				<h2 class="panel-title">
+					<b>GESTION VEHICULOS</b>
+				</h2>
+				<h5>Administre los datos de los vehiculos</h5>
+			</div>
+			<div class="col-md-6">
+				<h1 class="panel-title">
+					<b>GESTION: <label class="cs_gestion"></label></b>
+				</h1>
+			</div>
+		</div>
+
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-12" style="text-align: right; margin-bottom: 15px">
+				<button id="btn-add" class="btn btn-xs btn-succ "
+					disabled="disabled">NUEVO</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-3 col-xs-12" style="margin-bottom: 10px;">
+						<input type="text" id="js-filtro" name=""
+							class="form-control_filtro unput-sm"
+							placeholder=" Buscar por nombre de marca Reductor..">
+					</div>
+					<div class="col-md-3 col-xs-12"></div>
+					<div class="col-md-6 col-xs-12 navbar-right"
+						style="text-align: right; margin-top: 10px">
+						<label class="radio radio-inline m-r-20"> <input
+							type="radio" name="iestado" id="activos" value="1"
+							checked="checked"> <i class="input-helper"></i>activos
+						</label> <label class="radio radio-inline m-r-20"> <input
+							type="radio" name="iestado" id="bajas" value="0"> <i
+							class="input-helper"></i>bajas <!--   </label> <label class="radio radio-inline m-r-20"> <input
+            type="radio" name="iestado" id="todos" value="-1"
+            checked="checked"> <i class="input-helper"></i>todos
+          </label> -->
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<table id="example" class="table table-vmiddle nowrap tabla_gestion"
+					width="100%">
+					<thead>
+						<tr>
+							<th width="20px">#</th>
+							<th class="text-center">PLACA</th>
+							<th class="text-center">CLASE</th>
+							<th class="text-center">MARCA</th>
+							<th class="text-center">TIPO</th>
+							<th class="text-center">MODELO</th>
+							<th class="text-center">CILINDRADA</th>
+							<th class="text-center" width="200px">Opciones</th>
+						</tr>
+					</thead>
+					<tbody>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<script type="text/javascript">
+  var result=Get_Opciones(null);
+  if(ExisteOpcion('adicionar')){
+      // $('#btn-add').attr({
+      //     onclick:"(Gestion.add())",
+      //     // accesskey:""
+      // })
+      $('#btn-add').removeAttr("disabled ").focus().val("Ahora si lo puedes utilizar")
+  }
+
+  function ExisteOpcion(opc){
+      // alert('entro comparar')
+      var resultado=false;
+      for (var i = 0; i < result.AccionesUser.length; i++) {
+          console.log('for_: ',result.AccionesUser[i]);
+          if(result.AccionesUser[i].codigo==opc){
+              resultado=true;         
+          }
+      }
+      return resultado;
+  }
+
+  $(document).ready(function() {
+    var DTtable=''
+    var estado='';
+    estado=$('input[name="iestado"]:checked').val();
+    
+    asyncSqrt(function() {
+        console.log('FIN ');
+
+    });
+
+    function asyncSqrt(callback) {
+      console.log('START' );
+      callback();
+    }
+    
+    
+    $.getJSON('RestVehiculos/getDatosVeh',function(datos){
+        console.log('opcionesVehiculo: ',datos)
+
+
+        $(datos[0]).each(function(index,item){
+            // console.log('tip: ',item)
+            $('#tipv').append('<option value="'+item.idtipv+'">'+item.nombre+'</option>')
+        })
+        $('#tipv').chosen()
+        $(datos[1]).each(function(index,item){
+            // console.log('tip: ',item)
+            $('#marv').append('<option value="'+item.idmarcv+'">'+item.nombre+'</option>')
+        })
+        $('#marv').chosen()
+        $(datos[2]).each(function(index,item){
+            // console.log('tip: ',item)
+            $('#modv').append('<option value="'+item.idmodv+'">'+item.nombre+'</option>')
+        })
+        $('#modv').chosen()
+        $(datos[3]).each(function(index,item){
+            // console.log('tip: ',item)
+            $('#tipmv').append('<option value="'+item.idtipoMotorVeh+'">'+item.nombre+'</option>')
+        })
+        $('#tipmv').chosen()
+        $(datos[4]).each(function(index,item){
+            // console.log('tip: ',item)
+            $('#tipserv').append('<option value="'+item.idTipSv+'">'+item.nombre+'</option>')
+        })
+        $('#tipserv').chosen()
+        $(datos[5]).each(function(index,item){
+            $('#select-comb').append('<option value="'+item.idcomb+'">'+item.nombre+'</option>')
+        })
+        $('#select-comb').chosen()
+    })
+    
+    
+ 	
+    DTtable=$('#example').DataTable( {
+      "oLanguage": {
+            "sUrl": GurlDataTable
+      },
+      // "dom":"<'row'<'col-sm-3'<'aling_izq'f>><'col-sm-5'<'#tableHeader'>><'col-sm-3'>><'row'<'col-sm-12'tr>><'row w3-tiny'<'col-sm-5'i><'col-sm-7'p>>",
+      "dom":'rt<button>ip',
+      "pageLength":10,
+       responsive:true,
+      "processing": true,
+      "serverSide": true,
+      "ajax": {
+        	"type": "POST",
+          "url": "RestVehiculos/lista",
+      	"data": function ( d ) {
+                d.estado = estado
+                // d.estado = 1;
+                // filtro:filtro
+         }
+        },
+      "columns": [
+                { "data": "placa" },
+                { "data": "placa" },
+                { "data": "placa" },
+                { "data": "placa" },
+                { "data": "placa" },
+                { "data": "placa" },
+                { "data": "placa" },
+                { "data": "placa" }
+      ],
+      "createdRow": function ( row, data, index ){
+        $('td', row).eq(0).html(index+1);
+        $('td', row).eq(1).html(data.placa);
+        $('td', row).eq(2).html(data.tipoVehiculo.nombre);
+        $('td', row).eq(3).html(data.marcaVehiculo.nombre);
+        $('td', row).eq(4).html(data.tipoveh);
+        $('td', row).eq(5).html(data.modeloVehiculo.nombre);
+        if(data.cilindrada!="")$('td', row).eq(6).html(data.cilindrada+' cc.');
+        else $('td', row).eq(6).html(data.cilindrada)
+        if(ExisteOpcion('modificar')){
+          $('td', row).eq(7).html('<button class="btn btn-xs btn-primary waves-effect btn-espacio modificar"  data-toggle="tooltip" data-placement="top" title="Modificar" data-id="'+data.placa+'"><i class="fa fa-edit"></i> | modificar</button>').css({'padding-left':'0','padding-right': '0'});
+        }else{
+          $('td', row).eq(7).html('<button class="btn btn-xs btn-primary waves-effect btn-espacio modificar"  data-toggle="tooltip" data-placement="top" title="Modificar" disabled="disabled"><i class="fa fa-edit"></i> | modificar</button>').css({'padding-left':'0','padding-right': '0'});
+        }
+
+//         if(data.estado==1){
+//           if(ExisteOpcion('eliminar')  ){
+//             $('td', row).eq(2).append('<button class="btn btn-xs btn-danger waves-effect btn-espacio eliminar"  data-toggle="tooltip" data-placement="top" title="Deshabilitar" data-id="'+data.idmarcred+'"><i class="glyphicon glyphicon-remove-sign"></i> | Deshabilitar</button>');
+//           }else{
+//             $('td', row).eq(2).append('<button class="btn btn-xs btn-danger waves-effect btn-espacio eliminar"  data-toggle="tooltip" data-placement="top" title="Deshabilitar" disabled="disabled"><i class="glyphicon glyphicon-remove-sign"></i> | Deshabilitar</button>');
+//           }
+//         }else{
+//           if(ExisteOpcion('habilitar')){
+//             $('td', row).eq(2).append('<button class="btn btn-xs btn-success waves-effect btn-espacio habilitar"  data-toggle="tooltip" data-placement="top" title="Habilitar" data-id="'+data.idmarcred+'"><i class="glyphicon glyphicon-remove-sign"></i> | Habilitar</button>');
+//           }else{
+//             $('td', row).eq(2).append('<button class="btn btn-xs btn-success waves-effect btn-espacio habilitar"  data-toggle="tooltip" data-placement="top" title="Habilitar" data-id="'+data.idmarcred+'"><i class="glyphicon glyphicon-remove-sign"></i> | Habilitar</button>'); 
+//           }  
+
+//         }
+      },
+      "drawCallback": function( settings ){ 
+          // $('#tableTitle').html('<h6><b>Gestion Marca Reductor</b></h6>');
+          // $('#tableHeader').html('<button class="btn btn-xs btn-primary" id="btn-add"><i class="fa fa-plus-circle"></i> | adicionar</button>');
+          $('#btn-add').click(function(){
+            // alert('debe salir del drawCallback')
+            $('#formulario').data('formValidation').resetForm();
+            $('#formulario')[0].reset();
+            $('#modalAdicionar').modal('show');
+          });
+          $('.modificar').click(function(){
+            $('#formularioModificar').data('formValidation').resetForm();
+            $('#formularioModificar')[0].reset();
+             $.post('RestVehiculos/getDatosVehiculoByPlaca',{placa:$(this).data('id')}, function(resp) {
+                console.log('datos-mod: ',result)
+                
+	            vehiculo=resp;
+	            console.log('vechiculo: ',vehiculo)
+	  
+	            $('#tipv').val(vehiculo.tipoVehiculo.idtipv).trigger('chosen:updated');
+	            $('#marv').val(vehiculo.marcaVehiculo.idmarcv).trigger('chosen:updated');
+	            $('input[name="placa"]').val(vehiculo.placa);
+	            $('input[name="tjeta_prioridad"]').val(vehiculo.tjeta_prioridad);
+	            $('input[name="cilindrada"]').val(vehiculo.cilindrada);
+	            $('input[name="color"]').val(vehiculo.color);
+	            $('input[name="num_chasis"]').val(vehiculo.num_chasis);
+	            $('input[name="num_motor"]').val(vehiculo.num_motor);
+	            $('input[name="tipoveh"]').val(vehiculo.tipoveh);
+	            //AGREGADO
+				if(vehiculo.kitGlpSiNo==1){
+					$("#kitsi").attr('checked', 'checked')
+				}else if(vehiculo.kitGlpSiNo==0){
+					$("#kitno").attr('checked', 'checked')
+				}else{
+					$("#kitno").removeAttr('checked')	
+					$("#kitsi").removeAttr('checked')	
+				}
+	
+	
+	            
+	            $('#modv').val(vehiculo.modeloVehiculo.idmodv).trigger('chosen:updated');
+	            $('#tipmv').val(vehiculo.tipoMotor.idtipoMotorVeh).trigger('chosen:updated');
+	            $('#tipserv').val(vehiculo.tipoServicio.idTipSv).trigger('chosen:updated');
+	            
+	
+	  
+	            var arrayChosen=[];
+	            $(vehiculo.combustibleVehiculo).each(function(index,item){                              
+	                arrayChosen.push(item.idcomb);
+	            })
+	            console.log('array: ',arrayChosen);
+	            $('#select-comb').val(arrayChosen);
+	            $('#select-comb').trigger('chosen:updated');
+	            
+	            
+	            var padreNode=$('.dt-veh').parent(); 
+	            padreNode.addClass('fg-toggled');
+	//             $('.vehiculo-data').loadJSON(vehiculo)
+	            $('input[name="placa_hidden"]').val(vehiculo.placa)
+	                
+	                
+	//                 if(result.status){
+	                  $('#modalModificar').modal('show');
+	//                   $('#formularioModificar').loadJSON(resp);
+	//                 }else{
+	//                   mostrarMensaje('error','No se realizo con exito la Transaccion');
+	//                 }
+            }, 'json');
+          });
+          $('.eliminar').click(function(){ 
+            var idmarcred=$(this).data('id')
+            swal({   
+              title: "Seguro de Deshabilitar Marca Reductor?",   
+              text: "Usted Deshabilitar� Marca Reductor",   
+              type: "warning",   
+              showCancelButton: true,   
+              confirmButtonColor: "#DD6B55",   
+              confirmButtonText: "Si, Continuar!",   
+              cancelButtonText: "No, Cancelar!",   
+              closeOnConfirm: false,   
+              closeOnCancel: false 
+              }, function(isConfirm){
+                if (isConfirm) {
+                    $.post('RestMarcaReductor/eliminar?idmarcred='+idmarcred,function(resp){
+                      console.log(resp)
+                      if (resp.status) {
+                        $('#example').dataTable().fnDraw('page');//hace que se actualize la tabla
+                        swal({
+                            title:"Deshabilitar",
+                            text:"Se ha Deshabilitado Marca Reductor exitosamente",
+                            type:"success",
+                            timer: 500,   
+                            showConfirmButton: false 
+                        });
+                     
+                      } else {
+                          mostrarMensaje('error','No se realizo con exito la Transacciion');
+                      } 
+                    },'json')
+                }else {
+                    swal({
+                        title:"Cancelado",
+                        text:"Se ha cancelado operacion",
+                        type:"error",
+                        timer:2000,
+                        showCancelButton:false,
+                        showConfirmButton:false
+
+                    })
+                } 
+              }); 
+
+
+          });
+          $('.habilitar').click(function(){ 
+            var idmarcred=$(this).data('id')
+            swal({   
+              title: "Seguro de Habilitar Marca Reductor?",   
+              text: "Usted Habilitar� Marca Reductor",   
+              type: "warning",   
+              showCancelButton: true,   
+              confirmButtonColor: "#DD6B55",   
+              confirmButtonText: "Si, Continuar!",   
+              cancelButtonText: "No, Cancelar!",   
+              closeOnConfirm: false,   
+              closeOnCancel: false 
+              }, function(isConfirm){
+                if (isConfirm) {
+                    $.post('RestMarcaReductor/habilitar?idmarcred='+idmarcred,function(resp){
+                      console.log(resp)
+                      if (resp.status) {
+                        $('#example').dataTable().fnDraw('page');//hace que se actualize la tabla
+                        swal({
+                            title:"Habilitar",
+                            text:"Se ha Habilitado Marca Reductor exitosamente",
+                            type:"success",
+                            timer: 500,   
+                            showConfirmButton: false 
+                        });
+                     
+                      } else {
+                          mostrarMensaje('error','No se realizo con exito la Transacciion');
+                      } 
+                    },'json')
+                }else {
+                    swal({
+                        title:"Cancelado",
+                        text:"Se ha cancelado operacion",
+                        type:"error",
+                        timer:2000,
+                        showCancelButton:false,
+                        showConfirmButton:false
+
+                    })
+                } 
+              }); 
+          });
+          
+          $('button[data-toggle="tooltip"]').tooltip({animated: 'fade',placement: 'bottom',});
+   
+          $('#js-filtro').on( 'keyup', function () {
+            DTtable.search(this.value ).draw();
+          }) 
+          
+        }
+        // ,
+        // "fnDrawCallback":function(oSetttings){
+        //     // destruir(DTable);
+        // }
+  });
+  $('input[name="iestado"]').change(function(){
+    estado=$(this).val();
+    $('#example').dataTable().fnDraw('page');
+  });
+
+  $('#formulario').formValidation({locale: 'es_ES'})
+    .on('success.form.fv', function(e) {
+        e.preventDefault();
+        var $form = $(e.target);
+
+        swal({   
+          title: "Seguro de registrar Marca Reductor?",   
+          text: "Usted registrara nueva Marca Reductor",   
+          type: "warning",   
+          showCancelButton: true,   
+          confirmButtonColor: "#DD6B55",   
+          confirmButtonText: "Si, Continuar!",   
+          cancelButtonText: "No, Cancelar!",   
+          closeOnConfirm: false,   
+          closeOnCancel: false 
+          }, function(isConfirm){  
+            if (isConfirm) {   
+              $.post($form.attr('action'), $form.serialize(), function(result) {
+                  if(result.status){
+                      $form.data('formValidation').resetForm();
+                      $('#formulario')[0].reset();
+                      $('#example').dataTable().fnDraw('page');//hace que se actualize la tabla
+                      swal({
+                          title:"Registrado",
+                          text:"Se ha registrado Marca Reductor exitosamente",
+                          type:"success",
+                          timer: 500,   
+                          showConfirmButton: false 
+                      });
+                    // mostrarMensaje('info','Se realizo con exito la Transaccion');
+                  }else{
+                    mostrarMensaje('error','No se realizo con exito la Transaccin');
+                  }
+                $('.modal').modal('hide');
+              }, 'json');
+            } else {     
+                swal({
+                    title:"Cancelado",
+                    text:"Se ha cancelado operacion",
+                    type:"error",
+                    timer:500,
+                    showCancelButton:false,
+                    showConfirmButton:false
+
+                })
+                $('.modal').modal('hide')
+            } 
+        });
+
+
+    });
+
+  $('#formularioModificar').formValidation({locale: 'es_ES'})
+    .on('success.form.fv', function(e) {
+        e.preventDefault();
+        var $form = $(e.target);
+        swal({   
+          title: "¿Seguro de modificar datos?",   
+          text: "Usted modificara su información en el sistema",   
+          type: "warning",   
+          showCancelButton: true,   
+          confirmButtonColor: "#DD6B55",   
+          confirmButtonText: "Si, Continuar!",   
+          cancelButtonText: "No, Cancelar!",   
+          closeOnConfirm: false,   
+          closeOnCancel: false 
+          }, function(isConfirm){  
+            if (isConfirm) {   
+              $.post($form.attr('action'), $form.serialize(), function(result) {
+                  if(result.estado){
+                      $form.data('formValidation').resetForm();
+                      $('#formularioModificar')[0].reset();
+                      $('#example').dataTable().fnDraw('page');//hace que se actualize la tabla
+                      swal({
+                          title:"Registrado",
+                          text:"Se ha modificado datos exitosamente",
+                          type:"success",
+                          timer: 500,   
+                          showConfirmButton: false 
+                      });
+                      // var idmarcred=res.ordServ;
+                      // $("#frameReportes").attr("src",'RestServicios/ImprimirOS?idmarcred='+idmarcred);
+                      // $("#reportes").modal('show');
+                      // mostrarMensaje('info','Se realizo con exito la Transaccion');
+                  }else{
+                      alert('error:'+'No se realizo con exito la Transaccion');
+                  }
+                $('.modal').modal('hide');
+              }, 'json');
+            } else {     
+                swal({
+                    title:"Cancelado",
+                    text:"Se ha cancelado operacion",
+                    type:"error",
+                    timer:500,
+                    showCancelButton:false,
+                    showConfirmButton:false
+
+                })
+                $('.modal').modal('hide')
+            } 
+        });
+
+
+    });
+
+  });
+
+</script>

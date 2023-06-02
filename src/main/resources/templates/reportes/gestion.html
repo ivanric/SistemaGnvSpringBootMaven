@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>REPORTES</title>
+    <style type="text/css">
+    	body{
+    	 font-family: "Poppins", Arial, sans-serif;
+    	}
+    	.box_eess{
+	    	background: #edf2f2;
+		    margin: 2em;
+		    padding: 1em 0;
+		    border-radius: 5px;
+		    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+   
+    	}
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2><b>Reportes del Sistema</b></h2>
+        </div>
+    </div>
+    
+    <div class="row box_eess" style="">        
+        <div class="col-md-6" >
+            <h5 class="text-center"><b>Reportes Generales</b></h5>   
+            <div class="row">
+                <div class="col-md-12">
+                    <b>Seleccione Reporte</b>
+                </div>
+                <div class="col-md-12">
+                    <select name="reportes" id="select-reportes" >
+                        <option value="-1">Seleccione Reporte</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="div_fecha">
+
+                </div>
+
+            </div>
+            <br>
+            <div class="row">
+            	<div class="col-md-12">
+	                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+	                    <div class="btn-group" role="group">
+	                        <button type="button" class="btn btn-success waves-effect" id="js_excel"><i class="exportar fa fa-file-excel-o"></i> Reporte en Excel</button>
+	                    </div>
+	                    <div class="btn-group" role="group">
+	                        <button type="button" class="btn btn-danger waves-effect" id="js_pdf"><i class="exportar fa fa-file-pdf-o"></i> Reporte en  Pdf</button>
+	                    </div>
+	                </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+        	<div class="row">
+   	   	   	 	<h5 class="text-center"><b>Reporte Carguios Diarios por Placa en Estación de Servicio</b></h5>   
+       		    <br>
+        	</div>
+
+            <div class="row">
+               	<div class="col-md-6">
+                    <select name="estaciones" id="select-estaciones" >
+                        <option value="-1" selected="selected">Todas las estaciones</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+  	                <select name="placas" id="select-placas" >
+                        <option value="" selected="selected">Todas las placas</option>
+                    </select>
+                </div>
+            </div>
+         	<div class="row">
+				<div class="col-md-12">
+	                <br>
+					<div class="row">
+	      		        <div class="col-md-6">
+		                    <b>Fecha Inicial</b> <input type="date" class="form-control" name="fecha_inicial_cargEst">  
+		                </div>
+		                <div class="col-md-6">
+		                    <b>Fecha Final</b>   <input type="date" class="form-control" name="fecha_final_cargEst">  
+		                </div>
+					</div>
+					 <br>
+                </div>
+               
+            	<div class="col-md-12">
+	                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+	                    <div class="btn-group" role="group">
+	                        <button type="button" class="btn btn-success waves-effect" id="js_excel_carg_est"><i class="exportar fa fa-file-excel-o fa-3x"></i> Excel</button>
+	                    </div>
+	                    <div class="btn-group" role="group">
+	                        <button type="button" class="btn btn-danger waves-effect" id="js_pdf_carg_est" style="align-items: center;"><i class="exportar fa fa-file-pdf-o fa-3x"></i> <span> PDF</span> </button>
+	                    </div>
+	                </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row box_eess" >
+        <div class="col-md-6">
+      		<h5 class="text-center"><b>Reporte Carguios Mensuales de vehículos en General</b></h5>   
+            <br>
+            <div class="row">
+               	<div class="col-md-4">
+                    <select name="estaciones_carguios" id="select-estaciones-mensuales" >
+                        <option value="-1" selected="selected">Todas las estaciones</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+  	                <select name="meses_carg" id="select-meses" >
+                        <option value="" selected="selected">Todos los meses</option>
+                        <option value="01" >Enero</option>
+                        <option value="02" >Febrero</option>
+                        <option value="03" >Marzo</option>
+                        <option value="04" >Abri</option>
+                        <option value="05" >Mayo</option>
+                        <option value="06" >Junio</option>
+                        <option value="07" >Julio</option>
+                        <option value="08" >Agosto</option>
+                        <option value="09" >Septiembre</option>
+                        <option value="10" >Octubre</option>
+                        <option value="11" >Noviembre</option>
+                        <option value="12" >Diciembre</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+  	                <select name="anios_carg" id="select-anios" class="select-anios">
+                        <option value="" selected="selected">Todos los anios</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+            	<div class="col-md-12">
+	                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+	                    <div class="btn-group" role="group">
+	                        <button type="button" class="btn btn-success waves-effect" id="js_excel_carg"><i class="exportar fa fa-file-excel-o fa-3x"></i> Excel</button>
+	                    </div>
+	                    <div class="btn-group" role="group">
+	                        <button type="button" class="btn btn-danger waves-effect" id="js_pdf_carg" style="align-items: center;"><i class="exportar fa fa-file-pdf-o fa-3x"></i> <span> PDF</span> </button>
+	                    </div>
+	                </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+      		<h5 class="text-center"><b>Reporte Carguios Mensuales por Placa de Vehiculo</b></h5>   
+            <br>
+            <div class="row">
+               	<div class="col-md-6">
+                    <select name="estacionesMV" id="select-estaciones-MV" >
+                        <option value="-1" selected="selected">Todas las estaciones</option>
+                    </select>
+                </div>
+               	<div class="col-md-6">
+            		<select name="placasMV" id="select-placasMV" >
+                        <option value="" selected="selected">Todas las placas</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+          	  <div class="col-md-6">
+  	                <select name="mesesMV" id="select-mesesMV" >
+                        <option value="" selected="selected">Todos los meses</option>
+                        <option value="01" >Enero</option>
+                        <option value="02" >Febrero</option>
+                        <option value="03" >Marzo</option>
+                        <option value="04" >Abri</option>
+                        <option value="05" >Mayo</option>
+                        <option value="06" >Junio</option>
+                        <option value="07" >Julio</option>
+                        <option value="08" >Agosto</option>
+                        <option value="09" >Septiembre</option>
+                        <option value="10" >Octubre</option>
+                        <option value="11" >Noviembre</option>
+                        <option value="12" >Diciembre</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <!-- class="select-anios : para ambos select--> 
+  	                <select name="aniosMV" id="select-aniosMV" class="select-anios" >
+                        <option value="" selected="selected">Todos los anios</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+            	<div class="col-md-12">
+	                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+	                    <div class="btn-group" role="group">
+	                        <button type="button" class="btn btn-success waves-effect" id="js_excel_MV"><i class="exportar fa fa-file-excel-o fa-3x"></i> Excel</button>
+	                    </div>
+	                    <div class="btn-group" role="group">
+	                        <button type="button" class="btn btn-danger waves-effect" id="js_pdf_MV" style="align-items: center;"><i class="exportar fa fa-file-pdf-o fa-3x"></i> <span> PDF</span> </button>
+	                    </div>
+	                </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row box_eess" >
+        <div class="col-md-6">
+      		<h5 class="text-center"><b>Reporte Carguios Anuales por Estación de Servicio</b></h5>   
+            <br>
+            <div class="row">
+               	<div class="col-md-6">
+                    <select name="estacionesAE" id="select-estaciones-AE" >
+                        <option value="-1" selected="selected">Todas las estaciones</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+  	                <select name="aniosAE" id="select-aniosAE" class="select-anios">
+                        <option value="" selected="selected">Todos los anios</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+            	<div class="col-md-12">
+	                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+	                    <div class="btn-group" role="group">
+	                        <button type="button" class="btn btn-success waves-effect" id="js_excel_AE"><i class="exportar fa fa-file-excel-o fa-3x"></i> Excel</button>
+	                    </div>
+	                    <div class="btn-group" role="group">
+	                        <button type="button" class="btn btn-danger waves-effect" id="js_pdf_AE" style="align-items: center;"><i class="exportar fa fa-file-pdf-o fa-3x"></i> <span> PDF</span> </button>
+	                    </div>
+	                </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+      		<h5 class="text-center"><b>Reporte Carguios Anuales por placa de vehículos en Estación de Servicio</b></h5>   
+            <br>
+            <div class="row">
+               	<div class="col-md-4">
+                    <select name="estacionesAEP" id="select-estaciones-AEP" >
+                        <option value="-1" selected="selected">Todas las estaciones</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+  	                <select name="aniosAEP" id="select-aniosAEP" class="select-anios" >
+                        <option value="" selected="selected">Todos los anios</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select name="placasAEP" id="select-placasAEP" >
+                        <option value="" selected="selected">Todas las placas</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+            	<div class="col-md-12">
+	                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+	                    <div class="btn-group" role="group">
+	                        <button type="button" class="btn btn-success waves-effect" id="js_excel_AEP"><i class="exportar fa fa-file-excel-o fa-3x"></i> Excel</button>
+	                    </div>
+	                    <div class="btn-group" role="group">
+	                        <button type="button" class="btn btn-danger waves-effect" id="js_pdf_AEP" style="align-items: center;"><i class="exportar fa fa-file-pdf-o fa-3x"></i> <span> PDF</span> </button>
+	                    </div>
+	                </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row box_eess" >
+       <div class="col-md-6">
+            <h5 class="text-center"><b>Reporte Carguios Anuales por placa de vehículos en General</b></h5>   
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <select name="aniosAP" id="select-aniosAP" class="select-anios" >
+                        <option value="" selected="selected">Todos los anios</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <select name="placasAP" id="select-placasAP" >
+                        <option value="" selected="selected">Todas las placas</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-success waves-effect" id="js_excel_AP"><i class="exportar fa fa-file-excel-o fa-3x"></i> Excel</button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-danger waves-effect" id="js_pdf_AP" style="align-items: center;"><i class="exportar fa fa-file-pdf-o fa-3x"></i> <span> PDF</span> </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <br>
+</body>
+<!-- <script type="" src="../static/bower_components/jquery/dist/jquery.js" th:src="@{/bower_components/jquery/dist/jquery.js}"></script> -->
+
+<script  type="text/javascript">
+    var tipo;
+    // var enlace="RestResports/solicitudF";
+    var enlace="";
+    var fecha_inicial="";
+    var fecha_final="";
+    var idest;
+    
+    $('select[name="reportes"]').chosen()
+    $('select[name="estaciones"]').chosen()
+    $('select[name="placas"]').chosen()
+    
+    
+    var from = new Date(1994,1,1);
+    var to = new Date();
+    for (var day = from; day <= to; day.setFullYear(day.getFullYear() + 1)) {
+        $(".select-anios").append("<option value='" + day.getFullYear() + "'>" + day.getFullYear() + "</option>");
+    }
+    $('select[name="estaciones_carguios"]').chosen()
+    $('select[name="meses_carg"]').chosen()
+    $('select[name="anios_carg"]').chosen()
+
+    //MENSUALES
+    $('select[name="estacionesMV"]').chosen()
+    $('select[name="placasMV"]').chosen()
+    $('select[name="mesesMV"]').chosen()
+    $('select[name="aniosMV"]').chosen()
+
+    //ANUALES
+    $('select[name="estacionesAE"]').chosen()
+    $('select[name="aniosAE"]').chosen()
+
+    $('select[name="estacionesAEP"]').chosen()
+    $('select[name="aniosAEP"]').chosen()
+    $('select[name="placasAEP"]').chosen()
+
+    $('select[name="aniosAP"]').chosen()
+    $('select[name="placasAP"]').chosen()
+
+
+    
+    $.getJSON('RestResports/datos',function(datos){
+        console.log(datos)
+        // item=datos[0]
+        $(datos[0]).each(function(index,item){
+            $('select[name="reportes"]').append(`<option value="${item.idreport}" accesskey="${item.enlace}" data-id="${item.fechasino}">${item.nombre}</option>`)
+            $('select[name="reportes"]').trigger('chosen:updated');
+        })
+        $(datos[1]).each(function(index,item){
+            $('select[name="estaciones"]').append(`<option value="${item.idest}" accesskey="${item.idest}" data-id="${item.idest}">${item.nombreEstacion}</option>`)
+            $('select[name="estaciones"]').trigger('chosen:updated');
+            $('select[name="estaciones_carguios"]').append(`<option value="${item.idest}" accesskey="${item.idest}" data-id="${item.idest}">${item.nombreEstacion}</option>`)
+            $('select[name="estaciones_carguios"]').trigger('chosen:updated');
+
+            $('select[name="estacionesMV"]').append(`<option value="${item.idest}" accesskey="${item.idest}" data-id="${item.idest}">${item.nombreEstacion}</option>`)
+            $('select[name="estacionesMV"]').trigger('chosen:updated');
+
+            //ANIOS
+            $('select[name="estacionesAE"]').append(`<option value="${item.idest}" accesskey="${item.idest}" data-id="${item.idest}">${item.nombreEstacion}</option>`)
+            $('select[name="estacionesAE"]').trigger('chosen:updated');
+
+            $('select[name="estacionesAEP"]').append(`<option value="${item.idest}" accesskey="${item.idest}" data-id="${item.idest}">${item.nombreEstacion}</option>`)
+            $('select[name="estacionesAEP"]').trigger('chosen:updated');
+        })
+        $(datos[2]).each(function(index,item){
+            $('select[name="placas"]').append(`<option value="${item.placa}" accesskey="${item.placa}" data-id="${item.placa}">${item.placa}</option>`)
+            $('select[name="placas"]').trigger('chosen:updated');
+            $('select[name="placasMV"]').append(`<option value="${item.placa}" accesskey="${item.placa}" data-id="${item.placa}">${item.placa}</option>`)
+            $('select[name="placasMV"]').trigger('chosen:updated');
+
+            //ANIOS
+            $('select[name="placasAEP"]').append(`<option value="${item.placa}" accesskey="${item.placa}" data-id="${item.placa}">${item.placa}</option>`)
+            $('select[name="placasAEP"]').trigger('chosen:updated');
+            $('select[name="placasAP"]').append(`<option value="${item.placa}" accesskey="${item.placa}" data-id="${item.placa}">${item.placa}</option>`)
+            $('select[name="placasAP"]').trigger('chosen:updated');
+        })
+    })
+
+    $('#select-reportes').on('change',function(){
+        $('.div_fecha').html('');
+        // console.log($(this).val())
+        enlace=$('#select-reportes option:selected').attr('accesskey')
+        console.log('enlace:',enlace)
+        if(enlace == undefined){
+            enlace="";
+        }
+        var estadoFecha=$('#select-reportes option:selected').data('id')
+        // alert(enlace+' '+estadoFecha)
+        if(estadoFecha==1){
+            $('.div_fecha').html(`
+                <div class="col-md-6">
+                    <b>Fecha Inicial</b> <input type="date" class="form-control" name="fecha_inicial">  
+                </div>
+                <div class="col-md-6">
+                    <b>Fecha Final</b>   <input type="date" class="form-control" name="fecha_final">  
+                </div>
+            `);
+        }
+    })
+    
+//    	$('#select-estaciones').on('change',function(){
+
+//         idest=$('#select-estaciones option:selected').val()
+
+//     })
+    
+ 
+
+    $('#js_pdf').click(function(){
+        tipo="pdf"
+        // window.location.href="/RestResports/listar"
+        enviar();
+    })
+    $('#js_excel').click(function(){
+        tipo="xls"
+        enviar();
+
+        // window.location.href="/RestResports/listarExcel"
+        // window.location.href="http://docs.google.com/gview?url=/RestResports/listar&embedded=true"
+        // $("#frameReportes").attr("src","http://docs.google.com/gview?url=/RestResports/listar&embedded=true");
+        // $("#frameReportes").attr("src",'RestResports/solicitudF');
+        // $("#reportes").modal('show'); 
+    })
+    $('#js_excel_carg').click(function(){
+        tipo="xls"
+        listarCarguiosM();
+    })
+    $('#js_pdf_carg').click(function(){
+        tipo="pdf"
+        listarCarguiosM(); 
+    })
+    
+    $('#js_excel_carg_est').click(function(){
+        tipo="xls"
+        listarCarguiosEstacion();
+    })
+    $('#js_pdf_carg_est').click(function(){
+        tipo="pdf"
+        listarCarguiosEstacion(); 
+    })
+    $('#js_excel_MV').click(function(){
+        tipo="xls"
+        listarCarguiosMPV();
+    })
+    $('#js_pdf_MV').click(function(){
+        tipo="pdf"
+        listarCarguiosMPV(); 
+    })
+    $('#js_excel_AE').click(function(){
+        tipo="xls"
+        listarCarguiosAES();
+    })
+    $('#js_pdf_AE').click(function(){
+        tipo="pdf"
+        listarCarguiosAES(); 
+    })
+    $('#js_excel_AEP').click(function(){
+        tipo="xls"
+        listarCarguiosAESP();
+    })
+    $('#js_pdf_AEP').click(function(){
+        tipo="pdf"
+        listarCarguiosAESP(); 
+    })
+
+    $('#js_excel_AP').click(function(){
+        tipo="xls"
+        listarCarguiosAP();
+    })
+    $('#js_pdf_AP').click(function(){
+        tipo="pdf"
+        listarCarguiosAP(); 
+    })
+    
+    function enviar(){
+        // alert(tipo)
+        fecha_inicial=$('input[name="fecha_inicial"]').val()
+        fecha_final=$('input[name="fecha_final"]').val()
+        console.log('fecha_inicial:',fecha_inicial,' fecha_final:',fecha_final)
+
+        if( enlace!=""){
+            console.log('e:',enlace)
+            if(tipo=="pdf"){
+               $("#frameReportes").attr("src",enlace+'?tipo='+tipo+'&fecha_inicial='+fecha_inicial+'&fecha_final='+fecha_final);
+               $("#reportes").modal('show'); 
+            }else{
+                $("#frameReportes").attr("src",enlace+'?tipo='+tipo+'&fecha_inicial='+fecha_inicial+'&fecha_final='+fecha_final);
+            }
+        }
+    }
+    function listarCarguiosM(){
+		var enlace="RestResports/LRCarguiosGeneralesMensual"
+		
+		var idest=$('#select-estaciones-mensuales option:selected').val()
+		var mes=$('#select-meses option:selected').val()
+		var anio=$('#select-anios option:selected').val()
+			
+		
+        if( enlace!=""){
+            console.log('e:',enlace)
+            if(tipo=="pdf"){
+               $("#frameReportes").attr("src",enlace+'?tipo='+tipo+'&fecha_inicial='+fecha_inicial+'&fecha_final='+fecha_final+'&idest='+idest+'&mes='+mes+'&anio='+anio);
+               $("#reportes").modal('show'); 
+            }else{
+                $("#frameReportes").attr("src",enlace+'?tipo='+tipo+'&fecha_inicial='+fecha_inicial+'&fecha_final='+fecha_final+'&idest='+idest+'&mes='+mes+'&anio='+anio);
+            }
+        }
+    }
+    function listarCarguiosMPV(){
+        var enlace="RestResports/LRCarguiosMensualesPlacaVehiculo"
+        
+        var idest=$('#select-estaciones-MV option:selected').val()
+        var mes=$('#select-mesesMV option:selected').val()
+        var anio=$('#select-aniosMV option:selected').val()
+        var placa=$('#select-placasMV option:selected').val()
+            
+        
+        if( enlace!=""){
+            console.log('e:',enlace)
+            if(tipo=="pdf"){
+               $("#frameReportes").attr("src",enlace+'?tipo='+tipo+'&fecha_inicial='+fecha_inicial+'&fecha_final='+fecha_final+'&idest='+idest+'&mes='+mes+'&anio='+anio+'&placa='+placa);
+               $("#reportes").modal('show'); 
+            }else{
+                $("#frameReportes").attr("src",enlace+'?tipo='+tipo+'&fecha_inicial='+fecha_inicial+'&fecha_final='+fecha_final+'&idest='+idest+'&mes='+mes+'&anio='+anio+'&placa='+placa);
+            }
+        }
+    }
+    function listarCarguiosEstacion(){
+        // alert(tipo)
+//         var enlace="RestResports/LRCarguiosEstacionF"
+        var enlace="RestResports/LRCarguiosEstacionPlacaF"
+        fecha_inicial=$('input[name="fecha_inicial_cargEst"]').val()
+        fecha_final=$('input[name="fecha_final_cargEst"]').val()
+        
+        idest=$('#select-estaciones option:selected').val()
+        var idestacion=idest;
+        console.log('fecha_inicial:',fecha_inicial,' fecha_final:',fecha_final)
+		
+        var placa_carguio=$('#select-placas option:selected').val()
+        
+        if(fecha_inicial!="" && fecha_final!=""){
+            if( enlace!=""){
+                console.log('e:',enlace)
+                if(tipo=="pdf"){
+                   $("#frameReportes").attr("src",enlace+'?tipo='+tipo+'&fecha_inicial='+fecha_inicial+'&fecha_final='+fecha_final+'&idest='+idestacion+'&placa='+placa_carguio);
+                   $("#reportes").modal('show'); 
+                }else{
+                    $("#frameReportes").attr("src",enlace+'?tipo='+tipo+'&fecha_inicial='+fecha_inicial+'&fecha_final='+fecha_final+'&idest='+idestacion+'&placa='+placa_carguio);
+                }
+            }
+        }else{
+        	alert('Seleccione el rango de Fecha porfavor')
+        }	 
+        	
+
+    }
+    //ANUALES
+    function listarCarguiosAES(){
+        var enlace="RestResports/LRCarguiosAnualesEESS"
+        
+        var idest=$('#select-estaciones-AE option:selected').val()
+        var anio=$('#select-aniosAE option:selected').val()
+        // var placa=$('#select-placasMV option:selected').val()
+            
+        
+        if( enlace!=""){
+            console.log('e:',enlace)
+            if(tipo=="pdf"){
+               $("#frameReportes").attr("src",enlace+'?tipo='+tipo+'&idest='+idest+'&anio='+anio);
+               $("#reportes").modal('show'); 
+            }else{
+                $("#frameReportes").attr("src",enlace+'?tipo='+tipo+'&idest='+idest+'&anio='+anio);
+            }
+        }
+    }
+    function listarCarguiosAESP(){
+        var enlace="RestResports/LRCarguiosAnualesEESSPlaca"
+        
+        var idest=$('#select-estaciones-AEP option:selected').val()
+        var anio=$('#select-aniosAEP option:selected').val()
+        var placa=$('#select-placasAEP option:selected').val()
+            
+        
+        if( enlace!=""){
+            console.log('e:',enlace)
+            if(tipo=="pdf"){
+               $("#frameReportes").attr("src",enlace+'?tipo='+tipo+'&idest='+idest+'&anio='+anio+'&placa='+placa);
+               $("#reportes").modal('show'); 
+            }else{
+                $("#frameReportes").attr("src",enlace+'?tipo='+tipo+'&idest='+idest+'&anio='+anio+'&placa='+placa);
+            }
+        }
+    }
+
+    function listarCarguiosAP(){
+        var enlace="RestResports/LRCarguiosAnualesPlacaG"
+        
+        var anio=$('#select-aniosAP option:selected').val()
+        var placa=$('#select-placasAP option:selected').val()
+            
+        
+        if( enlace!=""){
+            console.log('e:',enlace)
+            if(tipo=="pdf"){
+               $("#frameReportes").attr("src",enlace+'?tipo='+tipo+'&anio='+anio+'&placa='+placa);
+               $("#reportes").modal('show'); 
+            }else{
+                $("#frameReportes").attr("src",enlace+'?tipo='+tipo+'&anio='+anio+'&placa='+placa);
+            }
+        }
+    }
+</script>
+</html>

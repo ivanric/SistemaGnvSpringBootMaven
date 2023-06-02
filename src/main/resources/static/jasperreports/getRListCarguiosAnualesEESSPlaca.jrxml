@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.0.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="getRListVehiculos" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1f58cd5d-2a45-4a1c-a46e-1393506ae5d5">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MiConnect"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<subDataset name="Dataset1" uuid="b5dbbd72-ccb2-4cc8-b42e-5624d7b5c0be">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MiConnect"/>
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<parameter name="idest_param" class="java.lang.Integer"/>
+		<parameter name="anio_param" class="java.lang.String"/>
+		<parameter name="placa_param" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT SUM(c.volumen) as Volumen,SUM(c.fondoRotatorio) as FondoRotatorio  FROM carguio c,estacion e,vehiculo v,benVehSolt bvs
+WHERE e.idest=c.idest and v.placa=c.placa and c.placa=bvs.placa and  (c.idest=$P{idest_param}  or $P{idest_param}=-1) and (YEAR(c.fecha)=$P{anio_param} or $P{anio_param}='') AND v.placa=c.placa AND (v.placa=$P{placa_param} or $P{placa_param}='')]]>
+		</queryString>
+		<field name="Volumen" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.label" value="Volumen"/>
+		</field>
+		<field name="FondoRotatorio" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.label" value="FondoRotatorio"/>
+		</field>
+	</subDataset>
+	<parameter name="escudo_param" class="java.io.InputStream"/>
+	<parameter name="nit_param" class="java.lang.String"/>
+	<parameter name="idest_param" class="java.lang.Integer"/>
+	<parameter name="anio_param" class="java.lang.String"/>
+	<parameter name="placa_param" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT DISTINCT v.placa,DATENAME(YEAR,c.fecha) AS Anio,e.idest,e.nombreEstacion,concat(p.ap,' ',p.am,' ',p.nombres) as propietario,concat(per.ap,' ',per.am,' ',per.nombres) as beneficiario
+FROM carguio c,estacion e,persona p,vehiculo v,persona per,benVehSolt bvs,beneficiario ben
+where bvs.idben=ben.idben AND ben.idper=per.idper AND v.placa=bvs.placa AND v.placa=c.placa and e.idper=p.idper and e.idest=c.idest and  (c.idest=$P{idest_param}  or $P{idest_param}=-1) AND (YEAR(c.fecha)=$P{anio_param} or $P{anio_param}='') AND (v.placa=$P{placa_param} or $P{placa_param}='')
+GROUP BY c.fecha,e.idest,e.nombreEstacion,p.nombres,p.ap,p.am,v.placa,per.nombres,per.ap,per.am]]>
+	</queryString>
+	<field name="placa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="placa"/>
+	</field>
+	<field name="Anio" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Anio"/>
+	</field>
+	<field name="idest" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idest"/>
+	</field>
+	<field name="nombreEstacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombreEstacion"/>
+	</field>
+	<field name="propietario" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="propietario"/>
+	</field>
+	<field name="beneficiario" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="beneficiario"/>
+	</field>
+	<variable name="uid" class="java.lang.Integer">
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="95" splitType="Stretch">
+			<staticText>
+				<reportElement x="280" y="2" width="182" height="18" uuid="8cafe027-490f-476c-bdf6-123da1acb75b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GOB. DPTAL DE TARIJA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="334" y="23" width="90" height="11" uuid="0f0f2469-b883-4030-b69c-b9f2f682dd5c">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nit_param}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="318" y="23" width="20" height="11" uuid="ad562346-4d21-477a-94d4-28030bb6bf3a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NIT:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="479" y="23" width="32" height="13" uuid="275db62d-6df1-4900-b238-29eed6a53ca4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha: ]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="510" y="23" width="100" height="13" uuid="cbafa49d-7c54-4bf5-b98b-b133d82decaf">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="239" y="39" width="272" height="13" uuid="9e87eee3-85c1-4427-a9b0-ed21a32220e1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Carguios Anualmente por Placa en Estación de Servicio]]></text>
+			</staticText>
+			<image isUsingCache="true">
+				<reportElement x="38" y="6" width="65" height="57" uuid="ed2135e5-70a8-4644-b942-78ccbccf02d2"/>
+				<imageExpression><![CDATA[$P{escudo_param}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="255" y="76" width="45" height="13" uuid="791f3a4d-bde2-49c3-b1de-14a82be5ed3a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Año]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="90" width="750" height="3" uuid="611d901d-8645-406f-ad14-25b86d6d66d1">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="307" y="76" width="106" height="13" uuid="739b6ff8-fdf4-4159-a706-a8dbc2916b29">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estación de Servicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="76" width="125" height="13" uuid="73a4ebfd-cb8c-4ce0-8cf4-d12102ff3519">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Propietario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="569" y="76" width="69" height="13" uuid="07bd27e3-06b0-4c85-88ca-5996dfd0ac30">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Volumen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="649" y="76" width="103" height="13" uuid="9f2b6eb1-8903-4538-a937-250e70bdfb79">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fondo Rotatorio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="76" width="43" height="13" uuid="ba2190ac-4876-4383-8f65-8d0a8d7a7f63">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[# ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="76" width="45" height="13" uuid="4dbfc976-4df4-4b48-b1ff-23bafdf6edfd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Placa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="97" y="76" width="100" height="13" uuid="058a3e43-4de8-4fa7-9d3d-34b8c9f6e138">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Beneficiario]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="255" y="0" width="45" height="15" uuid="230fb7ac-420a-4c79-9c4d-576d9dc5ebe0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{Anio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="307" y="0" width="100" height="15" uuid="11dae8e6-f2f8-4f7f-8b94-e9f6f00729b4"/>
+				<textFieldExpression><![CDATA[$F{nombreEstacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="425" y="0" width="125" height="15" uuid="fc718c98-fe24-4390-a66d-76f9e40f653e">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{propietario}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="569" y="0" width="183" height="15" uuid="2dee482f-b4d5-4100-9b85-489d0921eb33"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Dataset1" uuid="eeb01b98-a6d5-419e-a5fd-19f09168720e">
+						<datasetParameter name="anio_param">
+							<datasetParameterExpression><![CDATA[$F{Anio}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="idest_param">
+							<datasetParameterExpression><![CDATA[$F{idest}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="placa_param">
+							<datasetParameterExpression><![CDATA[$F{placa}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="15" width="183">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="15" uuid="b2279af2-2236-43a8-852a-42d0304a6542"/>
+							<textFieldExpression><![CDATA[$F{Volumen}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="90" y="0" width="91" height="15" uuid="3dcdefc4-14d1-4e87-9edb-8d6668f792ae"/>
+							<textElement textAlignment="Right"/>
+							<textFieldExpression><![CDATA[$F{FondoRotatorio}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<textField>
+				<reportElement x="0" y="0" width="43" height="15" uuid="ce969a2c-2674-4957-ab8d-ec26c398d373"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="43" y="0" width="45" height="15" uuid="b88f4b09-9838-4a4c-914c-a39f64634c29"/>
+				<textFieldExpression><![CDATA[$F{placa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="97" y="0" width="153" height="15" uuid="bab33ffe-77c2-449a-9921-b99837719491"/>
+				<textFieldExpression><![CDATA[$F{beneficiario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="336" y="5" width="100" height="20" uuid="a6a69d33-4c64-4e23-8f31-0c5a2aa0d61b"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TARIJA - BOLIVIA]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
